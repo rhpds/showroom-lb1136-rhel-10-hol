@@ -24,14 +24,14 @@ Send the password:
 
 Launch a 'tmux' (terminal multiplexer):
 
-[source,ssh,options="nowrap",role=execute,subs="attributes"]
+[{format_cmd_exec}]
 ----
 workshop-tmux.sh TERM1
 ----
 
 Use sudo to escalate your user priviledges and run the setup:
 
-[source,sh,role=execute]
+[{format_cmd_exec}]
 ----
 sudo -i
 ----
