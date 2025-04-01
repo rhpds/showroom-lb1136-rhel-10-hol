@@ -10,28 +10,28 @@ These steps should be easy to click-through if you are using the showroom termin
 
 Connect to target host (bastion) via ssh:
 
-[{format_cmd_exec}]
+[source,sh,role=execute]
 ----
 {ssh_command} -o "StrictHostKeyChecking no"
 ----
 
 Send the password:
 
-[{format_cmd_exec}]
+[source,sh,role=execute]
 ----
 {bastion_ssh_password}
 ----
 
 Launch a 'tmux' (terminal multiplexer):
 
-[{format_cmd_exec}]
+[source,sh,role=execute]
 ----
 workshop-tmux.sh TERM1
 ----
 
 Use sudo to escalate your user priviledges and run the setup:
 
-[{format_cmd_exec}]
+[source,sh,role=execute]
 ----
 sudo -i
 ----
