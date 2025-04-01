@@ -14,6 +14,10 @@ asciidoc:
     ssh_user: devops
     ssh_password: devops
     ssh_command: ssh someone@example.com
+    format_plain: bash,options="nowrap",subs="-attributes"
+    format_cmd_exec: source,options="nowrap",,role="copy",subs="{markup-in-source}"
+    format_cmd_exec2: source,options="nowrap",role="copy",subs="{markup-in-source}"
+    format_cmd_output: bash,options="nowrap",subs="{markup-in-source}"
     page-links:
     - url: https://redhat.com
       text: Red Hat
