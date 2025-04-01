@@ -10,7 +10,7 @@ These steps should be easy to click-through if you are using the showroom termin
 
 Connect to target host (bastion) via ssh {ssh_command}:
 
-[ssh,options="nowrap",role=execute,subs="attributes"]
+[source,ssh,options="nowrap",role=execute,subs="attributes"]
 ----
 {ssh_command} -o "StrictHostKeyChecking no"
 ----
