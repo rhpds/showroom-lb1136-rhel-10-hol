@@ -10,21 +10,21 @@ These steps should be easy to click-through if you are using the showroom termin
 
 Connect to target host (bastion) via ssh {ssh_command}:
 
-[source,ssh,options="nowrap",role=execute,subs="attributes"]
+[{format_cmd_exec}]
 ----
 {ssh_command} -o "StrictHostKeyChecking no"
 ----
 
 Send the password:
 
-[source,sh,role=execute]
+[{format_cmd_exec}]
 ----
 {ssh_password}
 ----
 
 Launch a 'tmux' (terminal multiplexer):
 
-[source,sh,role=execute]
+[source,ssh,options="nowrap",role=execute,subs="attributes"]
 ----
 workshop-tmux.sh TERM1
 ----
