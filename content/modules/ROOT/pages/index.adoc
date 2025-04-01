@@ -19,7 +19,7 @@ Send the password:
 
 [source,sh,role=execute]
 ----
-{bastion_ssh_password}
+{ssh_password}
 ----
 
 Launch a 'tmux' (terminal multiplexer):
