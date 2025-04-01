@@ -1,9 +1,43 @@
 = {lab_name}
 
-The `lab_name` var, known as an asciidoc attribute, above was set in `./content/antora.yml` and can be used to set the lab_name or title of your content.
-You are both free to change its value and if you prefer to use a different var name, you can change the value of `lab_name`, for example to `title` in `./content/antora.yml` and then reference it in your content as `\{title}`. +
-
 image::rhel-logo-black.jpg[rhel-logo-black,55%,55%]
+
+WARNING:  Executing these setup tasks is a requirement before proceeding with the workshop exercises.
+
+== Workshop Setup
+
+These steps should be easy to click-through if you are using the showroom terminal.
+
+Connect to target host (bastion) via ssh:
+
+[{format_cmd_exec}]
+----
+{ssh_command} -o "StrictHostKeyChecking no"
+----
+
+Send the password:
+
+[{format_cmd_exec}]
+----
+{bastion_ssh_password}
+----
+
+Launch a 'tmux' (terminal multiplexer):
+
+[{format_cmd_exec}]
+----
+workshop-tmux.sh TERM1
+----
+
+Use sudo to escalate your user priviledges and run the setup:
+
+[{format_cmd_exec}]
+----
+sudo -i
+----
+
+
+
 
 == Variables
 
