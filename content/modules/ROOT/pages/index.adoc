@@ -8,9 +8,9 @@ WARNING:  Executing these setup tasks is a requirement before proceeding with th
 
 These steps should be easy to click-through if you are using the showroom terminal.
 
-Connect to target host (bastion) via ssh:
+Connect to target host (bastion) via ssh {ssh_command}:
 
-[source,sh,role=execute]
+[source,ssh,options="nowrap",role=copy,subs="{markup-in-source}"]
 ----
 {ssh_command} -o "StrictHostKeyChecking no"
 ----
