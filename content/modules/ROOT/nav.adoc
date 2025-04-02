@@ -1,5 +1,4 @@
 * Introduction
-* xref:introduction.adoc [Introduction]
 ** xref:introduction.adoc#overview[Overview]
 ** xref:introduction.adoc#caution[Caution]
 ** xref:introduction.adoc#environment[Environment]
