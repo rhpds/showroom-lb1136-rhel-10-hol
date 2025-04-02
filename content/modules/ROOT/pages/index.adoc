@@ -38,7 +38,7 @@ ssh node1
 
 [{format_cmd_exec}]
 ----
-sudo -i "cd /root/RHEL10-Workshop; ./rhel10-workshop.sh all"
+sudo -i -c bash -c 'cd /root/RHEL10-Workshop; ./rhel10-workshop.sh all'
 ----
 
 [{format_cmd_exec}]
