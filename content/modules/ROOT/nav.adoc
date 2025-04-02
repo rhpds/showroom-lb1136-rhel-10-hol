@@ -1,7 +1,7 @@
 * xref:introduction.adoc [1. Introduction]
 ** xref:introduction.adoc#overview[Overview]
 ** xref:introduction.adoc#caution[Caution]
-** xref:introduction.adoc#Environment[Environment]
+** xref:introduction.adoc#environment[Environment]
 
 * xref:module-02.adoc[2. GitHub Sourced Container]
 ** xref:module-02.adoc#prerequisites[Install Prerequisites]
