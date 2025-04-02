@@ -41,9 +41,5 @@ ssh node1
 sudo -i bash -c 'cd /root/RHEL10-Workshop; ./rhel10-workshop.sh all'
 ----
 
-[{format_cmd_exec}]
-----
-/usr/local/bin/workshop-finish-exercise.sh
-----
 
 While this is running, you are ready to proceed to the Introduction.
