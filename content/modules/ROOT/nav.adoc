@@ -1,15 +1,13 @@
-* Introduction
-** xref:introduction.adoc#overview[Overview]
-** xref:introduction.adoc#caution[Caution]
-** xref:introduction.adoc#environment[Environment]
-** xref:getting-started.adoc[Getting Started]
-* Basics
-**  xref:webconsole.adoc[Web Console]
+*  xref:getting-started.adoc[Getting Started]
+*  xref:introduction.adoc[Introduction]
+*  Fundamentals
 **  xref:dnf.adoc[Package Mgmt]
 **  xref:systemd.adoc[Service Mgmt]
 **  xref:firewalld.adoc[Firewall Mgmt]
 **  xref:stratis.adoc[Storage Mgmt]
-* Intermediate
+**  xref:webconsole.adoc[Web Console]
+
+*  Intermediate
 **  xref:lvm-vdo.adoc[Storage Mgmt]
 **  xref:tlog.adoc[Session Logging]
 **  xref:podman.adoc[Container Mgmt]
@@ -17,7 +15,8 @@
 **  xref:virtualization.adoc[Virt Mgmt]
 **  xref:image-builder.adoc[Image Builder]
 **  xref:leapp.adoc[LEAPP Upgrades]
-* Advanced
+
+*  Advanced
 **  xref:nftables.adoc[Firewall Subsystem]
 **  xref:ebpf.adoc[eBPF Tracing]
 **  xref:kpatch.adoc[KPatch]
