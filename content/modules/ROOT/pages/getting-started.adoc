@@ -1,0 +1,47 @@
+
+= {lab_name}
+
+image::rhel-logo-black.jpg[rhel-logo-black,55%,55%]
+
+WARNING:  Executing these setup tasks is a requirement before proceeding with the workshop exercises.
+
+== Getting Started (DO THIS FIRST!)
+
+These steps should be easy to click-through if you are using the showroom terminal.
+
+Connect to target host (bastion) via ssh:
+
+[{format_cmd_exec}]
+----
+{ssh_command} -o "StrictHostKeyChecking no"
+----
+
+Send the password:
+
+[{format_cmd_exec}]
+----
+{ssh_password}
+----
+
+Launch a 'tmux' (terminal multiplexer):
+
+[{format_cmd_exec}]
+----
+workshop-tmux.sh TERM1
+----
+
+Connect to node1 and run the setup playbooks:
+
+[{format_cmd_exec}]
+----
+ssh node1
+----
+
+[{format_cmd_exec}]
+----
+sudo -i bash -c 'cd /root/RHEL10-Workshop; ./rhel10-workshop.sh all'
+----
+
+
+While this is running, please proceed to the Introduction.
+
