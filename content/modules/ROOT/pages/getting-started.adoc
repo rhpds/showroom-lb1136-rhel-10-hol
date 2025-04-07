@@ -9,20 +9,6 @@ WARNING:  Executing these setup tasks is a requirement before proceeding with th
 
 These steps should be easy to click-through if you are using the showroom terminal.
 
-Connect to target host (bastion) via ssh:
-
-[{format_cmd_exec}]
-----
-{ssh_command} -o "StrictHostKeyChecking no"
-----
-
-Send the password:
-
-[{format_cmd_exec}]
-----
-{ssh_password}
-----
-
 Launch a 'tmux' (terminal multiplexer):
 
 [{format_cmd_exec}]
