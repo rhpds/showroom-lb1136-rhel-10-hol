@@ -68,11 +68,17 @@ You are now ready to proceed with these exercises.
 
 == Identify Dependencies
 
-== Add Package
+== Install 
 
-== Remove Package
+== Remove 
+
+== Update
+
+== Security Update Only
 
 == Clean ALL
+
+== What About Reboots?
 
 == Further Reading
 

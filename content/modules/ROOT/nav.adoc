@@ -6,6 +6,7 @@
 **  xref:f-stratis.adoc[Storage Mgmt]
 **  xref:f-firewalld.adoc[Firewall Mgmt]
 **  xref:f-webconsole.adoc[Web Console]
+**  xref:f-man-info.adoc[Finding Help]
 
 *  Intermediate
 **  xref:i-dnf.adoc[Package Mgmt]
@@ -15,9 +16,11 @@
 **  xref:i-buildah.adoc[Container Dev]
 **  xref:i-virtualization.adoc[Virt Mgmt]
 **  xref:i-image-builder.adoc[Image Builder]
+**  xref:i-lightspeed.adoc[Finding Help]
 
 *  Advanced
 **  xref:a-tlog.adoc[Session Logging]
+**  xref:a-nbde.adoc[Storage Mgmt]
 **  xref:a-nftables.adoc[Firewall Mgmt]
 **  xref:a-ebpf.adoc[eBPF Tracing]
 **  xref:a-kpatch.adoc[KPatch]
