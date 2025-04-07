@@ -40,7 +40,7 @@ From host `bastion`, ssh to `node1`.
 
 [{format_cmd_exec}]
 ----
-sh node1
+ssh node1
 ----
 
 Use `sudo` to elevate your privileges.
@@ -61,10 +61,10 @@ You are now ready to proceed with these exercises.
 
 == Core Concepts
 
-Software in Red Hat Enterprise Linux are bundled into something called an RPM.  At a highlevel an rpm file includes both 
+Software in Red Hat Enterprise Linux is bundled into something called an 'rpm'.  At a highlevel an 'rpm' file includes both 
 
     * the files (payload) of a specific installation 
-    * as well as the metadata about what's getting installed
+    * as well as metadata about what's getting installed
 
 The metadata includes (but is not limited to):
 
@@ -74,16 +74,18 @@ The metadata includes (but is not limited to):
     * digital/security signatures
     * checksums
 
-A repository (or repo) is a collection of rpm packages.   More on this topic in the Intermediate Package Management unit.
+Next, rpm packages get organized into structures called repositories (or repos for short) which are then published 
+as sources to distribute content.   More on this topic in the Intermediate Package Management unit.
 
 Working with rpms directly can be challenging.  Luckily tooks like *dnf* exist to abstract that complexity
 and replace it with simple intuitive commands and processes.
 
+Let's get started!
 
 
 == List packages
 
-Simple command to list all available packages available.  This would include all configured and available repos.
+Simple command to list all available packages.  This includes all configured and available repos.
 
 [{format_cmd_exec}]
 ----
@@ -104,7 +106,7 @@ Command to list available pacakges.
 dnf list --available
 ----
 
-Quickly comparison of how many packages are installed vs available.
+A quick comparison of how many packages are installed vs available.
 
 [{format_cmd_exec}]
 ----
@@ -185,7 +187,7 @@ dnf repoquery --whatdepends ncurses
 Let us begin by trying to run the command 'netstat'
 
 [{format_cmd_exec}]
----
+----
 netstat -tulpn
 ----
 
