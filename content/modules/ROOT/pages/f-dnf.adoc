@@ -61,9 +61,28 @@ You are now ready to proceed with these exercises.
 
 == Core Concepts
 
+Software pacakges in Red Hat Enterprise Linux are bundled into something called an RPM.  At a highlevel an rpm file includes both 
+
+    * the files (payload) of a specific installation 
+    * as well as the metadata about what's getting installed.
+
+The metadata includes (but is not limited to):
+
+    * common name
+    * version
+    * where and when it was built
+    * digital/security signatures
+    * checksums
+    * more
+
+A collection of rpm packages can be assembled into a structure and published as a repository (repo).  More on this topic in the advance packaging unit.
+
+Working with rpms directly can be challenging.  Luckily tooks like *dnf* exist to abstract that complexity
+and replace it with simple intuitive commands and processes.
+
+
 
 == List packages
-
 
 Simple command to list all packages available to a host.  This would include all configured and available repos.
 
@@ -96,7 +115,9 @@ dnf list --available | wc -l
 
 You should a result roughly '820' pacakges installed compared to '4653' available.
 
-== Locate Package
+
+
+== Locate Packages
 
 Command to list a specific package.
 
@@ -161,7 +182,7 @@ dnf repoquery --whatdepends ncurses
 
 
 
-== Install 
+== Install Packages
 
 Let us being by trying to run the command 'netstat'
 
@@ -230,7 +251,7 @@ Congratulations, it works!
 
 
 
-== Remove 
+== Remove Packages
 
 To remove a package from the system you can run *dnf* as follows.
 
@@ -241,7 +262,7 @@ dnf remove -y net-tools
 
 
 
-== Update
+== Update Packages
 
 To update pacakges on a host you use the 'update' operand.  For the purposes of this lab, we don't use up your time performing an actaul upgrade.  However, there is something to be learned by performing a dry-run (or a harmless test).
 
