@@ -1,5 +1,5 @@
 name: modules
-title: Default Title
+title: LB1136 - The Definitive Red Hat Enterprise Linux 10 Hands-On Lab
 version: master
 nav:
   - modules/ROOT/nav.adoc
