@@ -22,7 +22,7 @@ endif::[]
 
 Software packages in RHEL 10 are managed with a tool called *dnf*.
 
-Introduced in 2013, *dnf* was a significant improvement to it's predecessor *yum*.  Landing in RHEL 8, *dnf* replaced *yum* while still maintaining a great deal of compatability.
+Introduced in 2013, *dnf* was a significant improvement to it's predecessor *yum*.  Landing in RHEL 8, *dnf* replaced *yum* while still maintaining a great deal of compatibility.
 
 When compared to YUM, DNF offers:
 
