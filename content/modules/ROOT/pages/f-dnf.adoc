@@ -114,7 +114,7 @@ dnf list --installed | wc -l
 dnf list --available | wc -l
 ----
 
-You should a result roughly '820' packages installed compared to '4653' available.
+You should a result roughly '820' packages installed compared to '4653' available for installation.
 
 
 
