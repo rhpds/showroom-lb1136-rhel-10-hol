@@ -225,7 +225,7 @@ dnf install -y net-tools
 ----
 
 [{format_cmd_exec}]
----
+----
 netstat -tulpn
 ----
 
