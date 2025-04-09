@@ -17,7 +17,7 @@ endif::[]
 
 
 
-= Advanced: Bootable Containers (bootc)
+= Advanced: *Bootable Containers* (bootc)
 
 == Overview
 

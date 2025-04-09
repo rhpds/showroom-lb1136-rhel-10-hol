@@ -17,7 +17,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 endif::[]
 
 
-= Intermediate: Image Builder
+= Intermediate: *Image Builder* (composer)
 
 == Overview
 

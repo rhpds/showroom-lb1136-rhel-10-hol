@@ -17,7 +17,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 endif::[]
 
 
-= Intermediate: Firewall Management
+= Intermediate: *Firewall Management* (firewalld)
 
 == Overview
 

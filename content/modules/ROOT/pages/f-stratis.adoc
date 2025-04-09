@@ -28,7 +28,7 @@ endif::[]
 
 
 
-= Fundamental: Storage Management (Stratis)
+= Fundamental: *Storage Management* (stratis)
 
 == Overview
 

@@ -17,7 +17,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 endif::[]
 
 
-= Fundamental: Firewall Management
+= Fundamental: *Firewall Management* (firewalld)
 
 == Overview
 

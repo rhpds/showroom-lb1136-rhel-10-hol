@@ -16,7 +16,7 @@ endif::[]
 
 
 
-= Advanced: Firewall Management (NFTables)
+= Advanced: *Firewall Management* (nftables)
 
 == Overview
 

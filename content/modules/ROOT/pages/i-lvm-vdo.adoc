@@ -28,7 +28,7 @@ endif::[]
 
 
 
-= Intermediate: Storage Management (LVM & VDO)
+= Intermediate: *Storage Management* (lvm & vdo)
 
 == Overview
 

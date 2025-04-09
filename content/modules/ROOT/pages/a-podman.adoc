@@ -15,7 +15,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 endif::[]
 
 
-= Advanced: Container Management (podman)
+= Advanced: *Container Management* (podman)
 
 == Overview
 

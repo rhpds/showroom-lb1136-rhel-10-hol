@@ -21,7 +21,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 endif::[]
 
 
-= Advanced: Kernel Tracing (ebpf)
+= Advanced: *Kernel Tracing* (ebpf)
 
 == Overview
 WARNING:  This exercise requires the SECONDARY terminal and conflicts with any other exercise that

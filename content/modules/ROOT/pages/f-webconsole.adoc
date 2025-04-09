@@ -25,12 +25,7 @@ endif::[]
 
 
 
-:toc:
-:toclevels: 1
-
-
-
-= Fundamental: GUI System Mgmt (webconsole)
+= Fundamental: *GUI System Mgmt* (webconsole)
 
 == Overview
 

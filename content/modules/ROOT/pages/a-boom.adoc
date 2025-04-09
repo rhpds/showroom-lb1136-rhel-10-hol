@@ -15,7 +15,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 endif::[]
 
 
-= Advanced: Boot Management (boom)
+= Advanced: *Boot Management* (boom)
 
 == Overview
 

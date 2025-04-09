@@ -15,7 +15,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 endif::[]
 
 
-= Advanced: Kernel Live Patching
+= Advanced: *Kernel Live Patching* (kpatch)
 
 WARNING: This unit requires an active entitlement for RHEL and registration with the Red Hat CDN (subscription-manager).  If connected to a Red Hat Satellite server, the Satellite must also have synchronized content to match the release of RHEL used for this workshop.  So, besides overall functionality being impacted ... some variations in the output can also be expected.
 

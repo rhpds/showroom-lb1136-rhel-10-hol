@@ -16,7 +16,7 @@ endif::[]
 
 
 
-= Intermediate: Package Management
+= Intermediate: *Package Management* (dnf)
 
 == Overview
 

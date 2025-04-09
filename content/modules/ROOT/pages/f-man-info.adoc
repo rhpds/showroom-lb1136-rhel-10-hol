@@ -17,7 +17,7 @@ endif::[]
 
 
 
-= Fundamental: Help (man & info)
+= Fundamental: *Help* (man & info)
 
 == Overview
 

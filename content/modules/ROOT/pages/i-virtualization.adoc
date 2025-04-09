@@ -17,7 +17,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 endif::[]
 
 
-= Intermediate: Virtualization Management
+= Intermediate: *Virtualization Management* (libvirt)
 
 WARNING: This exercise depends on the work created by the ImageBuilder unit.  
 If you have not completed that work, please do so before proceeding.

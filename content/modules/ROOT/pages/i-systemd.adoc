@@ -17,10 +17,7 @@ endif::[]
 
 
 
-:toc:
-:toclevels: 1
-
-= Intermediate: Service Management
+= Intermediate: *Service Management* (systemd)
 
 == Overview
 
