@@ -16,7 +16,7 @@ endif::[]
 
 
 
-= Fundamental: Package Management
+= Fundamental: *Package Management*
 
 == Overview
 
