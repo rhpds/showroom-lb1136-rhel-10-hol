@@ -16,12 +16,35 @@ endif::[]
 
 
 
-= Intermediate Package Management
+= Intermediate: Package Management
 
 == Overview
 
 You have already been introduced to *dnf* and the fundamentals of package management.  Now we'll progress to more sophisticated capability of *dnf* and management of the repositories that back the highlevel tools.
 
+=== DNF
+
+==== Aliases
+
+==== Check
+
+==== Query
+
+dnf repoquery -l netstat
+
+==== Search
+
+dnf search netcat
+
+==== Group
+
+dnf grouplist
+
+dnf groupinstall "RPM Development Tools"
+
+==== Clean
+
+dnf clean all
 
 === Repositories
 
@@ -39,13 +62,7 @@ Repos typically fall into 2 categories:
 
 ==== Add Repo
 
-==== Add Package
-
-==== Remove Package
-
 ==== Remove Repo
-
-==== Clean ALL
 
 === Modularity and App-Stream
 

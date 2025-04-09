@@ -17,7 +17,7 @@ endif::[]
 
 
 
-= Fundamental Service Management
+= Fundamental: Service Management
 
 == Overview
 

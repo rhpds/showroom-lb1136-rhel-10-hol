@@ -17,7 +17,7 @@ endif::[]
 
 
 
-= Advanced Storage Management (LUX & NBDE)
+= Advanced: Storage Management (LUX & NBDE)
 
 == Overview
 

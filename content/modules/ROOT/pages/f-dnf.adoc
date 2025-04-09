@@ -16,7 +16,7 @@ endif::[]
 
 
 
-= Fundamental Package Management
+= Fundamental: Package Management
 
 == Overview
 
@@ -116,9 +116,16 @@ dnf list --available | wc -l
 
 You should a result roughly '820' pacakges installed compared to '4653' available.
 
+Last, let us identify packages that are installed but do not belong to any known repository.  Meaning, someone downloaded and installed it manually.
+
+[{format_cmd_exec}]
+----
+dnf list --extras
+----
 
 
-== Locate Packages
+
+== Package Details
 
 Command to list a specific package.
 
@@ -154,7 +161,7 @@ Description  : bash-completion is a collection of shell functions that take adva
 
 
 
-== Identify Dependencies
+== Package Dependencies
 
 *dnf* command provides a nice little sub command called *repoquery* which is equivalent to 'rpm -q'.  With the added flag '--requires' you 
 can quickly determine what additional packages are necessary for its installation.   

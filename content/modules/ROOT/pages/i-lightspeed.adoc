@@ -17,7 +17,7 @@ endif::[]
 
 
 
-= Intermediate Help (LightSpeed)
+= Intermediate: Help (LightSpeed)
 
 == Overview
 
