@@ -22,7 +22,7 @@ endif::[]
 
 Software packages in RHEL 10 are managed with a tool called *dnf*.
 
-Introduced in 2013, *dnf* was a significat improvement to it's predecessor *yum*.  Landing in RHEL 8, *dnf* replaced *yum* while still maintaining a great deal of compatability.
+Introduced in 2013, *dnf* was a significant improvement to it's predecessor *yum*.  Landing in RHEL 8, *dnf* replaced *yum* while still maintaining a great deal of compatibility.
 
 When compared to YUM, DNF offers:
 
@@ -30,7 +30,7 @@ When compared to YUM, DNF offers:
     * better performace and scalability
     * better dependency resolution
     * consistent (strict) API adherence
-    * compatability with YUM
+    * compatibility with YUM
 
 == Getting Started
 
@@ -92,14 +92,14 @@ Simple command to list all available packages.  This includes all configured and
 dnf list
 ----
 
-Command to list only the installed pacakges.
+Command to list only the installed packages.
 
 [{format_cmd_exec}]
 ----
 dnf list --installed
 ----
 
-Command to list available pacakges.
+Command to list available packages.
 
 [{format_cmd_exec}]
 ----
@@ -114,7 +114,7 @@ dnf list --installed | wc -l
 dnf list --available | wc -l
 ----
 
-You should a result roughly '820' pacakges installed compared to '4653' available.
+You should a result roughly '820' packages installed compared to '4653' available for installation.
 
 Last, let us identify packages that are installed but do not belong to any known repository.  Meaning, someone downloaded and installed it manually.
 
@@ -271,7 +271,7 @@ dnf remove -y net-tools
 
 == Update Packages
 
-To update pacakges on a host you use the 'update' operand.  For the purposes of this lab, we don't want to use up your time performing an actaul upgrade.  However, there is something to be learned by performing a dry-run (or a harmless test).
+To update packages on a host you use the 'update' operand.  For the purposes of this lab, we don't want to use up your time performing an actaul upgrade.  However, there is something to be learned by performing a dry-run (or a harmless test).
 
 [{format_cmd_exec}]
 ----
