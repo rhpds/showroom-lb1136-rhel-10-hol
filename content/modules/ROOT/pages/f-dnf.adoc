@@ -30,7 +30,7 @@ When compared to YUM, DNF offers:
     * better performace and scalability
     * better dependency resolution
     * consistent (strict) API adherence
-    * compatability with YUM
+    * compatibility with YUM
 
 == Getting Started
 
