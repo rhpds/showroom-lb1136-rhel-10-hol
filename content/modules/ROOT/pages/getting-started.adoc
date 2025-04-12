@@ -20,14 +20,8 @@ Connect to node1 and run the setup playbooks:
 
 [{format_cmd_exec}]
 ----
-ssh node1
+ssh node1 'sudo -i ./RHEL10-Workshop/sample-configs/gpte/workshop-setup.sh'
 ----
-
-[{format_cmd_exec}]
-----
-sudo -i bash -c 'cd /root/RHEL10-Workshop; ./rhel10-workshop.sh all'
-----
-
 
 While this is running, please proceed to the Introduction.
 
