@@ -20,8 +20,8 @@
 **  xref:i-lightspeed.adoc[Finding Help]
 
 *  Advanced
-**  xref:i-lvm-vdo.adoc[Storage Mgmt]
-**  xref:a-nbde.adoc[Storage Mgmt]
+**  xref:a-lvm-vdo.adoc[Storage VDO]
+**  xref:a-nbde.adoc[Storage NBDE]
 **  xref:a-nftables.adoc[Firewall Mgmt]
 **  xref:a-podman.adoc[Container Mgmt]
 **  xref:a-tlog.adoc[Session Logging]
