@@ -275,7 +275,7 @@ To update packages on a host you use the 'update' operand.  For the purposes of 
 
 [{format_cmd_exec}]
 ----
-dnf update -y --setopts tsflags=test
+dnf update -y --setopt tsflags=test
 ----
 
 [{format_cmd_output}]

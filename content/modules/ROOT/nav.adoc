@@ -11,7 +11,7 @@
 *  Intermediate
 **  xref:i-dnf.adoc[Package Mgmt]
 **  xref:i-systemd.adoc[Service Mgmt]
-**  xref:i-lvm-vdo.adoc[Storage Mgmt]
+**  xref:i-stratis.adoc[Storage Mgmt]
 **  xref:i-firewall.adoc[Firewall Mgmt]
 **  xref:i-podman.adoc[Container Mgmt]
 **  xref:i-buildah.adoc[Container Dev]
@@ -20,6 +20,7 @@
 **  xref:i-lightspeed.adoc[Finding Help]
 
 *  Advanced
+**  xref:i-lvm-vdo.adoc[Storage Mgmt]
 **  xref:a-nbde.adoc[Storage Mgmt]
 **  xref:a-nftables.adoc[Firewall Mgmt]
 **  xref:a-podman.adoc[Container Mgmt]

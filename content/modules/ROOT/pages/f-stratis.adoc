@@ -8,12 +8,12 @@ ifdef::env-github[]
 :caution-caption: :fire:
 :warning-caption: :warning:
 endif::[]
-:disk0: /dev/sda
-:disk1: /dev/sdb
-:disk2: /dev/sdc
-:disk3: /dev/sdd
-:disk4: /dev/sde
-:disk_glob: /dev/sd{b..e}
+:disk0: /dev/vda
+:disk1: /dev/vdb
+:disk2: /dev/vdc
+:disk3: /dev/vdd
+:disk4: /dev/vde
+:disk_glob: /dev/vd{b..e}
 :format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="copy"
 :format_cmd_output: bash,options="nowrap",subs="{markup-in-source}"
 ifeval::["%cloud_provider%" == "ec2"]
@@ -309,66 +309,6 @@ tmpfs                                      1.9G     0  1.9G   0% /sys/fs/cgroup
 tmpfs                                      379M     0  379M   0% /run/user/1000
 /dev/mapper/stratis-1-3e8e[_truncated_]71dc  1.0T  7.2G 1017G   1% /summitdir
 ----
-
-== Grow Storage Pool
-
-Stratis also makes it easy to add space to a pool.  Suppose the “summitfs” filesystem is growing close to the physical space in “summitpool”.  Adding an additional disk/block device is done using:
-
-[{format_cmd_exec}]
-----
-stratis pool add-data summitpool {disk3}
-----
-
-[{format_cmd_exec}]
-----
-stratis blockdev
-----
-
-[{format_cmd_output}]
-----
-Pool Name    Device Node    Physical Size   Tier
-summitpool   {disk1}                5 GiB   Data
-summitpool   {disk2}                5 GiB   Data
-summitpool   {disk3}                5 GiB   Data
-----
-
-Verify that the pool shows the additional space, and that the amount used is now in a safe range.
-
-[{format_cmd_exec}]
-----
-stratis pool
-----
-
-[{format_cmd_output}]
-----
-Name                          Total Physical   Properties          UUID
-summitpool   15 GiB / 590.65 MiB / 14.42 GiB      ~Ca,~Cr   4b86ce9b...
-----
-
-== Add Cache Device
-
-Stratis also makes it easy to add cache devices.  For example, say the filesystem we just created runs into some I/O performance issues.  You bought an SSD (solid state disk) and need to configure it into the system to act as a high speed cache.  Use the following commands to add the drive {disk4} and check its status:
-
-[{format_cmd_exec}]
-----
-stratis pool init-cache summitpool  {disk4}
-----
-
-[{format_cmd_exec}]
-----
-stratis blockdev
-----
-
-[{format_cmd_output}]
-----
-Pool Name    Device Node    Physical Size   Tier
-summitpool   {disk1}                5 GiB   Data
-summitpool   {disk2}                5 GiB   Data
-summitpool   {disk3}                5 GiB   Data
-summitpool   {disk4}                5 GiB  Cache
-----
-
-
 
 == Conclusion
 
