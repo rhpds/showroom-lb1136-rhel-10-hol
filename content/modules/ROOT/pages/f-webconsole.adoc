@@ -9,9 +9,9 @@ ifdef::env-github[]
 :caution-caption: :fire:
 :warning-caption: :warning:
 endif::[]
-:ssh_username: <Provided-By-Instructor>
-:ssh_password: <Provided-By-Instructor>
-:targethost_fqdn: <Provided-By-Instructor>
+:ssh_username: {workshop_cockpit_user_name}
+:ssh_password: {workshop_cockpit_user_password}
+:targethost_fqdn: {workshop_cockpit_url}
 :subdomain: example.com
 :format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="copy"
 :format_cmd_output: bash,options="nowrap",subs="{markup-in-source}"
