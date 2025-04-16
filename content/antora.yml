@@ -10,10 +10,13 @@ asciidoc:
     release-version: master
     page-pagination: true
     my_var: "foo"
-    guid: my-guid
+    guid: "{guid}"
     ssh_user: devops
     ssh_password: devops
     ssh_command: ssh someone@example.com
+    workshop_cockpit_url: "https://node3.{subdomain}"
+    workshop_cockpit_user_name: "{student_name}"
+    workshop_cockpit_user_password: "{common_password}"
     format_plain: bash,options="nowrap",subs="-attributes"
     format_cmd_exec: ',sh,options="nowrap",role=execute,subs="attributes"'
     format_cmd_exec2: source,options="nowrap",role="copy",subs="{markup-in-source}"
