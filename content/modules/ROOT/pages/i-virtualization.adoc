@@ -194,9 +194,19 @@ Now you need to do a few more things to your image:
     * selinux relabel files in the guest
     * remove the cloud-init package
 
+
+We need to capture the filename of our public ssh key.
+
+[{format_cmd_exec}]
+----
+export PUBKEY=$(ls ~/.ssh/*.pub | head -1)
+----
+
+Now you can proceed to customize the virt image.
+
 We will include a timer on this command so you can estimate how long this
 will take.  On our AWS reference platform without virt support, this took
-about 5 minutes.
+about 30 seconds.
 
 [{format_cmd_exec}]
 ----
@@ -204,7 +214,7 @@ time virt-customize \
     -a /var/lib/libvirt/images/vmguest.qcow2 \
     --hostname vmguest \
     --root-password password:redhat \
-    --ssh-inject root:file:/root/.ssh/2d6zmkey.pub \
+    --ssh-inject root:file:${PUBKEY} \
     --copy-in /usr/local/etc/index.html:/var/www/html \
     --selinux-relabel \
     --run-command 'echo "PermitRootLogin yes" >> /etc/ssh/sshd_config.d/rootlogin.conf' \
