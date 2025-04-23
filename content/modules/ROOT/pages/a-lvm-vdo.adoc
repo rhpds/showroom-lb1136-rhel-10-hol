@@ -8,12 +8,12 @@ ifdef::env-github[]
 :caution-caption: :fire:
 :warning-caption: :warning:
 endif::[]
-:disk0: /dev/sda
-:disk1: /dev/sdb
-:disk2: /dev/sdc
-:disk3: /dev/sdd
-:disk4: /dev/sde
-:disk_glob: /dev/sd{b..e}
+:disk0: /dev/vda
+:disk1: /dev/vdb
+:disk2: /dev/vdc
+:disk3: /dev/vdd
+:disk4: /dev/vde
+:disk_glob: /dev/vd{b..e}
 :format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="copy"
 :format_cmd_output: bash,options="nowrap",subs="{markup-in-source}"
 ifeval::["%cloud_provider%" == "ec2"]
