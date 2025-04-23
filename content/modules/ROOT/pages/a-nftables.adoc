@@ -178,7 +178,7 @@ nft list chains
 
 Again there is nothing there, so let use create a new chain in our table called 'INPUT'.
 
-NOTE: nft re-uses special characters (ie: curly braces and semicolons) so using single quotes is needed in this case
+NOTE: nft leverages special characters (ie: curly braces and semicolons) so we must use single quotes to protect our rules on the commandline
 
 [{format_cmd_exec}]
 ----
@@ -187,7 +187,7 @@ nft 'add chain inet workshop INPUT { type filter hook input priority 0 ; }'
 
 [{format_cmd_exec}]
 ----
-*nft list chains*
+nft list chains
 ----
 
 [{format_cmd_output}]
