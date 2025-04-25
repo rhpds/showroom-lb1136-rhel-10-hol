@@ -52,8 +52,57 @@ You are now ready to proceed with these exercises.
 
 == Core Concepts
 
+In this unit you will be exposed to some advanced concepts involving containers:
+
+  + how they behave, 
+  + how they are built, and 
+  + how they can be customized
+
+These exercises build upon the material learned in the intermediate exercises for container managementr. 
+
+There are no dependencies on prior work so you can proceed without having completed the intermediate activities.
 
 == Exercise: Exploring Container Namespaces
+
+=== Clean Up
+
+Let's start by insuring we have a clean environment
+
+[{format_cmd_exec}]
+----
+podman kill --all
+podman rm --all
+podman rmi --all
+----
+
+=== Pull Required Images
+
+Time to pull a container from our local repository.  For these exercises we will want to use a rhel10 ubi image.
+
+[{format_cmd_exec}]
+----
+podman search ubi10
+----
+
+From this we see the current available ubi10 image is ubi10-beta.  So let's grab that.
+[{format_cmd_exec}]
+----
+podman pull ubi10-beta/ubi:latest
+----
+
+[{format_cmd_output}]
+----
+Resolved "ubi10-beta/ubi" as an alias (/var/cache/containers/short-name-aliases.conf)
+Trying to pull registry.access.redhat.com/ubi10-beta/ubi:latest...
+Getting image source signatures                                  
+Checking if image destination supports signatures
+Copying blob 9dcf0326ccda done   |              
+Copying blob bd69bf9256bd done   | 
+Copying config 8ba11fcef4 done   | 
+Writing manifest to image destination
+Storing signatures
+8ba11fcef4ef5ccb678b60edc9be7b64d8f73262d7e8d7c72a1d2e180dc0cb98
+----
 
 === UTS / Hostname
 
@@ -210,13 +259,13 @@ podman run -v /usr/bin:/usr/bin ubi df -h
 
 [{format_cmd_output}]
 ----
-Filesystem                Size  Used Avail Use% Mounted on
-overlay                    25G  1.9G   22G   8% /
-tmpfs                      64M     0   64M   0% /dev
-tmpfs                     725M  9.0M  716M   2% /etc/hosts
-/dev/mapper/vg_rhel-root   25G  1.9G   22G   8% /usr/bin
-shm                        63M     0   63M   0% /dev/shm
-devtmpfs                  1.8G     0  1.8G   0% /proc/keys
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          50G  3.9G   46G   8% /
+tmpfs            64M     0   64M   0% /dev
+shm              63M     0   63M   0% /dev/shm
+tmpfs           1.4G   19M  1.4G   2% /etc/hosts
+/dev/vda3        50G  3.9G   46G   8% /usr/bin
+devtmpfs        4.0M     0  4.0M   0% /proc/keys
 ----
 
 Notice above how there is now a dedicated mount point for /usr/bin.  Bind-Mounts can be a very powerful tool (primarily for diagnostics) to termporarily inject tools and files that are not normally part of a container image.  Remember, using bind mounts as a design decision for enterprise container strategies is folly.
@@ -244,9 +293,16 @@ cat /root/custom_image.OCIFile
 
 [{format_cmd_output}]
 ----
-FROM ubi9/ubi
+FROM ubi10-beta/ubi:latest
 
-RUN dnf --disablerepo=* --enablerepo=ubi-9-baseos-rpms --enablerepo=ubi-9-appstream-rpms install -y httpd
+#NOTE:  Until RHEL10 is GA, we can only use the local hosts repos to augment the
+#       the container image with additional content.
+#       Once GA, we can utilize the public ubi repos
+#
+#RUN dnf --disablerepo=* --enablerepo=ubi-10-baseos-rpms --enablerepo=ubi-10-appstream-rpms install -y httpd
+
+RUN dnf install -y httpd
+
 RUN dnf clean all
 
 RUN echo "The Web Server is Running" > /var/www/html/index.html
@@ -259,7 +315,7 @@ ENTRYPOINT ["/usr/sbin/httpd"]
 
 Notice a few things about the configuration:
 
-  * that our image is based on `ubi8/ubi`
+  * that our image is based on `ubi10-beta/ubi:latest`
   * the build process will install an additional package `httpd` along with it's dependencies
   * httpd is configured by default to run on port 80, so that is the port we will expose
   * the build will create a file `/var/www/html/index.html` with the contents "The Web Server is Running".
@@ -282,11 +338,9 @@ podman images
 
 [{format_cmd_output}]
 ----
-REPOSITORY                                   TAG         IMAGE ID      CREATED        SIZE
-localhost/custom_image                       latest      d6271d64c93e  2 seconds ago  246 MB
-registry.access.redhat.com/ubi9/ubi          latest      9f43f297e77b  2 weeks ago    217 MB
-localhost/myfavorite                         latest      9f43f297e77b  2 weeks ago    217 MB
-registry.access.redhat.com/ubi9/ubi-minimal  latest      088f0967f6b5  2 weeks ago    97.4 MB
+REPOSITORY                                 TAG         IMAGE ID      CREATED                 SIZE
+localhost/custom_image                     latest      5638b7ebda93  Less than a second ago  263 MB
+registry.access.redhat.com/ubi10-beta/ubi  latest      8ba11fcef4ef  6 weeks ago             212 MB
 ----
 
 === Deploy

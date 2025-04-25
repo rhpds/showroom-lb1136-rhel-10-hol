@@ -32,6 +32,8 @@ endif::[]
 
 == Overview
 
+WARNING: These exercises build upon the exercises performed in the fundamental storage management unit.  It is necessary to complete those prior to attempting this unit.
+
 == Getting Started
 
 For these exercises, you will be using the host `node2` as user `root`.
@@ -58,6 +60,15 @@ workshop-stratis-checkhost.sh
 ----
 
 You are now ready to proceed with these exercises.
+
+== Core Concepts
+
+In this unit you will be exposed to some more advanced concepts for storage management including:
+
+  + how to grow an active storage pool, and 
+  + how to add a cache device
+
+Again, please be sure to have completed the fundamental exercises first.
 
 == Grow Storage Pool
 
