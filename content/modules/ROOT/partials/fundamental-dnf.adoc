@@ -1,0 +1,326 @@
+
+= Fundamental: *Package Management* (dnf)
+
+== Overview
+
+Software packages in RHEL 10 are managed with a tool called *dnf*.
+
+Introduced in 2013, *dnf* was a significant improvement to it's predecessor *yum*.  Landing in RHEL 8, *dnf* replaced *yum* while still maintaining a great deal of compatibility.
+
+When compared to YUM, DNF offers:
+
+    * better functionality
+    * better performace and scalability
+    * better dependency resolution
+    * consistent (strict) API adherence
+    * compatibility with YUM
+
+== Getting Started
+
+For these exercises, you will be using the host `node1` as user `root`.
+
+From host `bastion`, ssh to `node1`.
+
+[{format_cmd_exec}]
+----
+ssh node1
+----
+
+Use `sudo` to elevate your privileges.
+
+[{format_cmd_exec}]
+----
+[[ "$UID" == 0 ]] || sudo -i
+----
+
+Verify that you are on the right host for these exercises.
+
+[{format_cmd_exec}]
+----
+workshop-dnf-checkhost.sh
+----
+
+You are now ready to proceed with these exercises.
+
+== Core Concepts
+
+Software in Red Hat Enterprise Linux is bundled into something called an 'rpm'.  At a highlevel an 'rpm' file includes both 
+
+    * the files (payload) of a specific installation 
+    * as well as metadata about what's getting installed
+
+The metadata includes (but is not limited to):
+
+    * common name
+    * version
+    * where and when it was built
+    * digital/security signatures
+    * checksums
+
+Next, rpm packages get organized into structures called repositories (or repos for short) which are then published 
+as sources to distribute content.   More on this topic in the Intermediate Package Management unit.
+
+Working with rpms directly can be challenging.  Luckily tooks like *dnf* exist to abstract that complexity
+and replace it with simple intuitive commands and processes.
+
+Let's get started!
+
+
+== List packages
+
+Simple command to list all available packages.  This includes all configured and available repos.
+
+[{format_cmd_exec}]
+----
+dnf list
+----
+
+Command to list only the installed packages.
+
+[{format_cmd_exec}]
+----
+dnf list --installed
+----
+
+Command to list available packages.
+
+[{format_cmd_exec}]
+----
+dnf list --available
+----
+
+A quick comparison of how many packages are installed vs available.
+
+[{format_cmd_exec}]
+----
+dnf list --installed | wc -l
+dnf list --available | wc -l
+----
+
+You should a result roughly '820' packages installed compared to '4653' available for installation.
+
+Last, let us identify packages that are installed but do not belong to any known repository.  Meaning, someone downloaded and installed it manually.
+
+[{format_cmd_exec}]
+----
+dnf list --extras
+----
+
+
+
+== Package Details
+
+Command to list a specific package.
+
+[{format_cmd_exec}]
+----
+dnf list bash-completion
+----
+
+Let us get some detailed information about this package.
+
+[{format_cmd_exec}]
+----
+dnf info bash-completion
+----
+
+[{format_cmd_output}]
+----
+Available Packages
+Name         : bash-completion
+Epoch        : 1
+Version      : 2.11
+Release      : 16.el10
+Architecture : noarch
+Size         : 457 k
+Source       : bash-completion-2.11-16.el10.src.rpm
+Repository   : rhel-10-for-x86_64-baseos-beta-rpms
+Summary      : Programmable completion for Bash
+URL          : https://github.com/scop/bash-completion
+License      : GPL-2.0-or-later
+Description  : bash-completion is a collection of shell functions that take advantage
+             : of the programmable completion feature of bash.
+----
+
+
+
+== Package Dependencies
+
+*dnf* command provides a nice little sub command called *repoquery* which is equivalent to 'rpm -q'.  With the added flag '--requires' you 
+can quickly determine what additional packages are necessary for its installation.   
+
+Let us begin by getting information about a package called 'ncurses'
+
+[{format_cmd_exec}]
+----
+dnf info ncurses
+----
+
+What other packages does this depend on.
+
+[{format_cmd_exec}]
+----
+dnf repoquery --depends ncurses
+----
+
+How about the other way around, what other packages have a dependency on 'ncurses'.
+
+[{format_cmd_exec}]
+----
+dnf repoquery --whatdepends ncurses
+----
+
+
+
+== Install Packages
+
+Let us begin by trying to run the command 'netstat'
+
+[{format_cmd_exec}]
+----
+netstat -tulpn
+----
+
+[{format_cmd_output}]
+----
+-bash: netstat: command not found
+----
+
+Now let us determine what package provides a utility called 'netcat'.
+
+[{format_cmd_exec}]
+----
+dnf provides netstat
+----
+
+[{format_cmd_output}]
+----
+net-tools-2.0-0.72.20160912git.el10.x86_64 : Basic networking tools
+Repo        : rhel-10-for-x86_64-baseos-beta-rpms
+Matched from:
+Filename    : /usr/bin/netstat
+
+net-tools-2.0-0.73.20160912git.el10.x86_64 : Basic networking tools
+Repo        : rhel-10-for-x86_64-baseos-beta-rpms
+Matched from:
+Filename    : /usr/bin/netstat
+----
+
+From this we can determine that a package called 'net-tools' provides the requested utility.
+So let us proceed to install it.
+
+[{format_cmd_exec}]
+----
+dnf install -y net-tools
+----
+
+[{format_cmd_exec}]
+----
+netstat -tulpn
+----
+
+[{format_cmd_output}]
+----
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      9453/sshd: /usr/sbi 
+tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN      33349/dnsmasq       
+tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           
+tcp6       0      0 :::22                   :::*                    LISTEN      9453/sshd: /usr/sbi 
+tcp6       0      0 :::9090                 :::*                    LISTEN      1/systemd           
+udp        0      0 192.168.122.1:53        0.0.0.0:*                           33349/dnsmasq       
+udp        0      0 0.0.0.0:67              0.0.0.0:*                           33349/dnsmasq       
+udp        0      0 0.0.0.0:111             0.0.0.0:*                           1/systemd           
+udp        0      0 127.0.0.1:323           0.0.0.0:*                           872/chronyd         
+udp6       0      0 :::111                  :::*                                1/systemd           
+udp6       0      0 ::1:323                 :::*                                872/chronyd 
+----
+
+Congratulations, it works!
+
+
+
+== Remove Packages
+
+To remove a package from the system you can run *dnf* as follows.
+
+[{format_cmd_exec}]
+----
+dnf remove -y net-tools
+----
+
+
+
+== Update Packages
+
+To update packages on a host you use the 'update' operand.  For the purposes of this lab, we don't want to use up your time performing an actaul upgrade.  However, there is something to be learned by performing a dry-run (or a harmless test).
+
+[{format_cmd_exec}]
+----
+dnf update -y --setopt tsflags=test
+----
+
+[{format_cmd_output}]
+----
+<...snip...>
+(54/56): python3-perf-6.12.0-55.7.1.el10_0.x86_64.rpm                       12 MB/s | 1.8 MB     00:00    
+(55/56): yggdrasil-0.4.5-2.el10_0.x86_64.rpm                                32 MB/s | 5.6 MB     00:00    
+(56/56): nvidia-gpu-firmware-20250314-15.el10.noarch.rpm                    41 MB/s |  38 MB     00:00    
+-----------------------------------------------------------------------------------------------------------
+Total                                                                       64 MB/s | 320 MB     00:04     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Complete!
+The downloaded packages were saved in cache until the next successful transaction.
+You can remove cached packages by executing 'dnf clean packages'.
+----
+
+From the output, we can determine that 56 packages were evaluated for the upgrade and that all the transaction tests completed.  
+As part of the test, the software was also downloaded and staged in the cache directories in /var/lib. Thus when the time comes
+to actaully install the updates, you can save that initial download time by running a test like this in advance.
+
+== Security Update Only
+
+[{format_cmd_exec}]
+----
+dnf update --security
+----
+
+[{format_cmd_output}]
+----
+Updating Subscription Management repositories.
+Last metadata expiration check: 0:36:21 ago on Mon 07 Apr 2025 04:34:43 PM UTC.
+No security updates needed, but 56 updates available
+Dependencies resolved.
+Nothing to do.
+Complete!
+----
+
+RHEL 10 is still very early in it's life (we may still be using the BETA for this lab).  Here we see that there are no scurity updates currently available for our release.
+
+== Clean ALL
+
+[{format_cmd_exec}]
+----
+dnf clean all
+----
+
+== What About Reboots?
+
+*dnf* is not tasked with understanding what packages may require a reboot in order to complete an installation or upgrade.
+
+To answer "when?" really requires a deep understanding of how Lunix works.  The "safe" answer is always, but that certainly is not practical nor a reality.
+
+Advanced technologies like 'kpatch' were developed in order to improve the security response without ALWAYS requiring a reboot. 
+Even then, with kpatch one cannot SKIP a reboot, one can only DELAY the reboot.  More about that in the advanced kpatch unit.
+
+
+== Further Reading
+
+    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/installing_managing_and_removing_user-space_components/index[RHEL 8 Documentation: Installing, Managing, and Removing User Space Components]
+    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/installing_managing_and_removing_user-space_components/using-appstream_using-appstream[RHEL 8 Documentation: Using Appstream]
+    
+

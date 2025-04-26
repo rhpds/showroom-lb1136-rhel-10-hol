@@ -1,0 +1,31 @@
+:sectnums:
+:sectnumlevels: 3
+:markup-in-source: verbatim,attributes,quotes
+:imagesdir: ./_images/cockpit-rhel92
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:ssh_username: {workshop_cockpit_user_name}
+:ssh_password: {workshop_cockpit_user_password}
+:targethost_fqdn: {workshop_cockpit_url}
+:subdomain: example.com
+:format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="copy"
+:format_cmd_output: bash,options="nowrap",subs="{markup-in-source}"
+ifeval::["%cloud_provider%" == "ec2"]
+:ssh_password: %ssh_password%
+:ssh_username: %ssh_username%
+:targethost_fqdn: %targethost%
+:subdomain: %subdomain_internal%
+:format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="execute"
+endif::[]
+
+include::partial$fundamental-webconsole.adoc[]
+
+////
+Always end files with a blank line to avoid include problems.
+////
+

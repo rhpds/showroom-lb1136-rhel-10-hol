@@ -1,32 +1,75 @@
 *  xref:getting-started.adoc[Getting Started]
 *  xref:introduction.adoc[Introduction]
-*  Fundamentals
-**  xref:f-dnf.adoc[Package Mgmt]
-**  xref:f-systemd.adoc[Service Mgmt]
-**  xref:f-stratis.adoc[Storage Mgmt]
-**  xref:f-firewall.adoc[Firewall Mgmt]
-**  xref:f-webconsole.adoc[Web Console]
-**  xref:f-man-info.adoc[Finding Help]
 
-*  Intermediate
-**  xref:i-dnf.adoc[Package Mgmt]
-**  xref:i-systemd.adoc[Service Mgmt]
-**  xref:i-stratis.adoc[Storage Mgmt]
-**  xref:i-firewall.adoc[Firewall Mgmt]
-**  xref:i-podman.adoc[Container Mgmt]
-**  xref:i-buildah.adoc[Container Dev]
-**  xref:i-imagebuilder.adoc[Image Builder]
-**  xref:i-virtualization.adoc[Virt Mgmt]
-**  xref:i-lightspeed.adoc[Finding Help]
+* By Skill Level
+**  Fundamentals
+***  xref:100-dnf.adoc[Package Mgmt (dnf)]
+***  xref:100-systemd.adoc[Service Mgmt (systemd)]
+***  xref:100-stratis.adoc[Storage Mgmt (stratis)]
+***  xref:100-firewalld.adoc[Firewall Mgmt (firewalld)]
+***  xref:100-trouble-shooting.adoc[Trouble Shooting (man,info,journald,syslog)]
+***  xref:100-webconsole.adoc[Web Console (cockpit)]
 
-*  Advanced
-**  xref:a-lvm-vdo.adoc[Storage VDO]
-**  xref:a-nbde.adoc[Storage NBDE]
-**  xref:a-nftables.adoc[Firewall Mgmt]
-**  xref:a-podman.adoc[Container Mgmt]
-**  xref:a-tlog.adoc[Session Logging]
-**  xref:a-ebpf.adoc[eBPF Tracing]
-**  xref:a-kpatch.adoc[KPatch]
-**  xref:a-bootc.adoc[Bootable Containers]
-**  xref:a-leapp.adoc[LEAPP Upgrades]
-**  xref:a-boom.adoc[Boot Mgmt]
+**  Intermediate
+***  xref:101-dnf.adoc[Package Mgmt (dnf)]
+***  xref:101-systemd.adoc[Service Mgmt (systemd)]
+***  xref:101-stratis.adoc[Storage Mgmt (stratis)]
+***  xref:101-firewalld.adoc[Firewall Mgmt (firewalld)]
+***  xref:101-podman.adoc[Container Mgmt (podman)]
+***  xref:101-buildah.adoc[Container Dev (buildah,skopeo)]
+***  xref:101-imagebuilder.adoc[Image Builder (composer)]
+***  xref:101-virtualization.adoc[Virt Mgmt (libvirt)]
+***  xref:101-lightspeed.adoc[Trouble Shooting (lightspeed)]
+
+**  Advanced
+***  xref:200-lvm-vdo.adoc[Storage Mgmt (lvm,vdo,nbde)]
+***  xref:200-nftables.adoc[Firewall Mgmt (nftables)]
+***  xref:200-podman.adoc[Container Mgmt (podman)]
+***  xref:200-tlog.adoc[Session Logging (tlog)]
+***  xref:200-ebpf.adoc[BPF Tracing (ebpf)]
+***  xref:200-kpatch.adoc[Live Kernel Patching (kpatch)]
+***  xref:200-bootc.adoc[Bootable Containers (bootc)]
+***  xref:200-leapp.adoc[In-Place Upgrades (leapp)]
+***  xref:200-boom.adoc[Boot Mgmt (boom)]
+
+* By Category
+
+** General Topics
+***  xref:webconsole-100.adoc[Web Console (cockpit)]
+***  xref:tlog-200.adoc[Session Logging (tlog)]
+***  xref:kpatch-200.adoc[Live Kernel Patching (kpatch)]
+***  xref:leapp-200.adoc[In-Place Upgrades (leapp)]
+***  xref:boom-200.adoc[Boot Mgmt (boom)]
+
+** Package Mgmt
+***  xref:dnf-100.adoc[Fundamental (dnf)]
+***  xref:dnf-101.adoc[Intermediate (dnf)]
+
+** Service Mgmt
+***  xref:systemd-100.adoc[Fundamental (systemd)]
+***  xref:systemd-101.adoc[Intermediate (systemd)]
+
+** Storage Mgmt
+***  xref:stratis-100.adoc[Fundamental (stratis)]
+***  xref:stratis-101.adoc[Intermediate (stratis)]
+***  xref:lvm-vdo-200.adoc[Advanced (lvm,vdo,nbde)]
+
+** Firewall Mgmt
+***  xref:firewalld-100.adoc[Fundamental (firewalld)]
+***  xref:firewalld-101.adoc[Intermediate (firewalld)]
+***  xref:nftables-200.adoc[Advanced (nftables)]
+
+** Container Mgmt
+***  xref:podman-101.adoc[Intermediate (podman)]
+***  xref:buildah-101.adoc[Intermediate (buildah,skopeo)]
+***  xref:podman-200.adoc[Advanced (podman)]
+
+** Virtualizaiton Mgmt
+***  xref:imagebuilder-101.adoc[Intermediate (composer)]
+***  xref:virtualization-101.adoc[Intermediate (libvirt)]
+***  xref:bootc-200.adoc[Advanced (bootc)]
+
+** Trouble Shooting
+***  xref:trouble-shooting-100.adoc[Fundamental (man,info,journald,syslog)]
+***  xref:lightspeed-101.adoc[Trouble Shooting (lightspeed)]
+***  xref:ebpf-200.adoc[BPF Tracing (ebpf)]

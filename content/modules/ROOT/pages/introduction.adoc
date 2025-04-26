@@ -42,9 +42,9 @@ NOTE:  This whole effort is done using official Red Hat software and although th
 
 Welcome to The Definitive RHEL10 Hands-On Workshop.  This session will lead you through a mix of self-paced and proctored exercises covering selected fundamental, intermdeiate and advanced capabilities of Red Hat Enterprise Linux 10.  Presented by your talented Red Hat field solution architects, key areas covered include:
 
-    * Fundamental: Web Console, Package Management, Services, Firewall, and Storage
-    * Intermediate: More Storage, Security, Containers, Virtualization, Image Builder, LEAPP Upgrades
-    * Advanced: More Firewall, eBPF Tracing, KPatch, Boot Managemnt, Bootable Containers
+    * Fundamental: Web Console, Package Management, Services, Firewall, Storage and basic Trouble Shooting
+    * Intermediate: expanded Package Storage & Services topics, Containers, Virtualization, Image Builder
+    * Advanced: NFTables, eBPF Tracing, KPatch, TLog, Boot Managemnt, Bootable Containers, LEAPP Upgrades
 
 And plenty more... There will be ample experts on hand to assist you and answer your questions. Join us and begin your journey to
 becoming a Red Hat Enterprise Linux 10 expert.
@@ -74,8 +74,10 @@ Units are NOT designed to:
 
 Once the setup playbooks have completed, you can proceed directly to topics that interest you the most.  
 
-  * Use the catalog on the left with drop-down arrows to select a unit that interests you
-  * Or you may elect to do everything sequentially, in which case you can use the navigation icons at the bottom of each page to just go to the 'Next' unit
+  * Use the catalog on the left with drop-down arrows to select and work on units that interests you
+  * If you want to follow a sequential *learning path*, exercises are conveniently grouped *By Skill Level* or *By Category*
+
+If you elect to follow a *learning path*, you can use the navigation icons at the bottom of each unit to advance to the 'Next' unit in your path.
 
 It's up to you.  Ask questions and enjoy!
 

@@ -1,0 +1,51 @@
+
+= Intermediate: *Help* (LightSpeed)
+
+== Overview
+
+Red Hat Enterprise Linux Lightspeed will offer intelligent, natural language processing capabilities, intended to make OpenShift and RHEL easier for novices to use and more efficient for experienced professionals.
+
+== Getting Started
+
+For these exercises, you will be using the host `node3` as user `root`.
+
+From host `bastion`, ssh to `node3`.
+
+[{format_cmd_exec}]
+----
+ssh node3
+----
+
+Use `sudo` to elevate your privileges.
+
+[{format_cmd_exec}]
+----
+[[ "$UID" == 0 ]] || sudo -i
+----
+
+Verify that you are on the right host for these exercises.
+
+[{format_cmd_exec}]
+----
+workshop-systemd-checkhost.sh
+----
+
+You are now ready to proceed with these exercises.
+
+== Core Concepts
+
+== Trouble-Shoot SSH
+
+== Do something else
+
+== Do soething sensational
+
+
+ifdef::env-github[]
+link:../RHEL10-Workshop.adoc#toc[Return to TOC]
+endif::[]
+
+////
+Always end files with a blank line to avoid include problems.
+////
+
