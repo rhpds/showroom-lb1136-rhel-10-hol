@@ -11,7 +11,7 @@ You have already been introduced to *dnf* and the fundamentals of package manage
 === Search
 
 Not every tool is delvered in it's own unique rpm package.  Tools are often bundled into collective packages under a common name (category).  
-For example, let's try to running the utility command called 'netstat'.
+For example, let's try to running the utility command called *netstat*.
 
 [{format_cmd_exec}]
 ----
@@ -24,9 +24,9 @@ netstat -tulpn
 ----
 
 As you can tell, the netstat utility is missing from our platform.
-If you try to install the netstat pacakge, you'll discover that no such package exists.
+If you try to install the netstat package, you'll discover that no such package exists.
 
-So in order to track down which package contains our specified tool, we use the 'provides' option.
+So in order to track down which package contains our specified tool, we use the *provides* subcommand.
 
 [{format_cmd_exec}]
 ----
@@ -65,7 +65,7 @@ netstat -tulpn
 
 Packages often (ie: the majority of the time) have dependencies on other additional packages which are required for a successful installation.  Resolving those dependencies is one of the core fuctions of dnf. 
 
-In order to explore dependencies, we will use a nice little sub command called *repoquery* which is equivalent to 'rpm -q'.  With the added flag '--requires' you
+In order to explore dependencies, we will use a nice little subcommand called *repoquery* which is equivalent to 'rpm -q'.  With the added flag *--requires* you
 can quickly determine what additional packages are needed by a specified package.
 
 Let us begin by getting information about a package called 'ncurses'
@@ -82,14 +82,14 @@ What other packages does this depend on.
 dnf repoquery --depends ncurses
 ----
 
-How about the other way around, what other packages have a dependency on 'ncurses'.
+How about the other way around, what other packages have a dependency on *ncurses*.
 
 [{format_cmd_exec}]
 ----
 dnf repoquery --whatdepends ncurses
 ----
 
-From this ouptut you can determine what other tools are impacted if you were to attempt a 'dnf remove' or 'dnf update' of ncurses.
+From this ouptut you can determine what other tools are impacted if you were to attempt a *dnf remove* or *dnf update* of ncurses.
 
 
 
@@ -98,7 +98,7 @@ From this ouptut you can determine what other tools are impacted if you were to 
 
 Aliases allow the user to abbreviate longer command sequences with short names (in the form <name=value>).
 
-For example, if you're tired of typing all the characters in 'dnf list' and preferred 'dnf ls' then you would create an alias like this.
+For example, if you're tired of typing all the characters in *dnf list* and preferred *dnf ls* then you would create an alias like this.
 
 [{format_cmd_exec}]
 ----
@@ -112,7 +112,7 @@ dnf ls
 
 Well that's kind of interesting but a pretty lame example.  The real value comes when adding options to the command which vary from the defaults.
 
-Let's create an alias 'li' to use as a substitute for 'list --installed' but we'll use a repoquery to change the output format.
+Let's create an alias *li* to use as a substitute for *list --installed* but we'll use a repoquery to change the output format.
 
 [{format_cmd_exec}]
 ----
@@ -166,11 +166,12 @@ To see a list of available group names
 dnf grouplist
 ----
 
-To install a group you use the 'groupinstall' command.
+To install a group you use the *groupinstall* command.  Since we are not interested in installing
+anything for this workshop, we'll use the test flags that were introduced in the fundamentals unit.
 
 [{format_cmd_exec}]
 ----
-dnf groupinstall "RPM Development Tools"
+dnf groupinstall "RPM Development Tools" -y --setopt tsflags=test
 ----
 
 You could just as easily use the groupremove to uninstall the package collection.
@@ -204,20 +205,26 @@ Repos typically fall into 2 categories:
 
 [{format_cmd_exec}]
 ----
-dnf repolsit
+dnf repolist
 ----
 
 === Add Repo
 
 Repo configuration files are stored in '/etc/yum.repo.d'
 
-Creating a repo config can be done by hand, by using the 'repomanage' utility or by installing a package that contains the repo config (most common).  Installing a package with the repo config often has the added advantage of installing keys which validate sources and improve security of your host.
+Creating a repo config can be done:
+
+   + by hand, 
+   + by using the *dnf config-manager*, or 
+   + by installing a package that contains the repo config (most common).  
+
+Installing a package with the repo config often has the added advantage of installing keys which validate sources and improve security of your host.
 
 A common repo to add to RHEL development systems is EPEL.  This repository (Extra Pacakges for Enterprise Linux) contains pacakges
 from the Fedora development community which have been compiled and verified for installation on RHEL.  Software from EPEL offers a path
 to trying new things on RHEL9 which not otherwise be possible.
 
-NOTE:  The packages from EPEL are COMMUNITY SUPPORT ONLY!!!
+NOTE:  The packages from EPEL are COMMUNITY SUPPORT ONLY!!!  We are using EPEL for example purposes only.
 
 Let's add the EPEL repo for RHEL 10 to our host.
 
@@ -248,7 +255,6 @@ enable a repo by adding the --enable-repo=<name> flag to most dnf operations.
 ----
 dnf repolist --all 'epel*'
 ----
-
 
 [{format_output}]
 ----
