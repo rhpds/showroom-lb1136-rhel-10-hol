@@ -66,12 +66,12 @@ Use the following URL:
 
 And the following UserID and Password:
 
-[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+[{format_cmd}]
 ----
 %ssh_username%
 ----
 
-[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+[{format_cmd}]
 ----
 %ssh_password%
 ----
@@ -251,17 +251,17 @@ image::Slide19.PNG[Cockpit Services]
 
 Add the additional systems from your workshop cluster.
 
-[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+[{format_cmd}]
 ----
 *node1.{subdomain}*
 ----
 
-[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+[{format_cmd}]
 ----
 *node2.{subdomain}*
 ----
 
-[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+[{format_cmd}]
 ----
 *node3.{subdomain}*
 ----

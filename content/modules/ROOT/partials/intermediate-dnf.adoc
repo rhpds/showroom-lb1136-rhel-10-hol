@@ -19,7 +19,7 @@ You have already been introduced to *dnf* and the fundamentals of package manage
 Not every tool is delvered in it's own unique rpm package.  Tools are often bundled into collective packages under a common name (category).  
 For example, let's try to running the utility command called *netstat*.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 netstat -tulpn
 ----
@@ -34,7 +34,7 @@ If you try to install the netstat package, you'll discover that no such package 
 
 So in order to track down which package contains our specified tool, we use the *provides* subcommand.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf provides netstat
 ----
@@ -55,12 +55,12 @@ Filename    : /usr/bin/netstat
 From this we can determine that a package called 'net-tools' provides the requested utility.
 So let us proceed to install it.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf install -y net-tools
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 netstat -tulpn
 ----
@@ -76,21 +76,21 @@ can quickly determine what additional packages are needed by a specified package
 
 Let us begin by getting information about a package called 'ncurses'
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf info ncurses
 ----
 
 What other packages does this depend on.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf repoquery --depends ncurses
 ----
 
 How about the other way around, what other packages have a dependency on *ncurses*.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf repoquery --whatdepends ncurses
 ----
@@ -106,12 +106,12 @@ Aliases allow the user to abbreviate longer command sequences with short names (
 
 For example, if you're tired of typing all the characters in *dnf list* and preferred *dnf ls* then you would create an alias like this.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf alias add ls=list
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf ls
 ----
@@ -120,31 +120,31 @@ Well that's kind of interesting but a pretty lame example.  The real value comes
 
 Let's create an alias *li* to use as a substitute for *list --installed* but we'll use a repoquery to change the output format.
 
-[{format_cmd_exec}]
+[{format_cmd_noattr}]
 ----
 dnf alias add li='repoquery --installed --qf %{installtime}\t%{vendor}\t%{arch}\t%{name}-%{version}'
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf li
 ----
 
 Or, how about an alias for listing the available packages
 
-[{format_cmd_exec}]
+[{format_cmd_noattr}]
 ----
 dnf alias add la='repoquery --available --qf %{reponame}\t%{arch}\t%{name}-%{version}'
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf la
 ----
 
 Here is how you see the list of the configured aliases.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf alias list 
 ----
@@ -152,7 +152,7 @@ dnf alias list
 And lastly, how to delete an alias.
 
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf alias delete la
 ----
@@ -167,7 +167,7 @@ inoder to make installations a little more covenient and consistent.
 
 To see a list of available group names
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf grouplist
 ----
@@ -175,7 +175,7 @@ dnf grouplist
 To install a group you use the *groupinstall* command.  Since we are not interested in installing
 anything for this workshop, we'll use the test flags that were introduced in the fundamentals unit.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf groupinstall "RPM Development Tools" -y --setopt tsflags=test
 ----
@@ -190,7 +190,7 @@ You could just as easily use the groupremove to uninstall the package collection
 After a session of installing and/or upgrading pacakges, there can be quite a bit of left over data
 using up your precious storage.  To clean up the space, use the sub command 'clean'.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf clean all
 ----
@@ -209,7 +209,7 @@ Repos typically fall into 2 categories:
 
 === List Repos
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf repolist
 ----
@@ -234,17 +234,17 @@ NOTE:  The packages from EPEL are COMMUNITY SUPPORT ONLY!!!  We are using EPEL f
 
 Let's add the EPEL repo for RHEL 10 to our host.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf repolist
 ----
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 Updating Subscription Management repositories.
 repo id                                  repo name
@@ -257,12 +257,12 @@ Now let's list all of the repos provided with configuration we just installed.  
 repos are disabled.  Should you need to install something from epel-testing repo, you could temporarily 
 enable a repo by adding the --enable-repo=<name> flag to most dnf operations.
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 dnf repolist --all 'epel*'
 ----
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 Updating Subscription Management repositories.
 repo id                   repo name                                                              status
@@ -274,12 +274,12 @@ epel-testing-debuginfo    Extra Packages for Enterprise Linux 10 - Testing - x86
 epel-testing-source       Extra Packages for Enterprise Linux 10 - Testing - x86_64 - Source     disabled
 ----
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 dnf repolist --all 'epel*' --enablerepo=epel-testing
 ----
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 Updating Subscription Management repositories.
 repo id                   repo name                                                              status
@@ -293,7 +293,7 @@ epel-testing-source       Extra Packages for Enterprise Linux 10 - Testing - x86
 
 List the available pacakges from the EPEL repo
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 dnf list --available --repo epel
 ----
@@ -305,19 +305,19 @@ dnf list --available --repo epel
 
 Just like you can enable a repo temporarily, you can disable a repo temporarily as well.
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 dnf repolist --all 'epel*' --disablerepo=epel
 ----
 
 For something more permanent, you can use config-manage to set the repo disabled.
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 dnf config-manager --set-disabled epel
 ----
 
-[{format_output}]
+[{format_cmd_output}]
 ----
 dnf repolist --all 'epel*' 
 ----

@@ -19,21 +19,21 @@ For these exercises, you will be using the host `node2` as user `root`.
 
 From host `bastion`, ssh to `node2`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node2
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-stratis-checkhost.sh
 ----
@@ -44,21 +44,21 @@ You are now ready to proceed with these exercises.
 
 Install the required packages - this will pull in several Python related dependencies.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf install -y stratisd stratis-cli
 ----
 
 Next we need to enable the `stratisd` service
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemctl enable --now stratisd
 ----
 
 Finally check the service status.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemctl --no-pager status stratisd
 ----
@@ -97,32 +97,32 @@ WARNING: {disk0} is the system disk, DO NOT use it in any of the stratis command
 
 Since we will be reusing the same resources for many exercises, we will begin by wiping everything clean.  Don't worry if you get an error message.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 umount /mnt/lab*
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 umount /summitdir
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis fs destroy summitpool summitfs
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis pool destroy summitpool summitfs
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 wipefs -a {disk_glob}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 partprobe
 ----
@@ -132,8 +132,7 @@ partprobe
 
 See what disks/block devices are present.  Remeber that {disk0} is used by the operating system and should NOT be specified for any of these exercises.
 
-[source,options="nowrap",subs="{markup-in-source}",role="copy"]
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 sfdisk -s
 ----
@@ -154,14 +153,14 @@ WARNING: REMEMBER - DON'T USE {disk0}!!!
 
 Create a storage pool using a pair of the available disks.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis pool create summitpool {disk1} {disk2}
 ----
 
 Verify your work and confirm the existence of the new storage pool with the combined available capacity.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis pool list
 ----
@@ -176,7 +175,7 @@ The output should show a total of 10 GiB, with 41MiB used and 9.96GiB available.
 
 Check the status of the block devices
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis blockdev list
 ----
@@ -193,12 +192,12 @@ summitpool  {disk2}                 5 GiB   Data
 Now create a filesystem, a directory mount point, and mount the filesystem:
 (note that “fs” can optionally be written out as “filesystem”)
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis fs create summitpool summitfs
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis fs list
 ----
@@ -209,17 +208,17 @@ Pool Name   Name      Used     Created            Device                        
 summitpool  summitfs  546 MiB  Apr 18 2020 09:15  /dev/stratis/summitpool/summitfs  095fb4891a5743d0a589217071ff71dc
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mkdir /summitdir
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mount /dev/stratis/summitpool/summitfs /summitdir
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 df -h
 ----
@@ -242,7 +241,7 @@ The actual space used by a filesystem can be shown using the `stratis fs list` c
 
 Now make sure the filesystem will mount at boot time by adjusting the systems fstab.  You've been provided a simple script to perform this edit, but the maunal steps are also outlined below in the 'Native command(s)' note.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-stratis-fstab.sh
 ----
@@ -258,17 +257,17 @@ echo "UUID=${UUID} /summitdir xfs defaults 0 0" >> /etc/fstab
 
 Verify that the /etc/fstab entry is correct by unmounting and mounting the filesystem one last time.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 umount /summitdir
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mount /summitdir
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 df -h
 ----
@@ -291,7 +290,7 @@ This concludes the exercises related to stratis.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

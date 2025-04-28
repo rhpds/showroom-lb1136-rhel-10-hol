@@ -20,21 +20,21 @@ For these exercises, you will be using the host `node1` as user `root`.
 
 From host `bastion`, ssh to `node1`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node1
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-man-checkhost.sh
 ----

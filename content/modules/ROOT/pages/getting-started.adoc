@@ -1,4 +1,9 @@
 
+include::partial$header-format.adoc[]
+
+
+
+
 = {lab_name}
 
 image::rhel-logo-black.jpg[rhel-logo-black,55%,55%]

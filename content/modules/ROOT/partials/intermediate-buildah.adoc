@@ -19,21 +19,21 @@ For these exercises, you will be using the host `node3` as user `root`.
 
 From host `bastion`, ssh to `node3`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node3
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-buildah-checkhost.sh
 ----
@@ -48,7 +48,7 @@ In the previous lab on `podman`, we pulled down the ubi image and used an OCIFil
 
 Let's get started by creating a new working container based off of the ubi image.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 buildah from ubi9/ubi
 ----
@@ -73,7 +73,7 @@ This gives us the name of the "working container" and it is this container image
 
 Let's run:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 buildah copy ubi-working-container /var/tmp/buildah-dan-cries.txt /var/www/html/dan-cries.txt
 ----
@@ -101,7 +101,7 @@ But wait there's more!!!
 
 We need to install an httpd server in our image, and what better way to do that than a simple `dnf install`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 buildah run ubi-working-container dnf --disablerepo=* --enablerepo=ubi-9-baseos-rpms --enablerepo=ubi-9-appstream-rpms install -y httpd
 ----
@@ -120,7 +120,7 @@ Installed:
 
 Next we set the entry point (command) so when the image deploys it knows what process to launch.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 buildah config --cmd "/usr/sbin/httpd -D FOREGROUND" ubi-working-container
 ----
@@ -131,7 +131,7 @@ Now let us take a peek at our image and validate some of our changes.
 
 Proceed to mount the root filesystem of your container with:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 buildah mount ubi-working-container
 ----
@@ -143,12 +143,12 @@ buildah mount ubi-working-container
 
 Using the long path provided by your mount command, change directories.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cd $( buildah mount ubi-working-container )
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ls -lah ./var/www/html
 ----
@@ -163,12 +163,12 @@ drwxr-xr-x. 3 root root 4.0K Apr 12 21:12 ..
 
 There is our `dan-cries.txt`! Let's add an additional file:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cp /var/tmp/buildah-index.html ./var/www/html/index.html
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat ./var/www/html/index.html
 ----
@@ -187,7 +187,7 @@ Seriously, stop disabling SELinux. Learn how to use it before you blindly shut i
 
 Let us just double check contents of the httpd docroot one last time:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ls -lahZ ./var/www/html/
 ----
@@ -203,7 +203,7 @@ drwxr-xr-x. 3 root root system_u:object_r:container_file_t:s0:c60,c544 4.0K Apr 
 
 When you are done making direct changes to the root filesystem of your container, you can run:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cd /root
 buildah unmount ubi-working-container
@@ -218,7 +218,7 @@ e918debcaabb5820997b1a4969fbd45284adc0a2869d1f22a1bce78f703ff3c6
 
 At this point, we've used buildah to run commands and create a container image similar to those in the OCIFile used in the `podman` unit.  Go ahead and commit the working container in to an actual container image:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 buildah commit ubi-working-container webserver2
 ----
@@ -237,7 +237,7 @@ a831badcea41e924fd4a37f98431702142c17a64d06bd5444ac4471c1285be50
 
 Let's look at our images:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
@@ -253,7 +253,7 @@ registry.access.redhat.com/ubi9/ubi   latest   8121a9f5303b   12 days ago      2
 
 Now let's run that webserver:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run -d -p 8080:80 webserver2
 ----
@@ -262,7 +262,7 @@ podman run -d -p 8080:80 webserver2
 
 Finally let's test our new webserver:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 curl http://localhost:8080/
 ----
@@ -281,7 +281,7 @@ Seriously, stop disabling SELinux. Learn how to use it before you blindly shut i
 
 and:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 curl http://localhost:8080/dan-cries.txt
 ----
@@ -297,7 +297,7 @@ As you can see, all of the changes we made with buildah are active and working i
 
 Let's take a look at the webserver2:latest container that we just built:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 skopeo inspect containers-storage:localhost/webserver2:latest
 ----
@@ -369,7 +369,7 @@ We will see that this container is based on the Red Hat UBI image.
 
 Let's look at the ubi9/ubi container that we built this off of and compare the layers section:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 skopeo inspect containers-storage:registry.access.redhat.com/ubi9/ubi:latest
 ----
@@ -434,7 +434,7 @@ Comparing the layers section, we can see that our container has 3 layers whereas
 
 Pretty neat that we can look inside local containers, but what about containers that are in registries? Skopeo can inspect containers on remote registries without the need to pull the image locally. Let's give that a test:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 skopeo inspect docker://registry.access.redhat.com/ubi9/ubi-minimal:latest
 ----
@@ -539,7 +539,7 @@ The above allows us to look at the registry's copy of ubi9/ubi.
 
 Next let's run:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
@@ -557,12 +557,12 @@ Notice that ubi9/ubi-minimal is not local to our registry. Skopeo provided that 
 
 Let's run:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mkdir /root/ubi-tarball
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 skopeo copy docker://registry.access.redhat.com/ubi9/ubi-minimal:latest dir:/root/ubi-tarball
 ----
@@ -579,7 +579,7 @@ Storing signatures
 
 and now we can do:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cd /root/ubi-tarball
 ls -l
@@ -602,7 +602,7 @@ total 37024
 
 Inspecting the images with the `file` command, we discover that these a couple of text file along with a couple of zipped (compressed) tar files.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 file *
 ----
@@ -624,7 +624,7 @@ version:                                                          ASCII text
 
 Let's take a test view of the contents of the largest gzip file (examine "original size"):
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 tar ztvf $(ls --sort=size | head -1)
 ----
@@ -678,7 +678,7 @@ Examples of how to do these things are available in 'man skopeo'
 
 === Cleanup
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman stop --all
 podman rm --all
@@ -695,7 +695,7 @@ This concludes the exercises related to buildah and skopeo.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

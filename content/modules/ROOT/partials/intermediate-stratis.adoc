@@ -17,21 +17,21 @@ For these exercises, you will be using the host `node2` as user `root`.
 
 From host `bastion`, ssh to `node2`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node2
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-stratis-checkhost.sh
 ----
@@ -51,12 +51,12 @@ Again, please be sure to have completed the fundamental exercises first.
 
 Stratis also makes it easy to add space to a pool.  Suppose the “summitfs” filesystem is growing close to the physical space in “summitpool”.  Adding an additional disk/block device is done using:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis pool add-data summitpool {disk3}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis blockdev
 ----
@@ -71,7 +71,7 @@ summitpool   {disk3}                5 GiB   Data
 
 Verify that the pool shows the additional space, and that the amount used is now in a safe range.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis pool
 ----
@@ -86,12 +86,12 @@ summitpool   15 GiB / 590.65 MiB / 14.42 GiB      ~Ca,~Cr   4b86ce9b...
 
 Stratis also makes it easy to add cache devices.  For example, say the filesystem we just created runs into some I/O performance issues.  You bought an SSD (solid state disk) and need to configure it into the system to act as a high speed cache.  Use the following commands to add the drive {disk4} and check its status:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis pool init-cache summitpool  {disk4}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 stratis blockdev
 ----
@@ -113,7 +113,7 @@ This concludes the exercises related to stratis.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

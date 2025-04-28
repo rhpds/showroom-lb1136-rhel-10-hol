@@ -1,25 +1,5 @@
-:sectnums:
-:sectnumlevels: 3
-:markup-in-source: verbatim,attributes,quotes
-:ssh_command: %ssh_command%
-:ssh_password: %ssh_password%
-:ssh_username: %ssh_username%
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="copy"
-:format_cmd_exec2: source,options="nowrap",subs="{markup-in-source}",role="copy"
-:format_cmd_output: bash,options="nowrap",subs="{markup-in-source}"
-:format_plain: bash,options="nowrap"
-ifeval::["%cloud_provider%" == "ec2"]
-:format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="execute"
-:format_cmd_exec2: source,options="nowrap",subs="{markup-in-source}",role="execute-2"
-endif::[]
 
+include::partial$header-format.adoc[]
 include::partial$advanced-ebpf.adoc[]
 
 ////

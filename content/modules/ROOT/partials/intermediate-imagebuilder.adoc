@@ -37,21 +37,21 @@ For these exercises, you will be using the host `node3` as user `root`.
 
 From host `bastion`, ssh to `node3`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node3
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-imagebuilder-checkhost.sh
 ----
@@ -63,14 +63,14 @@ You are now ready to proceed with these exercises.
 
 Install the required packages - this will pull in several Python related dependencies.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 yum install -y osbuild-composer composer-cli cockpit-composer guestfs-tools
 ----
 
 Ensure everything is stopped while we reconfigure things for this exercise.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemctl stop osbuild-composer.socket
 systemctl stop osbuild-worker@.service.d osbuild-worker@1.service osbuild-composer.service
@@ -85,7 +85,7 @@ The steps to configure the image-builder have been condensed into a shell script
 a look at /usr/local/bin/workshop-imagebuilder-config.sh.  Either way, go ahead and run it now.
 
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-imagebuilder-config.sh
 ----
@@ -99,7 +99,7 @@ And with that, we are ready to proceed building images.
 Blueprints are defined by a TOML configuration file.  A sample has been provided to get us started with a very basic definition.
 
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /usr/local/etc/imagebuilder-sample.toml
 ----
@@ -140,7 +140,7 @@ Looking over the blueprint, it should be apparent that this image blueprint buil
 
 Now we need to push the blueprint to our image builder catalog.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 composer-cli blueprints push /usr/local/etc/imagebuilder-sample.toml
 ----
@@ -148,7 +148,7 @@ composer-cli blueprints push /usr/local/etc/imagebuilder-sample.toml
 
 == List Blueprints
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 composer-cli blueprints list
 ----
@@ -160,7 +160,7 @@ sample-webserver
 
 A nice quick way to determine if the local `Image Builder` can resolve all dependencies for the blueprint is to run  it thorugh a `depsolve`.  Here you can also see a full list of rpms that will be installed on the image.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 composer-cli blueprints depsolve sample-webserver
 ----
@@ -193,7 +193,7 @@ If you see errors or packages that can not be resolved, this is likely a problem
 
 We are now ready to compose the blueprint into an image.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 composer-cli compose start sample-webserver qcow2
 ----
@@ -203,12 +203,12 @@ composer-cli compose start sample-webserver qcow2
 Compose 812019dd-20e5-4528-a99b-09fbe47ca2d8 added to the queue
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 composer-cli compose status
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 composer-cli compose list
 ----
@@ -221,7 +221,7 @@ composer-cli compose list
 It may take a few minutes, but eventually you should see a "FINISHED" status.  Here is a
 simple command to wait for the compose to finish.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 time until $(composer-cli compose list | tail -n +2 | grep -qi finished); do echo -n "." ; sleep 3; done
 ----
@@ -234,14 +234,14 @@ WARNING:  It is critical to wait for the compose to finish before proceeding.
 
 We need to grab a copy of the image and put it in the right place for our platform.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cd /var/lib/libvirt/images
 ----
 
 Take a moment to identify the UUID of the created image.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 composer-cli compose list
 ----
@@ -253,21 +253,21 @@ composer-cli compose list
 
 Here is a helpful way to store the last FINISHED image UUID to an environment variable.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 export IMAGE_UUID=$(composer-cli compose list | grep -m 1 FINISHED | awk '{print $1}')
 ----
 
 Now use the UUID from your ouput to extract the QCOW image.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 composer-cli compose image $IMAGE_UUID
 ----
 
 Finally you can rename it to something a little more convinient
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mv $IMAGE_UUID-disk.qcow2 vmguest.qcow2
 ----
@@ -281,7 +281,7 @@ technology included with RHEL to launch your custom built image.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

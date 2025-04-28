@@ -18,9 +18,7 @@ asciidoc:
     workshop_cockpit_user_name: "{student_name}"
     workshop_cockpit_user_password: "{common_password}"
     format_plain: bash,options="nowrap",subs="-attributes"
-    format_cmd_exec: ',sh,options="nowrap",role=execute,subs="attributes"'
-    format_cmd_exec2: source,options="nowrap",role="copy",subs="{markup-in-source}"
-    format_cmd_output: bash,options="nowrap",subs="{markup-in-source}"
+
     page-links:
     - url: https://redhat.com
       text: Red Hat

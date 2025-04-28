@@ -23,21 +23,21 @@ For these exercises, you will be using the host `node1` as user `root`.
 
 From host `bastion`, ssh to `node1`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node1
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-systemd-checkhost.sh
 ----
@@ -65,7 +65,7 @@ systemd has a concept similar to SysV init runlevels, called targets.  systemd w
 
 Let's view the current default target.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemctl get-default
 ----
@@ -78,7 +78,7 @@ multi-user.target
 === Services
 As mentioned above, systemd has another concept called a service.  A service is a type of unit which defines the traditional daemon or process.  Now let us look at what services are running on the system:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemctl -t service | head -n 15
 ----
@@ -104,7 +104,7 @@ kdump.service                      loaded active exited  Crash recovery kernel a
 
 Next let's view all of the services available (ie: everything installed, running or not) on the system. The following command is similar to the older chkconfig --list as it will show both enabled and disabled services:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemctl --no-pager list-unit-files -t service
 ----
@@ -139,7 +139,7 @@ The state will  be enabled, disabled, static, or masked.  Static indicates that 
 
 Let's collect some initial data about the boot process
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemd-analyze
 ----
@@ -152,7 +152,7 @@ multi-user.target reached after 8.257s in userspace.
 
 Next let's inspect further details about all running units, ordered by the time they took to initialize.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemd-analyze blame | head -n 15
 ----
@@ -188,7 +188,7 @@ Now that we have a good idea of what’s installed on our system, let’s get a 
 
 Let us install some packages.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf install -y httpd mariadb-server mariadb
 ----
@@ -210,7 +210,7 @@ Now it's time to enable the relevant system services.
 
 NOTE: The "enable --now" syntax was introduced in a recent release of RHEL 7 and of course is now availbale in RHEL 8 and RHEL 9.  The option permanently enables AND immediately starts the specified services in a single command.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemctl enable --now httpd mariadb
 ----
@@ -225,7 +225,7 @@ Created symlink /etc/systemd/system/multi-user.target.wants/mariadb.service → 
 
 Now let's check the status.  You should see two separate sections in the output, one for httpd and one for mariadb.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemctl --no-pager status httpd mariadb
 ----
@@ -254,7 +254,7 @@ systemctl --no-pager status httpd mariadb
 
 Last but not least, you need to enable a firewall port.  If you are progressing through these exercises sequentially, you may not be familiar the with the firewall system in RHEL.  We will withhold further discussion on the topic until then.  For now, just run the following command to make the service accessible.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --add-service=http
 ----

@@ -21,21 +21,21 @@ For these exercises, you will be using the host `node1` as user `root`.
 
 From host `bastion`, ssh to `node1`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node1
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-tlog-checkhost.sh
 ----
@@ -48,7 +48,7 @@ The system has been configured with an additional non-privileged user called `ot
 
 NOTE: The command is 'su' + 'dash' + 'other-user'.  Don't forget the dash!
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 su - other-user
 ----
@@ -62,7 +62,7 @@ You should have gotten a message when switching to `other-user` that the session
 
 Now to do a few activities worth logging.  You can check out a directory listing, look at the host's _passwd_ and _shadow_ files.  
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ls -l /etc
 ----
@@ -84,7 +84,7 @@ drwx------.  4 sssd sssd     4096 Apr 17 21:55 sssd
 ...SNIP...
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /etc/passwd
 ----
@@ -106,7 +106,7 @@ ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
 ...SNIP...
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /etc/shadow
 ----
@@ -118,7 +118,7 @@ cat: /etc/shadow: Permission denied
 
 Oh wait, you need root privileges to see the contents of _/etc/shadow_.  You can use sudo for that!
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 sudo cat /etc/shadow
 ----
@@ -142,7 +142,7 @@ ftp:*:17988:0:99999:7:::
 
 We are done with our limited nafarious activities, so proceed to `exit`
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 exit
 ----
@@ -151,7 +151,7 @@ exit
 
 Session logs are configured to record in the system journal by default.  A distinct advantage to this approach is that session recordings are also augmented with meta data which includes: user, session-id, host-id and a log-message-id.  Let's have a look.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 journalctl --no-pager -o verbose  --output-fields=TLOG_USER,TLOG_REC TLOG_USER=other-user 
 ----
@@ -181,7 +181,7 @@ We have taken the liberty of scripting this "search" to playback the last sessio
 Once you hit enter on the command below, you will see a note that "Playback Started..." and again when "Playback Finished...".  
 Be patient until it completes and your root prompt returns.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-tlog-playback.sh
 ----
@@ -231,7 +231,7 @@ This concludes the exercises related to tlog.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

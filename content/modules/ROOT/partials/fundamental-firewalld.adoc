@@ -26,21 +26,21 @@ For these exercises, you will be using the host `node1` as user `root`.
 
 From host `bastion`, ssh to `node1`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node1
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-firewalld-checkhost.sh
 ----
@@ -89,7 +89,7 @@ Similar to systemd, firewalld implements the concept of a service:
 There are nearly 50 built-in services shipped with firewalld.  You can also create your own service configs from scratch or customize the default files (covered in "Intermediate Firewall Management").  
 Let's take a quick look at the default configuration for ssh & http to start.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /usr/lib/firewalld/services/ssh.xml
 ----
@@ -104,7 +104,7 @@ cat /usr/lib/firewalld/services/ssh.xml
 </service>
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /usr/lib/firewalld/services/http.xml
 ----
@@ -127,7 +127,7 @@ running and what will persist past the next reboot.
 
 Determine current state of the firewalld service.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --state
 ----
@@ -139,7 +139,7 @@ running
 
 Get a list of currently configured and active "zones".
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --get-active-zones
 ----
@@ -159,7 +159,7 @@ NOTE:  In this sample output, the virtual bridge `libvirt` is created and manage
 
 We had this information from the previous command, but to be more specific let's just list the physical interfaces associated with the public zone.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-interfaces
 ----
@@ -171,7 +171,7 @@ firewall-cmd --zone=public --list-interfaces
 
 Get a list of services configured on the public zone.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-services
 ----
@@ -185,7 +185,7 @@ We see the web console, the dhcp client and of course the ssh service.
 
 Now let's get some specific data points on the web console service (cockpit).
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --info-service=cockpit
 ----
@@ -206,7 +206,7 @@ Nothing too exciting, but we can note that the web console is configured on port
 
 Finally, let's just list everything about the public zone.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-all
 ----
@@ -244,12 +244,12 @@ Here we will take a moment to enable the http and https service ports.
 
 === Add a Service
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --add-service={http,https}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-all
 ----
@@ -275,7 +275,7 @@ public (active)
 Remember how we mentioned above about the two configuration states: runtime and permanent?
 Notice below how the permanent state dose NOT include http or https.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-all --permanent
 ----
@@ -299,7 +299,7 @@ public
 
 A quick way to make them permanent is to save the current runtime state to permanent.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --runtime-to-permanent
 ----
@@ -309,7 +309,7 @@ passed the *--permanent* flag as follows `firewall-cmd --permanent --add-service
 It's annoying but necessary to run configuration commands twice to manage both states and
 maintain consistency.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-all --permanent
 ----
@@ -337,7 +337,7 @@ public
 
 Now let us disable a service port not needed for our workshop environment, namely *dhcp6-client*.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --remove-service=dhcpv6-client
 firewall-cmd --runtime-to-permanent
@@ -345,7 +345,7 @@ firewall-cmd --runtime-to-permanent
 
 Take a look at the active services now and you should find dhcp6-client absent.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --list-services
 ----
@@ -358,7 +358,7 @@ cockpit http https ssh
 And since we also ran a --runtime-to-permanent, both the
 runtime and permanent configs were updated.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --list-services --permanent
 ----
@@ -375,7 +375,7 @@ That concludes this unit on firewalld.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

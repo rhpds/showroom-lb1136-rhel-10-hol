@@ -21,21 +21,21 @@ For these exercises, you will be using the host `node3` as user `root`.
 
 From host `bastion`, ssh to `node3`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node3
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-vdo-checkhost.sh
 ----
@@ -46,7 +46,7 @@ You are now ready to proceed with these exercises.
 
 Install the required packages - this will pull in several related dependencies.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf install -y vdo
 ----
@@ -143,48 +143,48 @@ We will begin with a simple linear volume (concatination).
 
 Since we will be reusing the same resources for many exercises, we will begin by wiping everything clean.  Don't worry if you get an error message.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 umount /mnt/lab*
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 vgremove -ff vg_lab
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 pvremove {disk_glob}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 wipefs -a {disk_glob}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 partprobe
 ----
 
 === Physical Volume Creation
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 pvcreate {disk1}
 ----
 
 === Volume Group (Pool) Creation
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 vgcreate vg_lab {disk1}
 ----
 
 === Logical Volume Creation
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvcreate -y -n lab1 -l 95%FREE vg_lab
 ----
@@ -192,17 +192,17 @@ lvcreate -y -n lab1 -l 95%FREE vg_lab
 === Make and Mount Filesystem
 
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mkfs -t ext4 /dev/vg_lab/lab1
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mkdir -p /mnt/lab1
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mount /dev/vg_lab/lab1 /mnt/lab1
 ----
@@ -211,7 +211,7 @@ NOTE: If this were going to be a persistent filesystem, you would also need to a
 
 === Examine Your Work
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvs
 ----
@@ -222,7 +222,7 @@ lvs
   lab1 vg_lab -wi-ao---- <4.75g
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvs vg_lab/lab1
 ----
@@ -233,7 +233,7 @@ lvs vg_lab/lab1
   lab1 vg_lab -wi-ao---- <4.75g
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvs -o lv_name,lv_size,lv_attr,segtype,devices vg_lab/lab1
 ----
@@ -244,7 +244,7 @@ lvs -o lv_name,lv_size,lv_attr,segtype,devices vg_lab/lab1
   lab1 <4.75g -wi-ao---- linear {disk1}(0)
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvs --units g -o +devices vg_lab/lab1
 ----
@@ -255,7 +255,7 @@ lvs --units g -o +devices vg_lab/lab1
   lab1 vg_lab -wi-ao---- 4.75g                                                     {disk1}(0)
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 df /mnt/lab1
 ----
@@ -268,22 +268,22 @@ Filesystem              1K-blocks  Used Available Use% Mounted on
 
 == Extend and Resize a Linear Volume
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 pvcreate {disk2}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 vgextend vg_lab {disk2}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvresize -l 95%VG /dev/vg_lab/lab1
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 resize2fs /dev/vg_lab/lab1
 ----
@@ -298,7 +298,7 @@ Let us take a look at the logical volume.  Notice a few things:
   * the second segment is almost used, but has some space remaining
   * Over all, the volume group has approximately 500mb remaining
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvs -o vg_name,vg_free,lv_name,lv_size,seg_size,segtype,devices vg_lab/lab1
 ----
@@ -310,7 +310,7 @@ lvs -o vg_name,vg_free,lv_name,lv_size,seg_size,segtype,devices vg_lab/lab1
   vg_lab 508.00m lab1 <9.50g  4.50g linear {disk2}(0)
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 df /mnt/lab1
 ----
@@ -335,34 +335,34 @@ We will be leveraging devices {disk_glob}.  As before, we will cleanup up prior 
 
 Since we will be reusing the same resources for many exercises, we will begin by wiping everything clean.  Don't worry if you get an error message.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 umount /mnt/lab*
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 vgremove -ff vg_lab
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 pvremove {disk_glob}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 wipefs -a {disk_glob}
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 partprobe
 ----
 
 === Physical Volume Creation
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 pvcreate {disk_glob}
 ----
@@ -379,7 +379,7 @@ pvcreate {disk_glob}
 
 === Volume Group Creation
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 vgcreate vg_lab {disk_glob}
 ----
@@ -395,7 +395,7 @@ Volume group "vg_lab" successfully created
 
 This time, we are going to use all four disks to create a mirrored set of striped disks.  Otherwise known as RAID10
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvcreate -y --type raid10 -m1 -i 2 -n lv_raid10 -l 95%FREE vg_lab
 ----
@@ -404,7 +404,7 @@ lvcreate -y --type raid10 -m1 -i 2 -n lv_raid10 -l 95%FREE vg_lab
 
 === Add VDO Deduplication
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lvconvert --type vdo-pool --name=lab2 -V 30G vg_lab/lv_raid10 -y
 ----
@@ -422,17 +422,17 @@ Once executed, you will be prompted to confirm the task.
   Converted vg_lab/lv_raid10 to VDO pool volume and created virtual vg_lab/lab2 VDO volume.
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mkfs.xfs -K /dev/mapper/vg_lab-lab2
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mkdir /mnt/lab2
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 mount /dev/mapper/vg_lab-lab2 /mnt/lab2
 ----
@@ -443,7 +443,7 @@ NOTE: To make the mount persistent across reboots, you would still need to eithe
 
 Let us now populate the filesystem with some content.  Create a bunch of random subdirectories in our new filesystems with the following command.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 for i in {1..10} ; do mktemp -d /mnt/lab2/XXXXXX ; done
 ----
@@ -452,7 +452,7 @@ Now we will copy the same content into each of the folders as follows.
 
 NOTE: This could take a few minutes.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 for i in /mnt/lab2/* ; do echo "${i}" ; cp -rf /usr/share/locale $i ; done
 ----
@@ -463,17 +463,17 @@ The prevoius command should have copied approximately 100MB in 10 folders yieldi
 
 Let us now check some statistics.  
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 du -sh /mnt/lab2
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 df /mnt/lab2
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 vdostats --human-readable
 ----
@@ -510,7 +510,7 @@ This concludes the exercises related to lvm and vdo.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

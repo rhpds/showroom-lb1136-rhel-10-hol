@@ -22,21 +22,21 @@ For these exercises, you will be using the host `node2` as user `root`.
 
 From host `bastion`, ssh to `node2`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node2
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-kpatch-checkhost.sh
 ----
@@ -47,7 +47,7 @@ You are now ready to proceed with these exercises.
 
 Let's start by looking at the current kernel version:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 rpm -q kernel
 ----
@@ -57,7 +57,7 @@ rpm -q kernel
 kernel-5.14.0-284.30.1.el9_2.x86_64
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 uname -r
 ----
@@ -69,7 +69,7 @@ uname -r
 
 Here we can see that we are running the 5.14.0-70.13.1 kernel. Now we install all kpatches for our kernel:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf install "kpatch-patch = $(uname -r)" -y
 ----
@@ -103,7 +103,7 @@ Note that kpatches are cumulative, so you cannot pick and choose a specific set 
 
 Further, if you'd like to look at which CVEs are included by the kpatch installed on the system, you can do:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 rpm -q --changelog kpatch-patch-5_14_0-284_30_1-0-0.el9_2.x86_64
 ----
@@ -116,7 +116,7 @@ rpm -q --changelog kpatch-patch-5_14_0-284_30_1-0-0.el9_2.x86_64
 
 This tells us that at this time, there are no kpatches available for this version of the kernel:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 kpatch list
 ----
@@ -147,7 +147,7 @@ This concludes the exercises related to kpatch.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

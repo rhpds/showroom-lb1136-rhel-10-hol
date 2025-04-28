@@ -19,21 +19,21 @@ For these exercises, you will be using the host `node3` as user `root`.
 
 From host `bastion`, ssh to `node3`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node3
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-podman-checkhost.sh
 ----
@@ -58,7 +58,7 @@ There are no dependencies on prior work so you can proceed without having comple
 
 Let's start by insuring we have a clean environment
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman kill --all
 podman rm --all
@@ -69,13 +69,13 @@ podman rmi --all
 
 Time to pull a container from our local repository.  For these exercises we will want to use a rhel10 ubi image.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman search ubi10
 ----
 
 From this we see the current available ubi10 image is ubi10-beta.  So let's grab that.
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman pull ubi10-beta/ubi:latest
 ----
@@ -96,7 +96,7 @@ Storing signatures
 
 === UTS / Hostname
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run ubi cat /proc/sys/kernel/hostname
 ----
@@ -108,7 +108,7 @@ a3f3e99082ca
 
 So what we have learned here is that the hostname in the container's namespace is NOT the same as the host platform (node3.example.com).  It is unique and is by default identical to the container's ID.  You can verify this with 'podman ps -a'.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman ps -a
 ----
@@ -124,7 +124,7 @@ a3f3e99082ca  registry.access.redhat.com/ubi9/ubi:latest  cat /proc/sys/ker...  
 Let us have a look at the process table from with-in the container's namespace.
 
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run ubi ps -ef
 ----
@@ -142,7 +142,7 @@ So for this exercise, we leverage something called a 'bind mount' to effectively
 
 NOTE: Using bind mounts is generally suitable for debugging, but not a good practice as a design decision for enterprise container strategies.  After all, creating dependencies between applications and host operating systems is what we are trying to get away from.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run -v /usr/bin:/usr/bin -v /usr/lib64:/usr/lib64 ubi /bin/ps -ef
 ----
@@ -159,7 +159,7 @@ Notice that all the process belonging to host itself are absent.  The programs r
 
 Now let us run a command to report the network configuration from within the a container's namespace.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run -v /usr/sbin:/usr/sbin -v /usr/lib64:/usr/lib64  ubi /usr/sbin/ip addr show eth0
 ----
@@ -180,7 +180,7 @@ Let us begin by examining the '/etc/hosts' file.
 
 NOTE: Note that we introduce the '--rm' flag to our podman command.  This tells podman to automatically cleanup after the container exists
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run --rm ubi cat /etc/hosts
 ----
@@ -194,7 +194,7 @@ podman run --rm ubi cat /etc/hosts
 
 How does the container resolve hostnames (ie: DNS)?
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run --rm ubi cat /etc/resolv.conf
 ----
@@ -207,7 +207,7 @@ nameserver 192.168.100.34
 Take a look at the routing table.
 Pay attention now, the route command is in '/usr/sbin'.  Take a look at the routing table for the container namespace.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run -v /usr/sbin:/usr/sbin --rm ubi route -n
 ----
@@ -225,7 +225,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 Finally, look at the filesystem(S) in the container's namespace.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run ubi df -h
 ----
@@ -242,7 +242,7 @@ devtmpfs        1.8G     0  1.8G   0% /proc/keys
 
 You were introduced to Bind-Mounts in the previous section.  Let us examine what the filesystems looks like with an active Bind-Mount.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run -v /usr/bin:/usr/bin ubi df -h
 ----
@@ -262,7 +262,7 @@ Notice above how there is now a dedicated mount point for /usr/bin.  Bind-Mounts
 
 Let us clean up your environment before proceeding
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman kill --all
 podman rm --all
@@ -276,7 +276,7 @@ podman rm --all
 
 A configuration file for a podman build has already been supplied for your system.  Have a look at the contents of that config.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /root/custom_image.OCIFile
 ----
@@ -314,14 +314,14 @@ Notice a few things about the configuration:
 
 Now it's time to build the new container image.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman build -t custom_image --file custom_image.OCIFile
 ----
 
 Once this completes, run:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
@@ -341,7 +341,7 @@ Time to deploy the image.  A few things to note here:
   * we are connecting localhost port 8080 to port 80 of the deployed container
   * the deployment is using 'detached' mode
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run -d --name="webserver" -p 8080:80 custom_image
 ----
@@ -350,14 +350,14 @@ podman run -d --name="webserver" -p 8080:80 custom_image
 
 To view some facts about the running container, you use 'podman inspect'.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman inspect webserver
 ----
 
 This reveals quite a bit of information which you can drill in to using additional format arguments.  For example, let us locate the IP address for the container.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman inspect --format '{{ .NetworkSettings.IPAddress }}' webserver
 ----
@@ -368,7 +368,7 @@ We can apply the same filter to any value in the json output. Try a few differen
 
 === Validation
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 curl http://localhost:8080/
 ----
@@ -380,7 +380,7 @@ The Web Server is Running
 
 Let us look at the processes running on the host.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 pgrep -laf httpd
 ----
@@ -396,7 +396,7 @@ pgrep -laf httpd
 
 And finally let's look at some networking info.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 netstat -utlpn | grep 8080
 ----
@@ -409,7 +409,7 @@ tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      
 
 Now let's introduce a commandline utility 'lsns' to check out the namespaces.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 lsns
 ----
@@ -447,7 +447,7 @@ We see that the httpd processes running are using the mnt uts ipc pid and net na
 
 Since we explored namespaces earlier, we may as well have a look at the control-groups aligned with our process.  
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 systemd-cgls --no-pager
 ----
@@ -476,7 +476,7 @@ What we can tell is that our container is bound by a cgroup called "machine.slic
 
 === Cleanup
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman stop webserver
 podman rm webserver
@@ -491,7 +491,7 @@ This concludes the exercises related to podman.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

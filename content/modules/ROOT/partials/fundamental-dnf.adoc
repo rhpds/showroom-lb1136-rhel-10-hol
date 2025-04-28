@@ -27,21 +27,21 @@ For these exercises, you will be using the host `node1` as user `root`.
 
 From host `bastion`, ssh to `node1`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node1
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-dnf-checkhost.sh
 ----
@@ -76,28 +76,28 @@ Let's get started!
 
 Simple command to list all available packages.  This includes all configured and available repos.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf list
 ----
 
 Command to list only the installed packages.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf list --installed
 ----
 
 Command to list available packages.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf list --available
 ----
 
 A quick comparison of how many packages are installed vs available.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf list --installed | wc -l
 dnf list --available | wc -l
@@ -107,7 +107,7 @@ You should a result roughly '820' packages installed compared to '4653' availabl
 
 Last, let us identify packages that are installed but do not belong to any known repository.  Meaning, someone downloaded and installed it manually.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf list --extras
 ----
@@ -118,14 +118,14 @@ dnf list --extras
 
 Command to list a specific package.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf list bash-completion
 ----
 
 Let us get some detailed information about this package.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf info bash-completion
 ----
@@ -154,14 +154,14 @@ Description  : bash-completion is a collection of shell functions that take adva
 
 Installing a package is simple.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf install -y bash-completion
 ----
 
 Installing multiple packages from a simgle command is also easy.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf install -y  httpd mariadb php
 ----
@@ -177,7 +177,7 @@ NOTE: the MySQL project got forked long ago and it's successor is MariaDB
 
 To remove a package from the system you can run *dnf* as follows.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf remove -y php
 ----
@@ -189,7 +189,7 @@ dnf remove -y php
 To update packages on a host you use the 'update' operand.  For the purposes of this lab, we don't want to use up your time performing an actaul upgrade.  However, there is something to be learned by performing a dry-run (or a harmless test).
 
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf update -y --setopt tsflags=test
 ----
@@ -221,7 +221,7 @@ to actaully install the updates, you can save that initial download time by runn
 
 == Security Update Only
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf update --security
 ----
@@ -242,7 +242,7 @@ RHEL 10 is still very early in it's life (we may still be using the BETA for thi
 
 == Clean ALL
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 dnf clean all
 ----

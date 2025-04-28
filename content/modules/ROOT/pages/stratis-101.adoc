@@ -1,31 +1,5 @@
-:sectnums:
-:sectnumlevels: 3
-:markup-in-source: verbatim,attributes,quotes
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:disk0: /dev/vda
-:disk1: /dev/vdb
-:disk2: /dev/vdc
-:disk3: /dev/vdd
-:disk4: /dev/vde
-:disk_glob: /dev/vd{b..e}
-:format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="copy"
-:format_cmd_output: bash,options="nowrap",subs="{markup-in-source}"
-ifeval::["%cloud_provider%" == "ec2"]
-:disk0: /dev/nvme0n1
-:disk1: /dev/nvme1n1
-:disk2: /dev/nvme2n1
-:disk3: /dev/nvme3n1
-:disk4: /dev/nvme4n1
-:disk_glob: /dev/nvme{1..4}n1
-:format_cmd_exec: source,options="nowrap",subs="{markup-in-source}",role="execute"
-endif::[]
 
+include::partial$header-format.adoc[]
 include::partial$intermediate-stratis.adoc[]
 
 ////

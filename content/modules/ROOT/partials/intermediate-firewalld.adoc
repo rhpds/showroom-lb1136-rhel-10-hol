@@ -15,21 +15,21 @@ For these exercises, you will be using the host `node1` as user `root`.
 
 From host `bastion`, ssh to `node1`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node1
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-firewalld-checkhost.sh
 ----
@@ -47,13 +47,13 @@ You are now ready to proceed with these exercises.
 
 Since we have been toying with http, it's common for httpd to also be configured on ports 8080 and 8443.  So let's simply create and ad-hoc rule to make those ports available.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --add-port=8080/tcp --add-port=8443/tcp
 firewall-cmd --runtime-to-permanent
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-all
 ----
@@ -80,13 +80,13 @@ public
 
 As much fun as that was, ad-hoc was quick and easy but not ideal.  We really desire a formal configuration, so let us undo the ad-hoc rules.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --remove-port=8080/tcp --remove-port=8443/tcp
 firewall-cmd --runtime-to-permanent
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-all
 ----
@@ -115,7 +115,7 @@ public
 
 === Install Override Configuration 
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-firewalld-customconfigs.sh
 ----
@@ -124,7 +124,7 @@ Two configuration files were just created */etc/firewalld/services*
 
 They are identical to the system defaults except that our additional ports (8080 and 8443) were added the the definition.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /etc/firewalld/services/http.xml
 ----
@@ -140,7 +140,7 @@ cat /etc/firewalld/services/http.xml
 </service>
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /etc/firewalld/services/https.xml
 ----
@@ -160,14 +160,14 @@ cat /etc/firewalld/services/https.xml
 
 Since the httpd service is already active, all we really need to do is reload firewalld.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --reload
 ----
 
 === Verification
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --info-service=http
 ----
@@ -184,7 +184,7 @@ http
   helpers:
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --info-service=https
 ----
@@ -201,7 +201,7 @@ https
   helpers:
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-all --permanent
 ----
@@ -233,7 +233,7 @@ In this exercise you will create a custom service with a unique name.
 
 First, have a look at the configuration file which has already been prepared for you.  It should be fairly self explanatory.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 cat /usr/local/etc/firewalld-customname.xml
 ----
@@ -254,12 +254,12 @@ cat /usr/local/etc/firewalld-customname.xml
 
 Now it is time to import the config file.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --new-service-from-file=/usr/local/etc/firewalld-customname.xml --name=workshop --permanent
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --reload
 ----
@@ -268,12 +268,12 @@ firewall-cmd --reload
 
 Finally, activate the service and verify.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --add-service=workshop
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 firewall-cmd --zone=public --list-all
 ----
@@ -307,7 +307,7 @@ That concludes this unit on firewalld.
 
 Time to finish this unit and return the shell to it's home position.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----

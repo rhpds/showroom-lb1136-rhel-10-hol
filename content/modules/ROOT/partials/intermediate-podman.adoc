@@ -19,21 +19,21 @@ For these exercises, you will be using the host `node3` as user `root`.
 
 From host `bastion`, ssh to `node3`.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node3
 ----
 
 Use `sudo` to elevate your privileges.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 [[ "$UID" == 0 ]] || sudo -i
 ----
 
 Verify that you are on the right host for these exercises.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-podman-checkhost.sh
 ----
@@ -78,7 +78,7 @@ Here is a list of the fundamental podman commands and their purpose:
 
 Now have a look at the general container information.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman info
 ----
@@ -114,7 +114,7 @@ how to get to that info when you need it.
 
 Now have a look at the general container information.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
@@ -127,7 +127,7 @@ Your results should have come back empty and that's because we have not imported
 
 Time to pull a container from our local repository.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman pull ubi9/ubi
 ----
@@ -147,7 +147,7 @@ Storing signatures
 
 Have a look at the image list now.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
@@ -162,13 +162,13 @@ NOTE: if you are a subscriber to Red Hat Enterprise Linux, you can pull authenti
 
 Pull a few more container images.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman pull ubi9/ubi-minimal
 podman pull ubi9/ubi-init
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
@@ -188,12 +188,12 @@ registry.access.redhat.com/ubi9/ubi-minimal  latest      088f0967f6b5  2 weeks a
 Container images can also be tagged with convenient (ie:custom names).  This could make it more intuitive to understand what they 
 contain, especially after an image has been customized.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman tag registry.access.redhat.com/ubi9/ubi myfavorite
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
@@ -215,17 +215,17 @@ NOTE: The link:https://access.redhat.com/containers[Red Hat Container Catalog] (
 
 === Delete Images
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman rmi ubi-init
 ----
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman images
 ----
@@ -244,7 +244,7 @@ registry.access.redhat.com/ubi9/ubi-minimal  latest      088f0967f6b5  2 weeks a
 
 === Hello World
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run ubi echo "hello world"
 ----
@@ -266,7 +266,7 @@ Well that was really boring!! What did we learn from this?  For starters, you sh
 
 Let us run a few more commands to see what else we can glean.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman ps -a
 ----
@@ -279,7 +279,7 @@ fc07b3e29378  registry.access.redhat.com/ubi9/ubi:latest  echo hello world  35 s
 
 Now let us run the exact same command as before to print "hello world".
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman run ubi echo "hello world"
 ----
@@ -291,7 +291,7 @@ hello world
 
 Check out 'podman info' one more time and you should notice a few changes.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman info
 ----
@@ -324,7 +324,7 @@ ImageStore(s) has grown.
 
 Run 'podman ps -a' to the IDs of the exited containers.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman ps -a
 ----
@@ -339,14 +339,14 @@ eb8556004620  registry.access.redhat.com/ubi9/ubi:latest  echo hello world  Abou
 Using the container UIDs from the above output, you could clean up the 'exited' containers individually using `podman rm <CONTAINER-ID> <CONTAINER-ID>`, 
 but we are lazy and will cleanup up the containers with a single command:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman rm --all
 ----
 
 Now you should be able to run 'podman ps -a' again, and the results should come back empty.
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 podman ps -a
 ----
@@ -354,7 +354,7 @@ podman ps -a
 
 === Conclusion
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-finish-exercise.sh
 ----
