@@ -144,100 +144,26 @@ Description  : bash-completion is a collection of shell functions that take adva
 
 
 
-== Package Dependencies
-
-*dnf* command provides a nice little sub command called *repoquery* which is equivalent to 'rpm -q'.  With the added flag '--requires' you 
-can quickly determine what additional packages are necessary for its installation.   
-
-Let us begin by getting information about a package called 'ncurses'
-
-[{format_cmd_exec}]
-----
-dnf info ncurses
-----
-
-What other packages does this depend on.
-
-[{format_cmd_exec}]
-----
-dnf repoquery --depends ncurses
-----
-
-How about the other way around, what other packages have a dependency on 'ncurses'.
-
-[{format_cmd_exec}]
-----
-dnf repoquery --whatdepends ncurses
-----
-
-
-
 == Install Packages
 
-Let us begin by trying to run the command 'netstat'
+Installing a package is simple.
 
 [{format_cmd_exec}]
 ----
-netstat -tulpn
+dnf install -y bash-completion
 ----
 
-[{format_cmd_output}]
-----
--bash: netstat: command not found
-----
-
-Now let us determine what package provides a utility called 'netcat'.
+Installing multiple packages from a simgle command is also easy.
 
 [{format_cmd_exec}]
 ----
-dnf provides netstat
+dnf install -y  httpd mariadb php
 ----
 
-[{format_cmd_output}]
-----
-net-tools-2.0-0.72.20160912git.el10.x86_64 : Basic networking tools
-Repo        : rhel-10-for-x86_64-baseos-beta-rpms
-Matched from:
-Filename    : /usr/bin/netstat
+Some of the pacakges listed above where likely already installed on the host, thus the ouput may have been very underwhelming.
+This set of packages is collectively known as the traditional LAMP stack:  Linux, Apache, MySQL and PHP.
 
-net-tools-2.0-0.73.20160912git.el10.x86_64 : Basic networking tools
-Repo        : rhel-10-for-x86_64-baseos-beta-rpms
-Matched from:
-Filename    : /usr/bin/netstat
-----
-
-From this we can determine that a package called 'net-tools' provides the requested utility.
-So let us proceed to install it.
-
-[{format_cmd_exec}]
-----
-dnf install -y net-tools
-----
-
-[{format_cmd_exec}]
-----
-netstat -tulpn
-----
-
-[{format_cmd_output}]
-----
-Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      9453/sshd: /usr/sbi 
-tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN      33349/dnsmasq       
-tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           
-tcp6       0      0 :::22                   :::*                    LISTEN      9453/sshd: /usr/sbi 
-tcp6       0      0 :::9090                 :::*                    LISTEN      1/systemd           
-udp        0      0 192.168.122.1:53        0.0.0.0:*                           33349/dnsmasq       
-udp        0      0 0.0.0.0:67              0.0.0.0:*                           33349/dnsmasq       
-udp        0      0 0.0.0.0:111             0.0.0.0:*                           1/systemd           
-udp        0      0 127.0.0.1:323           0.0.0.0:*                           872/chronyd         
-udp6       0      0 :::111                  :::*                                1/systemd           
-udp6       0      0 ::1:323                 :::*                                872/chronyd 
-----
-
-Congratulations, it works!
+NOTE: the MySQL project got forked long ago and it's successor is MariaDB
 
 
 
@@ -247,7 +173,7 @@ To remove a package from the system you can run *dnf* as follows.
 
 [{format_cmd_exec}]
 ----
-dnf remove -y net-tools
+dnf remove -y php
 ----
 
 
@@ -256,10 +182,13 @@ dnf remove -y net-tools
 
 To update packages on a host you use the 'update' operand.  For the purposes of this lab, we don't want to use up your time performing an actaul upgrade.  However, there is something to be learned by performing a dry-run (or a harmless test).
 
+
 [{format_cmd_exec}]
 ----
 dnf update -y --setopt tsflags=test
 ----
+
+NOTE: If the system is fully patched then the output will yeild no results.  The output shown here is for example only and probably won't match what you see.
 
 [{format_cmd_output}]
 ----
@@ -278,9 +207,11 @@ The downloaded packages were saved in cache until the next successful transactio
 You can remove cached packages by executing 'dnf clean packages'.
 ----
 
-From the output, we can determine that 56 packages were evaluated for the upgrade and that all the transaction tests completed.  
+From this output, we can determine that 56 packages were evaluated for the upgrade and that all the transaction tests completed.  
 As part of the test, the software was also downloaded and staged in the cache directories in /var/lib. Thus when the time comes
 to actaully install the updates, you can save that initial download time by running a test like this in advance.
+
+
 
 == Security Update Only
 
@@ -299,7 +230,9 @@ Nothing to do.
 Complete!
 ----
 
-RHEL 10 is still very early in it's life (we may still be using the BETA for this lab).  Here we see that there are no scurity updates currently available for our release.
+RHEL 10 is still very early in it's life (we may still be using the BETA for this lab).  Here we see that there are no security updates currently available for our release.
+
+
 
 == Clean ALL
 
@@ -307,6 +240,8 @@ RHEL 10 is still very early in it's life (we may still be using the BETA for thi
 ----
 dnf clean all
 ----
+
+
 
 == What About Reboots?
 
