@@ -1,5 +1,11 @@
 
-= Intermediate: *Storage Management* (stratis)
+= *Storage Management* (stratis)
+
+[discrete]
+== *Skill Level: Intermediate*
+
+
+
 
 == Overview
 

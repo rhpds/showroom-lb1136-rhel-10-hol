@@ -1,5 +1,11 @@
 
-= Intermediate: *Container Management* (podman)
+= *Container Management* (podman)
+
+[discrete]
+== *Skill Level: Intermediate*
+
+
+
 
 == Overview
 

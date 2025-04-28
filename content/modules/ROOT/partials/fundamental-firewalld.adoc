@@ -1,5 +1,11 @@
 
-= Fundamental: *Firewall Management* (firewalld)
+= *Firewall Management* (firewalld)
+
+[discrete]
+== *Skill Level: Fundamental*
+
+
+
 
 == Overview
 

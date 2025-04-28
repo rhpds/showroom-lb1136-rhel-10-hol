@@ -1,5 +1,11 @@
 
-= Advanced: *Firewall Management* (nftables)
+= *Firewall Management* (nftables)
+
+[discrete]
+== *Skill Level: Advanced*
+
+
+
 
 == Overview
 

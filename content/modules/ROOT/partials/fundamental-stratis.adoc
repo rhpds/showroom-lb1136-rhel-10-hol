@@ -1,5 +1,11 @@
 
-= Fundamental: *Storage Management* (stratis)
+= *Storage Management* (stratis)
+
+[discrete]
+== *Skill Level: Fundamental*
+
+
+
 
 == Overview
 

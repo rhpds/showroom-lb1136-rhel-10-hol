@@ -1,5 +1,11 @@
 
-= Fundamental: *Trouble Shooting* (man & info)
+= *Trouble Shooting* (man & info)
+
+[discrete]
+== *Skill Level: Fundamental*
+
+
+
 
 == Overview
 

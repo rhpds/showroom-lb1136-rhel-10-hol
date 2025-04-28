@@ -1,5 +1,11 @@
 
-= Intermediate: *Container Development* (buildah & skopeo)
+= *Container Development* (buildah & skopeo)
+
+[discrete]
+== *Skill Level: Intermediate*
+
+
+
 
 == Overview
 

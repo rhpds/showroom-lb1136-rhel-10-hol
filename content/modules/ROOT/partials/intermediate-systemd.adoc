@@ -1,15 +1,16 @@
 
-= Intermediate: *Service Management* (systemd)
+= *Service Management* (systemd)
+
+[discrete]
+== *Skill Level: Intermediate*
+
+
+
 
 == Overview
 
-Systemd is the "init" system for RHEL 9 (and 8 and 7 for that matter).  Long ago it replaced Upstart, the SysV "init" system used in releases of RHEL 6.x and older.  Systemd is more than just a facility to bring up user space, it is a system manager that offers:
-
-  * service parallelization
-  * socket and D-Bus activation
-  * on-demand starting of services
-  * track services and child processes via cgroups
-  * and much more
+You have already been introduced to systemd and the fundamentals of service management. Now we’ll progress to the more sophisticated 
+capabilities of systemd and customization of the services with additional functionality.
 
 == Getting Started
 
@@ -41,7 +42,15 @@ You are now ready to proceed with these exercises.
 
 == Customize Default Services
 
-systemd controls more than daemons or services. For this lab, we will primarily be working with service units but it's important to know that systemd is handling the dependencies between other types: sockets, timers, mounts, swap, slices, etc.
+systemd controls more than just daemons or services. For this lab, we will primarily be working with service units but it's important to 
+know that systemd is handling the dependencies between other types of units: 
+
+  * sockets
+  * timers 
+  * mounts 
+  * swap
+  * slices
+  * more...
 
 Unit files are stored in one of three places:
 
@@ -51,9 +60,10 @@ Unit files are stored in one of three places:
 
 While the defaults for unit files won’t need to be altered most of the time, there will be circumstances where changing the defaults is quite beneficial. These could include hardware or software watchdog monitoring, tunings, resource management, or many other reasons.
 
-Create a drop-in configuration file to extend the default httpd.service unit
 
 === Modify httpd
+
+Create a drop-in configuration file to extend the default httpd.service unit
 
 [{format_cmd_exec}]
 ----

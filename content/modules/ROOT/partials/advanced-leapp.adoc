@@ -1,9 +1,15 @@
 
-= Advanced: *In-Place Upgrades* (leapp)
+= *In-Place Upgrades* (leapp)
+
+[discrete]
+== *Skill Level: Advanced*
+
+
+
 
 == Overview
 
-WARNING:  This exercise requires the SECONDARY terminal and conflicts with any other exercise that 
+WARNING:  This exercise requires the SECONDARY terminal and conflicts with any other exercise (ex: ebpf) that 
 uses the secondary terminal.  Do not proceed if the secondary terminal is already in use with another exercise.
 
 In this unit, we will get familiar with the upgrade tool called LEAPP.  LEAPP is a tool used to analyze an 
@@ -16,37 +22,18 @@ for other exercises while the upgrade executes.
 
 The first several sections leading up to the actual upgrade are interactive and should take around 7 - 8 minutes to complete.  The sections which perform the actual upgrade and finalize it are almost completely non-interactive and each are expected to take 6 - 9 minutes to complete.  Once you start them, you will have time to look at other exercises in the PRIMARY terminal while waiting for them to complete.
 
-To help you set up your second terminal (if you haven't connected to the bastion host already), here 
-is the ssh command and password which you can use.
+== Getting Started
 
-[{format_cmd_exec2}]
-----
-[[ $(hostname -s) != "bastion" ]] && {ssh_command} -o "StrictHostKeyChecking no"
-----
+For these exercises, you will be using the host `leapp` as user `root`.  Before you begin, confirm the node was provisioned with RHEL 9.6
 
-[{format_cmd_exec2}]
-----
-{ssh_password}
-----
+Launch a 'tmux' (terminal multiplexer) in the second showroom terminal:
 
-[{format_cmd_exec2}]
+[{format_cmd_exec}]
 ----
 workshop-tmux.sh TERM2
 ----
 
-[{format_cmd_exec2}]
-----
-[[ "$UID" == 0 ]] || sudo -i
-----
-
-You are now ready to proceed with these exercises.
-
-
-== Getting Started
-
-For these exercises, you will be using the host `leapp` as user `root`.  Before you begin, confirm the node was provisioned with RHEL 8.6
-
-From host `bastion`, ssh to `leapp`.
+Using the second terminal for all steps below, proceed to ssh from host `bastion` to `leapp`.
 
 [{format_cmd_exec2}]
 ----
@@ -66,6 +53,8 @@ Verify that you are on the right host for these exercises.
 ----
 workshop-leapp-checkhost.sh
 ----
+
+You are now ready to proceed with these exercises.
 
 == Current RHEL Version Verification
 

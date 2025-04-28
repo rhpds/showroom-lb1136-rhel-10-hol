@@ -1,5 +1,11 @@
 
-= Advanced: *Kernel Tracing* (ebpf)
+= *Kernel Tracing* (ebpf)
+
+[discrete]
+== *Skill Level: Advanced*
+
+
+
 
 == Overview
 WARNING:  This exercise requires the SECONDARY terminal and conflicts with any other exercise that

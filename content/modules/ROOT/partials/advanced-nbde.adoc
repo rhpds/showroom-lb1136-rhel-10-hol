@@ -1,5 +1,11 @@
 
-= Advanced: *Storage Management* (lux & nbde)
+= *Storage Encryption* (lux,nbde)
+
+[discrete]
+== *Skill Level: Advanced*
+
+
+
 
 == Overview
 

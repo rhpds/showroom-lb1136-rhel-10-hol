@@ -1,5 +1,11 @@
 
-= Fundamental: *Package Management* (dnf)
+= *Package Management* (dnf)
+
+[discrete]
+== *Skill Level: Fundamental*
+
+
+
 
 == Overview
 

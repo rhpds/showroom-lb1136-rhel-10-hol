@@ -1,5 +1,11 @@
 
-= Advanced: *Bootable Containers* (bootc)
+= *Bootable Containers* (bootc)
+
+[discrete]
+== *Skill Level: Advanced*
+
+
+
 
 == Overview
 

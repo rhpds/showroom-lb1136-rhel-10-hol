@@ -1,5 +1,11 @@
 
-= Intermediate: *Help* (LightSpeed)
+= *Help* (LightSpeed)
+
+[discrete]
+== *Skill Level: Intermediate*
+
+
+
 
 == Overview
 

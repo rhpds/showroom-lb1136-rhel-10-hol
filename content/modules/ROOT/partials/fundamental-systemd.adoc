@@ -1,5 +1,11 @@
 
-= Fundamental: *Service Management* (systemd)
+= *Service Management* (systemd)
+
+[discrete]
+== *Skill Level: Fundamental*
+
+
+
 
 == Overview
 

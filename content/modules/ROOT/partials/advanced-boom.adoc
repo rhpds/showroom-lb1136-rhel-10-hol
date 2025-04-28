@@ -1,5 +1,11 @@
 
-= Advanced: *Boot Management* (boom)
+= *Boot Management* (boom)
+
+[discrete]
+== *Skill Level: Advanced*
+
+
+
 
 == Overview
 

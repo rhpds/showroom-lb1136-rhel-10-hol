@@ -22,7 +22,8 @@
 ***  xref:101-lightspeed.adoc[Trouble Shooting (lightspeed)]
 
 **  Advanced
-***  xref:200-lvm-vdo.adoc[Storage Mgmt (lvm,vdo,nbde)]
+***  xref:200-lvm-vdo.adoc[Storage DeDup (lvm,vdo)]
+***  xref:200-nbde.adoc[Storage Encryption (nbde)]
 ***  xref:200-nftables.adoc[Firewall Mgmt (nftables)]
 ***  xref:200-podman.adoc[Container Mgmt (podman)]
 ***  xref:200-tlog.adoc[Session Logging (tlog)]
@@ -52,7 +53,8 @@
 ** Storage Mgmt
 ***  xref:stratis-100.adoc[Fundamental (stratis)]
 ***  xref:stratis-101.adoc[Intermediate (stratis)]
-***  xref:lvm-vdo-200.adoc[Advanced (lvm,vdo,nbde)]
+***  xref:lvm-vdo-200.adoc[Storage DeDup (lvm,vdo)]
+***  xref:nbde-200.adoc[Storage Encryption (lux,nbde)]
 
 ** Firewall Mgmt
 ***  xref:firewalld-100.adoc[Fundamental (firewalld)]
@@ -64,7 +66,7 @@
 ***  xref:buildah-101.adoc[Intermediate (buildah,skopeo)]
 ***  xref:podman-200.adoc[Advanced (podman)]
 
-** Virtualizaiton Mgmt
+** Virtualization Mgmt
 ***  xref:imagebuilder-101.adoc[Intermediate (composer)]
 ***  xref:virtualization-101.adoc[Intermediate (libvirt)]
 ***  xref:bootc-200.adoc[Advanced (bootc)]

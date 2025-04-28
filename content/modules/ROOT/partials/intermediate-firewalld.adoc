@@ -1,5 +1,11 @@
 
-= Intermediate: *Firewall Management* (firewalld)
+= *Firewall Management* (firewalld)
+
+[discrete]
+== *Skill Level: Intermediate*
+
+
+
 
 == Overview
 

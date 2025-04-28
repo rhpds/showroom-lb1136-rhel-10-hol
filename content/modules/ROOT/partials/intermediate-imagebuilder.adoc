@@ -1,5 +1,11 @@
 
-= Intermediate: *Image Builder* (composer)
+= *Image Builder* (composer)
+
+[discrete]
+== *Skill Level: Intermediate*
+
+
+
 
 == Overview
 
