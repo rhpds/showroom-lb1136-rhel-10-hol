@@ -52,7 +52,7 @@ Let's start by looking at the current kernel version:
 rpm -q kernel
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 kernel-5.14.0-284.30.1.el9_2.x86_64
 ----
@@ -62,7 +62,7 @@ kernel-5.14.0-284.30.1.el9_2.x86_64
 uname -r
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 5.14.0-284.30.1.el9_2.x86_64
 ----
@@ -74,7 +74,7 @@ Here we can see that we are running the 5.14.0-70.13.1 kernel. Now we install al
 dnf install "kpatch-patch = $(uname -r)" -y
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Updating Subscription Management repositories.
 Red Hat Enterprise Linux 9 for x86_64 - AppStream (RPMs)                                          134 kB/s | 4.5 kB     00:00
@@ -108,7 +108,7 @@ Further, if you'd like to look at which CVEs are included by the kpatch installe
 rpm -q --changelog kpatch-patch-5_14_0-284_30_1-0-0.el9_2.x86_64
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 * Tue Aug 29 2023 Yannick Cote <ycote@redhat.com> [0-0.el9]
 - An empty patch to subscribe to kpatch stream for kernel-5.14.0-284.30.1.el9_2 [2235709]
@@ -121,7 +121,7 @@ This tells us that at this time, there are no kpatches available for this versio
 kpatch list
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Loaded patch modules:
 

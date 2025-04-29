@@ -216,7 +216,7 @@ NOTE: If this were going to be a persistent filesystem, you would also need to a
 lvs
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
   LV   VG     Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
   lab1 vg_lab -wi-ao---- <4.75g
@@ -227,7 +227,7 @@ lvs
 lvs vg_lab/lab1
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
   LV   VG     Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
   lab1 vg_lab -wi-ao---- <4.75g
@@ -238,7 +238,7 @@ lvs vg_lab/lab1
 lvs -o lv_name,lv_size,lv_attr,segtype,devices vg_lab/lab1
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
   LV   LSize  Attr       Type   Devices
   lab1 <4.75g -wi-ao---- linear {disk1}(0)
@@ -249,7 +249,7 @@ lvs -o lv_name,lv_size,lv_attr,segtype,devices vg_lab/lab1
 lvs --units g -o +devices vg_lab/lab1
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
   LV   VG     Attr       LSize Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert Devices
   lab1 vg_lab -wi-ao---- 4.75g                                                     {disk1}(0)
@@ -260,7 +260,7 @@ lvs --units g -o +devices vg_lab/lab1
 df /mnt/lab1
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Filesystem              1K-blocks  Used Available Use% Mounted on
 /dev/mapper/vg_lab-lab1   4832912 19448   4548248   1% /mnt/lab1
@@ -303,7 +303,7 @@ Let us take a look at the logical volume.  Notice a few things:
 lvs -o vg_name,vg_free,lv_name,lv_size,seg_size,segtype,devices vg_lab/lab1
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
   VG     VFree   LV   LSize  SSize  Type   Devices
   vg_lab 508.00m lab1 <9.50g <5.00g linear {disk1}(0)
@@ -315,7 +315,7 @@ lvs -o vg_name,vg_free,lv_name,lv_size,seg_size,segtype,devices vg_lab/lab1
 df /mnt/lab1
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Filesystem              1K-blocks  Used Available Use% Mounted on
 /dev/mapper/vg_lab-lab1   9735476 21840   9249360   1% /mnt/lab1
@@ -367,7 +367,7 @@ partprobe
 pvcreate {disk_glob}
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
   Physical volume "{disk1}" successfully created.
   Physical volume "{disk2}" successfully created.
@@ -384,7 +384,7 @@ pvcreate {disk_glob}
 vgcreate vg_lab {disk_glob}
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Volume group "vg_lab" successfully created
 ----
@@ -411,7 +411,7 @@ lvconvert --type vdo-pool --name=lab2 -V 30G vg_lab/lv_raid10 -y
 
 Once executed, you will be prompted to confirm the task.
 
-[{format_cmd_output}]
+[{format_output}]
 ----
   WARNING: Converting logical volume vg_lab/lv_raid10 to VDO pool volume with formating.
   THIS WILL DESTROY CONTENT OF LOGICAL VOLUME (filesystem etc.)
@@ -479,7 +479,7 @@ vdostats --human-readable
 ----
 
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Device                      Size      Used Available Use% Space saving%
 vg_lab-lv_raid10-vpool      9.5G      3.6G      5.9G  38%           86%

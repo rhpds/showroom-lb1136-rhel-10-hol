@@ -53,7 +53,7 @@ Let's get started by creating a new working container based off of the ubi image
 buildah from ubi9/ubi
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Resolved "ubi9/ubi" as an alias (/etc/containers/registries.conf.d/000-shortnames.conf)
 Trying to pull registry.access.redhat.com/ubi9/ubi:latest...
@@ -78,7 +78,7 @@ Let's run:
 buildah copy ubi-working-container /var/tmp/buildah-dan-cries.txt /var/www/html/dan-cries.txt
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 34f1621a22ffd90a2ebbd58eba315089dc2704ac69a3d33d60362422e4ec26a1
 ----
@@ -87,7 +87,7 @@ At this point, you have copied your local `dan-cries.txt` into the the ubi-worki
 
 The steps you performed above is equivalent to the following OCIFile (or Dockerfile):
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 FROM ubi9/ubi
 COPY /root/dan-cries.txt /var/www/html/
@@ -106,7 +106,7 @@ We need to install an httpd server in our image, and what better way to do that 
 buildah run ubi-working-container dnf --disablerepo=* --enablerepo=ubi-9-baseos-rpms --enablerepo=ubi-9-appstream-rpms install -y httpd
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ...SNIP...
 Installed:
@@ -136,7 +136,7 @@ Proceed to mount the root filesystem of your container with:
 buildah mount ubi-working-container
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 /var/lib/containers/storage/overlay/3456a159b5b3c9e3056d14b97bde1f0e770500dd1cdd6168c894a52a3b3f12ee/merged
 ----
@@ -153,7 +153,7 @@ cd $( buildah mount ubi-working-container )
 ls -lah ./var/www/html
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 total 16K
 drwxr-xr-x. 2 root root 4.0K Apr 12 21:12 .
@@ -173,7 +173,7 @@ cp /var/tmp/buildah-index.html ./var/www/html/index.html
 cat ./var/www/html/index.html
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 <html>
 <title>Stop Disabling SELinux</title>
@@ -192,7 +192,7 @@ Let us just double check contents of the httpd docroot one last time:
 ls -lahZ ./var/www/html/
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 total 20K
 drwxr-xr-x. 2 root root system_u:object_r:container_file_t:s0:c60,c544 4.0K Apr 12 21:25 .
@@ -209,7 +209,7 @@ cd /root
 buildah unmount ubi-working-container
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 e918debcaabb5820997b1a4969fbd45284adc0a2869d1f22a1bce78f703ff3c6
 ----
@@ -223,7 +223,7 @@ At this point, we've used buildah to run commands and create a container image s
 buildah commit ubi-working-container webserver2
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Getting image source signatures
 Copying blob d3ada5af5602 skipped: already exists
@@ -242,7 +242,7 @@ Let's look at our images:
 podman images
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 REPOSITORY                            TAG      IMAGE ID       CREATED          SIZE
 localhost/webserver2                  latest   a831badcea41   25 seconds ago   240 MB
@@ -267,7 +267,7 @@ Finally let's test our new webserver:
 curl http://localhost:8080/
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 <html>
 <title>Stop Disabling SELinux</title>
@@ -286,7 +286,7 @@ and:
 curl http://localhost:8080/dan-cries.txt
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Every time you run setenforce 0, you make Dan Walsh weep.
 ----
@@ -302,7 +302,7 @@ Let's take a look at the webserver2:latest container that we just built:
 skopeo inspect containers-storage:localhost/webserver2:latest
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 INFO[0000] Not using native diff for overlay, this may cause degraded performance for building images: kernel has CONFIG_OVERLAY_FS_RED
 IRECT_DIR enabled
@@ -374,7 +374,7 @@ Let's look at the ubi9/ubi container that we built this off of and compare the l
 skopeo inspect containers-storage:registry.access.redhat.com/ubi9/ubi:latest
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 INFO[0000] Not using native diff for overlay, this may cause degraded performance for building images: kernel has CONFIG_OVERLAY_FS_RED
 IRECT_DIR enabled
@@ -439,7 +439,7 @@ Pretty neat that we can look inside local containers, but what about containers 
 skopeo inspect docker://registry.access.redhat.com/ubi9/ubi-minimal:latest
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 {
     "Name": "registry.access.redhat.com/ubi9/ubi-minimal",
@@ -544,7 +544,7 @@ Next let's run:
 podman images
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 REPOSITORY                           TAG         IMAGE ID      CREATED        SIZE
 localhost/webserver2                 latest      9d94a33540a1  3 minutes ago  246 MB
@@ -567,7 +567,7 @@ mkdir /root/ubi-tarball
 skopeo copy docker://registry.access.redhat.com/ubi9/ubi-minimal:latest dir:/root/ubi-tarball
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Getting image source signatures
 Checking if image destination supports signatures
@@ -585,7 +585,7 @@ cd /root/ubi-tarball
 ls -l
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 total 37024
 -rw-r--r--. 1 root root     6242 Sep 25 22:32 088f0967f6b5742f78966cbaa7012fd7f5091a9b9d547a5c31ddde64a9581595
@@ -607,7 +607,7 @@ Inspecting the images with the `file` command, we discover that these a couple o
 file *
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 088f0967f6b5742f78966cbaa7012fd7f5091a9b9d547a5c31ddde64a9581595: JSON data
 35e8d0567610305e5133f45eac553d3f57e4f33e2f764a1f16bab4f3bf24ad86: gzip compressed data, original size modulo 2^32 9740134
@@ -629,7 +629,7 @@ Let's take a test view of the contents of the largest gzip file (examine "origin
 tar ztvf $(ls --sort=size | head -1)
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 dr-xr-xr-x root/root         0 2022-08-02 21:53 ./
 drwxr-xr-x root/root         0 2022-08-02 21:53 ./run/

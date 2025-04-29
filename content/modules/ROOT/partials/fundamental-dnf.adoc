@@ -130,7 +130,7 @@ Let us get some detailed information about this package.
 dnf info bash-completion
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Available Packages
 Name         : bash-completion
@@ -163,7 +163,7 @@ Installing multiple packages from a simgle command is also easy.
 
 [{format_cmd}]
 ----
-dnf install -y  httpd mariadb php
+dnf install -y  httpd mariadb mariadb-server php
 ----
 
 Some of the pacakges listed above where likely already installed on the host, thus the ouput may have been very underwhelming.
@@ -196,7 +196,7 @@ dnf update -y --setopt tsflags=test
 
 NOTE: If the system is fully patched then the output will yeild no results.  The output shown here is for example only and probably won't match what you see.
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 <...snip...>
 (54/56): python3-perf-6.12.0-55.7.1.el10_0.x86_64.rpm                       12 MB/s | 1.8 MB     00:00    
@@ -226,7 +226,7 @@ to actaully install the updates, you can save that initial download time by runn
 dnf update --security
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Updating Subscription Management repositories.
 Last metadata expiration check: 0:36:21 ago on Mon 07 Apr 2025 04:34:43 PM UTC.
@@ -264,4 +264,6 @@ Even then, with kpatch one cannot SKIP a reboot, one can only DELAY the reboot. 
     * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/installing_managing_and_removing_user-space_components/index[RHEL 8 Documentation: Installing, Managing, and Removing User Space Components]
     * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/installing_managing_and_removing_user-space_components/using-appstream_using-appstream[RHEL 8 Documentation: Using Appstream]
     
+[discrete]
+== End of Unit
 

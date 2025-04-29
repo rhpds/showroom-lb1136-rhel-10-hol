@@ -1,16 +1,19 @@
 :sectnums:
 :sectnumlevels: 3
-:nic0: ens3
-:disk0: /dev/vda
-:disk1: /dev/vdb
-:disk2: /dev/vdc
-:disk3: /dev/vdd
-:disk4: /dev/vde
-:disk_glob: /dev/vd{b..e}
-:format_cmd:        source,bash,options="nowrap",subs="verbatim,attributes,quotes",role="copy"
-:format_cmd_noattr: source,bash,options="nowrap",subs="verbatim,-attributes,quotes",role="copy"
-:format_cmd_output: bash,options="nowrap",subs="verbatim,attributes,quotes"
+:markup-in-source: verbatim,attributes,quotes
+
+:format_cmd:        ,sh,options="nowrap",role=execute,subs="verbatim,quotes,attributes"
+:format_cmd_noattr: ,sh,options="nowrap",role=execute,subs="verbatim,quotes,-attributes"
+:format_output:     bash,options="nowrap",subs="verbatim,attributes,quotes"
 :format_plain:      bash,options="nowrap",subs="-attributes"
+
+:nic0:      "ens3"
+:disk0:     "/dev/vda"
+:disk1:     "/dev/vdb"
+:disk2:     "/dev/vdc"
+:disk3:     "/dev/vdd"
+:disk4:     "/dev/vde"
+:disk_glob: "/dev/vd{b..e}"
 
 ifdef::env-github[]
 :tip-caption: :bulb:

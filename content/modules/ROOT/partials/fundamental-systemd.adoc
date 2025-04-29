@@ -70,7 +70,7 @@ Let's view the current default target.
 systemctl get-default
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 multi-user.target
 ----
@@ -83,7 +83,7 @@ As mentioned above, systemd has another concept called a service.  A service is 
 systemctl -t service | head -n 15
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 UNIT                               LOAD   ACTIVE SUB     DESCRIPTION
 auditd.service                     loaded active running Security Auditing Service
@@ -109,7 +109,7 @@ Next let's view all of the services available (ie: everything installed, running
 systemctl --no-pager list-unit-files -t service
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 UNIT FILE                                  STATE           VENDOR PRESET
 auditd.service                             enabled         enabled
@@ -144,7 +144,7 @@ Let's collect some initial data about the boot process
 systemd-analyze
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Startup finished in 2.463s (kernel) + 3.527s (initrd) + 22.967s (userspace) = 28.957s
 multi-user.target reached after 8.257s in userspace.
@@ -157,7 +157,7 @@ Next let's inspect further details about all running units, ordered by the time 
 systemd-analyze blame | head -n 15
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 14.897s kdump.service
  5.793s sys-devices-platform-serial8250-tty-ttyS2.device
@@ -180,20 +180,22 @@ systemd-analyze blame | head -n 15
 This helps to learn the “cost” of some of the default services.  To speed up boot-time, unnecessary services could potentially be removed or disabled.
 
 
-== Install a LAMP Stack
+== Enable a LAMP Stack
 
 === Install Packages
 
 Now that we have a good idea of what’s installed on our system, let’s get a basic lamp stack up and running.
 
+NOTE: You may have already installed all (or a portion) of these packages in previous exercises, but we'll just do it again for completeness 
+
 Let us install some packages.
 
 [{format_cmd}]
 ----
-dnf install -y httpd mariadb-server mariadb
+dnf install -y httpd mariadb-server mariadb php
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ...snip ...
 Package httpd-2.4.53-11.el9_2.5.x86_64 is already installed.
@@ -208,14 +210,12 @@ Complete!
 
 Now it's time to enable the relevant system services.
 
-NOTE: The "enable --now" syntax was introduced in a recent release of RHEL 7 and of course is now availbale in RHEL 8 and RHEL 9.  The option permanently enables AND immediately starts the specified services in a single command.
-
 [{format_cmd}]
 ----
 systemctl enable --now httpd mariadb
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Created symlink /etc/systemd/system/multi-user.target.wants/httpd.service → /usr/lib/systemd/system/httpd.service.
 Created symlink /etc/systemd/system/mysql.service → /usr/lib/systemd/system/mariadb.service.
@@ -230,7 +230,7 @@ Now let's check the status.  You should see two separate sections in the output,
 systemctl --no-pager status httpd mariadb
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ● httpd.service - The Apache HTTP Server
      Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
@@ -252,19 +252,21 @@ systemctl --no-pager status httpd mariadb
 
 === Enable Firewall
 
-Last but not least, you need to enable a firewall port.  If you are progressing through these exercises sequentially, you may not be familiar the with the firewall system in RHEL.  We will withhold further discussion on the topic until then.  For now, just run the following command to make the service accessible.
+Last but not least, you need to enable a firewall port.  If you are progressing through these exercises sequentially, you may not be familiar the with the firewall system in RHEL just yet.  We will withhold further discussion on the topic until then.  For now, just run the following command to make the service accessible.
 
 [{format_cmd}]
 ----
 firewall-cmd --add-service=http
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 success
 ----
 
-== Additional Resources
+And that's it.  The needed serivces are running and network ports are accessible.
+
+== Further Reading
 
 You can find more information:
 
@@ -273,8 +275,4 @@ You can find more information:
 
 [discrete]
 == End of Unit
-
-ifdef::env-github[]
-link:../RHEL10-Workshop.adoc#toc[Return to TOC]
-endif::[]
 

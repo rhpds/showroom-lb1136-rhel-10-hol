@@ -1,6 +1,4 @@
-
 include::partial$header-format.adoc[]
-
 
 
 
@@ -16,14 +14,14 @@ These steps should be easy to click-through if you are using the showroom termin
 
 Launch a 'tmux' (terminal multiplexer):
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 workshop-tmux.sh TERM1
 ----
 
 Connect to node1 and run the setup playbooks:
 
-[{format_cmd_exec}]
+[{format_cmd}]
 ----
 ssh node1 'sudo -i ./RHEL10-Workshop/sample-configs/gpte/workshop-setup.sh'
 ----

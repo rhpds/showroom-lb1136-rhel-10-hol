@@ -17,8 +17,6 @@ asciidoc:
     workshop_cockpit_url: "https://node3.{subdomain}"
     workshop_cockpit_user_name: "{student_name}"
     workshop_cockpit_user_password: "{common_password}"
-    format_plain: bash,options="nowrap",subs="-attributes"
-
     page-links:
     - url: https://redhat.com
       text: Red Hat

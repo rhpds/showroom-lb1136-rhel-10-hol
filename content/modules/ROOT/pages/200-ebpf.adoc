@@ -3,6 +3,6 @@ include::partial$header-format.adoc[]
 include::partial$advanced-ebpf.adoc[]
 
 ////
-Alway end files with a blank line to avoid include problems.
+Always end files with a blank line to avoid include problems.
 ////
 

@@ -80,7 +80,7 @@ From this we see the current available ubi10 image is ubi10-beta.  So let's grab
 podman pull ubi10-beta/ubi:latest
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Resolved "ubi10-beta/ubi" as an alias (/var/cache/containers/short-name-aliases.conf)
 Trying to pull registry.access.redhat.com/ubi10-beta/ubi:latest...
@@ -101,7 +101,7 @@ Storing signatures
 podman run ubi cat /proc/sys/kernel/hostname
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 a3f3e99082ca
 ----
@@ -113,7 +113,7 @@ So what we have learned here is that the hostname in the container's namespace i
 podman ps -a
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 CONTAINER ID  IMAGE                                       COMMAND               CREATED         STATUS                     PORTS       NAMES
 a3f3e99082ca  registry.access.redhat.com/ubi9/ubi:latest  cat /proc/sys/ker...  42 seconds ago  Exited (0) 42 seconds ago              dreamy_driscoll
@@ -129,7 +129,7 @@ Let us have a look at the process table from with-in the container's namespace.
 podman run ubi ps -ef
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Error: crun: executable file 'ps' not found in $PATH: No such file or directory: OCI runtime attempted to invoke a command that was not found
 ----
@@ -147,7 +147,7 @@ NOTE: Using bind mounts is generally suitable for debugging, but not a good prac
 podman run -v /usr/bin:/usr/bin -v /usr/lib64:/usr/lib64 ubi /bin/ps -ef
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 UID          PID    PPID  C STIME TTY          TIME CMD
 root           1       0  0 17:23 ?        00:00:00 /bin/ps -ef
@@ -164,7 +164,7 @@ Now let us run a command to report the network configuration from within the a c
 podman run -v /usr/sbin:/usr/sbin -v /usr/lib64:/usr/lib64  ubi /usr/sbin/ip addr show eth0
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 2: eth0@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
     link/ether ea:c8:d5:af:ff:19 brd ff:ff:ff:ff:ff:ff link-netnsid 0
@@ -185,7 +185,7 @@ NOTE: Note that we introduce the '--rm' flag to our podman command.  This tells 
 podman run --rm ubi cat /etc/hosts
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ::1        localhost localhost.localdomain localhost6 localhost6.localdomain6
 10.88.0.9  02e3c6ddc1b3 youthful_margulis
@@ -199,7 +199,7 @@ How does the container resolve hostnames (ie: DNS)?
 podman run --rm ubi cat /etc/resolv.conf
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 nameserver 192.168.100.34
 ----
@@ -212,7 +212,7 @@ Pay attention now, the route command is in '/usr/sbin'.  Take a look at the rout
 podman run -v /usr/sbin:/usr/sbin --rm ubi route -n
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
@@ -230,7 +230,7 @@ Finally, look at the filesystem(S) in the container's namespace.
 podman run ubi df -h
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Filesystem      Size  Used Avail Use% Mounted on
 overlay          25G  1.9G   22G   8% /
@@ -247,7 +247,7 @@ You were introduced to Bind-Mounts in the previous section.  Let us examine what
 podman run -v /usr/bin:/usr/bin ubi df -h
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Filesystem      Size  Used Avail Use% Mounted on
 overlay          50G  3.9G   46G   8% /
@@ -281,7 +281,7 @@ A configuration file for a podman build has already been supplied for your syste
 cat /root/custom_image.OCIFile
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 FROM ubi10-beta/ubi:latest
 
@@ -326,7 +326,7 @@ Once this completes, run:
 podman images
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 REPOSITORY                                 TAG         IMAGE ID      CREATED                 SIZE
 localhost/custom_image                     latest      5638b7ebda93  Less than a second ago  263 MB
@@ -373,7 +373,7 @@ We can apply the same filter to any value in the json output. Try a few differen
 curl http://localhost:8080/
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 The Web Server is Running
 ----
@@ -385,7 +385,7 @@ Let us look at the processes running on the host.
 pgrep -laf httpd
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 48787 /usr/sbin/httpd -D FOREGROUND
 48789 /usr/sbin/httpd -D FOREGROUND
@@ -401,7 +401,7 @@ And finally let's look at some networking info.
 netstat -utlpn | grep 8080
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      48784/conmon
 ----
@@ -414,7 +414,7 @@ Now let's introduce a commandline utility 'lsns' to check out the namespaces.
 lsns
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
         NS TYPE   NPROCS   PID USER   COMMAND
 4026531834 time      107     1 root   /usr/lib/systemd/systemd nofb --switched-root --system --deserialize 18
@@ -452,7 +452,7 @@ Since we explored namespaces earlier, we may as well have a look at the control-
 systemd-cgls --no-pager
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ... SNIP ...
 └─machine.slice (#7107)

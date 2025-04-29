@@ -60,7 +60,7 @@ You can start by examining the CPU flags (capabilities) advertised by your syste
 grep -E 'svm|vmx' /proc/cpuinfo
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 
 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good
@@ -79,7 +79,7 @@ You are looking for either the Intel flag (vmx) or the AMD flag (svm).  A more s
 if grep -qE 'svm|vmx' /proc/cpuinfo ; then echo 'Virt Supported' ; else echo 'WARNING: no hardware virtualization support detected'; fi
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Virt Supported
 ----
@@ -132,7 +132,7 @@ One simple command checks various hardware and software configurations for suppo
 virt-host-validate
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
   QEMU: Checking for hardware virtualization                                 : PASS
   QEMU: Checking if device /dev/kvm exists                                   : PASS
@@ -167,7 +167,7 @@ In the previous exercise, you built a custom QCOW2 image using Image Builder.  T
 ls /var/lib/libvirt/images
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 vmguest.qcow2
 ----
@@ -209,7 +209,7 @@ time virt-customize \
     --uninstall cloud-init
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 [   0.0] Examining the guest ...
 [  59.2] Setting a random seed
@@ -265,7 +265,7 @@ virsh net-dhcp-leases default
 
 The output will show us the clients MAC address and the IP address it was assigned via the libvirt integrated dnsmasq service.
 
-[{format_cmd_output}]
+[{format_output}]
 ----
  Expiry Time           MAC address         Protocol   IP address          Hostname   Client ID or DUID
 -----------------------------------------------------------------------------------------------------------
@@ -279,7 +279,7 @@ Another mechanism determine the ip address of the client is to use the 'domifadd
 virsh domifaddr vmguest
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
  Name       MAC address          Protocol     Address
 -------------------------------------------------------------------------------

@@ -94,7 +94,7 @@ Let's take a quick look at the default configuration for ssh & http to start.
 cat /usr/lib/firewalld/services/ssh.xml
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <service>
@@ -109,7 +109,7 @@ cat /usr/lib/firewalld/services/ssh.xml
 cat /usr/lib/firewalld/services/http.xml
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <service>
@@ -132,7 +132,7 @@ Determine current state of the firewalld service.
 firewall-cmd --state
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 running
 ----
@@ -144,7 +144,7 @@ Get a list of currently configured and active "zones".
 firewall-cmd --get-active-zones
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public
   interfaces: {nic0}
@@ -164,7 +164,7 @@ We had this information from the previous command, but to be more specific let's
 firewall-cmd --zone=public --list-interfaces
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 {nic0}
 ----
@@ -176,7 +176,7 @@ Get a list of services configured on the public zone.
 firewall-cmd --zone=public --list-services
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 cockpit dhcpv6-client ssh
 ----
@@ -190,7 +190,7 @@ Now let's get some specific data points on the web console service (cockpit).
 firewall-cmd --info-service=cockpit
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 cockpit
   ports: 9090/tcp
@@ -211,7 +211,7 @@ Finally, let's just list everything about the public zone.
 firewall-cmd --zone=public --list-all
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public (active)
   target: default
@@ -254,7 +254,7 @@ firewall-cmd --add-service={http,https}
 firewall-cmd --zone=public --list-all
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public (active)
   target: default
@@ -280,7 +280,7 @@ Notice below how the permanent state dose NOT include http or https.
 firewall-cmd --zone=public --list-all --permanent
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public
   target: default
@@ -314,7 +314,7 @@ maintain consistency.
 firewall-cmd --zone=public --list-all --permanent
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public
   target: default
@@ -350,7 +350,7 @@ Take a look at the active services now and you should find dhcp6-client absent.
 firewall-cmd --list-services
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 cockpit http https ssh
 ----
@@ -363,7 +363,7 @@ runtime and permanent configs were updated.
 firewall-cmd --list-services --permanent
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 cockpit http https ssh
 ----

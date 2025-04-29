@@ -70,7 +70,7 @@ Create a drop-in configuration file to extend the default httpd.service unit
 workshop-systemd-httpdconfig.sh
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 Contents of /etc/systemd/system/httpd.service.d/50-httpd.conf
 ----
 [Service]
@@ -136,7 +136,7 @@ Save and quit the editor, and view the unit
 systemctl --no-pager cat mariadb
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ...snip...
 # Restart crashed server only, on-failure would also restart, for example, when
@@ -164,7 +164,7 @@ Restart=always
 systemctl --no-pager status httpd
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ● httpd.service - The Apache HTTP Server
      Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
@@ -192,7 +192,7 @@ Notice that systemctl status displays that the unit has been extended with a dro
 systemctl --no-pager status mariadb
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ● mariadb.service - MariaDB 10.5 database server
      Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; preset: disabled)

@@ -58,7 +58,7 @@ firewall-cmd --runtime-to-permanent
 firewall-cmd --zone=public --list-all
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public
   target: default
@@ -91,7 +91,7 @@ firewall-cmd --runtime-to-permanent
 firewall-cmd --zone=public --list-all
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public
   target: default
@@ -129,7 +129,7 @@ They are identical to the system defaults except that our additional ports (8080
 cat /etc/firewalld/services/http.xml
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <service>
@@ -145,7 +145,7 @@ cat /etc/firewalld/services/http.xml
 cat /etc/firewalld/services/https.xml
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <service>
@@ -172,7 +172,7 @@ firewall-cmd --reload
 firewall-cmd --info-service=http
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 http
   ports: 80/tcp 8080/tcp
@@ -189,7 +189,7 @@ http
 firewall-cmd --info-service=https
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 https
   ports: 443/tcp 8443/tcp
@@ -206,7 +206,7 @@ https
 firewall-cmd --zone=public --list-all --permanent
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public
   target: default
@@ -239,7 +239,7 @@ cat /usr/local/etc/firewalld-customname.xml
 ----
 
 ./usr/local/etc/firewalld-customname.xml
-[{format_cmd_output}]
+[{format_output}]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <service>

@@ -24,7 +24,7 @@ For example, let's try to running the utility command called *netstat*.
 netstat -tulpn
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 -bash: netstat: command not found
 ----
@@ -39,7 +39,7 @@ So in order to track down which package contains our specified tool, we use the 
 dnf provides netstat
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 net-tools-2.0-0.72.20160912git.el10.x86_64 : Basic networking tools
 Repo        : rhel-10-for-x86_64-baseos-beta-rpms
@@ -244,7 +244,7 @@ dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.
 dnf repolist
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Updating Subscription Management repositories.
 repo id                                  repo name
@@ -257,12 +257,12 @@ Now let's list all of the repos provided with configuration we just installed.  
 repos are disabled.  Should you need to install something from epel-testing repo, you could temporarily 
 enable a repo by adding the --enable-repo=<name> flag to most dnf operations.
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 dnf repolist --all 'epel*'
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Updating Subscription Management repositories.
 repo id                   repo name                                                              status
@@ -274,12 +274,12 @@ epel-testing-debuginfo    Extra Packages for Enterprise Linux 10 - Testing - x86
 epel-testing-source       Extra Packages for Enterprise Linux 10 - Testing - x86_64 - Source     disabled
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 dnf repolist --all 'epel*' --enablerepo=epel-testing
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Updating Subscription Management repositories.
 repo id                   repo name                                                              status
@@ -293,7 +293,7 @@ epel-testing-source       Extra Packages for Enterprise Linux 10 - Testing - x86
 
 List the available pacakges from the EPEL repo
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 dnf list --available --repo epel
 ----
@@ -305,19 +305,19 @@ dnf list --available --repo epel
 
 Just like you can enable a repo temporarily, you can disable a repo temporarily as well.
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 dnf repolist --all 'epel*' --disablerepo=epel
 ----
 
 For something more permanent, you can use config-manage to set the repo disabled.
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 dnf config-manager --set-disabled epel
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 dnf repolist --all 'epel*' 
 ----

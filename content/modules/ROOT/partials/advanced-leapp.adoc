@@ -65,7 +65,7 @@ Verify through a few commands that this is currently running RHEL8.  These will 
 cat /etc/redhat-release
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Red Hat Enterprise Linux release 8.6 (Ootpa)
 ----
@@ -75,7 +75,7 @@ Red Hat Enterprise Linux release 8.6 (Ootpa)
 uname -r
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 4.18.0-372.32.1.el8_6.x86_64
 ----
@@ -85,7 +85,7 @@ uname -r
 dnf repolist
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Updating Subscription Management repositories.
 repo id                                    repo name
@@ -139,7 +139,7 @@ Ensure that Red Hat Subscription Manager is set to consume the latest RHEL 8.6 c
 subscription-manager release 
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Release: 8.6
 ----
@@ -194,7 +194,7 @@ leapp preupgrade
 
 The output from the previous command should have listed a few items that are inhibiting the upgrade of the host.
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 =================================================
                      UPGRADE INHIBITED
@@ -229,14 +229,14 @@ head /var/log/leapp/leapp-report.txt
 
 The first two lines indicate a Risk Factor, in this case high/inhibitor meaning that this issue will prevent the upgrade from proceeding.  Followed by a Summary of the issue:
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Summary: Firewalld has enabled configuration option "AllowZoneDrifiting" which has been removed in RHEL-9. New behavior is as if "AllowZoneDrifiting" was set to "no".
 ----
 
 This tells us that there is a Firewalld configuration that was allowed in RHEL8 that is no longer allowed in RHEL9.  The next line tells us a "hint" at how to remediate the issue so that the upgrade can proceed:
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Remediation: [hint] Set AllowZoneDrifting=no in /etc/firewalld/firewalld.conf
 ----
@@ -262,7 +262,7 @@ leapp preupgrade
 
 The output to come back clean without any inhibitors that would prevent a successful upgrade.
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 
 =================================================
@@ -292,7 +292,7 @@ time leapp upgrade
 
 After several minutes you should see an almost identical report output indicating that phase one of the upgrade has completed
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 
 =================================================
@@ -323,7 +323,7 @@ and unfortunately this is the step that takes the longest.
 [[ $(hostname -s) == "leapp" ]] && reboot
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Connection to leapp closed by remote host.
 Connection to leapp closed.
@@ -364,7 +364,7 @@ Finally, re-run the commands from earlier to verify that the leapp node has actu
 cat /etc/redhat-release
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Red Hat Enterprise Linux release 9.0 (Plow)
 ----
@@ -374,7 +374,7 @@ Red Hat Enterprise Linux release 9.0 (Plow)
 uname -r
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 5.14.0-70.17.1.el9_0.x86_64
 ----
@@ -384,7 +384,7 @@ uname -r
 dnf repolist
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Updating Subscription Management repositories.
 repo id                                    repo name

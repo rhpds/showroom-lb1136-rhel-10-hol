@@ -3,6 +3,8 @@
 image::rhel-logo-black.jpg[rhel-logo-black,55%,55%]
 
 
+
 == Proceed to Getting Started
 
 Please proceed to the next section and execute the specified commands to get your environment ready.
+

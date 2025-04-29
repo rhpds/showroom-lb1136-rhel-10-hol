@@ -130,7 +130,7 @@ nft list tables
 ----
 
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet workshop
 ----
@@ -179,7 +179,7 @@ nft 'add chain inet workshop INPUT { type filter hook input priority 0 ; }'
 nft list chains
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet workshop {
         chain INPUT {
@@ -218,7 +218,7 @@ Verify the rule change.
 nft -n -a list table inet workshop
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet workshop { # handle 2
         chain INPUT { # handle 1
@@ -244,7 +244,7 @@ There is no web server running on this system so you will get a failed connectio
 nft -n -a list table inet workshop
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet workshop { # handle 2
         chain INPUT { # handle 1
@@ -266,7 +266,7 @@ nft -n -a list table inet workshop
 ----
 
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet workshop { # handle 2
         chain INPUT { # handle 1
@@ -290,7 +290,7 @@ Verify the rule change.
 nft -n -a list table inet workshop
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet workshop { # handle 2
         chain INPUT { # handle 1
@@ -315,7 +315,7 @@ Verify the new rules.
 nft -n -a list table inet workshop
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet workshop { # handle 2
         chain INPUT { # handle 1
@@ -362,7 +362,7 @@ And now check out how firewalld has built the ruleset in the netfilter.
 nft list tables
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet firewalld
 ----
@@ -374,7 +374,7 @@ Word of caution, the output here is long...
 nft -n -a list table inet firewalld
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 table inet firewalld { # handle 3
         chain mangle_PREROUTING { # handle 127
@@ -410,7 +410,7 @@ Now consider all of those rules to implement these basic firewall policies...
 firewall-cmd --list-all
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 public (active)
   target: default

@@ -125,7 +125,7 @@ Verify that the boom profile was created by the previous command:
 boom profile list --osversion "9.2 (Plow)"
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 OsID    Name                     OsVersion
 52f9e46 Red Hat Enterprise Linux 9.2 (Plow)
@@ -169,7 +169,7 @@ Before we do any work, let's take a quick look at what exists already.
 boom entry list
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 BootID  Version                      Name                     RootDevice
 a482bbd 5.14.0-284.30.1.el9_2.x86_64 Red Hat Enterprise Linux UUID=016e7284-31f6-4c28-bbb1-98c5b25fcdbf
@@ -383,7 +383,7 @@ the currently configured GRUB menu options.
 workshop-boom-grublist.sh
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
      0  title="Red Hat Enterprise Linux (5.14.0-284.30.1.el9_2.x86_64) 9.2 (Plow)"
      1  title="RHEL 9 Workshop"

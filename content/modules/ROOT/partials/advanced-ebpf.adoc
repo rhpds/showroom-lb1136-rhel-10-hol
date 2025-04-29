@@ -111,7 +111,7 @@ To run this tool, execute the following and give it a couple of seconds to get s
 /usr/share/bcc/tools/tcplife
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 PID   COMM       LADDR           LPORT RADDR           RPORT TX_KB RX_KB MS
 ----
@@ -141,7 +141,7 @@ ssh node2 "pkill tcplife"
 
 In the primary terminal, you should now see output similar to:
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 PID   COMM       LADDR           LPORT RADDR           RPORT TX_KB RX_KB MS
 28478 sshd       10.0.0.12       22    10.0.0.10       33514    14     2 9091.95
@@ -169,7 +169,7 @@ Continuing on host `node2`, to run `execsnoop` as follows:
 /usr/share/bcc/tools/execsnoop
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 PCOMM            PID    PPID   RET ARGS
 ----
@@ -249,7 +249,7 @@ To run this tool, execute the following and give it a couple of seconds to get s
 /usr/share/bcc/tools/mountsnoop
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 COMM             PID     TID     MNT_NS      CALL
 ----
@@ -266,7 +266,7 @@ In your second terminal having established yourself as root, let's try to unmoun
 ssh node2 "sudo workshop-ebpf-unmountroot.sh"
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 umount: /: target is busy.
 ----
@@ -276,7 +276,7 @@ umount: /: target is busy.
 
 Taking a look at the terminal running `mountsnoop`, we see:
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 umount           20001   20001   4026531840  umount("/", 0x0) = -EBUSY
 ----
@@ -293,7 +293,7 @@ Now let's try to unmount a filesystem that we should be able to unmount.  But be
 ssh node2 "grep /dev/shm /proc/mounts"
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 tmpfs /dev/shm tmpfs *rw,seclabel,nosuid,nodev,relatime* 0 0
 ----
@@ -310,7 +310,7 @@ ssh node2 "sudo workshop-ebpf-unmountshm.sh"
 
 Back to the primary terminal and you should see the following:
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 umount           20003   20003   4026531840  umount("/dev/shm", 0x0) = 0
 ----
@@ -340,7 +340,7 @@ ssh node2 "pkill mountsnoop"
 
 Finally, back to the primary terminal you should see the following:
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 mount            48024   48024   1832832     mount("tmpfs", "/dev/shm", "tmpfs", MS_NOSUID|MS_NODEV, "seclabel,inode64") = 0
 ----
@@ -367,7 +367,7 @@ To run this tool, execute the following and give it a couple of seconds to get s
 /usr/share/bcc/tools/cachestat 5
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
    TOTAL   MISSES     HITS  DIRTIES   BUFFERS_MB  CACHED_MB
 ----
@@ -400,7 +400,7 @@ ssh node2 "pkill cachestat"
 
 In the `cachestat` window, you should output similar to:
 
-[{format_cmd_output}]
+[{format_output}]
 ----
     HITS   MISSES  DIRTIES HITRATIO   BUFFERS_MB  CACHED_MB
    16016     1216        0   92.94%            0        266
@@ -445,7 +445,7 @@ made and with what frequency (count).
 strace -c cat /tmp/workshop.tmp
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 % time     seconds  usecs/call     calls    errors syscall
 ------ ----------- ----------- --------- --------- ----------------
@@ -489,7 +489,7 @@ to get all the relevant syscalls.
 bpftrace -e 'tracepoint:syscalls:sys_enter_* { if (comm == "cat") { @[probe] = count(); } }' -c "cat /tmp/workshop.tmp"
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Attaching 337 probes...
 
@@ -531,7 +531,7 @@ Now we are going to limit the probe to only show 'sys_enter_openat' thereby only
 bpftrace -e 'tracepoint:syscalls:sys_enter_openat { if (comm == "cat") { @[probe] = count(); } }' -c "cat /tmp/workshop.tmp"
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Attaching 1 probe...
 
@@ -603,7 +603,7 @@ ssh node2 "pkill bpftrace"
 
 Finally back to the primary terminal you should have seen some output like this:
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Attaching 1 probe...
 2741 0 0 cat /tmp/workshop.tmp

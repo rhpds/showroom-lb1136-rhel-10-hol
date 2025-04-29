@@ -83,7 +83,7 @@ Now have a look at the general container information.
 podman info
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 host:
   arch: amd64
@@ -132,7 +132,7 @@ Time to pull a container from our local repository.
 podman pull ubi9/ubi
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Resolved "ubi9/ubi" as an alias (/etc/containers/registries.conf.d/001-rhel-shortnames.conf)
 Trying to pull registry.access.redhat.com/ubi9/ubi:latest...
@@ -152,7 +152,7 @@ Have a look at the image list now.
 podman images
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 REPOSITORY                           TAG         IMAGE ID      CREATED      SIZE
 registry.access.redhat.com/ubi9/ubi  latest      9f43f297e77b  2 weeks ago  217 MB
@@ -173,7 +173,7 @@ podman pull ubi9/ubi-init
 podman images
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 REPOSITORY                                   TAG         IMAGE ID      CREATED      SIZE
 registry.access.redhat.com/ubi9/ubi-init     latest      a45c5d18b941  2 weeks ago  235 MB
@@ -198,7 +198,7 @@ podman tag registry.access.redhat.com/ubi9/ubi myfavorite
 podman images
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 REPOSITORY                                   TAG         IMAGE ID      CREATED      SIZE
 registry.access.redhat.com/ubi9/ubi-init     latest      a45c5d18b941  2 weeks ago  235 MB
@@ -230,7 +230,7 @@ podman rmi ubi-init
 podman images
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 REPOSITORY                                   TAG         IMAGE ID      CREATED      SIZE
 registry.access.redhat.com/ubi9/ubi          latest      9f43f297e77b  2 weeks ago  217 MB
@@ -249,7 +249,7 @@ registry.access.redhat.com/ubi9/ubi-minimal  latest      088f0967f6b5  2 weeks a
 podman run ubi echo "hello world"
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 hello world
 ----
@@ -271,7 +271,7 @@ Let us run a few more commands to see what else we can glean.
 podman ps -a
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 CONTAINER ID  IMAGE                                       COMMAND           CREATED         STATUS                     PORTS       NAMES
 fc07b3e29378  registry.access.redhat.com/ubi9/ubi:latest  echo hello world  35 seconds ago  Exited (0) 35 seconds ago              amazing_payne
@@ -284,7 +284,7 @@ Now let us run the exact same command as before to print "hello world".
 podman run ubi echo "hello world"
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 hello world
 ----
@@ -296,7 +296,7 @@ Check out 'podman info' one more time and you should notice a few changes.
 podman info
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 host:
   arch: amd64
@@ -329,7 +329,7 @@ Run 'podman ps -a' to the IDs of the exited containers.
 podman ps -a
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 CONTAINER ID  IMAGE                                       COMMAND           CREATED             STATUS                         PORTS       NAMES
 fc07b3e29378  registry.access.redhat.com/ubi9/ubi:latest  echo hello world  3 minutes ago       Exited (0) 3 minutes ago                   amazing_payne

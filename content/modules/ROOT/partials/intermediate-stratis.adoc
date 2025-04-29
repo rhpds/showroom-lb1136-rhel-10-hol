@@ -61,7 +61,7 @@ stratis pool add-data summitpool {disk3}
 stratis blockdev
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Pool Name    Device Node    Physical Size   Tier
 summitpool   {disk1}                5 GiB   Data
@@ -76,7 +76,7 @@ Verify that the pool shows the additional space, and that the amount used is now
 stratis pool
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Name                          Total Physical   Properties          UUID
 summitpool   15 GiB / 590.65 MiB / 14.42 GiB      ~Ca,~Cr   4b86ce9b...
@@ -96,7 +96,7 @@ stratis pool init-cache summitpool  {disk4}
 stratis blockdev
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Pool Name    Device Node    Physical Size   Tier
 summitpool   {disk1}                5 GiB   Data

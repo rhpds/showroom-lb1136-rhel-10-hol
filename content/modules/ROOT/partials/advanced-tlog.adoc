@@ -53,7 +53,7 @@ NOTE: The command is 'su' + 'dash' + 'other-user'.  Don't forget the dash!
 su - other-user
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 ATTENTION! Your session is being recorded!
 ----
@@ -67,7 +67,7 @@ Now to do a few activities worth logging.  You can check out a directory listing
 ls -l /etc
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 -rw-r--r--.  1 root root       68 Apr 17 22:19 shells
 drwxr-xr-x.  2 root root     4096 Apr 17 21:54 skel
@@ -89,7 +89,7 @@ drwx------.  4 sssd sssd     4096 Apr 17 21:55 sssd
 cat /etc/passwd
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/bin:/sbin/nologin
@@ -111,7 +111,7 @@ ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
 cat /etc/shadow
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 cat: /etc/shadow: Permission denied
 ----
@@ -123,7 +123,7 @@ Oh wait, you need root privileges to see the contents of _/etc/shadow_.  You can
 sudo cat /etc/shadow
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 root:$6$9Jk5EGiB2aBl95kj$RIdiSqNdKt95zqddStFUY/zVKIUujWfGWJkLM5KQ.7zY88Kxxa0qm78qLMFRAqDO2qOrp.qZBaQAKcUFm1Is70:18370:0:99999:7:::
 bin:*:17988:0:99999:7:::
@@ -156,7 +156,7 @@ Session logs are configured to record in the system journal by default.  A disti
 journalctl --no-pager -o verbose  --output-fields=TLOG_USER,TLOG_REC TLOG_USER=other-user 
 ----
 
-[{format_cmd_output}]
+[{format_output}]
 ----
 Sat 2019-04-27 21:21:27.852913 EDT [s=bcde42e4c96048c3908657177414e202;i=700;b=b2333248c22a4c5f912a>
     TLOG_USER=other-user
