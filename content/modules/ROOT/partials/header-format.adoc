@@ -13,6 +13,7 @@
 :disk2:     "/dev/vdc"
 :disk3:     "/dev/vdd"
 :disk4:     "/dev/vde"
+:disk5:     "/dev/vdf"
 :disk_glob: "/dev/vd{b..e}"
 
 ifdef::env-github[]
@@ -30,6 +31,7 @@ ifeval::["%cloud_provider%" == "ec2"]
 :disk2: /dev/nvme2n1
 :disk3: /dev/nvme3n1
 :disk4: /dev/nvme4n1
+:disk5: /dev/nvme5n1
 :disk_glob: /dev/nvme{1..4}n1
 endif::[]
 

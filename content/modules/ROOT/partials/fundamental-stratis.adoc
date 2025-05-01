@@ -2,7 +2,7 @@
 = *Storage Management* (stratis)
 
 [discrete]
-== *Skill Level: Fundamental*
+== *Skill Level: Fundamental* icon:check[]
 
 
 
@@ -139,12 +139,13 @@ sfdisk -s
 
 [{format_output}]
 ----
-{disk0}:  31457280
-{disk1}:   5242880
-{disk2}:   5242880
-{disk3}:   5242880
-{disk4}:   5242880
-total: 52428800 blocks
+{disk0}:  52428800
+{disk1}:   4194304
+{disk2}:   4194304
+{disk3}:   4194304
+{disk4}:   4194304
+{disk5}:      1024
+total: 69207040 blocks
 ----
 
 === Create the Pool
@@ -167,11 +168,11 @@ stratis pool list
 
 [{format_output}]
 ----
-Name                        Total Physical   Properties           UUID
-summitpool   10 GiB / 41.63 MiB / 9.96 GiB      \~Ca,~Cr   4b86ce9b-...
+Name                Total / Used / Free    Properties                                   UUID   Alerts
+summitpool   8 GiB / 532 MiB / 7.48 GiB   ~Ca,~Cr, Op   2c81b8d2-e7dc-4528-a91b-ef4f7da5ba98   WS001
 ----
 
-The output should show a total of 10 GiB, with 41MiB used and 9.96GiB available.  The Properties indicate whether or not the pool has a cache (Ca) and/or is encrypted (Cr).  The "~" character is used to indicate negative, so your output is showing no cache and not encrypted.
+The output should show a total of 8 GiB, with 532 MiB used and 9.96GiB available.  The Properties indicate whether or not the pool has a cache (Ca) and/or is encrypted (Cr).  The "~" character is used to indicate negative, so your output is showing no cache and not encrypted.
 
 Check the status of the block devices
 
@@ -204,8 +205,8 @@ stratis fs list
 
 [{format_output}]
 ----
-Pool Name   Name      Used     Created            Device                            UUID
-summitpool  summitfs  546 MiB  Apr 18 2020 09:15  /dev/stratis/summitpool/summitfs  095fb4891a5743d0a589217071ff71dc
+Pool         Filesystem   Total / Used / Free / Limit            Device                             UUID                                
+summitpool   summitfs     1 TiB / 546 MiB / 1023.47 GiB / None   /dev/stratis/summitpool/summitfs   4fb05c71-0a7d-41c2-afe0-9e1234046e08
 ----
 
 [{format_cmd}]
@@ -225,14 +226,18 @@ df -h
 
 [{format_output}]
 ----
-Filesystem                                 Size  Used Avail Use% Mounted on
-devtmpfs                                   1.9G     0  1.9G   0% /dev
-tmpfs                                      1.9G     0  1.9G   0% /dev/shm
-tmpfs                                      1.9G   17M  1.9G   1% /run
-tmpfs                                      1.9G     0  1.9G   0% /sys/fs/cgroup
-/dev/vda1                                  30G  2.4G   28G   8% /
-tmpfs                                      379M     0  379M   0% /run/user/1000
-/dev/mapper/stratis-1-3e8e[_truncated_]71dc  1.0T  7.2G 1017G   1% /summitdir
+Filesystem                                   Size  Used Avail Use% Mounted on
+/dev/vda3                                    50G  3.6G   47G   8% /
+devtmpfs                                     4.0M     0  4.0M   0% /dev
+tmpfs                                        3.5G     0  3.5G   0% /dev/shm
+tmpfs                                        1.4G   18M  1.4G   2% /run
+/dev/vda2                                    200M  8.4M  192M   5% /boot/efi
+tmpfs                                        1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tmpfs                                        1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs                                        1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs                                        1.0M     0  1.0M   0% /run/stratisd/ns_mounts
+tmpfs                                        713M  4.0K  713M   1% /run/user/1001
+/dev/mapper/stratis-1-2c81[_truncated_]6e08  1.0T   20G 1004G   2% /summitdir 
 ----
 
 The actual space used by a filesystem can be shown using the `stratis fs list` command as shown above.  Notice how the summitdir filesystem has a virtual size of 1T.  If the data in a filesystem actually approaches its virtual size, Stratis will automatically grow the filesystem.
