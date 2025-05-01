@@ -2,7 +2,7 @@
 = *Service Management* (systemd)
 
 [discrete]
-== *Skill Level: Intermediate*
+== *Skill Level: Intermediate* icon:check[]
 
 
 
@@ -121,7 +121,7 @@ systemctl edit mariadb
 
 Type (cut & paste) the following using the automatically launched editor (vi) between the commented lines as outlined above:
 
-[{format_plain}]
+[{format_cmd}]
 ----
 [Service]
 Restart=always
