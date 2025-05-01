@@ -2,7 +2,7 @@
 = *Service Management* (systemd)
 
 [discrete]
-== *Skill Level: Fundamental*
+== *Skill Level: Fundamental* icon:check[]
 
 
 
@@ -86,20 +86,21 @@ systemctl -t service | head -n 15
 [{format_output}]
 ----
 UNIT                               LOAD   ACTIVE SUB     DESCRIPTION
-auditd.service                     loaded active running Security Auditing Service
-chronyd.service                    loaded active running NTP client/server
-cloud-config.service               loaded active exited  Apply the settings specified in cloud-config
-cloud-final.service                loaded active exited  Execute cloud user/final scripts
-cloud-init-local.service           loaded active exited  Initial cloud-init job (pre-networking)
-cloud-init.service                 loaded active exited  Initial cloud-init job (metadata service crawler)
-crond.service                      loaded active running Command Scheduler
-dbus-broker.service                loaded active running D-Bus System Message Bus
-dracut-shutdown.service            loaded active exited  Restore /run/initramfs on shutdown
-firewalld.service                  loaded active running firewalld - dynamic firewall daemon
-getty@tty1.service                 loaded active running Getty on tty1
-import-state.service               loaded active exited  Import network configuration from initramfs
-irqbalance.service                 loaded active running irqbalance daemon
-kdump.service                      loaded active exited  Crash recovery kernel arming
+  UNIT                                                  LOAD   ACTIVE SUB     DESCRIPTION
+  auditd.service                                        loaded active running Security Audit Logging Service
+  chronyd.service                                       loaded active running NTP client/server
+  cloud-config.service                                  loaded failed failed  Cloud-init: Config Stage
+  cloud-final.service                                   loaded failed failed  Cloud-init: Final Stage
+  cloud-init-local.service                              loaded failed failed  Cloud-init: Local Stage (pre-network)
+  cloud-init.service                                    loaded failed failed  Cloud-init: Network Stage
+  crond.service                                         loaded active running Command Scheduler
+  dbus-broker.service                                   loaded active running D-Bus System Message Bus
+  dracut-shutdown.service                               loaded active exited  Restore /run/initramfs on shutdown
+  firewalld.service                                     loaded active running firewalld - dynamic firewall daemon
+  fwupd.service                                         loaded active running Firmware update daemon
+  getty@tty1.service                                    loaded active running Getty on tty1
+  gssproxy.service                                      loaded active running GSSAPI Proxy Daemon
+  irqbalance.service                                    loaded active running irqbalance daemon
 ----
 
 Next let's view all of the services available (ie: everything installed, running or not) on the system. The following command is similar to the older chkconfig --list as it will show both enabled and disabled services:
@@ -111,22 +112,21 @@ systemctl --no-pager list-unit-files -t service
 
 [{format_output}]
 ----
-UNIT FILE                                  STATE           VENDOR PRESET
-auditd.service                             enabled         enabled
-autovt@.service                            alias           -
-chrony-wait.service                        disabled        disabled
-chronyd.service                            enabled         enabled
-cloud-config.service                       enabled         disabled
-cloud-final.service                        enabled         disabled
-cloud-init-local.service                   enabled         disabled
-cloud-init.service                         enabled         disabled
-cockpit-motd.service                       static          -
-cockpit-wsinstance-http.service            static          -
-cockpit-wsinstance-https-factory@.service  static          -
-cockpit-wsinstance-https@.service          static          -
-cockpit.service                            static          -
-console-getty.service                      disabled        disabled
-container-getty@.service                   static          -
+UNIT FILE                                             STATE           PRESET  
+audit-rules.service                                   enabled         enabled 
+auditd.service                                        enabled         enabled 
+auth-rpcgss-module.service                            static          -       
+autovt@.service                                       alias           -       
+blk-availability.service                              disabled        disabled
+capsule@.service                                      static          -       
+chrony-wait.service                                   disabled        disabled
+chronyd-restricted.service                            disabled        disabled
+chronyd.service                                       enabled         enabled                                                                                    
+cloud-config.service                                  enabled         enabled 
+cloud-final.service                                   enabled         enabled 
+cloud-init-hotplugd.service                           static          -       
+cloud-init-local.service                              enabled         enabled 
+cloud-init.service                                    enabled         enabled 
 
 ...<output truncated>...
 ----
@@ -146,8 +146,8 @@ systemd-analyze
 
 [{format_output}]
 ----
-Startup finished in 2.463s (kernel) + 3.527s (initrd) + 22.967s (userspace) = 28.957s
-multi-user.target reached after 8.257s in userspace.
+Startup finished in 1.582s (kernel) + 2.850s (initrd) + 46.531s (userspace) = 50.963s 
+multi-user.target reached after 41.873s in userspace.
 ----
 
 Next let's inspect further details about all running units, ordered by the time they took to initialize.
@@ -159,22 +159,21 @@ systemd-analyze blame | head -n 15
 
 [{format_output}]
 ----
-14.897s kdump.service
- 5.793s sys-devices-platform-serial8250-tty-ttyS2.device
- 5.793s dev-ttyS2.device
- 5.792s dev-ttyS3.device
- 5.792s sys-devices-platform-serial8250-tty-ttyS3.device
- 5.787s dev-ttyS0.device
- 5.787s sys-devices-pnp0-00:04-tty-ttyS0.device
- 5.778s dev-ttyS1.device
- 5.778s sys-devices-platform-serial8250-tty-ttyS1.device
- 5.756s sys-module-configfs.device
- 5.558s dev-disk-by\x2did-nvme\x2dAmazon_Elastic_Block_Store_vol0a6e8f9e6b883a484\x2dpart2.device
- 5.558s dev-disk-by\x2dpartuuid-68b2905b\x2ddf3e\x2d4fb3\x2d80fa\x2d49d1e773aa33.device
- 5.558s dev-disk-by\x2duuid-7B77\x2d95E7.device
- 5.558s dev-disk-by\x2did-nvme\x2dnvme.1d0f\x2d766f6c3061366538663965366238383361343834\x2d416d617a6f6e20456c617374696320426c6f
-636b2053746f7265\x2d00000001\x2dpart2.device
- 5.558s dev-disk-by\x2dpath-pci\x2d0000:00:04.0\x2dnvme\x2d1\x2dpart2.device
+31.922s osbuild-subscription-register.service
+ 9.920s kdump.service
+ 4.254s sys-module-configfs.device
+ 4.253s dev-ttyS3.device
+ 4.253s sys-devices-platform-serial8250-serial8250:0-serial8250:0.3-tty-ttyS3.device
+ 4.253s sys-devices-platform-serial8250-serial8250:0-serial8250:0.2-tty-ttyS2.device
+ 4.253s dev-ttyS2.device
+ 4.251s dev-ttyS1.device
+ 4.251s sys-devices-platform-serial8250-serial8250:0-serial8250:0.1-tty-ttyS1.device
+ 4.246s dev-ttyS0.device
+ 4.246s sys-devices-pnp0-00:00-00:00:0-00:00:0.0-tty-ttyS0.device
+ 4.221s dev-vport1p1.device
+ 4.221s dev-virtio\x2dports-org.qemu.guest_agent.0.device
+ 4.221s sys-devices-pci0000:00-0000:00:02.4-0000:05:00.0-virtio1-virtio\x2dports-vport1p1.device
+ 3.866s dev-ptp0.device
 ----
 
 This helps to learn the “cost” of some of the default services.  To speed up boot-time, unnecessary services could potentially be removed or disabled.
@@ -197,10 +196,12 @@ dnf install -y httpd mariadb-server mariadb php
 
 [{format_output}]
 ----
-...snip ...
-Package httpd-2.4.53-11.el9_2.5.x86_64 is already installed.
-Package mariadb-server-3:10.5.16-2.el9_0.x86_64 is already installed.
-Package mariadb-3:10.5.16-2.el9_0.x86_64 is already installed.
+...<output truncated>...
+
+Package httpd-2.4.63-1.el10.x86_64 is already installed.
+Package mariadb-server-3:10.11.11-1.el10.x86_64 is already installed.
+Package mariadb-3:10.11.11-1.el10.x86_64 is already installed.
+Package php-8.3.15-1.el10.x86_64 is already installed.
 Dependencies resolved.
 Nothing to do.
 Complete!
@@ -232,21 +233,25 @@ systemctl --no-pager status httpd mariadb
 
 [{format_output}]
 ----
-● httpd.service - The Apache HTTP Server
-     Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
-     Active: active (running) since Mon 2023-09-25 14:53:46 UTC; 11s ago
+● httpd.service - The Apache HTTP Server                                                                                                                         
+     Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)                       
+    Drop-In: /etc/systemd/system/httpd.service.d                                                                                                                 
+             └─php-fpm.conf                                                                                                                                      
+     Active: active (running) since Thu 2025-05-01 14:53:17 UTC; 26s ago                                                                                         
+ Invocation: cd8bdc7ee14a4efd852e156570cc1e4f            
        Docs: man:httpd.service(8)
-   Main PID: 36188 (httpd)
+   Main PID: 58342 (httpd)
      Status: "Total requests: 0; Idle/Busy workers 100/0;Requests/sec: 0; Bytes served/sec:   0 B/sec"
-      Tasks: 213 (limit: 22480)
-     Memory: 33.3M
-        CPU: 105ms
-     CGroup: /system.slice/httpd.service
-             ├─36188 /usr/sbin/httpd -DFOREGROUND
-             ├─36233 /usr/sbin/httpd -DFOREGROUND
-             ├─36238 /usr/sbin/httpd -DFOREGROUND
-             ├─36239 /usr/sbin/httpd -DFOREGROUND
-             └─36252 /usr/sbin/httpd -DFOREGROUND
+      Tasks: 177 (limit: 45075)
+     Memory: 14M (peak: 14.5M)
+        CPU: 149ms
+     CGroup: /system.slice/httpd.service 
+             ├─58342 /usr/sbin/httpd -DFOREGROUND
+             ├─58402 /usr/sbin/httpd -DFOREGROUND
+             ├─58403 /usr/sbin/httpd -DFOREGROUND
+             ├─58404 /usr/sbin/httpd -DFOREGROUND
+             └─58430 /usr/sbin/httpd -DFOREGROUND
+
 ...<output truncated>...
 ----
 
