@@ -2,7 +2,7 @@
 = *Container Management* (podman)
 
 [discrete]
-== *Skill Level: Intermediate*
+== *Skill Level: Intermediate* icon:check[]
 
 
 
@@ -100,7 +100,7 @@ host:
   cgroupManager: systemd
   cgroupVersion: v2
   conmon:
-...<SNIP>...
+...<output truncated>...
 ----
 
 There is obviously a lot of information here, but we are just trying to point out
@@ -300,7 +300,7 @@ podman info
 ----
 host:
   arch: amd64
-  buildahVersion: 1.24.1
+  buildahVersion: 1.39.0
   cgroupControllers:
   - cpuset
   - cpu
@@ -313,7 +313,8 @@ host:
   cgroupManager: systemd
   cgroupVersion: v2
   conmon:
-...<SNIP>...
+
+...<output truncated>...
 ----
 
 Again, there is a lot of information here.  But if you dig into it, you should notice that 
