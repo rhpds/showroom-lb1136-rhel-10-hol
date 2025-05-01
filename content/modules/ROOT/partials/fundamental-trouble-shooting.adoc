@@ -117,7 +117,7 @@ NOTES, BUGS, EXAMPLE, AUTHORS, and SEE ALSO.
 ....<snip>
 ----
 
-Notice the table of "section numbers".  More on that laster, but just make note that manuals pages are structured into categories.  Sometimes when the search is ambiguous, you may need to specific which section of the pages you want to search.
+Notice the table of "section numbers".  More on that laster, but just make note that manuals pages are structured into categories.  Sometimes when the search is ambiguous, you may need to specify which section of the pages you want to search.
 
 === Locate page
 
@@ -139,7 +139,7 @@ SYNOPSIS
          [-W host:port] [-w local_tun[:remote_tun]] destination [command]
 ----
 
-
+And there you have it, complete information on how to invoke ssh with all of it's required and optional parameters.
 
 === Search for key words
 
