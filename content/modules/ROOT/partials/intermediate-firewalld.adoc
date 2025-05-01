@@ -2,7 +2,7 @@
 = *Firewall Management* (firewalld)
 
 [discrete]
-== *Skill Level: Intermediate*
+== *Skill Level: Intermediate*  icon:check[]
 
 
 
