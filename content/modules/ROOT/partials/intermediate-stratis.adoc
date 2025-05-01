@@ -2,7 +2,7 @@
 = *Storage Management* (stratis)
 
 [discrete]
-== *Skill Level: Intermediate*
+== *Skill Level: Intermediate* icon:check[]
 
 
 
@@ -42,8 +42,8 @@ You are now ready to proceed with these exercises.
 
 In this unit you will be exposed to some more advanced concepts for storage management including:
 
-  + how to grow an active storage pool, and 
-  + how to add a cache device
+  * how to grow an active storage pool, and 
+  * how to add a cache device
 
 Again, please be sure to have completed the fundamental exercises first.
 
@@ -76,10 +76,10 @@ Verify that the pool shows the additional space, and that the amount used is now
 stratis pool
 ----
 
-[{format_output}]
+[{format_plain}]
 ----
-Name                          Total Physical   Properties          UUID
-summitpool   15 GiB / 590.65 MiB / 14.42 GiB      ~Ca,~Cr   4b86ce9b...
+Name                  Total / Used / Free    Properties                                   UUID   Alerts
+summitpool   12 GiB / 538 MiB / 11.47 GiB   ~Ca,~Cr, Op   e7006323-5c8a-4ab8-b5f0-a693c6fb5b81         
 ----
 
 == Add Cache Device
@@ -98,11 +98,11 @@ stratis blockdev
 
 [{format_output}]
 ----
-Pool Name    Device Node    Physical Size   Tier
-summitpool   {disk1}                5 GiB   Data
-summitpool   {disk2}                5 GiB   Data
-summitpool   {disk3}                5 GiB   Data
-summitpool   {disk4}                5 GiB  Cache
+Pool Name    Device Node  Physical Size    Tier   UUID                                
+summitpool   {disk1}              4 GiB    DATA   0231506a-5caa-49e1-b650-5a5bed250fa5
+summitpool   {disk2}              4 GiB    DATA   d9ae78ad-037e-44f9-95a2-9c662573c087
+summitpool   {disk3}              4 GiB    DATA   fe35bf55-2803-4aba-bab9-1985a6cd486e
+summitpool   {disk4}              4 GiB   CACHE   50feb9fe-7f35-4d83-ba8a-0fc73332823a
 ----
 
 

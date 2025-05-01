@@ -166,7 +166,7 @@ Verify your work and confirm the existence of the new storage pool with the comb
 stratis pool list
 ----
 
-[{format_output}]
+[{format_plain}]
 ----
 Name                Total / Used / Free    Properties                                   UUID   Alerts
 summitpool   8 GiB / 532 MiB / 7.48 GiB   ~Ca,~Cr, Op   2c81b8d2-e7dc-4528-a91b-ef4f7da5ba98   WS001
