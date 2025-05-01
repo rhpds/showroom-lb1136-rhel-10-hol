@@ -310,7 +310,7 @@ Just like you can enable a repo temporarily, you can disable a repo temporarily 
 dnf repolist --all 'epel*' --disablerepo=epel
 ----
 
-For something more permanent, you can use config-manage to set the repo disabled.
+For something more permanent, you can use config-manager to set the repo disabled.
 
 [{format_output}]
 ----
