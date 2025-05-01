@@ -2,7 +2,7 @@
 = *Package Management* (dnf)
 
 [discrete]
-== *Skill Level: Intermediate*
+== *Skill Level: Intermediate* icon:check[]
 
 
 
@@ -10,6 +10,35 @@
 == Overview
 
 You have already been introduced to *dnf* and the fundamentals of package management.  Now we'll progress to the more sophisticated capabilities of *dnf* and management of the repositories that back the highlevel tools.
+
+== Getting Started
+
+For these exercises, you will be using the host `node1` as user `root`.
+
+From host `bastion`, ssh to `node1`.
+
+[{format_cmd}]
+----
+ssh node1
+----
+
+Use `sudo` to elevate your privileges.
+
+[{format_cmd}]
+----
+[[ "$UID" == 0 ]] || sudo -i
+----
+
+Verify that you are on the right host for these exercises.
+
+[{format_cmd}]
+----
+workshop-dnf-checkhost.sh
+----
+
+You are now ready to proceed with these exercises.
+
+
 
 
 == More About dnf
@@ -65,7 +94,7 @@ dnf install -y net-tools
 netstat -tulpn
 ----
 
-
+Great, it works!
 
 === Repo Query & Dependencies
 
@@ -88,11 +117,43 @@ What other packages does this depend on.
 dnf repoquery --depends ncurses
 ----
 
+[{format_output}]
+----
+Last metadata expiration check: 0:01:53 ago on Thu 01 May 2025 03:03:26 PM UTC.
+libc.so.6()(64bit)
+libc.so.6(GLIBC_2.14)(64bit)
+libc.so.6(GLIBC_2.2.5)(64bit)
+libc.so.6(GLIBC_2.3)(64bit)
+libc.so.6(GLIBC_2.3.4)(64bit)
+libc.so.6(GLIBC_2.33)(64bit)
+libc.so.6(GLIBC_2.34)(64bit)
+libc.so.6(GLIBC_2.4)(64bit)
+libc.so.6(GLIBC_2.7)(64bit)
+libc.so.6(GLIBC_ABI_DT_RELR)(64bit)
+libtic.so.6()(64bit)
+libtinfo.so.6()(64bit)
+ncurses-libs(x86-64) = 6.4-13.20240127.el10
+ncurses-libs(x86-64) = 6.4-14.20240127.el10
+rtld(GNU_HASH)
+----
+
 How about the other way around, what other packages have a dependency on *ncurses*.
 
 [{format_cmd}]
 ----
 dnf repoquery --whatdepends ncurses
+----
+
+[{format_output}]
+----
+frr-0:10.1-10.el10.x86_64
+frr-0:10.1-3.el10.x86_64
+frr-0:10.1-7.el10.x86_64
+perl-Term-Cap-0:1.18-510.el10.noarch
+perl-Term-Cap-0:1.18-511.el10.noarch
+varnish-0:7.4.2-4.el10.x86_64
+varnish-0:7.6.0-3.el10.x86_64
+varnish-0:7.6.1-2.el10.x86_64
 ----
 
 From this ouptut you can determine what other tools are impacted if you were to attempt a *dnf remove* or *dnf update* of ncurses.
@@ -130,6 +191,24 @@ dnf alias add li='repoquery --installed --qf %{installtime}\t%{vendor}\t%{arch}\
 dnf li
 ----
 
+[{format_output}]
+----
+2025-03-11 22:55        Koji    x86_64  gdbm-1.23
+2025-03-11 22:55        Koji    x86_64  gdbm-libs-1.23
+2025-03-11 22:55        Red Hat, Inc.   noarch  appstream-data-10
+2025-03-11 22:55        Red Hat, Inc.   noarch  basesystem-11
+2025-03-11 22:55        Red Hat, Inc.   noarch  ca-certificates-2024.2.69_v8.0.303
+2025-03-11 22:55        Red Hat, Inc.   noarch  crontabs-1.11^20190603git9e74f2d
+2025-03-11 22:55        Red Hat, Inc.   noarch  crypto-policies-20250214
+2025-03-11 22:55        Red Hat, Inc.   noarch  dbus-common-1.14.10
+2025-03-11 22:55        Red Hat, Inc.   noarch  dnf-plugins-core-4.7.0
+2025-03-11 22:55        Red Hat, Inc.   noarch  efi-filesystem-6
+2025-03-11 22:55        Red Hat, Inc.   noarch  elfutils-default-yama-scope-0.192
+2025-03-11 22:55        Red Hat, Inc.   noarch  fonts-filesystem-2.0.5
+2025-03-11 22:55        Red Hat, Inc.   noarch  hwdata-0.379
+2025-03-11 22:55        Red Hat, Inc.   noarch  initscripts-service-10.26
+----
+
 Or, how about an alias for listing the available packages
 
 [{format_cmd_noattr}]
@@ -142,11 +221,38 @@ dnf alias add la='repoquery --available --qf %{reponame}\t%{arch}\t%{name}-%{ver
 dnf la
 ----
 
+[{format_output}]
+----
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  NetworkManager-config-connectivity-redhat-1.48.10
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  NetworkManager-config-connectivity-redhat-1.51.5
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  NetworkManager-config-connectivity-redhat-1.51.6
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  NetworkManager-config-connectivity-redhat-1.51.90
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  NetworkManager-config-connectivity-redhat-1.52.0
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  WALinuxAgent-2.9.1.1
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  WALinuxAgent-udev-2.9.1.1
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  adobe-mappings-cmap-20230622
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  adobe-mappings-cmap-deprecated-20230622
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  adobe-mappings-pdf-20190401
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  adwaita-cursor-theme-46.0
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  adwaita-icon-theme-46.0
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  alsa-firmware-1.2.4
+rhel-10-for-x86_64-appstream-beta-rpms  noarch  alsa-sof-firmware-2024.03
+
+<...output truncated...>
+----
+
 Here is how you see the list of the configured aliases.
 
 [{format_cmd}]
 ----
 dnf alias list 
+----
+
+[{format_output}]
+----
+Alias ls='list'
+Alias li='repoquery --installed --qf %{installtime}\t%{vendor}\t%{arch}\t%{name}-%{version}'
+Alias la='repoquery --available --qf %{reponame}\t%{arch}\t%{name}-%{version}'
 ----
 
 And lastly, how to delete an alias.
@@ -172,6 +278,23 @@ To see a list of available group names
 dnf grouplist
 ----
 
+[{format_output}]
+----
+Available Environment Groups:
+   Server with GUI
+   Server
+   Minimal Install
+   Workstation
+   Virtualization Host
+   Custom Operating System
+Available Groups:
+   Container Management
+   .NET Development
+   Console Internet Tools
+   RPM Development Tools
+   System Tools
+----
+
 To install a group you use the *groupinstall* command.  Since we are not interested in installing
 anything for this workshop, we'll use the test flags that were introduced in the fundamentals unit.
 
@@ -179,6 +302,25 @@ anything for this workshop, we'll use the test flags that were introduced in the
 ----
 dnf groupinstall "RPM Development Tools" -y --setopt tsflags=test
 ----
+
+[{format_output}]
+----
+<...output truncated...>
+
+(28/30): unzip-6.0-68.el10.x86_64.rpm                   2.1 MB/s | 194 kB     00:00    
+(29/30): zip-3.0-44.el10.x86_64.rpm                     2.5 MB/s | 274 kB     00:00    
+(30/30): systemd-rpm-macros-257-9.el10_0.1.noarch.rpm   143 kB/s |  22 kB     00:00    
+-----------------------------------------------------------------------------------
+Total                                                   4.7 MB/s | 6.4 MB     00:01     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Complete!
+The downloaded packages were saved in cache until the next successful transaction.
+You can remove cached packages by executing 'dnf clean packages'.
+----
+
 
 You could just as easily use the groupremove to uninstall the package collection.
 
@@ -228,15 +370,15 @@ Installing a package with the repo config often has the added advantage of insta
 
 A common repo to add to RHEL development systems is EPEL.  This repository (Extra Pacakges for Enterprise Linux) contains pacakges
 from the Fedora development community which have been compiled and verified for installation on RHEL.  Software from EPEL offers a path
-to trying new things on RHEL9 which not otherwise be possible.
+to trying new things on RHEL which would not otherwise be possible.
 
 NOTE:  The packages from EPEL are COMMUNITY SUPPORT ONLY!!!  We are using EPEL for example purposes only.
 
-Let's add the EPEL repo for RHEL 10 to our host.
+Let's add the EPEL repo to our RHEL 10 host.
 
 [{format_cmd}]
 ----
-dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
 ----
 
 [{format_cmd}]
@@ -257,7 +399,7 @@ Now let's list all of the repos provided with configuration we just installed.  
 repos are disabled.  Should you need to install something from epel-testing repo, you could temporarily 
 enable a repo by adding the --enable-repo=<name> flag to most dnf operations.
 
-[{format_output}]
+[{format_cmd}]
 ----
 dnf repolist --all 'epel*'
 ----
@@ -274,7 +416,7 @@ epel-testing-debuginfo    Extra Packages for Enterprise Linux 10 - Testing - x86
 epel-testing-source       Extra Packages for Enterprise Linux 10 - Testing - x86_64 - Source     disabled
 ----
 
-[{format_output}]
+[{format_cmd}]
 ----
 dnf repolist --all 'epel*' --enablerepo=epel-testing
 ----
@@ -293,7 +435,7 @@ epel-testing-source       Extra Packages for Enterprise Linux 10 - Testing - x86
 
 List the available pacakges from the EPEL repo
 
-[{format_output}]
+[{format_cmd}]
 ----
 dnf list --available --repo epel
 ----
@@ -305,19 +447,19 @@ dnf list --available --repo epel
 
 Just like you can enable a repo temporarily, you can disable a repo temporarily as well.
 
-[{format_output}]
+[{format_cmd}]
 ----
 dnf repolist --all 'epel*' --disablerepo=epel
 ----
 
 For something more permanent, you can use config-manager to set the repo disabled.
 
-[{format_output}]
+[{format_cmd}]
 ----
 dnf config-manager --set-disabled epel
 ----
 
-[{format_output}]
+[{format_cmd}]
 ----
 dnf repolist --all 'epel*' 
 ----
