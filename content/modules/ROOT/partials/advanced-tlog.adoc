@@ -11,9 +11,10 @@
 
 Tlog is a terminal I/O recording and playback package for Linux.  The session logs retain all the passed data and timing.  Sessions are recorded in JSON format as to eventually deliver the data to a storage service _(such as Elasticsearch)_ where it can be searched, queried and be played back.
 
-If you have successfully run the RHEL 8 lab preparation playbook, then node1.example.com has already been properly configured for session logging.  What follows are some basic exercises to demonstrate how this facility functions.
+Starting with RHEL 9, TLOG is configured by a relatively simple rhel-system-role.  We will come back to that later.
 
-Starting with RHEL 9, TLOG is configured by a relatively simple system-role.  We will com back to that later.
+If the lab's preparation playbook completed successfully, then node1.example.com has already been properly configured for session logging.  What follows are some basic exercises to demonstrate how this facility functions.
+
 
 == Getting Started
 
