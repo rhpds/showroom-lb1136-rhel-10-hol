@@ -2,7 +2,7 @@
 = Advanced: *Session Logging* (tlog)
 
 [discrete]
-== *Skill Level: Advanced*
+== *Skill Level: Advanced* icon:check[]
 
 
 
@@ -69,19 +69,23 @@ ls -l /etc
 
 [{format_output}]
 ----
--rw-r--r--.  1 root root       68 Apr 17 22:19 shells
-drwxr-xr-x.  2 root root     4096 Apr 17 21:54 skel
--rw-r--r--.  1 root root      138 Sep 12  2019 sos.conf
-drwxr-xr-x.  3 root root     4096 Apr 17 21:58 ssh
-drwxr-xr-x.  2 root root     4096 Apr 17 21:55 ssl
-drwx------.  4 sssd sssd     4096 Apr 17 21:55 sssd
--rw-r--r--.  1 root root       48 Apr 17 22:21 subgid
--rw-r--r--.  1 root root       24 Apr 17 22:19 subgid-
--rw-r--r--.  1 root root       48 Apr 17 22:21 subuid
--rw-r--r--.  1 root root       24 Apr 17 22:19 subuid-
--rw-r-----.  1 root root     1786 Aug 16  2019 sudo.conf
--r--r-----.  1 root root     4328 Aug 16  2019 sudoers
-...SNIP...
+total 1276
+-rw-r--r--.  1 root root     12 Feb 13 00:00 adjtime
+-rw-r--r--.  1 root root   1529 Nov 29  2023 aliases
+drwxr-xr-x.  2 root root   4096 May  1 21:01 alternatives
+-rw-r--r--.  1 root root    541 Dec 11 00:00 anacrontab
+drwxr-xr-x.  3 root root     51 May  1 20:59 ansible
+drwxr-x---.  4 root root    100 Mar 11 22:55 audit
+drwxr-xr-x.  3 root root   4096 May  1 21:26 authselect
+drwxr-xr-x.  2 root root     38 Mar 11 22:56 bash_completion.d
+-rw-r--r--.  1 root root   2709 Nov 29  2023 bashrc
+-rw-r--r--.  1 root root    535 Oct 29  2024 bindresvport.blacklist
+drwxr-xr-x.  2 root root      6 Mar 10 00:00 binfmt.d
+-rw-r--r--.  1 root root   1380 Oct  8  2024 chrony.conf
+drwxr-xr-x.  2 root root     26 Mar 11 22:55 cifs-utils
+drwxr-xr-x.  4 root root     59 Mar 11 22:56 cloud
+
+...<output truncated>...
 ----
 
 [{format_cmd}]
@@ -91,19 +95,23 @@ cat /etc/passwd
 
 [{format_output}]
 ----
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-adm:x:3:4:adm:/var/adm:/sbin/nologin
-lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+root:x:0:0:Super User:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
 sync:x:5:0:sync:/sbin:/bin/sync
 shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
 halt:x:7:0:halt:/sbin:/sbin/halt
-mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
-operator:x:11:0:operator:/root:/sbin/nologin
-games:x:12:100:games:/usr/games:/sbin/nologin
-ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
-...SNIP...
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/usr/sbin/nologin
+yggdrasil:x:999:999:yggdrasil system user:/var/lib/yggdrasil:/usr/sbin/nologin
+yggdrasil-worker:x:998:998:yggdrasil worker user:/:/usr/sbin/nologin
+
+...<output truncated>...
 ----
 
 [{format_cmd}]
@@ -125,19 +133,23 @@ sudo cat /etc/shadow
 
 [{format_output}]
 ----
-root:$6$9Jk5EGiB2aBl95kj$RIdiSqNdKt95zqddStFUY/zVKIUujWfGWJkLM5KQ.7zY88Kxxa0qm78qLMFRAqDO2qOrp.qZBaQAKcUFm1Is70:18370:0:99999:7:::
-bin:*:17988:0:99999:7:::
-daemon:*:17988:0:99999:7:::
-adm:*:17988:0:99999:7:::
-lp:*:17988:0:99999:7:::
-sync:*:17988:0:99999:7:::
-shutdown:*:17988:0:99999:7:::
-halt:*:17988:0:99999:7:::
-mail:*:17988:0:99999:7:::
-operator:*:17988:0:99999:7:::
-games:*:17988:0:99999:7:::
-ftp:*:17988:0:99999:7:::
-...SNIP...
+root:*:20025:0:99999:7:::
+bin:*:20025:0:99999:7:::
+daemon:*:20025:0:99999:7:::
+adm:*:20025:0:99999:7:::
+lp:*:20025:0:99999:7:::
+sync:*:20025:0:99999:7:::
+shutdown:*:20025:0:99999:7:::
+halt:*:20025:0:99999:7:::
+mail:*:20025:0:99999:7:::
+operator:*:20025:0:99999:7:::
+games:*:20025:0:99999:7:::
+ftp:*:20025:0:99999:7:::
+nobody:*:20025:0:99999:7:::
+yggdrasil:!:20158::::::
+yggdrasil-worker:!:20158::::::
+
+...<output truncated>...
 ----
 
 We are done with our limited nafarious activities, so proceed to `exit`
@@ -246,10 +258,6 @@ Red Hat Documentation
 
 [discrete]
 == End of Unit
-
-ifdef::env-github[]
-link:../RHEL10-Workshop.adoc#toc[Return to TOC]
-endif::[]
 
 ////
 Always end files with a blank line to avoid include problems.
