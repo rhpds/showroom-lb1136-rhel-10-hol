@@ -2,7 +2,7 @@
 = *Image Builder* (composer)
 
 [discrete]
-== *Skill Level: Intermediate*
+== *Skill Level: Intermediate* icon:check[]
 
 
 
@@ -170,26 +170,29 @@ If everything is in order, you output should look something like this.
 [{format_plain}]
 ----
 blueprint: sample-webserver v0.0.1
-    libseccomp-2.5.2-2.el9.x86_64
-    libpwquality-1.4.4-8.el9.x86_64
-    kmod-28-7.el9.x86_64
-    libutempter-1.2.1-6.el9.x86_64
-    lz4-libs-1.9.3-5.el9.x86_64
-    libnfnetlink-1.0.1-21.el9.x86_64
-    libacl-2.3.1-3.el9.x86_64
-    libkcapi-hmaccalc-1.3.1-3.el9.x86_64
-    libcap-ng-0.8.2-7.el9.x86_64
-    libnghttp2-1.43.0-5.el9.x86_64
-    json-c-0.14-11.el9.x86_64
-    filesystem-3.16-2.el9.x86_64
-    kmod-libs-28-7.el9.x86_64
-    python3-dbus-1.2.18-2.el9.x86_64
-...SNIP...
+    openssl-fips-provider-3.0.7-6.el10.x86_64
+    openssl-fips-provider-so-3.0.7-6.el10.x86_64
+    alternatives-1.30-2.el10.x86_64
+    audit-libs-4.0.3-1.el10.x86_64
+    authselect-1.5.0-8.el10.x86_64
+    authselect-libs-1.5.0-8.el10.x86_64
+    basesystem-11-22.el10.noarch
+    ca-certificates-2024.2.69_v8.0.303-102.3.el10.noarch
+    coreutils-9.5-6.el10.x86_64
+    coreutils-common-9.5-6.el10.x86_64
+    cpio-2.15-3.el10.x86_64
+    cracklib-2.9.11-8.el10.x86_64
+    cracklib-dicts-2.9.11-8.el10.x86_64
+    cryptsetup-libs-2.7.5-2.el10.x86_64
+
+...<output truncated>...
 ----
 
 If you see errors or packages that can not be resolved, this is likely a problem with the osbuild repo configuration(s).  Let your instructor know and hopefully this can be fixed.
 
 == Compose a Blueprint
+
+NOTE: With our current environments for this workshop, this phase can take 3-5 minutes to execute.
 
 We are now ready to compose the blueprint into an image.
 
@@ -220,6 +223,7 @@ composer-cli compose list
 
 It may take a few minutes, but eventually you should see a "FINISHED" status.  Here is a
 simple command to wait for the compose to finish.
+
 
 [{format_cmd}]
 ----
