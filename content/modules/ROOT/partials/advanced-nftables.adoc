@@ -278,7 +278,21 @@ table inet workshop { # handle 6
 }
 ----
 
-We can now use that *handle* to delete the rule.
+In the example above, the handle = 2.  We can now use that *handle* to delete the rule.
+
+
+[NOTE]
+====
+_workshop-nftables-gethandle.sh: Because your specific handle-number may differ from our example, we've written a script 
+to extract the handle number from the filter table. This technique is simplistic and NOT sanctioned for use beyond this exercise_
+
+[{format_plain}]
+----
+nft -n -a list table inet workshop | grep 'dport 80' | sed -e 's/^.*handle\s*//'
+----
+====
+
+Now, let's delete that rule.
 
 [{format_cmd}]
 ----
