@@ -142,7 +142,7 @@ Swap:          2.0G       894M       1.1G
 
 == What RHEL Lightspeed is not
 
-One last note on what RHEL Lightspeed is not.  While it is meant to be a tool to assist with the management and administration of RHEL systems and has special knowledge in those areas, it is not meant to be a general purpose generative AI tool like ChatGPT or similar offerings.  While some queries outside of its intended area of expertise may result in positive results, this it not the intended use case.  For example
+One last note on what RHEL Lightspeed is not.  While it is meant to be a tool to assist with the management and administration of RHEL systems and has special knowledge in those areas, it is not meant to be a general purpose generative AI tool like ChatGPT or similar offerings.  Sometimes queries outside of its intended area of expertise may result in positive results, but this it not the intended use case.  For example
 
 [{format_cmd}]
 ----
