@@ -7,14 +7,14 @@
 :format_output:     bash,options="nowrap",subs="verbatim,attributes,quotes"
 :format_plain:      bash,options="nowrap",subs="-attributes"
 
-:nic0:      "enp0s3"
-:disk0:     "/dev/vda"
-:disk1:     "/dev/vdb"
-:disk2:     "/dev/vdc"
-:disk3:     "/dev/vdd"
-:disk4:     "/dev/vde"
-:disk5:     "/dev/vdf"
-:disk_glob: "/dev/vd{b..e}"
+:nic0:  enp0s3
+:disk0: /dev/vda
+:disk1: /dev/vdb
+:disk2: /dev/vdc
+:disk3: /dev/vdd
+:disk4: /dev/vde
+:disk5: /dev/vdf
+:disk_glob: /dev/vd{b..e}
 
 ifdef::env-github[]
 :tip-caption: :bulb:
