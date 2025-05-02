@@ -9,6 +9,7 @@
 ***  xref:100-firewalld.adoc[Firewall Mgmt (firewalld)]
 ***  xref:100-trouble-shooting.adoc[Trouble Shooting (man,info,journald,syslog)]
 ***  xref:100-webconsole.adoc[Web Console (cockpit)]
+***  xref:100-lightspeed.adoc[RHEL Lightspeed (lightspeed)]
 
 **  Intermediate
 ***  xref:101-dnf.adoc[Package Mgmt (dnf)]
@@ -41,6 +42,7 @@
 ***  xref:kpatch-200.adoc[Live Kernel Patching (kpatch)]
 ***  xref:leapp-200.adoc[In-Place Upgrades (leapp)]
 ***  xref:boom-200.adoc[Boot Mgmt (boom)]
+***  xref:100-lightspeed.adoc[RHEL Lightspeed (lightspeed)]
 
 ** Package Mgmt
 ***  xref:dnf-100.adoc[Fundamental (dnf)]

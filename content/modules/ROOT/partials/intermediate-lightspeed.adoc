@@ -40,11 +40,21 @@ You are now ready to proceed with these exercises.
 
 == Core Concepts
 
-== Trouble-Shoot SSH
+The Command Line Assistant (CLA) powered by RHEL Lightspeed is a generative AI assistant designed to assist new and experienced users  when they interact with RHEL through the command line. CLA can help with several tasks such as: answering RHEL related questions, assisting with troubleshooting, assisting with deciphering log entries, and many others. CLA provides a natural language interface, and can incorporate information from sources such as the RHEL documentation, knowledge base articles, reference architectures and more resources. It is a powerful tool that enables admins to more easily manage, troubleshoot, and work with RHEL systems.
+
+
+
+== Getting Started with CLA
+
+
 
 == Do something else
 
+
+
 == Do soething sensational
+
+
 
 
 ifdef::env-github[]

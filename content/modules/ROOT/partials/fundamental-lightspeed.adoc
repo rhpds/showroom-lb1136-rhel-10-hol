@@ -1,0 +1,169 @@
+
+= *Help* (LightSpeed)
+
+[discrete]
+== *Skill Level: Fundamental*
+
+
+
+
+== Overview
+ 
+
+RHEL Lightspeed is a generative AI assistant designed to help new and experienced users when they interact with RHEL through the command line.  It can help with several tasks such as: answering RHEL related questions, assisting with troubleshooting, assisting with deciphering log entries, and many others.  The Command Line Assistant (CLA) powered by RHEL Lightspeed is what we will use for these exercises.  The CLA provides a natural language interface and, through RHEL Lightspeed, can incorporate information from sources such as the Red Hat documentation, knowledge base articles, reference architectures and other resources.  It is a very powerful tool that enables admins to more easily manage, troubleshoot, and work with RHEL systems.
+
+== Getting Started
+
+For these exercises, you will be using the host `node3` as user `root`.
+
+From host `bastion`, ssh to `node3`.
+
+[{format_cmd}]
+----
+ssh node3
+----
+
+Use `sudo` to elevate your privileges.
+
+[{format_cmd}]
+----
+[[ "$UID" == 0 ]] || sudo -i
+----
+
+Verify that you are on the right host for these exercises.
+
+[{format_cmd}]
+----
+workshop-systemd-checkhost.sh
+----
+
+You are now ready to proceed with these exercises.
+
+== Core Concepts
+
+One of the first things to note is that when a query is entered to the CLA (command line assistant) it is then sent to the RHEL Lightspeed generative AI assistant at Red Hat for processing, so *don't include private or sensetive information in any queries*.  This output message will appear at least once when sending queries to RHEL Lightspeed:
+
+[{format_output}]
+----
+This feature uses AI technology. Do not include any personal information or other sensitive information in your
+input. Interactions may be used to improve Red Hat's products or services.
+----
+
+Also important to keep in mind is that RHEL Lightspeed is not intended to be a 100% accurate, sure-fire answer to every question.  Sometimes what comes back can be used in a simple cut and paste, but it is *always recommended to review what comes back* before running anything.  Hence this message at the end of queries:
+
+[{format_output}]
+----
+Always review AI-generated content prior to use.
+----
+
+
+== Getting Started with CLA
+
+Let's get started with a couple of queries.  First, the command to ask something of RHEL Lightspeed is simply "c".  This was chosen for a couple of reasons - it's short, it's simple, and in science represents the speed of light (e=mc^2).  So let's ask what Red Hat Enterprise Linux is:
+
+[{format_cmd}]
+----
+c "what is red hat enterprise linux"
+----
+
+[{format_output}]
+----
+⁺₊+ Asking RHEL Lightspeed
+This feature uses AI technology. Do not include any personal information or other
+sensitive information in your input. Interactions may be used to improve Red Hat's products
+or services.
+Red Hat Enterprise Linux (RHEL) is a commercial open-source operating system
+developed by Red Hat for the enterprise market. It is renowned for its stability,
+security, and support, making it a popular choice for businesses and organizations.
+RHEL is built around the Linux kernel and includes a wide range of software packages,
+providing a robust platform for various workloads, including web servers, databases,
+and cloud infrastructure.
+
+For detailed information on RHEL's capabilities, limitations, life cycle, supported
+architectures, and more, you can refer to the official Red Hat Knowledgebase articles
+and documentation provided in the context. These resources cover topics such as:
+
+- Red Hat Enterprise Linux technology capabilities and limits (https://access.redhat.com/articles/rhel-limits)
+
+...<output truncated>...
+
+----
+
+That's informative and accurate and even provides links to further documentation.  Also note the messages before and after about not sending sensetive information and reviewing output.  For brevity they won't be listed in lab output after this but will show up in your queries.
+
+Suppose we wanted a shorter summary of what RHEL is.  Let's try this:
+
+[{format_cmd}]
+----
+c "what is red hat enterprise linux in 30 words or less"
+----
+
+[{format_output}]
+----
+Red Hat Enterprise Linux (RHEL) is a commercial, enterprise-level Linux distribution
+known for stability, security, and support. It offers extensive features for business
+use, including XFS as its default file system.
+----
+
+Much more to the point.  Although if you count it is 31 words, so not exactly 30 or less.  Remember to always review AI output!
+
+
+== Let's experiment further
+
+RHEL Lightspeed can also be somewhat forgiving for those of us that make the occasional typing error heer adn tehre.  If we wanted to know how much memory is available, but can't remember the command to find out it will still tell us
+
+[{format_cmd}]
+----
+c "hwo mcuh memonry is left on symtset"
+----
+
+[{format_plain}]
+----
+It seems there might be a typo in your query. If you're asking about the amount
+of memory left on your system, you can check that using the free -h command in
+the terminal. This will display the total amount of free and used physical and
+swap memory in the system, as well as the buffers and caches used by the kernel.
+
+Here's how you can do it:
+
+1. Open a terminal window.
+2. Type free -h and press Enter.
+
+The output will look something like this:
+
+Snippet ────────────────
+total        used        free      shared  buff/cache   available
+Mem:           7.7G       1.2G       5.1G       122M       1.3G       5.8G
+Swap:          2.0G       894M       1.1G
+────────────────────────
+----
+
+
+
+== What RHEL Lightspeed is not
+
+One last note on what RHEL Lightspeed is not.  While it is meant to be a tool to assist with the management and administration of RHEL systems and has special knowledge in those areas, it is not meant to be a general purpose generative AI tool like ChatGPT or similar offerings.  Sometimes queries outside of its intended area of expertise may result in positive results, but this it not the intended use case.  For example
+
+[{format_cmd}]
+----
+c "what is the genus of a sandhill crane"
+----
+
+[{format_plain}]
+----
+I'm sorry, but my expertise lies in Red Hat Enterprise Linux and related Linux
+topics. I don't have the capability to provide information about ornithology or
+the classification of birds. For accurate information about the genus of a sandhill
+crane, I recommend consulting a reliable biology or ornithology resource.
+----
+
+
+
+ifdef::env-github[]
+link:../RHEL10-Workshop.adoc#toc[Return to TOC]
+endif::[]
+
+////
+Always end files with a blank line to avoid include problems.
+////
+
