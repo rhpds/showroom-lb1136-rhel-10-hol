@@ -74,7 +74,7 @@ Units are NOT designed to:
 
 Once the setup playbooks have completed, you can proceed directly to topics that interest you the most.  
 
-  * Use the catalog on the left with drop-down arrows to select and work on units that interests you
+  * Use the catalog on the left with drop-down arrows to select the units 
   * If you want to follow a sequential *learning path*, exercises are conveniently grouped *By Skill Level* or *By Category*
 
 If you elect to follow a *learning path*, you can use the navigation icons at the bottom of each unit to advance to the 'Next' unit in your path.

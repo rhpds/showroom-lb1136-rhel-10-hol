@@ -2,7 +2,7 @@
 = *Boot Management* (boom)
 
 [discrete]
-== *Skill Level: Advanced*
+== *Skill Level: Advanced* icon:check[]
 
 
 

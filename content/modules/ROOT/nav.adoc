@@ -42,7 +42,7 @@
 ***  xref:kpatch-200.adoc[Live Kernel Patching (kpatch)]
 ***  xref:leapp-200.adoc[In-Place Upgrades (leapp)]
 ***  xref:boom-200.adoc[Boot Mgmt (boom)]
-***  xref:100-lightspeed.adoc[RHEL Lightspeed (lightspeed)]
+***  xref:lightspeed-100.adoc[RHEL Lightspeed (lightspeed)]
 
 ** Package Mgmt
 ***  xref:dnf-100.adoc[Fundamental (dnf)]
