@@ -282,7 +282,7 @@ We can now use that *handle* to delete the rule.
 
 [{format_cmd}]
 ----
-nft delete rule inet workshop INPUT handle `workshop-nftable-gethandle.sh`
+nft delete rule inet workshop INPUT handle $(workshop-nftables-gethandle.sh)
 ----
 
 Verify the rule change.
