@@ -2,7 +2,7 @@
 = *Virtualization Management* (libvirt)
 
 [discrete]
-== *Skill Level: Intermediate*
+== *Skill Level: Intermediate* icon:check[]
 
 
 
@@ -192,9 +192,10 @@ export PUBKEY=$(ls ~/.ssh/*.pub | head -1)
 
 Now you can proceed to customize the virt image.
 
-We will include a timer on this command so you can estimate how long this
-will take.  On our AWS reference platform without virt support, this took
-about 30 seconds.
+We will include a timer on this command in order to measure how long this
+will takes.  
+
+NOTE: For the resources used at the 2025 Red Hat Summit, this process runs for about 30 seconds.
 
 [{format_cmd}]
 ----
@@ -212,25 +213,27 @@ time virt-customize \
 [{format_output}]
 ----
 [   0.0] Examining the guest ...
-[  59.2] Setting a random seed
-[  59.6] Setting the machine ID in /etc/machine-id
-[  59.6] Setting the hostname: vmguest
-[  60.4] Copying: /usr/local/etc/index.html to /var/www/html
-[  60.7] Uninstalling packages: cloud-init
-[  85.1] Setting passwords
-[ 105.1] SELinux relabelling
-[ 322.4] Finishing off
+[  19.1] Setting a random seed
+[  19.2] Setting the machine ID in /etc/machine-id
+[  19.2] Setting the hostname: vmguest
+[  19.2] SSH key inject: root
+[  20.7] Copying: /usr/local/etc/index.html to /var/www/html
+[  20.7] Running: echo "PermitRootLogin yes" >> /etc/ssh/sshd_config.d/rootlogin.conf
+[  20.8] Uninstalling packages: cloud-init
+[  24.0] Setting passwords
+[  25.2] SELinux relabelling
+[  30.5] Finishing off
 
-real    5m22.948s
-user    0m0.037s
-sys     0m0.057s
+real    0m30.882s
+user    0m0.884s
+sys     0m1.583s
 ----
 
 
 == VM Deployment
 
-WARNING:  Please note that if your workshop environment did NOT show support for native or nested
-virtualization, every step beyond this point will likely take a very long time.
+NOTE:  Please note that if your workshop environment did NOT show support for native or nested
+virtualization, every step beyond this point will likely take a very long time (if it works at all).
 
 It is now time to launch the VM
 
@@ -408,10 +411,6 @@ Network Related Topics
 
 [discrete]
 == End of Unit
-
-ifdef::env-github[]
-link:../RHEL10-Workshop.adoc#toc[Return to TOC]
-endif::[]
 
 ////
 Always end files with a blank line to avoid include problems.
