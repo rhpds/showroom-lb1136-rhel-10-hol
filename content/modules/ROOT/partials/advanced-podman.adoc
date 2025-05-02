@@ -2,7 +2,7 @@
 = *Container Management* (podman)
 
 [discrete]
-== *Skill Level: Advanced*
+== *Skill Level: Advanced* icon:check[]
 
 
 
@@ -77,7 +77,7 @@ podman search ubi10
 From this we see the current available ubi10 image is ubi10-beta.  So let's grab that.
 [{format_cmd}]
 ----
-podman pull ubi10-beta/ubi:latest
+podman pull registry.access.redhat.com/ubi10-beta/ubi:latest
 ----
 
 [{format_output}]
@@ -166,11 +166,11 @@ podman run -v /usr/sbin:/usr/sbin -v /usr/lib64:/usr/lib64  ubi /usr/sbin/ip add
 
 [{format_output}]
 ----
-2: eth0@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
-    link/ether ea:c8:d5:af:ff:19 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-    inet 10.88.0.7/16 brd 10.88.255.255 scope global eth0
+2: eth0@if36: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether ea:3a:6d:56:6e:f7 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.88.0.17/16 brd 10.88.255.255 scope global eth0
        valid_lft forever preferred_lft forever
-    inet6 fe80::e8c8:d5ff:feaf:ff19/64 scope link tentative
+    inet6 fe80::e83a:6dff:fe56:6ef7/64 scope link tentative proto kernel_ll 
        valid_lft forever preferred_lft forever
 ----
 
