@@ -62,18 +62,18 @@ Accept the various notifications about insecure ceritificates, and then login in
 
 Use the following URL:
 
-  * link:https://{targethost_fqdn}/[] 
+  * link:{cockpit_url}[] 
 
 And the following UserID and Password:
 
 [{format_cmd}]
 ----
-%ssh_username%
+%cockpit_user%
 ----
 
 [{format_cmd}]
 ----
-%ssh_password%
+%cockpit_password%
 ----
 
 ====
