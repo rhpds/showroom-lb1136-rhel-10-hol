@@ -14,9 +14,9 @@ asciidoc:
     ssh_user: devops
     ssh_password: devops
     ssh_command: ssh someone@example.com
-    cockpit_url: "{workshop_cockpit_url}"
-    cockpit_user: "{workshop_cockpit_user_name}"
-    cockpit_password: "{workshop_cockpit_user_password}"
+    workshop_cockpit_url: "<<ASK INSTRUCTOR>>"
+    workshop_cockpit_user_name: "<<ASK INSTRUCTOR>>"
+    workshop_cockpit_user_password: "<<ASK INSTRUCTOR>>"
     page-links:
     - url: https://redhat.com
       text: Red Hat

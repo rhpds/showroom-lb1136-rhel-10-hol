@@ -62,18 +62,18 @@ Accept the various notifications about insecure ceritificates, and then login in
 
 Use the following URL:
 
-  * link:{cockpit_url}[] 
+  * link:{workshop_cockpit_url}[]
 
 And the following UserID and Password:
 
 [{format_cmd}]
 ----
-%cockpit_user%
+%link:{workshop_cockpit_user_name}[]%
 ----
 
 [{format_cmd}]
 ----
-%cockpit_password%
+%ilink:{workshop_cockpit_user_password}[]%
 ----
 
 ====
