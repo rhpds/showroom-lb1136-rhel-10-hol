@@ -68,12 +68,12 @@ And the following UserID and Password:
 
 [{format_cmd}]
 ----
-%link:{workshop_cockpit_user_name}[]%
+{workshop_cockpit_user_name}
 ----
 
 [{format_cmd}]
 ----
-%ilink:{workshop_cockpit_user_password}[]%
+{workshop_cockpit_user_password}
 ----
 
 ====
