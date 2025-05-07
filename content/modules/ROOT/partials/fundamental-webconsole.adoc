@@ -62,7 +62,7 @@ Accept the various notifications about insecure ceritificates, and then login in
 
 Use the following URL:
 
-  * link:{workshop_cockpit_url}^[]
+  * link:{workshop_cockpit_url}[,window=_blank]
 
 And the following UserID and Password:
 
