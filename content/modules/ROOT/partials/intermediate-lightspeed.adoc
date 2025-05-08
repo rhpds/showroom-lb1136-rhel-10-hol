@@ -9,17 +9,18 @@
 
 == Overview
 
-Red Hat Enterprise Linux Lightspeed will offer intelligent, natural language processing capabilities, intended to make OpenShift and RHEL easier for novices to use and more efficient for experienced professionals.
+RHEL Lightspeed is a generative AI assistant designed to help new and experienced users when they interact with RHEL through the command line.  It can help with several tasks such as: answering RHEL related questions, assisting with troubleshooting, assisting with deciphering log entries, and many others.  The Command Line Assistant (CLA) powered by RHEL Lightspeed is what we will use for these exercises.  The CLA provides a natural language interface and, through RHEL Lightspeed, can incorporate information from sources such as the Red Hat documentation, knowledge base articles, reference architectures and other resources.  It is a very powerful tool that enables admins to more easily manage, troubleshoot, and work with RHEL systems.
+
 
 == Getting Started
 
-For these exercises, you will be using the host `node3` as user `root`.
+For these exercises, you will be using the host `node2` as user `root`.
 
-From host `bastion`, ssh to `node3`.
+From host `bastion`, ssh to `node2`.
 
 [{format_cmd}]
 ----
-ssh node3
+ssh node2
 ----
 
 Use `sudo` to elevate your privileges.
@@ -33,7 +34,7 @@ Verify that you are on the right host for these exercises.
 
 [{format_cmd}]
 ----
-workshop-systemd-checkhost.sh
+workshop-lightspeed-checkhost.sh
 ----
 
 You are now ready to proceed with these exercises.
@@ -75,8 +76,122 @@ journalctl -xeu httpd.service | c "help find why httpd failed to start"
 
 [{format_output}]
 ----
+The logs indicate that the Apache HTTP Server (httpd) failed to start due to a
+syntax error in the configuration file /etc/httpd/conf/httpd.conf. Specifically,
+the error message states
+"httpd: Syntax error on line 34 of /etc/httpd/conf/httpd.conf: ServerRoot must be a valid directory". 
+
+This error suggests that the ServerRoot directive in your Apache configuration
+file is either missing or incorrectly set. The ServerRoot directive specifies
+the location of the Apache HTTP Server's binary files. 
+
+To resolve this issue, follow these steps:
+
+1. Open the Apache configuration file using a text editor with root privileges.
+   For example, you can use nano:
+
+   ``
+   sudo nano /etc/httpd/conf/httpd.conf
+   `
+
+2. Locate the ServerRoot directive, which should be near line 34. It typically
+   looks like this:
+
+   `
+   ServerRoot "/etc/httpd"
+   `
+
+3. Ensure that the path specified is correct and the directory exists. In this
+   case, it should be /etc/httpd.
+
+...<output truncated>...
 
 ----
+
+Great!  That's probably the issue, but what if we don't know how to use an editor, just a few basic Linux commands?  Let's see what the ServerRoot line looks like (note: the "^" character tells the grep command to start searching for "ServerRoot" at the beginning of each line in the file, so it won't match comment lines that start with "#")
+
+[{format_cmd}]
+----
+grep ^ServerRoot /etc/httpd/conf/httpd.conf
+----
+
+[{format_output}]
+----
+ServerRoot "/etc/httpdd"
+----
+
+The lines beginning with "#" are comments so the last line is the one to look at.  It specifies that the ServerRoot directory should be */etc/httpdd*.  That doesn't look quite right, let's check anything in the /etc directory starting with htt
+
+[{format_cmd}]
+----
+ls -ld /etc/htt*
+----
+
+[{format_output}]
+----
+drwxr-xr-x. 5 root root 105 May  8 18:24 /etc/httpd
+----
+
+Sure enough, "httpdd" should be "httpd".  Is there a way to change it in the file without knowing how to use the editor?  Let's ask RHEL Lightspeed.  Since the previous answer included using an editor, this query will specify to use the command line
+
+[{format_cmd}]
+----
+c "how to change /etc/httpdd to /etc/httpd in file /etc/httpd/conf/httpd.conf using command line"
+----
+
+[{format_output}]
+----
+To change the configuration directory from /etc/httpdd to /etc/httpd in the
+httpd.conf file using the command line, you can use the sed command. Here's
+how you can do it:
+
+1. Open a terminal.
+2. Use the sed command to replace /etc/httpdd with /etc/httpd in the httpd.conf
+   file. The command would look like this:
+
+[bash] Snippet ────────────────
+sed -i 's|/etc/httpdd|/etc/httpd|g' /etc/httpd/conf/httpd.conf
+────────────────────────
+
+This command uses sed to perform a global search and replace (-i for in-place
+editing, s for substitute, and g for global).
+
+3. After running this command, the httpd.conf file should now reference
+/etc/httpd instead of /etc/httpdd.
+
+...<output truncated>...
+
+----
+
+The "sed" command can be used to make the change to the file in place without having to use an editor. 
+
+[{format_cmd}]
+----
+sed -i 's|/etc/httpdd|/etc/httpd|g' /etc/httpd/conf/httpd.conf
+----
+
+Now let's verify that the line is now correct.
+
+[{format_cmd}]
+----
+grep ^ServerRoot /etc/httpd/conf/httpd.conf
+----
+
+[{format_output}]
+----
+ServerRoot "/etc/httpd"
+----
+
+That looks good, so we should be able to start the Apache webserver now.
+
+[{format_cmd}]
+----
+systemctl start httpd
+----
+
+[{format_output}]
+----
+
 
 
 
