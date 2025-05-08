@@ -11,6 +11,22 @@
 
 RHEL Lightspeed is a generative AI assistant designed to help new and experienced users when they interact with RHEL through the command line.  It can help with several tasks such as: answering RHEL related questions, assisting with troubleshooting, assisting with deciphering log entries, and many others.  The Command Line Assistant (CLA) powered by RHEL Lightspeed is what we will use for these exercises.  The CLA provides a natural language interface and, through RHEL Lightspeed, can incorporate information from sources such as the Red Hat documentation, knowledge base articles, reference architectures and other resources.  It is a very powerful tool that enables admins to more easily manage, troubleshoot, and work with RHEL systems.
 
+*REMINDER* The 2 informational messages below will continue to be omitted from the output here even though they show up in the live exercise.
+
+[{format_output}]
+----
+This feature uses AI technology. Do not include any personal information
+or other sensitive information in your input. Interactions may be used
+to improve Red Hat's products or services.
+----
+
+and
+
+[{format_output}]
+----
+Always review AI-generated content prior to use.
+----
+
 
 == Getting Started
 
@@ -76,14 +92,15 @@ journalctl -xeu httpd.service | c "help find why httpd failed to start"
 
 [{format_output}]
 ----
-The logs indicate that the Apache HTTP Server (httpd) failed to start due to a
-syntax error in the configuration file /etc/httpd/conf/httpd.conf. Specifically,
-the error message states
-"httpd: Syntax error on line 34 of /etc/httpd/conf/httpd.conf: ServerRoot must be a valid directory". 
+The logs indicate that the Apache HTTP Server (httpd) failed to start
+due to a syntax error in the configuration file /etc/httpd/conf/httpd.conf.
+Specifically, the error message states
+"httpd: Syntax error on line 34 of
+     /etc/httpd/conf/httpd.conf: ServerRoot must be a valid directory". 
 
-This error suggests that the ServerRoot directive in your Apache configuration
-file is either missing or incorrectly set. The ServerRoot directive specifies
-the location of the Apache HTTP Server's binary files. 
+This error suggests that the ServerRoot directive in your Apache
+configuration file is either missing or incorrectly set. The ServerRoot
+directive specifies the location of the Apache HTTP Server's binary files. 
 
 To resolve this issue, follow these steps:
 
@@ -120,7 +137,7 @@ grep ^ServerRoot /etc/httpd/conf/httpd.conf
 ServerRoot "/etc/httpdd"
 ----
 
-The lines beginning with "#" are comments so the last line is the one to look at.  It specifies that the ServerRoot directory should be */etc/httpdd*.  That doesn't look quite right, let's check anything in the /etc directory starting with htt
+This is telling us that the ServerRoot directory should be */etc/httpdd*.  That doesn't look quite right, let's check anything in the /etc directory starting with htt
 
 [{format_cmd}]
 ----
@@ -141,20 +158,20 @@ c "how to change /etc/httpdd to /etc/httpd in file /etc/httpd/conf/httpd.conf us
 
 [{format_output}]
 ----
-To change the configuration directory from /etc/httpdd to /etc/httpd in the
-httpd.conf file using the command line, you can use the sed command. Here's
-how you can do it:
+To change the configuration directory from /etc/httpdd to /etc/httpd
+in the httpd.conf file using the command line, you can use the sed
+command. Here's how you can do it:
 
 1. Open a terminal.
-2. Use the sed command to replace /etc/httpdd with /etc/httpd in the httpd.conf
-   file. The command would look like this:
+2. Use the sed command to replace /etc/httpdd with /etc/httpd in the
+httpd.conf file. The command would look like this:
 
 [bash] Snippet ────────────────
 sed -i 's|/etc/httpdd|/etc/httpd|g' /etc/httpd/conf/httpd.conf
 ────────────────────────
 
-This command uses sed to perform a global search and replace (-i for in-place
-editing, s for substitute, and g for global).
+This command uses sed to perform a global search and replace (-i for
+in-place editing, s for substitute, and g for global).
 
 3. After running this command, the httpd.conf file should now reference
 /etc/httpd instead of /etc/httpdd.
