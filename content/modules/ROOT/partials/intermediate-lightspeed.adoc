@@ -64,18 +64,52 @@ See "systemctl status httpd.service" and "journalctl -xeu httpd.service" for det
 ----
 
 
-== Do something else
+== Have RHEL Lightspeed help figure out the issue
+
+Running either or both of the commands will point to the error, but especially for those not very familiar with systemd and/or journalctl, the output can be a little confusing to read.  Let's see if the CLA can make it easier.
+
+[{format_cmd}]
+----
+journalctl -xeu httpd.service | c "help find why httpd failed to start"
+----
+
+[{format_output}]
+----
+
+----
 
 
 
-== Do soething sensational
+
+== Apache is up and running!  Now let's add web developer accounts
 
 
+
+== Conclusion
+
+That concludes this unit on the Command Line Assistant for RHEL Lightspeed.  You can find more info in the official Red Hat Command Line Assistant documentation or the man page (use "man c" ).  
+
+
+Time to finish this unit and return the shell to it's home position.
+
+[{format_cmd}]
+----
+workshop-finish-exercise.sh
+----
+
+== Additional Resources
+
+You can find more information:
+
+    * <<placeholder for CLA doc>>
 
 
 ifdef::env-github[]
 link:../RHEL10-Workshop.adoc#toc[Return to TOC]
 endif::[]
+
+[discrete]
+== End of Unit
 
 ////
 Always end files with a blank line to avoid include problems.
