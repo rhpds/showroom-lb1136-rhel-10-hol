@@ -40,12 +40,28 @@ You are now ready to proceed with these exercises.
 
 == Core Concepts
 
-The Command Line Assistant (CLA) powered by RHEL Lightspeed is a generative AI assistant designed to assist new and experienced users  when they interact with RHEL through the command line. CLA can help with several tasks such as: answering RHEL related questions, assisting with troubleshooting, assisting with deciphering log entries, and many others. CLA provides a natural language interface, and can incorporate information from sources such as the RHEL documentation, knowledge base articles, reference architectures and more resources. It is a powerful tool that enables admins to more easily manage, troubleshoot, and work with RHEL systems.
+This exercise will expand on the basics of RHEL Lightspeed by introducing additional capabilities beyond just asking questions.  These include:
+
+  * piping command output to the command line assistant
+  * attaching a file to the command line assistant
 
 
+== Start the Apache Web Server - Maybe?
 
-== Getting Started with CLA
+Let's begin by issuing the command to start the Apache web server
 
+[{format_cmd}]
+----
+systemctl start httpd
+----
+
+The web service didn't start properly, and instead gave us an error message and a couple of commands to run to get possible further information.
+
+[{format_output}]
+----
+Job for httpd.service failed because the control process exited with error code.
+See "systemctl status httpd.service" and "journalctl -xeu httpd.service" for details.
+----
 
 
 == Do something else
