@@ -199,22 +199,105 @@ grep ^ServerRoot /etc/httpd/conf/httpd.conf
 ServerRoot "/etc/httpd"
 ----
 
-That looks good, so we should be able to start the Apache webserver now.
+That looks good, so we should be able to start the Apache webserver now and verify the status.
 
 [{format_cmd}]
 ----
 systemctl start httpd
 ----
 
-[{format_output}]
+[{format_cmd}]
+----
+systemctl status httpd
 ----
 
+[{format_output}]
+----
+● httpd.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; preset: disabled)
+     Active: active (running) since Thu 2025-05-08 21:25:49 UTC; 51s ago
+ Invocation: 2a01a4ce7df24be3a6986896f2c17109
+       Docs: man:httpd.service(8)
+   Main PID: 83947 (httpd)
+     Status: "Total requests: 0; Idle/Busy workers 100/0;Requests/sec: 0; Bytes served/sec:   0 B/sec"
+      Tasks: 177 (limit: 45075)
+     Memory: 13.8M (peak: 14.5M)
+        CPU: 185ms
+     CGroup: /system.slice/httpd.service
+             ├─83947 /usr/sbin/httpd -DFOREGROUND
+             ├─83948 /usr/sbin/httpd -DFOREGROUND
 
+...<output truncated>...
+
+----
 
 
 
 == Apache is up and running!  Now let's add web developer accounts
 
+This can be done in a number of ways, but let's take this opportunity to illustrate passing a file to the Command Line Assistant.  First create a file with 3 account names
+
+[{format_cmd}]
+----
+echo bob > webdevs.txt ; echo susan >> webdevs.txt ; echo francis >> webdevs.txt
+----
+
+Now ask RHEL Lightspeed to write a script that will create user accounts for the list of users in that file and make sure that they are in the apache group so they can do web development.
+
+[{format_cmd}]
+----
+c -a webdevs.txt "using the attached file write a script that will create user accounts that are also in the apache group"
+----
+
+[{format_output}]
+----
+To create user accounts that are also members of the Apache group in
+Red Hat Enterprise Linux, you can use the useradd command along with
+the usermod command to add users to the group. Here's a script that
+accomplishes this for the users 'susan', 'bob', and 'francis':
+
+[bash] Snippet ────────────────
+#!/bin/bash
+
+# Define the users to be created
+users=("susan" "bob" "francis")
+
+# Define the Apache group name
+apache_group="apache"
+
+# Loop through the list of users
+for user in "${users[@]}"; do
+    # Create the user if it doesn't exist
+    if ! getent passwd "$user" > /dev/null; then
+        useradd -m "$user"
+    fi
+
+    # Add the user to the Apache group
+    usermod -aG "$apache_group" "$user"
+done
+
+echo "Users $users[] have been created and added to the Apache group."
+────────────────────────
+
+Instructions to Use the Script
+·······························
+
+1. Save the script to a file, for example, create_users.sh.
+2. Make the script executable by running:
+   ``bash
+   chmod +x create_users.sh
+   `
+3. Execute the script with:
+   `bash
+   ./create_users.sh
+   ``
+
+Notes
+······
+
+...<output truncated>...
+
+----
 
 
 == Conclusion
