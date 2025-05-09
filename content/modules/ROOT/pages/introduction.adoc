@@ -40,11 +40,11 @@ NOTE:  This whole effort is done using official Red Hat software and although th
 
 == Workshop Abstract
 
-Welcome to The Definitive RHEL10 Hands-On Workshop.  This session will lead you through a mix of self-paced and proctored exercises covering selected fundamental, intermdeiate and advanced capabilities of Red Hat Enterprise Linux 10.  Presented by your talented Red Hat field solution architects, key areas covered include:
+Welcome to The Definitive RHEL10 Hands-On Workshop.  This session will lead you through a mix of self-paced and proctored exercises covering selected fundamental, intermediate and advanced capabilities of Red Hat Enterprise Linux 10.  Presented by your talented Red Hat field solution architects, key areas covered include:
 
     * Fundamental: Web Console, Package Management, Services, Firewall, Storage and basic Trouble Shooting
     * Intermediate: expanded Package Storage & Services topics, Containers, Virtualization, Image Builder
-    * Advanced: NFTables, eBPF Tracing, KPatch, TLog, Boot Managemnt, Bootable Containers, LEAPP Upgrades
+    * Advanced: NFTables, eBPF Tracing, KPatch, TLog, Boot Management, Bootable Containers, LEAPP Upgrades
 
 And plenty more... There will be ample experts on hand to assist you and answer your questions. Join us and begin your journey to
 becoming a Red Hat Enterprise Linux 10 expert.
