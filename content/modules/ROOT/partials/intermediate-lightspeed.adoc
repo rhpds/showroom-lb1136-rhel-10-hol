@@ -2,7 +2,7 @@
 = *Help* (LightSpeed)
 
 [discrete]
-== *Skill Level: Intermediate*
+== *Skill Level: Intermediate* icon:check[]
 
 
 
