@@ -29,9 +29,9 @@
 ***  xref:200-podman.adoc[Container Mgmt (podman)]
 ***  xref:200-tlog.adoc[Session Logging (tlog)]
 ***  xref:200-ebpf.adoc[BPF Tracing (ebpf)]
-***  xref:200-kpatch.adoc[Live Kernel Patching (kpatch)]
-***  xref:200-bootc.adoc[Bootable Containers (bootc)]
-***  xref:200-leapp.adoc[In-Place Upgrades (leapp)]
+//// ***  xref:200-kpatch.adoc[Live Kernel Patching (kpatch)] ////
+//// ***  xref:200-bootc.adoc[Bootable Containers (bootc)] ////
+//// ***  xref:200-leapp.adoc[In-Place Upgrades (leapp)] ////
 ***  xref:200-boom.adoc[Boot Mgmt (boom)]
 
 * By Category
@@ -39,10 +39,11 @@
 ** General Topics
 ***  xref:webconsole-100.adoc[Web Console (cockpit)]
 ***  xref:tlog-200.adoc[Session Logging (tlog)]
-***  xref:kpatch-200.adoc[Live Kernel Patching (kpatch)]
-***  xref:leapp-200.adoc[In-Place Upgrades (leapp)]
+//// ***  xref:kpatch-200.adoc[Live Kernel Patching (kpatch)] ////
+//// ***  xref:leapp-200.adoc[In-Place Upgrades (leapp)] ////
 ***  xref:boom-200.adoc[Boot Mgmt (boom)]
 ***  xref:lightspeed-100.adoc[RHEL Lightspeed (lightspeed)]
+***  xref:lightspeed-101.adoc[Trouble Shooting (lightspeed)]
 
 ** Package Mgmt
 ***  xref:dnf-100.adoc[Fundamental (dnf)]
@@ -71,9 +72,8 @@
 ** Virtualization Mgmt
 ***  xref:imagebuilder-101.adoc[Intermediate (composer)]
 ***  xref:virtualization-101.adoc[Intermediate (libvirt)]
-***  xref:bootc-200.adoc[Advanced (bootc)]
+//// ***  xref:bootc-200.adoc[Advanced (bootc)] ////
 
 ** Trouble Shooting
 ***  xref:trouble-shooting-100.adoc[Fundamental (man,info,journald,syslog)]
-***  xref:lightspeed-101.adoc[Trouble Shooting (lightspeed)]
 ***  xref:ebpf-200.adoc[BPF Tracing (ebpf)]
