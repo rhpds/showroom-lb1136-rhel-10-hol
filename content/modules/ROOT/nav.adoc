@@ -20,7 +20,7 @@
 ***  xref:101-buildah.adoc[Container Dev (buildah,skopeo)]
 ***  xref:101-imagebuilder.adoc[Image Builder (composer)]
 ***  xref:101-virtualization.adoc[Virt Mgmt (libvirt)]
-***  xref:101-lightspeed.adoc[Trouble Shooting (lightspeed)]
+***  xref:101-lightspeed.adoc[RHEL Lightspeed] (lightspeed)]
 
 **  Advanced
 ***  xref:200-lvm-vdo.adoc[Storage DeDup (lvm,vdo)]
@@ -42,8 +42,10 @@
 //// ***  xref:kpatch-200.adoc[Live Kernel Patching (kpatch)] ////
 //// ***  xref:leapp-200.adoc[In-Place Upgrades (leapp)] ////
 ***  xref:boom-200.adoc[Boot Mgmt (boom)]
-***  xref:lightspeed-100.adoc[RHEL Lightspeed (lightspeed)]
-***  xref:lightspeed-101.adoc[Trouble Shooting (lightspeed)]
+
+** Lightspeed
+***  xref:lightspeed-100.adoc[Fundamental (lightspeed)]
+***  xref:lightspeed-101.adoc[Intermediate (lightspeed)]
 
 ** Package Mgmt
 ***  xref:dnf-100.adoc[Fundamental (dnf)]
@@ -76,4 +78,4 @@
 
 ** Trouble Shooting
 ***  xref:trouble-shooting-100.adoc[Fundamental (man,info,journald,syslog)]
-***  xref:ebpf-200.adoc[BPF Tracing (ebpf)]
+***  xref:ebpf-200.adoc[Advanced Tracing (ebpf)]
