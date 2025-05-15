@@ -260,6 +260,14 @@ Try editing a file.
 image::rhel-10.0/wc-023.png[Cockpit File Browser]
 ====
 
+== Applications
+
+Another new feature of the Web Console is the introduction of "Applications".  These are optional modules you can install and enable to extended the capabilities of the web interface.  Just take a look and you'll see some additional capabilities you will take advantge of in later parts of this workshop.
+
+====
+image::rhel-10.0/wc-024.png[Cockpit Applications]
+====
+
 == Conclusion
 
 This concludes a short exercise with Web Console. Feel free to click through and explore other sections:
