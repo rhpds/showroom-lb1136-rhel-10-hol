@@ -77,7 +77,7 @@ And the following UserID and Password:
 ----
 
 ====
-image::Slide1.PNG[Cockpit Login]
+image::rhel-10.0/wc-001.png[Cockpit Login]
 ====
 
 == Webconsole Overview
@@ -92,13 +92,13 @@ After you successfully sign-on, you will land on the overview page which present
 Also make note that your userid needs "Administrative Access", and since the userid is configured on the host as part of the "wheel" security group you are presented with the option to turn administrative access on.
 
 ====
-image::Slide2.PNG[Cockpit Overview]
+image::rhel-10.0/wc-002.png[Cockpit Overview]
 ====
 
 Please proceed to enable administrative access and then verify.
 
 ====
-image::Slide3.PNG[Cockpit Overview]
+image::rhel-10.0/wc-003.png[Cockpit Overview]
 ====
 
 == Enable Persistent Metrics
@@ -108,17 +108,17 @@ It's nice that certain statistics about your system are available for inspection
 Start by clicking on the link "View details and history" on the "Usage" tile.
 
 ====
-image::Slide4.PNG[View details and history]
+image::rhel-10.0/wc-004.png[View details and history]
 ====
 
 Next, we need to enable the collection of metrics data.
 
 ====
-image::Slide5.PNG[Metrics Settings]
+image::rhel-10.0/wc-005.png[Metrics Settings]
 ====
 
 ====
-image::Slide6.PNG[Enable Metrics]
+image::rhel-10.0/wc-006.png[Enable Metrics]
 ====
 
 If your system has not already had the Performance Copilot packages installed, a dialog box should have appeared to confirm the automatic install.  In our case, the software is already installed and you can proceed to view some performance data.
@@ -126,35 +126,21 @@ If your system has not already had the Performance Copilot packages installed, a
 Take a moment to review the available performance information.  Since the workshop likely has not be up for very long, there is probably nothing interesting to see yet.  Towards the end of the workshop, return to this page and see your performance data.
 
 ====
-image::Slide7.PNG[Performance Charts]
+image::rhel-10.0/wc-007.png[Performance Charts]
 ====
-
-To configure and enable stored metrics by hand, you can use follow the commands below.
-
-[NOTE]
-====
-_Native command(s) to enable stored metrics_
-[{format_output}]
-----
-dnf install -y cockpit-pcp
-systemctl restart cockpit.socket
-----
-====
-
-
 
 == Change Performance Profile
 
 RHEL 9 comes with several pre-canned performance tuning profiles from Tuned. Since this is a virtual machine, the default profile “virtual-guest” was selected. You can easily switch profile via the Web Console web UI. In this exercise, we will change the profile to “throughput-performance”
 
 ====
-image::Slide8.PNG[Cockpit Perf Profile]
+image::rhel-10.0/wc-008.png[Cockpit Perf Profile]
 ====
 
 A dialog box will appear.  Scroll and find "throughput-performance" and select.
 
 ====
-image::Slide9.PNG[Cockpit Perf Throughout]
+image::rhel-10.0/wc-009.png[Cockpit Perf Throughout]
 ====
 
 
@@ -164,7 +150,7 @@ image::Slide9.PNG[Cockpit Perf Throughout]
 Under the log section, you can inspect the system's logs.
 
 ====
-image::Slide10.PNG[Cockpit Logs]
+image::rhel-10.0/wc-010.png[Cockpit Logs]
 ====
 
 Have a look at the search capabilities and notice that you can set criteria by:
@@ -174,7 +160,7 @@ Have a look at the search capabilities and notice that you can set criteria by:
   * Service
 
 ====
-image::Slide11.PNG[Cockpit Logs Criteria]
+image::rhel-10.0/wc-011.png[Cockpit Logs Criteria]
 ====
 
 
@@ -186,7 +172,7 @@ Under the networking section, you can monitor and manage current networking acti
 Due to the nature of workshops, we refrain from making and saving changes to the network at this time but feel free to explore.
 
 ====
-image::Slide12.PNG[Cockpit Network]
+image::rhel-10.0/wc-012.png[Cockpit Network]
 ====
 
 
@@ -198,19 +184,19 @@ Also under the networking section, you can configure your firewall rules.
 For the next exercise, let's enable a rule for NTP (Network Time Protocol).  Begin by selecting the Networking category and "Edit rules and zones".
 
 ====
-image::Slide13.PNG[Cockpit Firewall]
+image::rhel-10.0/wc-013.png[Cockpit Firewall]
 ====
 
 Now you should see a list of active services and ports.  Proceed to select "Add services"
 
 ====
-image::Slide14.PNG[Cockpit Firewall Service]
+image::rhel-10.0/wc-014.png[Cockpit Firewall Service]
 ====
 
 In the dialog box enter 'ntp' as the filter, select 'ntp' and hit "Add services".
 
 ====
-image::Slide15.PNG[Cockpit Firewall Dialog]
+image::rhel-10.0/wc-015.png.PNG[Cockpit Firewall Dialog]
 ====
 
 
@@ -219,74 +205,66 @@ image::Slide15.PNG[Cockpit Firewall Dialog]
 
 Now that you enabled a NTP firewall rule, let’s make sure an NTP service provider is enabled and running under the Web Console Services section.
 
-Remember that RHEL 9 uses a provider called 'chrony' for ntp.  So you can search for either 'chrony' or 'ntp'.
+Remember that RHEL 10 uses a provider called 'chrony' for ntp.  So you can search for either 'chrony' or 'ntp'.
 
 ====
-image::Slide16.PNG[Cockpit Services]
+image::rhel-10.0/wc-016.png[Cockpit Services]
 ====
 
 Turns out, chronyd is already enabled and active.  Nothing to do here...
 
 ====
-image::Slide17.PNG[Cockpit Services]
+image::rhel-10.0/wc-017.png[Cockpit Services]
 ====
 
 
 
-== Remote Node Management
+== File Browser
 
-The core functionality of being able to manage multiple nodes from a single interface has been intergrated into the webconsole base.  Now adding additional nodes and selecting one to manage is simple and intuitive.
+A new feature to the Web Console is the 'File Browser'.  This powerful tool gives you access to navigate the filesystems (with appropriate permissions of course), make changes and even edit simple files.
 
-We begin by selecting the pull-down in the top-left corner.
+So let's take a quick look at some of it's capabilities.
 
-====
-image::Slide18.PNG[Cockpit Services]
-====
-
-Now it is only a matter of selecting 'Add new host' and entering a few data points.
 
 ====
-image::Slide19.PNG[Cockpit Services]
+image::rhel-10.0/wc-018.png[Cockpit File Browser]
 ====
 
-Add the additional systems from your workshop cluster.
-
-[{format_cmd}]
-----
-*node1.{subdomain}*
-----
-
-[{format_cmd}]
-----
-*node2.{subdomain}*
-----
-
-[{format_cmd}]
-----
-*node3.{subdomain}*
-----
+Change you directory either by navigating or entering a path.
 
 ====
-image::Slide20.PNG[Cockpit Add Nodes]
+image::rhel-10.0/wc-019.png[Cockpit File Browser]
 ====
 
-Now when you hit the pull-down, you have complete access and managibility of the additional nodes.
+Change the view to a 'detailed list' instead of the 'icon view', or maybe an alternative sort order.
 
 ====
-image::Slide21.PNG[Cockpit Remote Nodes]
+image::rhel-10.0/wc-020.png[Cockpit File Browser]
 ====
 
-Go ahead and select node1 and then access a terminal session. Very handy!
+Explore actions you can take on the current directory.
 
 ====
-image::Slide22.PNG[Cockpit Remote Terminal]
+image::rhel-10.0/wc-021.png[Cockpit File Browser]
+====
+
+Explore the actions you can take by right-clicking on a file.
+
+====
+image::rhel-10.0/wc-022.png[Cockpit File Browser]
+====
+
+Try editing a file.
+
+====
+image::rhel-10.0/wc-023.png[Cockpit File Browser]
 ====
 
 == Conclusion
 
 This concludes a short exercise with Web Console. Feel free to click through and explore other sections:
 
-* Under *Accounts* section, you can manage user accounts on your RHEL 9 server
+* Under *Accounts* section, you can manage user accounts
 * *Diagnostic Reports* allows you to create sosreport for Red Hat support
 * Under *Kernel Dump*, you can enable/disable kdump
 
