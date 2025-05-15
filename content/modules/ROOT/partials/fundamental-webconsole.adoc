@@ -196,7 +196,7 @@ image::rhel-10.0/wc-014.png[Cockpit Firewall Service]
 In the dialog box enter 'ntp' as the filter, select 'ntp' and hit "Add services".
 
 ====
-image::rhel-10.0/wc-015.png.PNG[Cockpit Firewall Dialog]
+image::rhel-10.0/wc-015.png[Cockpit Firewall Dialog]
 ====
 
 
