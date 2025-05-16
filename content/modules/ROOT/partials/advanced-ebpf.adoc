@@ -51,22 +51,7 @@ workshop-ebpf-checkhost.sh
 [discrete]
 ==== Secondary Terminal (bastion)
 
-To help you set up your second terminal, here is the ssh command and password which you can use.
-
-[{format_cmd}]
-----
-[[ $(hostname -s) != "bastion" ]] && {ssh_command} -o "StrictHostKeyChecking no"
-----
-
-[{format_cmd}]
-----
-{ssh_password}
-----
-
-[{format_cmd}]
-----
-[[ "$UID" == 0 ]] || sudo -i
-----
+You'll need your second terminal for these exercises.  So just keep your eyes on the instructions for what to run a where.
 
 You are now ready to proceed with these exercises.
 
@@ -92,66 +77,6 @@ dnf install bcc-tools bpftrace strace kernel-devel-$(uname -r) -y
 ----
 
 Now, we have a lot of interesting tools installed in /usr/share/bcc/tools along with accompanying man pages.
-
-
-
-
-
-== Exercise: tcplife
-
-The `tcplife` tool monitors tcp connections on the system and measures the amount of time that they've been open, the local and remote ports involved in the connection and the amount of data transferred and received in kilobytes.
-
-[discrete]
-==== Primary Terminal (node2)
-
-To run this tool, execute the following and give it a couple of seconds to get set up:
-
-[{format_cmd}]
-----
-/usr/share/bcc/tools/tcplife
-----
-
-[{format_output}]
-----
-PID   COMM       LADDR           LPORT RADDR           RPORT TX_KB RX_KB MS
-----
-
-WARNING: It is important to wait until the tool is setup.  Do not proceed until you see the output headers (displayed above) appear.
-
-[discrete]
-==== Secondary Terminal (bastion)
-
-Run a little script to generate some user activity.
-
-[{format_cmd}]
-----
-ssh node2 "sudo workshop-ebpf-rootkit.sh"
-----
-
-This command should run for about 10 seconds and then exit.  Before porceeding to the results you can
-either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to terminate tcplife.
-
-[{format_cmd}]
-----
-ssh node2 "pkill tcplife"
-----
-
-[discrete]
-==== Results 
-
-In the primary terminal, you should now see output similar to:
-
-[{format_output}]
-----
-PID   COMM       LADDR           LPORT RADDR           RPORT TX_KB RX_KB MS
-28478 sshd       10.0.0.12       22    10.0.0.10       33514    14     2 9091.95
-----
-
-Doing the math with the numbers above, this session was open for about 9 seconds and was initiated by IP 10.0.0.10 (the bastion host).
-
-In the `tcplife` terminal, issue a Ctrl-C and this will return you to a prompt.
-
-
 
 
 
@@ -191,7 +116,7 @@ either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to 
 
 [{format_cmd}]
 ----
-ssh node2 "pkill execsnoop"
+ssh node2 "sudo pkill execsnoop"
 ----
 
 [discrete]
@@ -332,7 +257,7 @@ either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to 
 
 [{format_cmd}]
 ----
-ssh node2 "pkill mountsnoop"
+ssh node2 "sudo pkill mountsnoop"
 ----
 
 [discrete]
@@ -382,7 +307,7 @@ flushes the cache and then runs a series of `dd` commands.
 
 [{format_cmd}]
 ----
-ssh node2 "workshop-ebpf-cachestat.sh"
+ssh node2 "sudo workshop-ebpf-cachestat.sh"
 ----
 
 
@@ -391,7 +316,7 @@ either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to 
 
 [{format_cmd}]
 ----
-ssh node2 "pkill cachestat"
+ssh node2 "sudo pkill cachestat"
 ----
 
 
