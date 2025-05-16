@@ -519,7 +519,7 @@ either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to 
 
 [{format_cmd}]
 ----
-ssh node2 "pkill bpftrace"
+ssh node2 "sudo pkill bpftrace"
 ----
 
 
