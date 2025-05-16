@@ -27,7 +27,13 @@ The objectives of this exercise are quite simple:
 
 For these exercises, you will be using the host `node3` as user `root`.
 
-From host `bastion`, ssh to `node3`.
+
+[{format_cmd}]
+----
+ssh node3 sudo reboot
+----
+
+Give the host a few seconds to reboot and then as before with the other units let's ssh to `node3` from host `bastion`.
 
 [{format_cmd}]
 ----
@@ -408,11 +414,11 @@ workshop-boom-grublist.sh
 [{format_output}]
 ----
      0  title="Red Hat Enterprise Linux (6.12.0-55.9.1.el10_0.x86_64) 10.0 (Coughlan)"
-     1  title="RHEL 10 Workshop"
-     2  title="Red Hat Enterprise Linux (6.12.0-55.11.1.el10_0.x86_64) 10.0 (Coughlan)"
+     1  title="Red Hat Enterprise Linux (6.12.0-55.11.1.el10_0.x86_64) 10.0 (Coughlan)"
+     2  title="RHEL 10 Workshop"
 ----
 
-Let us now inspect the GRUB configuration for `RHEL 9 Workshop`.  The following 
+Let us now inspect the GRUB configuration for `RHEL 10 Workshop`.  The following 
 complicated command figures out the index on your system.
 
 [{format_cmd}]
@@ -422,7 +428,7 @@ grubby --info=$(workshop-boom-grublist.sh | grep -m1 "Workshop" | awk '{print $1
 
 [{format_plain}]
 ----
-index=1
+index=2
 kernel="/vmlinuz-6.12.0-55.9.1.el10_0.x86_64"
 args="ro console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M custom_value=true"
 root="/dev/vda3"
@@ -456,8 +462,9 @@ grub2-editenv list
 
 [{format_plain}]
 ----
-saved_entry=
-boot_success=
+saved_entry=2
+boot_success=1
+boot_indeterminate=0
 ----
 
 And you can further verify the default boot option as follows.
