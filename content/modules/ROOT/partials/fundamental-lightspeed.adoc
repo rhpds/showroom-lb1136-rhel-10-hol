@@ -33,7 +33,7 @@ Verify that you are on the right host for these exercises.
 
 [{format_cmd}]
 ----
-workshop-systemd-checkhost.sh
+workshop-lightspeed-checkhost.sh
 ----
 
 You are now ready to proceed with these exercises.
