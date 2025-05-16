@@ -25,15 +25,17 @@ The objectives of this exercise are quite simple:
 
 == Getting Started
 
-For these exercises, you will be using the host `node3` as user `root`.
 
+For these exercises, you will be using the host `node3` as user `root`.  However, due to the unique
+circumstances of this exercise, we need to ensure the host is running on it's latest kernel with
+all updates applied and system reboot.  Thus we being by rebooting `node3`.
 
 [{format_cmd}]
 ----
 ssh node3 sudo reboot
 ----
 
-Give the host a few seconds to reboot and then as before with the other units let's ssh to `node3` from host `bastion`.
+Now,give the host a few seconds to reboot and then let's ssh to `node3` from host `bastion`.
 
 [{format_cmd}]
 ----
