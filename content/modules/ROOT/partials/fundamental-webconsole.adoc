@@ -2,7 +2,7 @@
 = *GUI System Mgmt* (webconsole)
 
 [discrete]
-== *Skill Level: Fundamental*
+== *Skill Level: Fundamental* icon:check[]
 
 
 
