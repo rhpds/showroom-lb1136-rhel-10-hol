@@ -77,21 +77,19 @@ podman search ubi10
 From this we see the current available ubi10 image is ubi10-beta.  So let's grab that.
 [{format_cmd}]
 ----
-podman pull registry.access.redhat.com/ubi10-beta/ubi:latest
+podman pull registry.access.redhat.com/ubi10/ubi:latest
 ----
 
 [{format_output}]
 ----
-Resolved "ubi10-beta/ubi" as an alias (/var/cache/containers/short-name-aliases.conf)
-Trying to pull registry.access.redhat.com/ubi10-beta/ubi:latest...
-Getting image source signatures                                  
+Trying to pull registry.access.redhat.com/ubi10/ubi:latest...
+Getting image source signatures
 Checking if image destination supports signatures
-Copying blob 9dcf0326ccda done   |              
-Copying blob bd69bf9256bd done   | 
-Copying config 8ba11fcef4 done   | 
+Copying blob 7fdd59f6557b done   | 
+Copying config da862ffa17 done   | 
 Writing manifest to image destination
 Storing signatures
-8ba11fcef4ef5ccb678b60edc9be7b64d8f73262d7e8d7c72a1d2e180dc0cb98
+da862ffa17875f5980832d6d8cd545f75e7cf3175a710b6529d7f7fc5fd650d1
 ----
 
 === UTS / Hostname
@@ -103,7 +101,7 @@ podman run ubi cat /proc/sys/kernel/hostname
 
 [{format_output}]
 ----
-a3f3e99082ca
+5e223c5d8e71
 ----
 
 So what we have learned here is that the hostname in the container's namespace is NOT the same as the host platform (node3.example.com).  It is unique and is by default identical to the container's ID.  You can verify this with 'podman ps -a'.
@@ -115,8 +113,8 @@ podman ps -a
 
 [{format_output}]
 ----
-CONTAINER ID  IMAGE                                       COMMAND               CREATED         STATUS                     PORTS       NAMES
-a3f3e99082ca  registry.access.redhat.com/ubi9/ubi:latest  cat /proc/sys/ker...  42 seconds ago  Exited (0) 42 seconds ago              dreamy_driscoll
+CONTAINER ID  IMAGE                                        COMMAND               CREATED        STATUS                    PORTS       NAMES
+5e223c5d8e71  registry.access.redhat.com/ubi10/ubi:latest  cat /proc/sys/ker...  4 seconds ago  Exited (0) 4 seconds ago              trusting_hugle
 ----
 
 === Process ID
@@ -166,11 +164,11 @@ podman run -v /usr/sbin:/usr/sbin -v /usr/lib64:/usr/lib64  ubi /usr/sbin/ip add
 
 [{format_output}]
 ----
-2: eth0@if36: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
-    link/ether ea:3a:6d:56:6e:f7 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-    inet 10.88.0.17/16 brd 10.88.255.255 scope global eth0
+2: eth0@if29: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 3e:cd:b0:5b:14:1a brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.88.0.14/16 brd 10.88.255.255 scope global eth0
        valid_lft forever preferred_lft forever
-    inet6 fe80::e83a:6dff:fe56:6ef7/64 scope link tentative proto kernel_ll 
+    inet6 fe80::3ccd:b0ff:fe5b:141a/64 scope link tentative proto kernel_ll 
        valid_lft forever preferred_lft forever
 ----
 
@@ -187,9 +185,10 @@ podman run --rm ubi cat /etc/hosts
 
 [{format_output}]
 ----
-::1        localhost localhost.localdomain localhost6 localhost6.localdomain6
-10.88.0.9  02e3c6ddc1b3 youthful_margulis
-10.88.0.1  host.containers.internal
+127.0.0.1       localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1     localhost localhost.localdomain localhost6 localhost6.localdomain6
+10.88.0.1       host.containers.internal host.docker.internal
+10.88.0.15      347606728bb8 gifted_poitras
 ----
 
 How does the container resolve hostnames (ie: DNS)?
@@ -201,7 +200,7 @@ podman run --rm ubi cat /etc/resolv.conf
 
 [{format_output}]
 ----
-nameserver 192.168.100.34
+nameserver 172.30.0.10
 ----
 
 Take a look at the routing table.
@@ -216,7 +215,7 @@ podman run -v /usr/sbin:/usr/sbin --rm ubi route -n
 ----
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-0.0.0.0         10.88.0.1       0.0.0.0         UG    0      0        0 eth0
+0.0.0.0         10.88.0.1       0.0.0.0         UG    100    0        0 eth0
 10.88.0.0       0.0.0.0         255.255.0.0     U     0      0        0 eth0
 ----
 
@@ -233,11 +232,11 @@ podman run ubi df -h
 [{format_output}]
 ----
 Filesystem      Size  Used Avail Use% Mounted on
-overlay          25G  1.9G   22G   8% /
+overlay          50G  4.2G   46G   9% /
 tmpfs            64M     0   64M   0% /dev
-tmpfs           725M  8.9M  716M   2% /etc/hosts
+tmpfs           1.4G   16M  1.4G   2% /etc/hosts
 shm              63M     0   63M   0% /dev/shm
-devtmpfs        1.8G     0  1.8G   0% /proc/keys
+devtmpfs        4.0M     0  4.0M   0% /proc/keys
 ----
 
 You were introduced to Bind-Mounts in the previous section.  Let us examine what the filesystems looks like with an active Bind-Mount.
@@ -250,11 +249,11 @@ podman run -v /usr/bin:/usr/bin ubi df -h
 [{format_output}]
 ----
 Filesystem      Size  Used Avail Use% Mounted on
-overlay          50G  3.9G   46G   8% /
+overlay          50G  4.2G   46G   9% /
 tmpfs            64M     0   64M   0% /dev
+tmpfs           1.4G   16M  1.4G   2% /etc/hosts
 shm              63M     0   63M   0% /dev/shm
-tmpfs           1.4G   19M  1.4G   2% /etc/hosts
-/dev/vda3        50G  3.9G   46G   8% /usr/bin
+/dev/vda3        50G  4.2G   46G   9% /usr/bin
 devtmpfs        4.0M     0  4.0M   0% /proc/keys
 ----
 
@@ -283,7 +282,7 @@ cat /root/custom_image.OCIFile
 
 [{format_output}]
 ----
-FROM ubi10-beta/ubi:latest
+FROM registry.access.redhat.com/ubi10/ubi:latest
 
 #NOTE:  Until RHEL10 is GA, we can only use the local hosts repos to augment the
 #       the container image with additional content.
@@ -305,7 +304,7 @@ ENTRYPOINT ["/usr/sbin/httpd"]
 
 Notice a few things about the configuration:
 
-  * that our image is based on `ubi10-beta/ubi:latest`
+  * that our image is based on `ubi10/ubi:latest`
   * the build process will install an additional package `httpd` along with it's dependencies
   * httpd is configured by default to run on port 80, so that is the port we will expose
   * the build will create a file `/var/www/html/index.html` with the contents "The Web Server is Running".
@@ -330,7 +329,7 @@ podman images
 ----
 REPOSITORY                                 TAG         IMAGE ID      CREATED                 SIZE
 localhost/custom_image                     latest      5638b7ebda93  Less than a second ago  263 MB
-registry.access.redhat.com/ubi10-beta/ubi  latest      8ba11fcef4ef  6 weeks ago             212 MB
+registry.access.redhat.com/ubi10/ubi       latest      8ba11fcef4ef  6 weeks ago             212 MB
 ----
 
 === Deploy
