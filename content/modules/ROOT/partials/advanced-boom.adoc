@@ -25,9 +25,17 @@ The objectives of this exercise are quite simple:
 
 == Getting Started
 
-For these exercises, you will be using the host `node3` as user `root`.
 
-From host `bastion`, ssh to `node3`.
+For these exercises, you will be using the host `node3` as user `root`.  However, due to the unique
+circumstances of this exercise, we need to ensure the host is running on it's latest kernel with
+all updates applied and system reboot.  Thus we being by rebooting `node3`.
+
+[{format_cmd}]
+----
+ssh node3 sudo reboot
+----
+
+Now,give the host a few seconds to reboot and then let's ssh to `node3` from host `bastion`.
 
 [{format_cmd}]
 ----
@@ -54,9 +62,21 @@ You are now ready to proceed with these exercises.
 
 == Core Concepts
 
-The Boom system uses a concept of "profiles" and "entries" to allow templated configurations to be cloned and modified.  This minimizes the need for the user to input complex boot parameters manually for each iteration of the configuration.
+The Boom system uses a concept of "profiles" and "entries" to allow templated configurations to be cloned and modified.  This minimizes the need for the user to input complex boot parameters manually for each iteration of the configuration.  These configurations are known as Boot Loader Specification (BLS) files.
 
-So we begin with the management of boom profiles.
+You can confirm that grub is configure with BLS enabled, run the following.
+
+[{format_cmd}]
+----
+grep BLSCFG /etc/default/grub
+----
+
+[{format_plain}]
+----
+GRUB_ENABLE_BLSCFG=true
+----
+
+So now we begin with the management of boom (BLS) profiles.
 
 
 
@@ -87,8 +107,8 @@ boom profile show
 
 ==== Create
 
-Creating a profile is handled by a simple command.  However determining all of th various parameters
-can be challeging and are outside the scope of this lab.  Thus we have prepared a simple script to do the hard work.
+Creating a profile is handled by a simple command.  However determining all of the various parameters
+can be challeging and is outside the scope of this lab.  Thus we have prepared a simple script to do the hard work.
 
 [{format_cmd}]
 ----
@@ -97,24 +117,19 @@ workshop-boom-mkprofile.sh
 
 [{format_plain}]
 ----
-Determining root device...
-Creating default BOOM profile
+Creating adjusted BOOM profile (prefixing /boot to bootpath)...
 
-Created profile with os_id 52f9e46:
-  OS ID: "52f9e46e9c9bfe3066102f23d6dafa819978b375",
+Created profile with os_id 2947e1a:
+  OS ID: "2947e1a899af7d2129944dce8d3c98031fa3a6da",
   Name: "Red Hat Enterprise Linux", Short name: "rhel",
-  Version: "9.2 (Plow)", Version ID: "9.2",
-  Kernel pattern: "/vmlinuz-%{version}", Initramfs pattern: "/initramfs-%{version}.img",
+  Version: "10.0 (Coughlan)", Version ID: "10.0",
+  Kernel pattern: "/boot/vmlinuz-%{version}", Initramfs pattern: "/boot/initramfs-%{version}.img",
   Root options (LVM2): "rd.lvm.lv=%{lvm_root_lv}",
   Root options (BTRFS): "rootflags=%{btrfs_subvolume}",
-  Options: "root=%{root_device} ro %{root_opts}",
+  Options: "root=%{root_device} ro %{root_opts} console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M",
   Title: "%{os_name} %{os_version_id} (%{version})",
-  Optional keys: "grub_users grub_arg grub_class id", UTS release pattern: "el9"
+  Optional keys: "grub_users grub_arg grub_class id", UTS release pattern: "el10"
 ----
-
-NOTE: In this example, the root disk is identified by a UUID.  As a result, `boom` will incorrectly identify the paths to the kernel and initiramfs when creating the grub entry.  To avoid this current problem (bug?), we tweak the boom profile to add `/boot` to the paths.
-
-
 
 ==== Inspect
 
@@ -122,34 +137,34 @@ Verify that the boom profile was created by the previous command:
 
 [{format_cmd}]
 ----
-boom profile list --osversion "9.2 (Plow)"
+boom profile list --osversion "10.0 (Coughlan)"
 ----
 
 [{format_output}]
 ----
-OsID    Name                     OsVersion
-52f9e46 Red Hat Enterprise Linux 9.2 (Plow)
+OsID    Name                     OsVersion      
+2947e1a Red Hat Enterprise Linux 10.0 (Coughlan)
 ----
 
 And for a more detailed view:
 
 [{format_cmd}]
 ----
-boom profile show --osversion "9.2 (Plow)"
+boom profile show --osversion "10.0 (Coughlan)"
 ----
 
 [{format_plain}]
 ----
-OS Profile (os_id=52f9e46)
-  OS ID: "52f9e46e9c9bfe3066102f23d6dafa819978b375",
+OS Profile (os_id=2947e1a)
+  OS ID: "2947e1a899af7d2129944dce8d3c98031fa3a6da",
   Name: "Red Hat Enterprise Linux", Short name: "rhel",
-  Version: "9.2 (Plow)", Version ID: "9.2",
-  Kernel pattern: "/vmlinuz-%{version}", Initramfs pattern: "/initramfs-%{version}.img",
+  Version: "10.0 (Coughlan)", Version ID: "10.0",
+  Kernel pattern: "/boot/vmlinuz-%{version}", Initramfs pattern: "/boot/initramfs-%{version}.img",
   Root options (LVM2): "rd.lvm.lv=%{lvm_root_lv}",
   Root options (BTRFS): "rootflags=%{btrfs_subvolume}",
-  Options: "root=%{root_device} ro %{root_opts}",
+  Options: "root=%{root_device} ro %{root_opts} console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M",
   Title: "%{os_name} %{os_version_id} (%{version})",
-  Optional keys: "grub_users grub_arg grub_class id", UTS release pattern: "el9"
+  Optional keys: "grub_users grub_arg grub_class id", UTS release pattern: "el10"
 ----
 
 
@@ -171,8 +186,9 @@ boom entry list
 
 [{format_output}]
 ----
-BootID  Version                      Name                     RootDevice
-a482bbd 5.14.0-284.30.1.el9_2.x86_64 Red Hat Enterprise Linux UUID=016e7284-31f6-4c28-bbb1-98c5b25fcdbf
+BootID  Version                      Name                     RootDevice                               
+feb94ba 6.12.0-55.9.1.el10_0.x86_64  Red Hat Enterprise Linux UUID=15507695-22bb-4c65-94e6-a438e095983f
+07574e0 6.12.0-55.11.1.el10_0.x86_64 Red Hat Enterprise Linux UUID=15507695-22bb-4c65-94e6-a438e095983f
 ----
 
 And for a more detailed view
@@ -184,12 +200,22 @@ boom entry show
 
 [{format_plain}]
 ----
-Boot Entry (boot_id=a482bbd)
-  title Red Hat Enterprise Linux (5.14.0-284.30.1.el9_2.x86_64) 9.2 (Plow)
-  version 5.14.0-284.30.1.el9_2.x86_64
-  linux /vmlinuz-5.14.0-284.30.1.el9_2.x86_64
-  initrd /initramfs-5.14.0-284.30.1.el9_2.x86_64.img $tuned_initrd
-  options root=UUID=016e7284-31f6-4c28-bbb1-98c5b25fcdbf console=ttyS0,115200n8 console=tty0 net.ifnames=0 rd.blacklist=nouveau nvme_core.io_timeout=4294967295 crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M $tuned_params
+Boot Entry (boot_id=feb94ba)
+  title Red Hat Enterprise Linux (6.12.0-55.9.1.el10_0.x86_64) 10.0 (Coughlan)
+  version 6.12.0-55.9.1.el10_0.x86_64
+  linux /boot/vmlinuz-6.12.0-55.9.1.el10_0.x86_64
+  initrd /boot/initramfs-6.12.0-55.9.1.el10_0.x86_64.img $tuned_initrd
+  options root=UUID=15507695-22bb-4c65-94e6-a438e095983f console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M $tuned_params
+  grub_users $grub_users
+  grub_arg --unrestricted
+  grub_class rhel
+
+Boot Entry (boot_id=07574e0)
+  title Red Hat Enterprise Linux (6.12.0-55.11.1.el10_0.x86_64) 10.0 (Coughlan)
+  version 6.12.0-55.11.1.el10_0.x86_64
+  linux /boot/vmlinuz-6.12.0-55.11.1.el10_0.x86_64
+  initrd /boot/initramfs-6.12.0-55.11.1.el10_0.x86_64.img $tuned_initrd
+  options root=UUID=15507695-22bb-4c65-94e6-a438e095983f console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M $tuned_params
   grub_users $grub_users
   grub_arg --unrestricted
   grub_class rhel
@@ -208,7 +234,7 @@ cat /proc/cmdline
 
 [{format_plain}]
 ----
-BOOT_IMAGE=(hd0,gpt3)/vmlinuz-5.14.0-284.30.1.el9_2.x86_64 root=UUID=016e7284-31f6-4c28-bbb1-98c5b25fcdbf console=ttyS0,115200n8 console=tty0 net.ifnames=0 rd.blacklist=nouveau nvme_core.io_timeout=4294967295 crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M
+BOOT_IMAGE=(hd0,gpt3)/boot/vmlinuz-6.12.0-55.9.1.el10_0.x86_64 root=UUID=15507695-22bb-4c65-94e6-a438e095983f console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M
 ----
 
 We can further isolate the undesired parameters with a simple grep.
@@ -220,7 +246,7 @@ grep -o '\broot=[^ ]*' /proc/cmdline
 
 [{format_plain}]
 ----
-root=UUID=016e7284-31f6-4c28-bbb1-98c5b25fcdbf
+root=UUID=15507695-22bb-4c65-94e6-a438e095983f
 ----
 
 NOTE: In this scenario, the boot device is listed by a UUID.  Depending on the lab environment, you could see a logical volume name or a physcial device path.
@@ -238,15 +264,15 @@ Determining root device...
 UUID reduction if necessary...
 Creating GRUB2 entry...
 
-DEBUG: boom create --title 'RHEL 9 Workshop' --root-device /dev/nvme0n1p4
+DEBUG: boom create --title 'RHEL 10 Workshop' --root-device /dev/vda3
 
-Created entry with boot_id 4b36f16:
-  title RHEL 9 Workshop
-  machine-id ec2486de3bb2e99bbb39853600f8317b
-  version 5.14.0-284.30.1.el9_2.x86_64
-  linux /vmlinuz-5.14.0-284.30.1.el9_2.x86_64
-  initrd /initramfs-5.14.0-284.30.1.el9_2.x86_64.img
-  options root=/dev/nvme0n1p4 ro
+Created entry with boot_id 4f9e987:
+  title RHEL 10 Workshop
+  machine-id e3be83f0851e5559a36599c4d6d4d6cf
+  version 6.12.0-55.9.1.el10_0.x86_64
+  linux /vmlinuz-6.12.0-55.9.1.el10_0.x86_64
+  initrd /initramfs-6.12.0-55.9.1.el10_0.x86_64.img
+  options root=/dev/vda3 ro console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M
   grub_users $grub_users
   grub_arg --unrestricted
   grub_class kernel
@@ -265,28 +291,30 @@ boom entry list
 
 [{format_plain}]
 ----
-BootID  Version                      Name                     RootDevice
-a482bbd 5.14.0-284.30.1.el9_2.x86_64 Red Hat Enterprise Linux UUID=016e7284-31f6-4c28-bbb1-98c5b25fcdbf
-4b36f16 5.14.0-284.30.1.el9_2.x86_64 Red Hat Enterprise Linux /dev/nvme0n1p4
+BootID  Version                      Name                     RootDevice                               
+feb94ba 6.12.0-55.9.1.el10_0.x86_64  Red Hat Enterprise Linux UUID=15507695-22bb-4c65-94e6-a438e095983f
+07574e0 6.12.0-55.11.1.el10_0.x86_64 Red Hat Enterprise Linux UUID=15507695-22bb-4c65-94e6-a438e095983f
+5895dcc 6.12.0-55.11.1.el10_0.x86_64 Red Hat Enterprise Linux /dev/vda3
 ----
 
 Show details about our boom-boot entry.
 
 [{format_cmd}]
 ----
-export BOOM_BOOTID=$(boom entry list --title "RHEL 9 Workshop" -o bootid,title | grep -m 1 Workshop | awk '{print $1}')
+export BOOM_BOOTID=$(boom entry list --title "RHEL 10 Workshop" -o bootid,title | grep -m 1 Workshop | awk '{print $1}')
 boom entry show $BOOM_BOOTID
 ----
 
 [{format_plain}]
 ----
-Boot Entry (boot_id=4b36f16)
-  title RHEL 9 Workshop
-  machine-id ec2486de3bb2e99bbb39853600f8317b
-  version 5.14.0-284.30.1.el9_2.x86_64
-  linux /vmlinuz-5.14.0-284.30.1.el9_2.x86_64
-  initrd /initramfs-5.14.0-284.30.1.el9_2.x86_64.img
-  options root=/dev/nvme0n1p4 ro
+boom entry show $BOOM_BOOTID
+Boot Entry (boot_id=5895dcc)
+  title RHEL 10 Workshop
+  machine-id 844418c5c475527cb6a87daa00873089
+  version 6.12.0-55.11.1.el10_0.x86_64
+  linux /boot/vmlinuz-6.12.0-55.11.1.el10_0.x86_64
+  initrd /boot/initramfs-6.12.0-55.11.1.el10_0.x86_64.img
+  options root=/dev/vda3 ro console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M
   grub_users $grub_users
   grub_arg --unrestricted
   grub_class kernel
@@ -296,12 +324,18 @@ Boot Entry (boot_id=4b36f16)
 
 ==== Delete 
 
+In order to delete a boot entry, you need to identify the BOOTID and then use the 'delete' option.
+
 [{format_cmd}]
 ----
-export BOOM_BOOTID=$(boom entry list --title "RHEL 9 Workshop" -o bootid,title | grep -m 1 Workshop | awk '{print $1}')
+export BOOM_BOOTID=$(boom entry list --title "RHEL 10 Workshop" -o bootid,title | grep -m 1 Workshop | awk '{print $1}')
 boom entry delete $BOOM_BOOTID
 ----
 
+[{format_plain}]
+----
+Deleted 1 entry
+----
 
 
 
@@ -314,28 +348,28 @@ Let's take a look at the details to confirm everthing is in order.
 
 [{format_cmd}]
 ----
-boom profile show --osversion "9.2 (Plow)"
+boom profile show --osversion "10.0 (Coughlan)"
 ----
 
 [{format_plain}]
 ----
-OS Profile (os_id=52f9e46)
-  OS ID: "52f9e46e9c9bfe3066102f23d6dafa819978b375",
+OS Profile (os_id=2947e1a)
+  OS ID: "2947e1a899af7d2129944dce8d3c98031fa3a6da",
   Name: "Red Hat Enterprise Linux", Short name: "rhel",
-  Version: "9.2 (Plow)", Version ID: "9.2",
+  Version: "10.0 (Coughlan)", Version ID: "10.0",
   Kernel pattern: "/vmlinuz-%{version}", Initramfs pattern: "/initramfs-%{version}.img",
   Root options (LVM2): "rd.lvm.lv=%{lvm_root_lv}",
   Root options (BTRFS): "rootflags=%{btrfs_subvolume}",
-  Options: "root=%{root_device} ro %{root_opts}",
+  Options: "root=%{root_device} ro %{root_opts} console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M",
   Title: "%{os_name} %{os_version_id} (%{version})",
-  Optional keys: "grub_users grub_arg grub_class id", UTS release pattern: "el9"
+  Optional keys: "grub_users grub_arg grub_class id", UTS release pattern: "el10"
 ----
 
 
 
 === Boot Entry
 
-Again, to avoid some of the complexities considered outside the scope this lab we will
+Again, to avoid some of the complexities considered outside the scope of this lab we will
 run a prepared script to configure the boot entry.
 
 [{format_cmd}]
@@ -349,21 +383,21 @@ Determining root device...
 UUID reduction if necessary...
 Creating GRUB2 entry...
 
-DEBUG: boom create --title 'RHEL 9 Workshop' --root-device /dev/nvme0n1p4 -a custom_value=true
+DEBUG: boom create --title 'RHEL 10 Workshop' --root-device /dev/vda3 -a custom_value=true
 
-Created entry with boot_id ffe2f1e:
-  title RHEL 9 Workshop
-  machine-id ec2486de3bb2e99bbb39853600f8317b
-  version 5.14.0-284.30.1.el9_2.x86_64
-  linux /vmlinuz-5.14.0-284.30.1.el9_2.x86_64
-  initrd /initramfs-5.14.0-284.30.1.el9_2.x86_64.img
-  options root=/dev/nvme0n1p4 ro custom_value=true
+Created entry with boot_id 742eafd:
+  title RHEL 10 Workshop
+  machine-id e3be83f0851e5559a36599c4d6d4d6cf
+  version 6.12.0-55.9.1.el10_0.x86_64
+  linux /vmlinuz-6.12.0-55.9.1.el10_0.x86_64
+  initrd /initramfs-6.12.0-55.9.1.el10_0.x86_64.img
+  options root=/dev/vda3 ro console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M custom_value=true
   grub_users $grub_users
   grub_arg --unrestricted
   grub_class kernel
 ----
 
-Notice in the options that we slipped in the `custom_value=true`.
+Notice in the that we appended a key-value parameter `custom_value=true` to the `options` line.
 
 
 
@@ -373,7 +407,7 @@ WARNING: If possible, bring up the virtual machine console for node3 before proc
 
 Before reboot, there are 2 options to invoke the right loader at restart:
   . enter the GRUB menu at startup and select at boot time
-  . use grub-set-default to pre-select which one to load by default
+  . use `grubby --set-default=#` to pre-select which one to load by default
   
 We are going to opt for pre-select since it's easier to script.  Use the following workshop to inspect 
 the currently configured GRUB menu options.
@@ -385,11 +419,12 @@ workshop-boom-grublist.sh
 
 [{format_output}]
 ----
-     0  title="Red Hat Enterprise Linux (5.14.0-284.30.1.el9_2.x86_64) 9.2 (Plow)"
-     1  title="RHEL 9 Workshop"
+     0  title="Red Hat Enterprise Linux (6.12.0-55.9.1.el10_0.x86_64) 10.0 (Coughlan)"
+     1  title="Red Hat Enterprise Linux (6.12.0-55.11.1.el10_0.x86_64) 10.0 (Coughlan)"
+     2  title="RHEL 10 Workshop"
 ----
 
-Let us now inspect the GRUB configuration for `RHEL 9 Workshop`.  The following 
+Let us now inspect the GRUB configuration for `RHEL 10 Workshop`.  The following 
 complicated command figures out the index on your system.
 
 [{format_cmd}]
@@ -399,23 +434,25 @@ grubby --info=$(workshop-boom-grublist.sh | grep -m1 "Workshop" | awk '{print $1
 
 [{format_plain}]
 ----
-index=1
-kernel="/boot/vmlinuz-5.14.0-284.30.1.el9_2.x86_64"
-args="ro custom_value=true"
-root="/dev/nvme0n1p4"
-initrd="/boot/initramfs-5.14.0-284.30.1.el9_2.x86_64.img"
-title="RHEL 9 Workshop"
-id="ec2486de3bb2e99bbb39853600f8317b-ffe2f1e-5.14.0-284.30.1.el9_2.x86_64"
+index=2
+kernel="/boot/vmlinuz-6.12.0-55.11.1.el10_0.x86_64"
+args="ro console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M custom_value=true"
+root="/dev/vda3"
+initrd="/boot/initramfs-6.12.0-55.11.1.el10_0.x86_64.img"
+title="RHEL 10 Workshop"
+id="844418c5c475527cb6a87daa00873089-4cb687d-6.12.0-55.11.1.el10_0.x86_64"
 ----
 
-WARNING: *DO NOT PROCEED* unless both `kernel=` and `initrd=` include the path `/boot/<filename>`.
+WARNING: *DO NOT PROCEED* unless both `kernel=` and `initrd=` include the path `/boot/<filename>`.  This is neccessary 
+if /boot is not on a dedicated partition/mount.  In the majority of our workshop deployments, /boot
+is part of the root '/' filesystem.  If you have questions, ask your instructor.
 
-We want to reboot to our "RHEL 9 Workshop", so we need to isolate and use the "index" from above.
+We want to reboot to our "RHEL 10 Workshop", so we need to isolate and use the brub boot "index" from above output.
 
 [{format_cmd}]
 ----
 eval $(grubby --info=$(workshop-boom-grublist.sh | grep -m1 "Workshop" | awk '{print $1}')| grep index)
-grub2-set-default $index
+grubby --set-default=$index
 ----
 
 
@@ -431,10 +468,22 @@ grub2-editenv list
 
 [{format_plain}]
 ----
-saved_entry=1
+saved_entry=2
 boot_success=1
+boot_indeterminate=0
 ----
 
+And you can further verify the default boot option as follows.
+
+[{format_cmd}]
+----
+grubby --default-title
+----
+
+[{format_plain}]
+----
+RHEL 10 Workshop
+----
 
 
 === Reboot
@@ -464,7 +513,7 @@ cat /proc/cmdline
 
 [{format_plain}]
 ----
-BOOT_IMAGE=(hd0,gpt3)/vmlinuz-5.14.0-70.13.1.el9_0.x86_64 root=/dev/nvme0n1p4 ro custom_value=true
+
 ----
 
 Confirm that the custom key-value is now part of the kernel boot options.

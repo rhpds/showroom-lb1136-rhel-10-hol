@@ -51,22 +51,7 @@ workshop-ebpf-checkhost.sh
 [discrete]
 ==== Secondary Terminal (bastion)
 
-To help you set up your second terminal, here is the ssh command and password which you can use.
-
-[{format_cmd}]
-----
-[[ $(hostname -s) != "bastion" ]] && {ssh_command} -o "StrictHostKeyChecking no"
-----
-
-[{format_cmd}]
-----
-{ssh_password}
-----
-
-[{format_cmd}]
-----
-[[ "$UID" == 0 ]] || sudo -i
-----
+You'll need your second terminal for these exercises.  So just keep your eyes on the instructions for what to run a where.
 
 You are now ready to proceed with these exercises.
 
@@ -86,72 +71,13 @@ There are just over 100 tools shipped in this package. A few things of note:
 
 Start by installing the *BPF Compiler Collection* (bcc-tools) and kernel-devel packages for the installed kernel:
 
+.terminal-1
 [{format_cmd}]
 ----
 dnf install bcc-tools bpftrace strace kernel-devel-$(uname -r) -y
 ----
 
 Now, we have a lot of interesting tools installed in /usr/share/bcc/tools along with accompanying man pages.
-
-
-
-
-
-== Exercise: tcplife
-
-The `tcplife` tool monitors tcp connections on the system and measures the amount of time that they've been open, the local and remote ports involved in the connection and the amount of data transferred and received in kilobytes.
-
-[discrete]
-==== Primary Terminal (node2)
-
-To run this tool, execute the following and give it a couple of seconds to get set up:
-
-[{format_cmd}]
-----
-/usr/share/bcc/tools/tcplife
-----
-
-[{format_output}]
-----
-PID   COMM       LADDR           LPORT RADDR           RPORT TX_KB RX_KB MS
-----
-
-WARNING: It is important to wait until the tool is setup.  Do not proceed until you see the output headers (displayed above) appear.
-
-[discrete]
-==== Secondary Terminal (bastion)
-
-Run a little script to generate some user activity.
-
-[{format_cmd}]
-----
-ssh node2 "sudo workshop-ebpf-rootkit.sh"
-----
-
-This command should run for about 10 seconds and then exit.  Before porceeding to the results you can
-either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to terminate tcplife.
-
-[{format_cmd}]
-----
-ssh node2 "pkill tcplife"
-----
-
-[discrete]
-==== Results 
-
-In the primary terminal, you should now see output similar to:
-
-[{format_output}]
-----
-PID   COMM       LADDR           LPORT RADDR           RPORT TX_KB RX_KB MS
-28478 sshd       10.0.0.12       22    10.0.0.10       33514    14     2 9091.95
-----
-
-Doing the math with the numbers above, this session was open for about 9 seconds and was initiated by IP 10.0.0.10 (the bastion host).
-
-In the `tcplife` terminal, issue a Ctrl-C and this will return you to a prompt.
-
-
 
 
 
@@ -164,6 +90,7 @@ The `execsnoop` script monitors all calls to execve() and catches all processes 
 
 Continuing on host `node2`, to run `execsnoop` as follows:
 
+.terminal-1
 [{format_cmd}]
 ----
 /usr/share/bcc/tools/execsnoop
@@ -181,6 +108,7 @@ WARNING: It is important to wait until the tool is setup.  Do not proceed until 
 
 In your second terminal having established yourself as root, run the following command:
 
+.terminal-2
 [{format_cmd}]
 ----
 ssh node2 "sudo workshop-ebpf-rootkit.sh"
@@ -189,9 +117,10 @@ ssh node2 "sudo workshop-ebpf-rootkit.sh"
 Again, this command should run for about 10 seconds and then exit.  Before porceeding to the results you can
 either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to terminate execsnoop.
 
+.terminal-2
 [{format_cmd}]
 ----
-ssh node2 "pkill execsnoop"
+ssh node2 "sudo pkill execsnoop"
 ----
 
 [discrete]
@@ -244,6 +173,7 @@ Similar in nature to `execsnoop`, `mountsnoop` traces the mount() and umount() s
 
 To run this tool, execute the following and give it a couple of seconds to get set up:
 
+.terminal-1
 [{format_cmd}]
 ----
 /usr/share/bcc/tools/mountsnoop
@@ -261,6 +191,7 @@ WARNING: It is important to wait until the tool is setup.  Do not proceed until 
 
 In your second terminal having established yourself as root, let's try to unmount a something we know can NOT be unmounted. For this, we'll pick the root filesystem '/'.
 
+.terminal-2
 [{format_cmd}]
 ----
 ssh node2 "sudo workshop-ebpf-unmountroot.sh"
@@ -288,6 +219,7 @@ This shows us that the mount is busy and cannot be unmounted.
 
 Now let's try to unmount a filesystem that we should be able to unmount.  But before doing so, look at the mount options to ensure we can restore it correctly.  On `node2` run the following:
 
+.terminal-2
 [{format_cmd}]
 ----
 ssh node2 "grep /dev/shm /proc/mounts"
@@ -300,6 +232,7 @@ tmpfs /dev/shm tmpfs *rw,seclabel,nosuid,nodev,relatime* 0 0
 
 Now proceed to umount `/dev/shm` on `node2`
 
+.terminal-2
 [{format_cmd}]
 ----
 ssh node2 "sudo workshop-ebpf-unmountshm.sh"
@@ -322,6 +255,7 @@ The umount command succeeded.
 
 Proceed to restore the /dev/shm mount as follows:
 
+.terminal-2
 [{format_cmd}]
 ----
 ssh node2 "sudo workshop-ebpf-mountshm.sh"
@@ -330,9 +264,10 @@ ssh node2 "sudo workshop-ebpf-mountshm.sh"
 This is the last step related to mountsnoop.  Before porceeding to the results you can
 either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to terminate mountsnoop.
 
+.terminal-2
 [{format_cmd}]
 ----
-ssh node2 "pkill mountsnoop"
+ssh node2 "sudo pkill mountsnoop"
 ----
 
 [discrete]
@@ -362,6 +297,7 @@ The `cachestat` tool traces kernel page cache functions and prints every five se
 
 To run this tool, execute the following and give it a couple of seconds to get set up:
 
+.terminal-1
 [{format_cmd}]
 ----
 /usr/share/bcc/tools/cachestat 5
@@ -380,18 +316,20 @@ WARNING: It is important to wait until the tool is setup.  Do not proceed until 
 Let's now run a little exercise that will generate some i/o.  This script 
 flushes the cache and then runs a series of `dd` commands.
 
+.terminal-2
 [{format_cmd}]
 ----
-ssh node2 "workshop-ebpf-cachestat.sh"
+ssh node2 "sudo workshop-ebpf-cachestat.sh"
 ----
 
 
 This command should run for a few seconds and then exit.  Before porceeding to the results you can
 either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to terminate cachestat.
 
+.terminal-2
 [{format_cmd}]
 ----
-ssh node2 "pkill cachestat"
+ssh node2 "sudo pkill cachestat"
 ----
 
 
@@ -432,6 +370,7 @@ Let us start this educational journey by examining what system calls a simple co
 
 To begin, we need a test file to use as our target.
 
+.terminal-1
 [{format_cmd}]
 ----
 touch /tmp/workshop.tmp
@@ -440,6 +379,7 @@ touch /tmp/workshop.tmp
 The command we will evaluate is `cat /tmp/workshop.tmp` and we will use strace to list the system calls
 made and with what frequency (count). 
 
+.terminal-1
 [{format_cmd}]
 ----
 strace -c cat /tmp/workshop.tmp
@@ -484,6 +424,7 @@ to get all the relevant syscalls.
 [discrete]
 ==== Primary Terminal (node2)
 
+.terminal-1
 [{format_cmd}]
 ----
 bpftrace -e 'tracepoint:syscalls:sys_enter_* { if (comm == "cat") { @[probe] = count(); } }' -c "cat /tmp/workshop.tmp"
@@ -526,6 +467,7 @@ Now we are going to limit the probe to only show 'sys_enter_openat' thereby only
 [discrete]
 ==== Primary Terminal (node2)
 
+.terminal-2
 [{format_cmd}]
 ----
 bpftrace -e 'tracepoint:syscalls:sys_enter_openat { if (comm == "cat") { @[probe] = count(); } }' -c "cat /tmp/workshop.tmp"
@@ -563,6 +505,7 @@ The objective is to set a probe and identify any process that opens our targeted
 
 Proceed to set the probe in the primary terminal.
 
+.terminal-1
 [{format_cmd}]
 ----
 bpftrace -e 'tracepoint:syscalls:sys_enter_openat { if (str(args->filename) == "/tmp/workshop.tmp") { printf( "%d %d %d %s %s\n", pid, uid, gid, comm, str(args->filename)); }}'
@@ -574,16 +517,19 @@ bpftrace -e 'tracepoint:syscalls:sys_enter_openat { if (str(args->filename) == "
 
 To generate some output, you will need to utilize the second terminal and open the target with a couple of different tools.  From the bastion host, run the following:
 
+.terminal-2
 [{format_cmd}]
 ----
 ssh node2 "cat /tmp/workshop.tmp"
 ----
 
+.terminal-2
 [{format_cmd}]
 ----
 *ssh node2 "grep something /tmp/workshop.tmp"*
 ----
 
+.terminal-2
 [{format_cmd}]
 ----
 ssh node2 "echo < /tmp/workshop.tmp"
@@ -592,9 +538,10 @@ ssh node2 "echo < /tmp/workshop.tmp"
 This is the last step related to bpftrace.  Before porceeding to the results you can
 either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to terminate bpftrace.
 
+.terminal-2
 [{format_cmd}]
 ----
-ssh node2 "pkill bpftrace"
+ssh node2 "sudo pkill bpftrace"
 ----
 
 

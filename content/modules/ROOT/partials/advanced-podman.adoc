@@ -44,11 +44,11 @@ You are now ready to proceed with these exercises.
 
 In this unit you will be exposed to some advanced concepts involving containers:
 
-  + how they behave, 
-  + how they are built, and 
-  + how they can be customized
+  * how they behave, 
+  * how they are built, and 
+  * how they can be customized
 
-These exercises build upon the material learned in the intermediate exercises for container managementr. 
+These exercises build upon the material learned in the intermediate exercises for container management. 
 
 There are no dependencies on prior work so you can proceed without having completed the intermediate activities.
 

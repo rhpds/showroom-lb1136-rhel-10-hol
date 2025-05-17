@@ -103,7 +103,7 @@ dnf list --installed | wc -l
 dnf list --available | wc -l
 ----
 
-You should a result roughly '820' packages installed compared to '4653' available for installation.
+You should a result roughly '622' packages installed compared to '4760' available for installation.
 
 Last, let us identify packages that are installed but do not belong to any known repository.  Meaning, someone downloaded and installed it manually.
 
@@ -257,6 +257,18 @@ To answer "when?" really requires a deep understanding of how Lunix works.  The 
 
 Advanced technologies like 'kpatch' were developed in order to improve the security response without ALWAYS requiring a reboot. 
 Even then, with kpatch one cannot SKIP a reboot, one can only DELAY the reboot.  More about that in the advanced kpatch unit.
+
+
+== Conclusion
+
+This concludes the first exercises related to `dnf`.
+
+Time to finish this unit and return the shell to it's home position.
+
+[{format_cmd}]
+----
+workshop-finish-exercise.sh
+----
 
 
 == Further Reading

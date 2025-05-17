@@ -291,7 +291,7 @@ tmpfs                                      379M     0  379M   0% /run/user/1000
 
 == Conclusion
 
-This concludes the exercises related to stratis.
+This concludes the first exercises related to stratis.
 
 Time to finish this unit and return the shell to it's home position.
 
