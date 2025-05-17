@@ -50,19 +50,11 @@ Let's get started by creating a new working container based off of the ubi image
 
 [{format_cmd}]
 ----
-buildah from registry.access.redhat.com/ubi10-beta/ubi:latest
+buildah from registry.access.redhat.com/ubi10/ubi:latest
 ----
 
 [{format_output}]
 ----
-Trying to pull registry.access.redhat.com/ubi10-beta/ubi:latest...
-Getting image source signatures
-Checking if image destination supports signatures
-Copying blob 9dcf0326ccda done   | 
-Copying blob bd69bf9256bd done   | 
-Copying config 8ba11fcef4 done   | 
-Writing manifest to image destination
-Storing signatures
 ubi-working-container
 ----
 
@@ -79,7 +71,7 @@ buildah copy ubi-working-container /var/tmp/buildah-dan-cries.txt /var/www/html/
 
 [{format_output}]
 ----
-34f1621a22ffd90a2ebbd58eba315089dc2704ac69a3d33d60362422e4ec26a1
+c1c798ce4c962f7d2c7fb856f27685fb88905d996f78d5a97ef441f2c3aea6a2
 ----
 
 At this point, you have copied your local `dan-cries.txt` into the the ubi-working-container image.
@@ -110,13 +102,11 @@ buildah run ubi-working-container dnf install -y httpd
 ...<output truncated>...
 
 Installed:
-  apr-1.7.5-2.el10.x86_64                           apr-util-1.6.3-21.el10.x86_64                     
-  apr-util-lmdb-1.6.3-21.el10.x86_64                apr-util-openssl-1.6.3-21.el10.x86_64             
-  httpd-2.4.63-1.el10.x86_64                        httpd-core-2.4.63-1.el10.x86_64                   
-  httpd-filesystem-2.4.63-1.el10.noarch             httpd-tools-2.4.63-1.el10.x86_64                  
-  libbrotli-1.1.0-6.el10.x86_64                     lmdb-libs-0.9.32-4.el10.x86_64                    
-  mailcap-2.1.54-8.el10.noarch                      mod_http2-2.0.29-2.el10.x86_64                    
-  mod_lua-2.4.63-1.el10.x86_64                      redhat-logos-httpd-100.0-2.el10.noarch            
+  apr-1.7.5-2.el10.x86_64                       apr-util-1.6.3-21.el10.x86_64                  apr-util-lmdb-1.6.3-21.el10.x86_64        
+  apr-util-openssl-1.6.3-21.el10.x86_64         httpd-2.4.63-1.el10.x86_64                     httpd-core-2.4.63-1.el10.x86_64           
+  httpd-filesystem-2.4.63-1.el10.noarch         httpd-tools-2.4.63-1.el10.x86_64               libbrotli-1.1.0-6.el10.x86_64             
+  lmdb-libs-0.9.32-4.el10.x86_64                mailcap-2.1.54-8.el10.noarch                   mod_http2-2.0.29-2.el10.x86_64            
+  mod_lua-2.4.63-1.el10.x86_64                  redhat-logos-httpd-100.0-2.el10.noarch        
 
 Complete!
 ----
@@ -199,11 +189,11 @@ ls -lahZ ./var/www/html/
 
 [{format_output}]
 ----
-total 20K
-drwxr-xr-x. 2 root root system_u:object_r:container_file_t:s0:c60,c544 4.0K Apr 12 21:25 .
-drwxr-xr-x. 3 root root system_u:object_r:container_file_t:s0:c60,c544 4.0K Apr 12 21:12 ..
--rw-r--r--. 1 root root system_u:object_r:container_file_t:s0:c60,c544   58 Apr 12 21:12 dan-cries.txt
--rw-r--r--. 1 root root system_u:object_r:container_file_t:s0:c60,c544  164 Apr 12 21:24 index.html
+total 8.0K
+drwxr-xr-x. 2 root root system_u:object_r:container_file_t:s0:c233,c336  45 May 17 02:27 .
+drwxr-xr-x. 4 root root system_u:object_r:container_file_t:s0:c233,c336  33 May 17 02:26 ..
+-rwxr--r--. 1 root root system_u:object_r:container_file_t:s0:c233,c336  58 May 17 00:09 dan-cries.txt
+-rwxr--r--. 1 root root system_u:object_r:container_file_t:s0:c233,c336 164 May 17 02:27 index.html
 ----
 
 When you are done making direct changes to the root filesystem of your container, you can run:
@@ -216,7 +206,7 @@ buildah unmount ubi-working-container
 
 [{format_output}]
 ----
-e918debcaabb5820997b1a4969fbd45284adc0a2869d1f22a1bce78f703ff3c6
+585faf18366d0ccb92b8da0a8587b962c7c559c5c66dab699fed2ef927018e8c
 ----
 
 ==== Commit Changes to New Image
@@ -231,13 +221,11 @@ buildah commit ubi-working-container webserver2
 [{format_output}]
 ----
 Getting image source signatures
-Copying blob d3ada5af5602 skipped: already exists
-Copying blob 668db11eda93 skipped: already exists
-Copying blob 0f75b7e04ec6 done
-Copying config a831badcea done
+Copying blob 77300185f16e skipped: already exists  
+Copying blob 2e3f1df22abc done   | 
+Copying config fbdd72c2d1 done   | 
 Writing manifest to image destination
-Storing signatures
-a831badcea41e924fd4a37f98431702142c17a64d06bd5444ac4471c1285be50
+fbdd72c2d11fc5f4fdab2164c835e0d824c4304044562523c9678c0a8882ba53
 ----
 
 Let's look at our images:
@@ -249,10 +237,11 @@ podman images
 
 [{format_output}]
 ----
-REPOSITORY                                 TAG         IMAGE ID      CREATED        SIZE
-localhost/webserver2                       latest      eb03c25f4be6  6 seconds ago  263 MB
-registry.access.redhat.com/ubi9/ubi        latest      18ac20acd5ec  3 days ago     217 MB
-registry.access.redhat.com/ubi10-beta/ubi  latest      8ba11fcef4ef  7 weeks ago    212 MB
+REPOSITORY                                    TAG         IMAGE ID      CREATED        SIZE
+localhost/webserver2                          latest      c8ae3c028c19  4 seconds ago  257 MB
+localhost/myfavorite                          latest      da862ffa1787  2 days ago     216 MB
+registry.access.redhat.com/ubi10/ubi          latest      da862ffa1787  2 days ago     216 MB
+registry.access.redhat.com/ubi10/ubi-minimal  latest      94287c165ee4  2 days ago     85.3 MB
 ----
 
 ==== Deploy
@@ -310,142 +299,117 @@ skopeo inspect containers-storage:localhost/webserver2:latest
 
 [{format_output}]
 ----
-INFO[0000] Not using native diff for overlay, this may cause degraded performance for building images: 
-kernel has CONFIG_OVERLAY_FS_REDIRECT_DIR enabled 
-{         
-    "Name": "localhost/webserver2",
-    "Digest": "sha256:c4f8e1767e680c7eebdd4cbf55f0a91dd0e562ae6355acf642d012ee6cd863a4",
-    "RepoTags": [],                                                                                    
-    "Created": "2025-05-01T23:22:31.483299826Z",
-    "DockerVersion": "",                           
-    "Labels": {
-        "architecture": "x86_64",
-        "build-date": "2025-03-11T07:01:34",                                                           
-        "com.redhat.component": "ubi10-container",                                                     
-        "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreement
-s#UBI",                                            
-        "description": "The Universal Base Image is designed and engineered to be the base layer for al
-l of your containerized applications, middleware and utilities. This base image is freely redistributab
-le, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This ima
-ge is maintained by Red Hat and updated regularly.",                        
-        "distribution-scope": "public",
-        "io.buildah.version": "1.39.0",
-        "io.k8s.description": "The Universal Base Image is designed and engineered to be the base layer
- for all of your containerized applications, middleware and utilities. This base image is freely redist
-ributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. T
-his image is maintained by Red Hat and updated regularly.",
-        "io.k8s.display-name": "Red Hat Universal Base Image 10",
-        "io.openshift.expose-services": "",
-        "io.openshift.tags": "base rhel10",
-        "maintainer": "Red Hat, Inc.",
-        "name": "ubi10",
-        "release": "1741674993",
-        "summary": "Provides the latest release of Red Hat Universal Base Image 10.",
-        "url": "https://www.redhat.com",
-        "vcs-ref": "eedd49665e8d30810907cf4ebb351ff15ebb8735",
-        "vcs-type": "git",
-        "vendor": "Red Hat, Inc.",
-        "version": "10.0-beta"
-    },
-    "Architecture": "amd64",
-    "Os": "linux",
-    "Layers": [
-        "sha256:e3b16f523d9f9d4dec8a471ce071a36fa78618f1420a881ff4aa8a96f4df9f40",
-        "sha256:320cd1d2c7387a0cec459e66e5fbfb2d103cf56ac4b3dcc4c48c5a184a933096",
-        "sha256:508be23c840e6e212e93d131cf85640a3b65810bd7037176ddad8070423f7cf3"
-    ],
-    "LayersData": [
-        {
-            "MIMEType": "application/vnd.oci.image.layer.v1.tar",
-            "Digest": "sha256:e3b16f523d9f9d4dec8a471ce071a36fa78618f1420a881ff4aa8a96f4df9f40",
-            "Size": 211851264,
-            "Annotations": null
-        },
-        {
-            "MIMEType": "application/vnd.oci.image.layer.v1.tar",
-            "Digest": "sha256:320cd1d2c7387a0cec459e66e5fbfb2d103cf56ac4b3dcc4c48c5a184a933096",
-            "Size": 4096, 
-            "Annotations": null
-        },
-        {
-            "MIMEType": "application/vnd.oci.image.layer.v1.tar",
-            "Digest": "sha256:508be23c840e6e212e93d131cf85640a3b65810bd7037176ddad8070423f7cf3",
-            "Size": 50742272,
-            "Annotations": null
-        }
-    ],
-    "Env": [
-        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-        "container=oci"
+INFO[0000] Not using native diff for overlay, this may cause degraded performance for building images: kernel has CONFIG_OVERLAY_FS_REDIREC
+T_DIR enabled                                                                                                                              
+{                                                                                                                                          
+    "Name": "localhost/webserver2",                                                                                                        
+    "Digest": "sha256:16b048e337d32e87d141b133a7f5e809689b83f961aafcdf90de8b1e9c4ce6d6",                                                   
+    "RepoTags": [],                                                                                                                        
+    "Created": "2025-05-17T02:28:30.166654457Z",                                                                                           
+    "DockerVersion": "",                                                                                                                   
+    "Labels": {                                                                                                                            
+        "architecture": "x86_64",                                                                                                          
+        "build-date": "2025-05-14T11:01:23",                                                                                               
+        "com.redhat.component": "ubi10-container",                                                                                         
+        "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI",                             
+        "description": "The Universal Base Image is designed and engineered to be the base layer for all of your containerized applications
+, middleware and utilities. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions
+ for Red Hat products. This image is maintained by Red Hat and updated regularly.",                                                        
+        "distribution-scope": "public",                                                                                                    
+        "io.buildah.version": "1.39.4",                                                                                                    
+        "io.k8s.description": "The Universal Base Image is designed and engineered to be the base layer for all of your containerized appli
+cations, middleware and utilities. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscr
+iptions for Red Hat products. This image is maintained by Red Hat and updated regularly.",                                                 
+        "io.k8s.display-name": "Red Hat Universal Base Image 10",                                                                          
+        "io.openshift.expose-services": "",                                                                                                
+        "io.openshift.tags": "base rhel10",                                                                                                
+        "maintainer": "Red Hat, Inc.",                                                                                                     
+        "name": "ubi10",                                                                                                                   
+        "release": "1747220028",                                                                                                           
+        "summary": "Provides the latest release of Red Hat Universal Base Image 10.",                                                      
+        "url": "https://www.redhat.com",                                                                                                   
+        "vcs-ref": "859aaca6a9622a65b3e368169083f1ff0ff7d9bc",                                                                             
+        "vcs-type": "git",                                                                                                                 
+        "vendor": "Red Hat, Inc.",                                                                                                         
+        "version": "10.0"                                                                                                                  
+    },                                                                                                                                     
+    "Architecture": "amd64",                                                                                                               
+    "Os": "linux",                                                                                                                         
+    "Layers": [                                                                                                                            
+        "sha256:77300185f16e8cf13cda79910f92567456e16a354806e7639fc30549de2f1200",
+        "sha256:2e3f1df22abc76f2339e9e6959818ec949d964ac3ae1abfe2a7d41d84495a19e"                                                          
+    ],                                                                                                                                     
+    "LayersData": [                                                                                                                        
+        {                                                                                                                                  
+            "MIMEType": "application/vnd.oci.image.layer.v1.tar",                                                                          
+            "Digest": "sha256:77300185f16e8cf13cda79910f92567456e16a354806e7639fc30549de2f1200",
+            "Size": 216173568,                                                                                                             
+            "Annotations": null                                                                                                            
+        },                                                                                                                                 
+        {                                                                                                                                  
+            "MIMEType": "application/vnd.oci.image.layer.v1.tar",                                                                          
+            "Digest": "sha256:2e3f1df22abc76f2339e9e6959818ec949d964ac3ae1abfe2a7d41d84495a19e",
+            "Size": 40802816,                                                                                                              
+            "Annotations": null                                                                                                            
+        }                                                                                                                                  
+    ],                 
+    "Env": [                                                                                                                               
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",                                                               
+        "container=oci"                                                                                                                    
     ]
-}
+}                              
 ----
 
 We will see that this container is based on the Red Hat UBI image. 
 
-Let's look at the ubi9/ubi container that we built this off of and compare the layers section:
+Let's look at the ubi10/ubi container that we built this off of and compare the layers section:
 
 [{format_cmd}]
 ----
-skopeo inspect containers-storage:registry.access.redhat.com/ubi9/ubi:latest
+skopeo inspect containers-storage:registry.access.redhat.com/ubi10/ubi:latest
 ----
 
 [{format_output}]
 ----
-INFO[0000] Not using native diff for overlay, this may cause degraded performance for building images: 
-kernel has CONFIG_OVERLAY_FS_REDIRECT_DIR enabled 
-{        
-    "Name": "registry.access.redhat.com/ubi10-beta/ubi",              
-    "Digest": "sha256:4b4976d86eefeedab6884c9d2923206c6c3c2e2471206f97fd9d7aaaecbc04ac",        
-    "RepoTags": [],     
-    "Created": "2025-03-11T07:02:23.346219225Z",
+INFO[0000] Not using native diff for overlay, this may cause degraded performance for building images: kernel has CONFIG_OVERLAY_FS_REDIRECT_DIR enabled 
+{
+    "Name": "registry.access.redhat.com/ubi10/ubi",
+    "Digest": "sha256:f12acb3ff8f60e24462a14ccec8b5907185cbf535357cc95a62e249ef3114d20",
+    "RepoTags": [],
+    "Created": "2025-05-14T11:01:54.547186977Z",
     "DockerVersion": "",
     "Labels": {
         "architecture": "x86_64",
-        "build-date": "2025-03-11T07:01:34",                                                           
+        "build-date": "2025-05-14T11:01:23",
         "com.redhat.component": "ubi10-container",
-        "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreement
-s#UBI",
-        "description": "The Universal Base Image is designed and engineered to be the base layer for al
-l of your containerized applications, middleware and utilities. This base image is freely redistributab
-le, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This ima
-ge is maintained by Red Hat and updated regularly.",
+        "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI",
+        "description": "The Universal Base Image is designed and engineered to be the base layer for all of your containerized applications, middleware and utilities. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This image is maintained by Red Hat and updated regularly.",
         "distribution-scope": "public",
         "io.buildah.version": "1.39.0-dev",
-        "io.k8s.description": "The Universal Base Image is designed and engineered to be the base layer
- for all of your containerized applications, middleware and utilities. This base image is freely redist
-ributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. T
-his image is maintained by Red Hat and updated regularly.",
+        "io.k8s.description": "The Universal Base Image is designed and engineered to be the base layer for all of your containerized applications, middleware and utilities. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This image is maintained by Red Hat and updated regularly.",
         "io.k8s.display-name": "Red Hat Universal Base Image 10",
         "io.openshift.expose-services": "",
         "io.openshift.tags": "base rhel10",
         "maintainer": "Red Hat, Inc.",
         "name": "ubi10",
-        "release": "1741674993",
+        "release": "1747220028",
         "summary": "Provides the latest release of Red Hat Universal Base Image 10.",
         "url": "https://www.redhat.com",
-        "vcs-ref": "eedd49665e8d30810907cf4ebb351ff15ebb8735",
+        "vcs-ref": "859aaca6a9622a65b3e368169083f1ff0ff7d9bc",
         "vcs-type": "git",
         "vendor": "Red Hat, Inc.",
-        "version": "10.0-beta"
+        "version": "10.0"
     },
     "Architecture": "amd64",
     "Os": "linux",
     "Layers": [
-        "sha256:bd69bf9256bd9b0fbff30ca8f0b5267c2703b4e4355da451d72ffc475b5c7c7e",
-        "sha256:9dcf0326ccda4b17d9579049f09549e93a71c986da6166d766529ce83aa57fff"
+        "sha256:7fdd59f6557bffecf5998fee3521fc5343cfb5f83d29c21d4af67c2dc82728c0"
     ],
     "LayersData": [
         {
             "MIMEType": "application/vnd.oci.image.layer.v1.tar+gzip",
-            "Digest": "sha256:bd69bf9256bd9b0fbff30ca8f0b5267c2703b4e4355da451d72ffc475b5c7c7e",
-            "Size": 78479306,
-            "Annotations": null
-        },
-        {
-            "MIMEType": "application/vnd.oci.image.layer.v1.tar+gzip",
-            "Digest": "sha256:9dcf0326ccda4b17d9579049f09549e93a71c986da6166d766529ce83aa57fff",
-            "Size": 460,
+            "Digest": "sha256:7fdd59f6557bffecf5998fee3521fc5343cfb5f83d29c21d4af67c2dc82728c0",
+            "Size": 78897573,
             "Annotations": null
         }
     ],
@@ -462,12 +426,12 @@ Pretty neat that we can look inside local containers, but what about containers 
 
 [{format_cmd}]
 ----
-skopeo inspect docker://registry.access.redhat.com/ubi10-beta/ubi-minimal:latest
+skopeo inspect docker://registry.access.redhat.com/ubi10/ubi-init:latest
 ----
 
 Again, there's a lot of information to inspect but just know that you are looking at data about an image that is not stored locally.
 
-To confirm, let's list the local images and verify ubi-minimal is not among them.
+To confirm, let's list the local images and verify ubi-init is not among them.
 
 [{format_cmd}]
 ----
@@ -476,13 +440,14 @@ podman images
 
 [{format_output}]
 ----
-REPOSITORY                                 TAG         IMAGE ID      CREATED        SIZE
-localhost/webserver2                       latest      eb03c25f4be6  7 minutes ago  263 MB
-registry.access.redhat.com/ubi9/ubi        latest      18ac20acd5ec  3 days ago     217 MB
-registry.access.redhat.com/ubi10-beta/ubi  latest      8ba11fcef4ef  7 weeks ago    212 MB
+REPOSITORY                                    TAG         IMAGE ID      CREATED        SIZE
+localhost/webserver2                          latest      c8ae3c028c19  3 minutes ago  257 MB
+localhost/myfavorite                          latest      da862ffa1787  2 days ago     216 MB
+registry.access.redhat.com/ubi10/ubi          latest      da862ffa1787  2 days ago     216 MB
+registry.access.redhat.com/ubi10/ubi-minimal  latest      94287c165ee4  2 days ago     85.3 MB
 ----
 
-Notice that ubi10-/ubi-minimal is not local to our registry. Skopeo provided that inspection completely remotely.
+Notice that ubi10/ubi-init is not local to our registry. Skopeo provided that inspection completely remotely.
 
 === Obtaining tarballs of containers in remote registries for further inspection
 
@@ -495,7 +460,7 @@ mkdir /root/ubi-tarball
 
 [{format_cmd}]
 ----
-skopeo copy docker://registry.access.redhat.com/ubi10-beta/ubi-minimal:latest dir:/root/ubi-tarball
+skopeo copy docker://registry.access.redhat.com/ubi10/ubi-minimal:latest dir:/root/ubi-tarball
 ----
 
 [{format_output}]
