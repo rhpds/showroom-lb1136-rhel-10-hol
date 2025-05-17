@@ -87,7 +87,7 @@ podman info
 ----
 host:
   arch: amd64
-  buildahVersion: 1.24.1
+  buildahVersion: 1.39.4
   cgroupControllers:
   - cpuset
   - cpu
@@ -129,20 +129,19 @@ Time to pull a container from our local repository.
 
 [{format_cmd}]
 ----
-podman pull ubi9/ubi
+podman pull registry.access.redhat.com/ubi10/ubi:latest
 ----
 
 [{format_output}]
 ----
-Resolved "ubi9/ubi" as an alias (/etc/containers/registries.conf.d/001-rhel-shortnames.conf)
-Trying to pull registry.access.redhat.com/ubi9/ubi:latest...
+Trying to pull registry.access.redhat.com/ubi10/ubi:latest...
 Getting image source signatures
 Checking if image destination supports signatures
-Copying blob 3b7adf049118 done
-Copying config 9f43f297e7 done
+Copying blob 7fdd59f6557b done   | 
+Copying config da862ffa17 done   | 
 Writing manifest to image destination
 Storing signatures
-9f43f297e77bc6937de12d4e90ed5dc679bd3b9c7a481068d2a840f5244d4197
+da862ffa17875f5980832d6d8cd545f75e7cf3175a710b6529d7f7fc5fd650d1
 ----
 
 Have a look at the image list now.
@@ -154,8 +153,8 @@ podman images
 
 [{format_output}]
 ----
-REPOSITORY                           TAG         IMAGE ID      CREATED      SIZE
-registry.access.redhat.com/ubi9/ubi  latest      9f43f297e77b  2 weeks ago  217 MB
+REPOSITORY                            TAG         IMAGE ID      CREATED     SIZE
+registry.access.redhat.com/ubi10/ubi  latest      da862ffa1787  2 days ago  216 MB
 ----
 
 NOTE: if you are a subscriber to Red Hat Enterprise Linux, you can pull authentic Red Hat certified images directly from Red Hat's repository.  For example: `podman pull rhel7.5 --creds 'username:password'`
@@ -164,8 +163,8 @@ Pull a few more container images.
 
 [{format_cmd}]
 ----
-podman pull ubi9/ubi-minimal
-podman pull ubi9/ubi-init
+podman pull registry.access.redhat.com/ubi10/ubi-minimal
+podman pull registry.access.redhat.com/ubi10/ubi-init
 ----
 
 [{format_cmd}]
@@ -175,10 +174,10 @@ podman images
 
 [{format_output}]
 ----
-REPOSITORY                                   TAG         IMAGE ID      CREATED      SIZE
-registry.access.redhat.com/ubi9/ubi-init     latest      a45c5d18b941  2 weeks ago  235 MB
-registry.access.redhat.com/ubi9/ubi          latest      9f43f297e77b  2 weeks ago  217 MB
-registry.access.redhat.com/ubi9/ubi-minimal  latest      088f0967f6b5  2 weeks ago  97.4 MB
+REPOSITORY                                    TAG         IMAGE ID      CREATED       SIZE
+registry.access.redhat.com/ubi10/ubi-init     latest      7f2cd7fb740c  37 hours ago  236 MB
+registry.access.redhat.com/ubi10/ubi          latest      da862ffa1787  2 days ago    216 MB
+registry.access.redhat.com/ubi10/ubi-minimal  latest      94287c165ee4  2 days ago    85.3 MB
 ----
 
 
@@ -190,7 +189,7 @@ contain, especially after an image has been customized.
 
 [{format_cmd}]
 ----
-podman tag registry.access.redhat.com/ubi9/ubi myfavorite
+podman tag registry.access.redhat.com/ubi10/ubi myfavorite
 ----
 
 [{format_cmd}]
@@ -200,11 +199,11 @@ podman images
 
 [{format_output}]
 ----
-REPOSITORY                                   TAG         IMAGE ID      CREATED      SIZE
-registry.access.redhat.com/ubi9/ubi-init     latest      a45c5d18b941  2 weeks ago  235 MB
-registry.access.redhat.com/ubi9/ubi          latest      9f43f297e77b  2 weeks ago  217 MB
-localhost/myfavorite                         latest      9f43f297e77b  2 weeks ago  217 MB
-registry.access.redhat.com/ubi9/ubi-minimal  latest      088f0967f6b5  2 weeks ago  97.4 MB
+REPOSITORY                                    TAG         IMAGE ID      CREATED       SIZE
+registry.access.redhat.com/ubi10/ubi-init     latest      7f2cd7fb740c  37 hours ago  236 MB
+localhost/myfavorite                          latest      da862ffa1787  2 days ago    216 MB
+registry.access.redhat.com/ubi10/ubi          latest      da862ffa1787  2 days ago    216 MB
+registry.access.redhat.com/ubi10/ubi-minimal  latest      94287c165ee4  2 days ago    85.3 MB
 ----
 
 Notice how the image-id for "ubi" and "myfavorite" are identical.
@@ -232,10 +231,10 @@ podman images
 
 [{format_output}]
 ----
-REPOSITORY                                   TAG         IMAGE ID      CREATED      SIZE
-registry.access.redhat.com/ubi9/ubi          latest      9f43f297e77b  2 weeks ago  217 MB
-localhost/myfavorite                         latest      9f43f297e77b  2 weeks ago  217 MB
-registry.access.redhat.com/ubi9/ubi-minimal  latest      088f0967f6b5  2 weeks ago  97.4 MB
+REPOSITORY                                    TAG         IMAGE ID      CREATED     SIZE
+localhost/myfavorite                          latest      da862ffa1787  2 days ago  216 MB
+registry.access.redhat.com/ubi10/ubi          latest      da862ffa1787  2 days ago  216 MB
+registry.access.redhat.com/ubi10/ubi-minimal  latest      94287c165ee4  2 days ago  85.3 MB
 ----
 
 
@@ -273,8 +272,8 @@ podman ps -a
 
 [{format_output}]
 ----
-CONTAINER ID  IMAGE                                       COMMAND           CREATED         STATUS                     PORTS       NAMES
-fc07b3e29378  registry.access.redhat.com/ubi9/ubi:latest  echo hello world  35 seconds ago  Exited (0) 35 seconds ago              amazing_payne
+CONTAINER ID  IMAGE                                        COMMAND           CREATED         STATUS                     PORTS       NAMES
+ff41e34f372e  registry.access.redhat.com/ubi10/ubi:latest  echo hello world  14 seconds ago  Exited (0) 14 seconds ago              musing_heisenberg
 ----
 
 Now let us run the exact same command as before to print "hello world".
@@ -300,7 +299,7 @@ podman info
 ----
 host:
   arch: amd64
-  buildahVersion: 1.39.0
+  buildahVersion: 1.39.4
   cgroupControllers:
   - cpuset
   - cpu
@@ -332,9 +331,9 @@ podman ps -a
 
 [{format_output}]
 ----
-CONTAINER ID  IMAGE                                       COMMAND           CREATED             STATUS                         PORTS       NAMES
-fc07b3e29378  registry.access.redhat.com/ubi9/ubi:latest  echo hello world  3 minutes ago       Exited (0) 3 minutes ago                   amazing_payne
-eb8556004620  registry.access.redhat.com/ubi9/ubi:latest  echo hello world  About a minute ago  Exited (0) About a minute ago              peaceful_sutherland
+CONTAINER ID  IMAGE                                        COMMAND           CREATED             STATUS                         PORTS       NAMES
+ff41e34f372e  registry.access.redhat.com/ubi10/ubi:latest  echo hello world  About a minute ago  Exited (0) About a minute ago              musing_heisenberg
+0871cf47b06c  registry.access.redhat.com/ubi10/ubi:latest  echo hello world  About a minute ago  Exited (0) About a minute ago              optimistic_cray
 ----
 
 Using the container UIDs from the above output, you could clean up the 'exited' containers individually using `podman rm <CONTAINER-ID> <CONTAINER-ID>`, 
