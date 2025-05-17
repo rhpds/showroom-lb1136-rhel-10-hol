@@ -467,7 +467,7 @@ Now we are going to limit the probe to only show 'sys_enter_openat' thereby only
 [discrete]
 ==== Primary Terminal (node2)
 
-.terminal-2
+.terminal-1
 [{format_cmd}]
 ----
 bpftrace -e 'tracepoint:syscalls:sys_enter_openat { if (comm == "cat") { @[probe] = count(); } }' -c "cat /tmp/workshop.tmp"
@@ -568,6 +568,7 @@ This concludes the exercises related to EBPF.
 
 Time to finish this unit and return the shell to it's home position.
 
+.terminal-1
 [{format_cmd}]
 ----
 workshop-finish-exercise.sh
