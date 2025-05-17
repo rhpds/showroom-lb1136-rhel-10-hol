@@ -38,6 +38,8 @@
 //// ***  xref:200-leapp.adoc[In-Place Upgrades (leapp)] ////
 ***  xref:200-boom.adoc[Boot Mgmt (boom)]
 
+**  xref:100-finished.adoc[Finished]
+
 * By Category
 
 ** General Topics
@@ -82,6 +84,9 @@
 
 ** Trouble Shooting
 ***  xref:ebpf-200.adoc[BPF Tracing (ebpf)]
+
+**  xref:finished-100.adoc[Finished]
+
 //// ***  xref:trouble-shooting-100.adoc[Fundamental (man,info)] ////
 //// ***  xref:101-trouble-shooting.adoc[(journald,syslog)] ////
 //// ***  xref:trouble-shooting-200.adoc[(df,du,top,iotop,iperf3)] ////
