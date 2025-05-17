@@ -159,21 +159,21 @@ systemd-analyze blame | head -n 15
 
 [{format_output}]
 ----
-31.922s osbuild-subscription-register.service
- 9.920s kdump.service
- 4.254s sys-module-configfs.device
- 4.253s dev-ttyS3.device
- 4.253s sys-devices-platform-serial8250-serial8250:0-serial8250:0.3-tty-ttyS3.device
- 4.253s sys-devices-platform-serial8250-serial8250:0-serial8250:0.2-tty-ttyS2.device
- 4.253s dev-ttyS2.device
- 4.251s dev-ttyS1.device
- 4.251s sys-devices-platform-serial8250-serial8250:0-serial8250:0.1-tty-ttyS1.device
- 4.246s dev-ttyS0.device
- 4.246s sys-devices-pnp0-00:00-00:00:0-00:00:0.0-tty-ttyS0.device
- 4.221s dev-vport1p1.device
- 4.221s dev-virtio\x2dports-org.qemu.guest_agent.0.device
- 4.221s sys-devices-pci0000:00-0000:00:02.4-0000:05:00.0-virtio1-virtio\x2dports-vport1p1.device
- 3.866s dev-ptp0.device
+10.613s kdump.service
+ 3.876s dev-ttyS1.device
+ 3.876s sys-devices-platform-serial8250-serial8250:0-serial8250:0.1-tty-ttyS1.device
+ 3.871s dev-ttyS2.device
+ 3.871s sys-devices-platform-serial8250-serial8250:0-serial8250:0.2-tty-ttyS2.device
+ 3.843s sys-devices-pnp0-00:00-00:00:0-00:00:0.0-tty-ttyS0.device
+ 3.843s dev-ttyS0.device
+ 3.840s dev-ttyS3.device
+ 3.840s sys-devices-platform-serial8250-serial8250:0-serial8250:0.3-tty-ttyS3.device
+ 3.839s sys-module-configfs.device
+ 3.758s dev-virtio\x2dports-org.qemu.guest_agent.0.device
+ 3.758s sys-devices-pci0000:00-0000:00:02.4-0000:05:00.0-virtio1-virtio\x2dports-vport1p1.device
+ 3.758s dev-vport1p1.device
+ 3.708s sys-devices-pci0000:00-0000:00:04.2-0000:0b:00.0-virtio7-block-vdf.device
+ 3.708s dev-disk-by\x2ddiskseq-6.device
 ----
 
 This helps to learn the “cost” of some of the default services.  To speed up boot-time, unnecessary services could potentially be removed or disabled.
@@ -270,6 +270,18 @@ success
 ----
 
 And that's it.  The needed serivces are running and network ports are accessible.
+
+== Conclusion
+
+This concludes the first exercises related to `systemd`.
+
+Time to finish this unit and return the shell to it's home position.
+
+[{format_cmd}]
+----
+workshop-finish-exercise.sh
+----
+
 
 == Further Reading
 
