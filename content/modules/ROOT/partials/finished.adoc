@@ -1,0 +1,44 @@
+
+= *Fin* (End-of-Line)
+
+[discrete]
+== You Are Done icon:check[]
+
+*CONGRATULATIONS!!!* 
+
+If you synchronously followed a learning path from the beginning, then you have reached the end.  
+
+We appreciate your attendance and hope you enjoyed this experiance.
+
+If you are participating an event (like Red Hat Summit), please rate this workshop.  
+
+Your feedback is what keeps activities like this on the agenda.
+
+Thanks again!
+
+[discrete]
+== What's Next
+
+Do you think colleagues at work would benefit from a private local delivery?
+
+    * Talk to your Red Hat Sales team and request a local (or remote) delivery of this workshop for your team.
+
+Do you have some feedback on how to improve the content?
+Do you have ideas on what additional content you would like to see?
+
+    * Talk to the instructors or leave feedback on the github.
+
+Topics that are already on the horizon include:
+
+    * LEAPP - In-place upgrades
+    * BootC - Bootable containers
+    * NBDE - Network Bound Disk Encryption
+    * SELinux - Security Enhanced Linux
+
+[discrete]
+== End of Workshop
+
+////
+Always end files with a blank line to avoid include problems.
+////
+

@@ -42,11 +42,8 @@ You are now ready to proceed with these exercises.
 
 One of the first things to note is that when a query is entered to the CLA (command line assistant) it is then sent to the RHEL Lightspeed generative AI assistant at Red Hat for processing, so *don't include private or sensetive information in any queries*.  This output message will appear at least once when sending queries to RHEL Lightspeed:
 
-[{format_output}]
-----
-This feature uses AI technology. Do not include any personal information or other sensitive information in your
+WARNING: This feature uses AI technology. Do not include any personal information or other sensitive information in your
 input. Interactions may be used to improve Red Hat's products or services.
-----
 
 Also important to keep in mind is that RHEL Lightspeed is not intended to be a 100% accurate, sure-fire answer to every question.  Sometimes what comes back can be used in a simple cut and paste, but it is *always recommended to review what comes back* before running anything.  Hence this message at the end of queries:
 
@@ -54,6 +51,7 @@ Also important to keep in mind is that RHEL Lightspeed is not intended to be a 1
 ----
 Always review AI-generated content prior to use.
 ----
+
 
 
 == Getting Started with CLA
