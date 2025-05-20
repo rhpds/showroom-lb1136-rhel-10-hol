@@ -159,7 +159,7 @@ Installing a package is simple.
 dnf install -y bash-completion
 ----
 
-Installing multiple packages from a simgle command is also easy.
+Installing multiple packages from a single command is also easy.
 
 [{format_cmd}]
 ----
