@@ -172,7 +172,7 @@ Name                Total / Used / Free    Properties                           
 summitpool   8 GiB / 532 MiB / 7.48 GiB   ~Ca,~Cr, Op   2c81b8d2-e7dc-4528-a91b-ef4f7da5ba98   WS001
 ----
 
-The output should show a total of 8 GiB, with 532 MiB used and 9.96GiB available.  The Properties indicate whether or not the pool has a cache (Ca) and/or is encrypted (Cr).  The "~" character is used to indicate negative, so your output is showing no cache and not encrypted.
+The output should show a total of 8 GiB, with 532 MiB used and 7.48GiB available.  The Properties indicate whether or not the pool has a cache (Ca) and/or is encrypted (Cr), while (Op) indicates that the pool allows overprovisioning.  The "~" character is used to indicate negative, so your output is showing no cache and not encrypted.
 
 Check the status of the block devices
 
@@ -184,8 +184,8 @@ stratis blockdev list
 [{format_output}]
 ----
 Pool Name    Device Node    Physical Size   Tier
-summitpool  {disk1}                 5 GiB   Data
-summitpool  {disk2}                 5 GiB   Data
+summitpool  {disk1}                 4 GiB   Data
+summitpool  {disk2}                 4 GiB   Data
 ----
 
 == Create Filesystem
