@@ -236,7 +236,7 @@ Nothing to do.
 Complete!
 ----
 
-RHEL 10 is still very early in it's life (we may still be using the BETA for this lab).  Here we see that there are no security updates currently available for our release.
+RHEL 10 is still very early in its life (we may still be using the BETA for this lab).  Here we see that there are no security updates currently available for our release.
 
 
 
