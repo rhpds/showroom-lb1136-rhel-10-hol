@@ -19,7 +19,7 @@ Leveraging additional tools and services (ie: pxe, dhcp, kickstart, ansible auto
 redfish, etc...) the process can be heavily automated and turned into a completely hands-free task.
 We have doing this for decades.
 
-Using Red Hat Enterprise Linux 9, there is a new method for creating RHEL images to add 
+In Red Hat Enterprise Linux 10, there is a method for creating RHEL images to add 
 to your toolbox: *Image Builder*.
 
 *Image Builder* is a collection of tools that create custom RHEL images in a variety of formats for 
@@ -27,7 +27,7 @@ compatibility with major cloud providers and virtualization technologies.  Meani
 an OS blueprint and then specify the target platfrom to create an appropriate image (ie: VMWare, 
 AWS, Openstack, KVM, etc...).
 
-NOTE: You CAN create images of multiple RHEL minor releases that are different from the host (ex: RHEL 9.0, RHEL 9.1) but to do so requires additional repo configurations which are not available in this workshop environment.
+NOTE: You CAN create images of multiple RHEL minor releases that are different from the host (ex: RHEL 10.1 when released) but to do so requires additional repo configurations which are not available in this workshop environment.
 
 NOTE: Internet connectivity is not a prerequisite, however Image Builder is configured to connect to Red Hat CDN by default and must be modified to work in an isolated environment or with content views provided by Red Hat Satellite.
 

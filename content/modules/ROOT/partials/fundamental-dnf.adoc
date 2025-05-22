@@ -159,7 +159,7 @@ Installing a package is simple.
 dnf install -y bash-completion
 ----
 
-Installing multiple packages from a simgle command is also easy.
+Installing multiple packages from a single command is also easy.
 
 [{format_cmd}]
 ----
@@ -236,7 +236,7 @@ Nothing to do.
 Complete!
 ----
 
-RHEL 10 is still very early in it's life (we may still be using the BETA for this lab).  Here we see that there are no security updates currently available for our release.
+RHEL 10 is still very early in its life (we may still be using the BETA for this lab).  Here we see that there are no security updates currently available for our release.
 
 
 
