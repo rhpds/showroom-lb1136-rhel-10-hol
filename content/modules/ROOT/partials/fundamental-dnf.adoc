@@ -253,7 +253,7 @@ dnf clean all
 
 *dnf* is not tasked with understanding what packages may require a reboot in order to complete an installation or upgrade.
 
-To answer "when?" really requires a deep understanding of how Lunix works.  The "safe" answer is always, but that certainly is not practical nor a reality.
+To answer "when?" really requires a deep understanding of how Linux works.  The "safe" answer is always, but that certainly is not practical nor a reality.
 
 Advanced technologies like 'kpatch' were developed in order to improve the security response without ALWAYS requiring a reboot. 
 Even then, with kpatch one cannot SKIP a reboot, one can only DELAY the reboot.  More about that in the advanced kpatch unit.
