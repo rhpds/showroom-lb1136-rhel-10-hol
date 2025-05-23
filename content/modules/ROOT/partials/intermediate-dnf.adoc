@@ -476,6 +476,18 @@ Removing a repo is a pretty simple operation which can be done in a couple of wa
   * use dnf to remove the pkg which added the repo config
 
 
+== Conclusion
+
+This concludes the unit.
+
+Time to finish and return the shell to it's home position.
+
+[{format_cmd}]
+----
+workshop-finish-exercise.sh
+----
+
+
 
 == Further Reading
 
