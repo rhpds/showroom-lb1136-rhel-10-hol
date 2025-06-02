@@ -20,6 +20,7 @@
 //// ***  xref:101-selinux.adoc ////
 ***  xref:101-podman.adoc[Container Mgmt pt.1 (podman)]
 ***  xref:101-buildah.adoc[Container Dev (buildah,skopeo)]
+***  xref:101-imagemode.adoc[Bootable Containers (image mode, bootc)]
 ***  xref:101-imagebuilder.adoc[Image Builder (composer)]
 ***  xref:101-virtualization.adoc[Virt Mgmt (libvirt)]
 ***  xref:101-lightspeed.adoc[RHEL Lightspeed] (lightspeed)]
@@ -76,6 +77,7 @@
 ***  xref:podman-101.adoc[Container Mgmt pt.1 (podman)]
 ***  xref:buildah-101.adoc[Build and Inspect (buildah,skopeo)]
 ***  xref:podman-200.adoc[Container Mgmt pt.2 (podman)]
+***  xref:imagemode-101.adoc[Bootable Containers (image mode, bootc)]
 
 ** Virtualization Mgmt
 ***  xref:imagebuilder-101.adoc[Image Builder (composer)]
