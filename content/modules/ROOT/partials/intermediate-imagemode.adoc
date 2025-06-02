@@ -1,0 +1,306 @@
+
+= *Bootable Containers* (image mode, bootc)
+
+[discrete]
+== *Skill Level: Intermediate* 
+
+
+
+
+== Overview
+
+== Getting Started
+
+For these exercises, you will be using the host `node3` as user `root`.
+
+From host `bastion`, ssh to `node3`.
+
+[{format_cmd}]
+----
+ssh node3
+----
+
+Use `sudo` to elevate your privileges.
+
+[{format_cmd}]
+----
+[[ "$UID" == 0 ]] || sudo -i
+----
+
+Verify that you are on the right host for these exercises.
+
+[{format_cmd}]
+----
+workshop-imagemode-checkhost.sh
+----
+
+You are now ready to proceed with these exercises.
+
+
+== Create bootc Image
+
+=== Examine Sample Config
+
+Here is the OCI config we will use to build our custom bootable (bootc) container image.  
+
+Using an existing image from a public registry, we will then simply add the httpd service along with a custom file to demonstrate it's functionality.
+
+[{format_cmd}]
+----
+cat /usr/local/etc/sample-fedora-bootc.ocifile
+----
+
+[{format_plain}]
+----
+FROM quay.io/fedora/fedora-bootc@sha256:769911834d6895930c25ad0cb9e6d56a8f0abcb4bc6355a48b79c4fabc2b595d
+
+RUN dnf install -y httpd
+RUN echo "*** SUCCESS: hello bootc ***" > /var/www/html/index.html
+
+RUN systemctl enable httpd.service
+----
+
+=== Build Custom Image
+
+Now it's time to build the container.
+
+
+[{format_cmd}]
+----
+podman build --file /usr/local/etc/sample-fedora-bootc.ocifile --tag localhost/custom-bootc
+----
+
+[{format_plain}]
+----
+<...SNIP...>
+13/15] Installing mod_http2-0:2.0.29-3 100% |  69.4 MiB/s | 426.1 KiB |  00m00s
+[14/15] Installing apr-util-openssl-0:1 100% |  11.3 MiB/s |  23.2 KiB |  00m00s
+[15/15] Installing julietaula-montserra 100% |  19.0 MiB/s |   5.6 MiB |  00m00s
+Complete!
+--> 0016e70430c5
+STEP 3/4: RUN echo "* SUCCESS: hello bootc *" > /var/www/html/index.html
+--> 712acb6260e6
+STEP 4/4: RUN systemctl enable httpd.service
+Created symlink '/etc/systemd/system/multi-user.target.wants/httpd.service' → '/usr/lib/systemd/system/httpd.service'.
+COMMIT localhost/custom-bootc
+--> 15e3cafbfe9e
+Successfully tagged localhost/custom-bootc:latest
+15e3cafbfe9e01b35ddf69c65667ce1be72f3ffebb26c50693bf59ebeb9c4566
+----
+
+
+== Create VM Image
+
+=== Examine Sample Config
+Create (or at least validate) the toml configuration file.
+
+[{format_cmd}]
+----
+cat /usr/local/etc/sample-bootc.toml
+----
+
+[{format_plain}]
+----
+[[customizations.user]]
+name = "cloud-user"
+password = "bootC!"
+groups = ["wheel"]
+key = "SSHKEY"
+----
+
+
+=== Validate SSH Key
+
+Ensure we have an ssh-key.
+
+[{format_cmd}]
+----
+SSH_IDENTITY=$(eval echo $(ssh -G localhost | awk '$1=="identityfile"{print $2;exit;}'))
+[[ -f ${SSH_IDENTITY} ]] || ssh-keygen ${SSH_IDENTITY} -P '' 
+export SSH_KEY=$(cat ${SSH_IDENTITY%.*}.pub)
+
+echo ${SSH_KEY}
+----
+
+
+=== Create Config with SSH_KEY
+
+[{format_cmd}]
+----
+sed -e "s|SSHKEY|${SSH_KEY}|" /usr/local/etc/sample-bootc.toml > ~/custom-bootc.toml
+----
+
+[{format_cmd}]
+----
+cat ~/custom-bootc.toml
+----
+
+[{format_output}]
+----
+name = "cloud-user"
+password = "bootC!"
+groups = ["wheel"]
+key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD0bkwdazmReuDV4XjGGy1W0hy+Ww1H4m/eJRbS25F9mOnyePYjJQofYJJRPPsQuuZF5czFy+NNyq0yaQ5SGRQT6TS+dYmkogUTwR8p0FDXLIn1RtfUqpqkrUHhbMp7pxSTV8yedp58EPsruXU5jlx0ieiAkq2U8Ncg2v31yrnd6pmjnss6Kv0Ct6ElSaTwNMCusUVYDHO0ITBMnhoqbF6FIldOgKnCx6FL8sUvvJCDwdhLK7xjdZ/XOeddxPvml6P5OHJH7AlofICOU1OHVWiqE5P1O5+J4qc3D1JLOqi+jmoCQY0N7lVW6qTIkk+T89MOln1mJPqbQEk7Sf72t/+km356NJ6VspX6E1FOFuozUtS5VkQ8r6V5iUXnfkSDKX0sLvSHxzL1JY2kuvrmQQFr2LuQGsT5/0UbvvI7L0kVZKAbJ1RML93arUw8lT2QYC/0gi0Z+vdoKM0zhTVyK3UBiUXDEaiqnGwLH7LW5ZPu9pMvybFeZEbApCb5nGxFoN0="
+----
+
+
+=== BUILD QCOW Image
+
+[{format_cmd}]
+----
+cd ~
+podman run --rm --privileged \
+  --security-opt label=type:unconfined_t \
+  --volume .:/output \
+  --volume ./custom-bootc.toml:/config.toml \
+  --volume /var/lib/containers/storage:/var/lib/containers/storage \
+  quay.io/centos-bootc/bootc-image-builder@sha256:6d1f93399d067f49ae178b6ef2affc69e235c26158eec22022d211deefd6a5ea \
+  --type qcow2 \
+  --local \
+  --rootfs ext4 \
+  localhost/custom-bootc
+----
+
+
+[{format_output}]
+----
+<...SNIP...>
+Duration: 53s
+manifest - finished successfully
+build:          e593b73d6f5a1f56740c21c92d5d01b39c5fd4bc488d5d30398d9fcb2f99db9b
+image:          9b5a0fdbbabebb2205412048c8ae1b5956624a2fe65e5f8824adb81dd5ad376d
+qcow2:          d8bfab68ef344164c3e6c36e697b9414e19592e73acb3bd641b494f409698b25
+vmdk:           ddfd611e36bca45c550d1861774fd829f84a25cec13e130de49886305c3a58cf
+vpc:            10d382b9afcebd822b25b13b513b9756b238048ee44baa25d421c531bffe5303
+ovf:            bbeb12bfca6bb1358269e6dad33a62e4bdfa685ed9202db6f2edcbabf1425215
+archive:        7c80a2756f3a3da61f42f1858c5eae7510166cf20156e5226029087c02e41b43
+gce:            2074bc731db2d2d5abf964e8c0bd03567918598d4ff5535d5a3598df38184388
+Build complete!
+Results saved in .
+----
+
+
+== Create Virtual Machine
+
+Copy the QCOW image to standard directory.
+
+[{format_cmd}]
+----
+cp qcow2/disk.qcow2 /var/lib/libvirt/images/bootc-vm.qcow2
+----
+
+[{format_cmd}]
+----
+virt-install \
+  --import \
+  --name bootc-vm \
+  --memory 2048 \
+  --cpu host \
+  --vcpus 1 \
+  --graphics vnc \
+  --noautoconsole \
+  --os-variant rhel9.0 \
+  --disk /var/lib/libvirt/images/bootc-vm.qcow2 
+----
+
+Verify that the domain (vm) is running.
+
+[{format_cmd}]
+----
+virsh list 
+----
+
+[{format_output}]
+----
+ Id   Name       State
+--------------------------
+ 1    bootc-vm   running
+----
+
+
+Now let's determine the IP address our VM is using and validate the web service it provides.
+
+[{format_cmd}]
+----
+virsh domifaddr bootc-vm
+----
+
+[{format_output}]
+----
+ Name       MAC address          Protocol     Address
+-------------------------------------------------------------------------------
+ vnet0      52:54:00:63:85:76    ipv4         192.168.122.62/24
+----
+
+
+WARNING: Before you proceed, empty data in the above commands is an indication that the virtual machine has
+not completed it's bootstrap.  Just give it a few more moments and try again.
+
+Once we can see the network information, now it is time to connect to the host so
+
+[{format_cmd}]
+----
+export VM_IP=$(virsh domifaddr bootc-vm | sed -e '1,2d' -e '$d' | awk '{ split($4,a,/\//) ; print a[1] }')
+----
+
+[{format_cmd}]
+----
+curl $VM_IP
+----
+
+[{format_plain}]
+----
+*** SUCCESS: hello bootc ***
+----
+
+
+== Cleanup
+
+
+[{format_plain}]
+----
+virsh destroy bootc-vm
+
+virsh undefine bootc-vm
+
+podman rmi --all
+----
+
+
+
+
+== Conclusion
+
+This concludes the first exercise demonstrating the capabilities of
+deploying a containerized workload in the form of a bootable machine (which can be
+a traditional VM or a baremetal host).
+
+For more on this topic, check out the advance exercises on the topic.
+
+[{format_cmd}]
+----
+workshop-finish-exercise.sh
+----
+
+== Additional Resources
+
+Image Mode 
+
+    * link:https://tbd
+    * link:https://tbd
+
+Bootc Image Builder
+
+    * link:https://tbd
+
+[discrete]
+== End of Unit
+
+ifdef::env-github[]
+link:../RHEL10-Workshop.adoc#toc[Return to TOC]
+endif::[]
+
+////
+Always end files with a blank line to avoid include problems.
+////
+
