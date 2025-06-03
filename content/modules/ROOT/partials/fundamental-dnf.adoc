@@ -67,7 +67,7 @@ Next, rpm packages get organized into structures called repositories (or repos f
 as sources to distribute content.   More on this topic in the Intermediate Package Management unit.
 
 Working with rpms directly can be challenging.  Luckily tooks like *dnf* exist to abstract that complexity
-and replace it with simple intuitive commands and processes.
+and replace it with simple, intuitive commands and processes.
 
 Let's get started!
 
