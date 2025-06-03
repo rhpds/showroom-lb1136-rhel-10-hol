@@ -14,7 +14,7 @@ connections (ports and services) are able to communicate via the system's networ
 
 Features of firewalld include:
 
-  * support for IPv4 and IPv6 settings
+  * support for IPv4 and IPv6
   * support for ethernet bridges
   * support for network “zones” which assigns level of trust to a network / connections / interfaces
   * separation of runtime and permanent configuration options
