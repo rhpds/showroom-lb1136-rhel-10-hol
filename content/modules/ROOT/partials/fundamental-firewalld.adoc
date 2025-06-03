@@ -273,7 +273,7 @@ public (active)
 
 
 Remember how we mentioned above about the two configuration states: runtime and permanent?
-Notice below how the permanent state dose NOT include http or https.
+Notice below how the permanent state does NOT include http or https.
 
 [{format_cmd}]
 ----
