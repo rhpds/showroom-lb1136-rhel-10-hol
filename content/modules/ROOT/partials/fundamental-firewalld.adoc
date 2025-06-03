@@ -304,7 +304,7 @@ A quick way to make them permanent is to save the current runtime state to perma
 firewall-cmd --runtime-to-permanent
 ----
 
-NOTE: you could have also run the same configuration command a second time and 
+NOTE: You could have also run the same configuration command a second time and
 passed the *--permanent* flag as follows `firewall-cmd --permanent --add-service={http,https}`.  
 It's annoying but necessary to run configuration commands twice to manage both states and
 maintain consistency.
