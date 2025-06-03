@@ -209,7 +209,7 @@ Complete!
 
 === Enable Services
 
-Now it's time to enable the relevant system services.
+Now it's time to enable the relevant system services. To enable and start a service at the same time, use the `--now` option.
 
 [{format_cmd}]
 ----
