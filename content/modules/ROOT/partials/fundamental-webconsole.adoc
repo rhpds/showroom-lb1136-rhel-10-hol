@@ -131,7 +131,7 @@ image::rhel-10.0/wc-007.png[Performance Charts]
 
 == Change Performance Profile
 
-RHEL 9 comes with several pre-canned performance tuning profiles from Tuned. Since this is a virtual machine, the default profile “virtual-guest” was selected. You can easily switch profile via the Web Console web UI. In this exercise, we will change the profile to “throughput-performance”
+RHEL 10 comes with several pre-canned performance tuning profiles from Tuned. Since this is a virtual machine, the default profile “virtual-guest” was selected. You can easily switch profile via the Web Console web UI. In this exercise, we will change the profile to “throughput-performance”
 
 ====
 image::rhel-10.0/wc-008.png[Cockpit Perf Profile]
