@@ -269,7 +269,7 @@ firewall-cmd --add-service=http
 success
 ----
 
-And that's it.  The needed serivces are running and network ports are accessible.
+And that's it.  The needed services are running and network ports are accessible.
 
 == Conclusion
 
