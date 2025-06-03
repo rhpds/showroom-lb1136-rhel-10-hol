@@ -273,7 +273,7 @@ image::rhel-10.0/wc-024.png[Cockpit Applications]
 This concludes a short exercise with Web Console. Feel free to click through and explore other sections:
 
 * Under *Accounts* section, you can manage user accounts
-* *Diagnostic Reports* allows you to create sosreport for Red Hat support
+* *Diagnostic Reports* allows you to create a sosreport for Red Hat support
 * Under *Kernel Dump*, you can enable/disable kdump
 
 You will get an opportunity to manager Virtual Machines and Build System Images in later exercises.
