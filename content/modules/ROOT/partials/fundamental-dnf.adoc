@@ -169,7 +169,7 @@ dnf install -y  httpd mariadb mariadb-server php
 Some of the pacakges listed above were likely already installed on the host, thus the ouput may have been very underwhelming.
 This set of packages is collectively known as the traditional LAMP stack: Linux, Apache, MySQL and PHP.
 
-NOTE: the MySQL project got forked long ago and it's successor is MariaDB
+NOTE: the MySQL project got forked long ago and its successor is MariaDB
 
 
 
