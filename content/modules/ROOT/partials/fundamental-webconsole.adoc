@@ -167,7 +167,7 @@ image::rhel-10.0/wc-011.png[Cockpit Logs Criteria]
 
 == Network Management
 
-Under the networking section, you can monitor and manage current networking activities and devices. You can create a network bond, team, bridge, and vlan all driven by the webconsle GUI.
+Under the networking section, you can monitor and manage current networking activities and devices. You can create a network VPN, bond, bridge, and VLAN all driven by the webconsle GUI.
 
 Due to the nature of workshops, we refrain from making and saving changes to the network at this time but feel free to explore.
 
