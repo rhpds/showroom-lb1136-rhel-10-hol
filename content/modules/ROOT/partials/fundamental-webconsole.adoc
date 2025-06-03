@@ -181,7 +181,7 @@ image::rhel-10.0/wc-012.png[Cockpit Network]
 
 Also under the networking section, you can configure your firewall rules. 
 
-For the next exercise, let's enable a rule for NTP (Network Time Protocol).  Begin by selecting the Networking category and "Edit rules and zones".
+For the next exercise, let's enable a rule for NTP (Network Time Protocol). You would enable this rule if you wish to configure chronyd as an authoritative time server.  Begin by selecting the Networking category and "Edit rules and zones".
 
 ====
 image::rhel-10.0/wc-013.png[Cockpit Firewall]
@@ -203,7 +203,7 @@ image::rhel-10.0/wc-015.png[Cockpit Firewall Dialog]
 
 == Service Management
 
-Now that you enabled a NTP firewall rule, let’s make sure an NTP service provider is enabled and running under the Web Console Services section.
+Now that you enabled an NTP firewall rule, let’s make sure an NTP service is enabled and running under the Web Console Services section.
 
 Remember that RHEL 10 uses a provider called 'chrony' for ntp.  So you can search for either 'chrony' or 'ntp'.
 
@@ -211,7 +211,7 @@ Remember that RHEL 10 uses a provider called 'chrony' for ntp.  So you can searc
 image::rhel-10.0/wc-016.png[Cockpit Services]
 ====
 
-Turns out, chronyd is already enabled and active.  Nothing to do here...
+Turns out, chronyd is already enabled and active. This is because chronyd is already acting as the default NTP client. With some minor configuration changes to `/etc/chrony.conf`, chronyd can also serve as an authoritative time server.
 
 ====
 image::rhel-10.0/wc-017.png[Cockpit Services]
