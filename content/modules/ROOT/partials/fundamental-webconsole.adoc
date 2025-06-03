@@ -85,7 +85,7 @@ image::rhel-10.0/wc-001.png[Cockpit Login]
 After you successfully sign-on, you will land on the overview page which presents various artifacts about your system including:
 
   * CPU utilization
-  * Memory Utilization
+  * Memory utilization
   * Disk I/O
   * Network traffic
 
