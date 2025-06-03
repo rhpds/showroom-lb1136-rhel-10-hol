@@ -223,7 +223,7 @@ image::rhel-10.0/wc-017.png[Cockpit Services]
 
 A new feature to the Web Console is the 'File Browser'.  This powerful tool gives you access to navigate the filesystems (with appropriate permissions of course), make changes and even edit simple files.
 
-So let's take a quick look at some of it's capabilities.
+So let's take a quick look at some of its capabilities.
 
 
 ====
