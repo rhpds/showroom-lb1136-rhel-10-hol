@@ -77,9 +77,9 @@ files take precedence over the system default configs.
 
 === Services
 
-Similar to systemd, firewalld implements the concept of a service:  
+Firewalld implements the concept of a service. A service includes:
 
-  * a "service" includes a common name
+  * a common name
   * a port or range of ports
   * a protocol
   * a netfilter helper module
