@@ -183,7 +183,7 @@ This helps to learn the “cost” of some of the default services.  To speed up
 
 === Install Packages
 
-Now that we have a good idea of what’s installed on our system, let’s get a basic lamp stack up and running.
+Now that we have a good idea of what’s installed on our system, let’s get a basic LAMP stack up and running.
 
 NOTE: You may have already installed all (or a portion) of these packages in previous exercises, but we'll just do it again for completeness 
 
