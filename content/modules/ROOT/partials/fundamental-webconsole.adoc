@@ -156,8 +156,8 @@ image::rhel-10.0/wc-010.png[Cockpit Logs]
 Have a look at the search capabilities and notice that you can set criteria by:
 
   * Date
-  * Severity
-  * Service
+  * Priority
+  * Identifier
 
 ====
 image::rhel-10.0/wc-011.png[Cockpit Logs Criteria]
