@@ -52,7 +52,7 @@ cat /usr/local/etc/sample-fedora-bootc.ocifile
 
 [{format_plain}]
 ----
-FROM quay.io/fedora/fedora-bootc@sha256:769911834d6895930c25ad0cb9e6d56a8f0abcb4bc6355a48b79c4fabc2b595d
+FROM quay.io/fedora/fedora-bootc
 
 RUN dnf install -y httpd
 RUN echo "*** SUCCESS: hello bootc ***" > /var/www/html/index.html
@@ -154,7 +154,7 @@ podman run --rm --privileged \
   --volume .:/output \
   --volume ./custom-bootc.toml:/config.toml \
   --volume /var/lib/containers/storage:/var/lib/containers/storage \
-  quay.io/centos-bootc/bootc-image-builder@sha256:6d1f93399d067f49ae178b6ef2affc69e235c26158eec22022d211deefd6a5ea \
+  quay.io/centos-bootc/bootc-image-builder \
   --type qcow2 \
   --local \
   --rootfs ext4 \
