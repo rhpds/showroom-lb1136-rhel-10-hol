@@ -86,7 +86,7 @@ and documentation provided in the context. These resources cover topics such as:
 
 ----
 
-That's informative and accurate and even provides links to further documentation.  Also note the messages before and after about not sending sensetive information and reviewing output.  For brevity they won't be listed in lab output after this but will show up in your queries.
+That's informative and accurate and even provides links to further documentation.  Also note the messages before and after about not sending sensitive information and reviewing output.  For brevity they won't be listed in lab output after this but will show up in your queries.
 
 Suppose we wanted a shorter summary of what RHEL is.  Let's try this:
 
