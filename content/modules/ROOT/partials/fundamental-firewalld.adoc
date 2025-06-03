@@ -150,7 +150,7 @@ public
   interfaces: {nic0}
 ----
 
-You may have one or more zones depending on the host and it's configuration:
+You may have one or more zones depending on the host and its configuration:
 
   * `public` zone on interface `{nic0}`
   * `libvirt` zone on interface `virbr0`
