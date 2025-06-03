@@ -26,7 +26,7 @@ Features of the Web Console include:
   * Managing System Subscriptions
   * more...
 
-The following exercises will cover some of the capabilities of the Web Console on RHEL 9, as well as basic installation and set up.
+The following exercises will cover some of the capabilities of the Web Console on RHEL 10, as well as basic installation and set up.
 
 == Getting Started
 
