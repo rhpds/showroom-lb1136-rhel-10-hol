@@ -58,7 +58,7 @@ NOTE:  Please note that by default, the webconsole is configured to use port 909
 
 Your instructors (or workshop portal) may provide you with a unique link and special instructions to access the web-console on the *bastion*. It is PREFERRED that you use your local web browser.
 
-Accept the various notifications about insecure ceritificates, and then login in.
+Accept the various notifications about insecure certificates, and then login.
 
 Use the following URL:
 
