@@ -9,7 +9,7 @@
 
 == Overview
 
-Systemd is the "init" system for RHEL 10 (ever since RHEL 7 for that matter).  Long ago it replaced Upstart, the SysV "init" system used in releases of RHEL 6.x and older.  Systemd is more than just a facility to bring up user space, it is a system manager that offers:
+Systemd is the "init" system for RHEL 10 (ever since RHEL 7 for that matter).  Long ago it replaced Upstart, the SysV "init" system used in releases of RHEL 6.x and older.  Systemd is more than just a facility to bring up user space - it is a system manager that offers:
 
   * service parallelization
   * socket and D-Bus activation
