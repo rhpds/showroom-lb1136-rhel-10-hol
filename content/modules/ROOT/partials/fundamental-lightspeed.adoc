@@ -160,7 +160,7 @@ crane, I recommend consulting a reliable biology or ornithology resource.
 That concludes this unit on the Command Line Assistant for RHEL Lightspeed.  Once more, it is intended to assist, not to be a full cut-and-paste 100% accurate answer to any and every question posed to it.  Ask questions, review responses, and learn along the way.
 
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
