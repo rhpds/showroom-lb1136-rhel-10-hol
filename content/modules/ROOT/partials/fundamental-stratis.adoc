@@ -244,7 +244,7 @@ The actual space used by a filesystem can be shown using the `stratis fs list` c
 
 == Create Permanent Mount
 
-Now make sure the filesystem will mount at boot time by adjusting the systems fstab.  You've been provided a simple script to perform this edit, but the maunal steps are also outlined below in the 'Native command(s)' note.
+Now make sure the filesystem will mount at boot time by adjusting the systems fstab.  You've been provided a simple script to perform this edit, but the manual steps are also outlined below in the 'Native command(s)' note.
 
 [{format_cmd}]
 ----
