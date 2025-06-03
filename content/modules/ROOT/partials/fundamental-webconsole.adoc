@@ -30,7 +30,7 @@ The following exercises will cover some of the capabilities of the Web Console o
 
 == Getting Started
 
-The following instructions to install and configure the webconsole are only provided as informational.  All of the exercises will actually be performed using a dedicated web broswer.
+The following instructions to install and configure the webconsole are only provided as informational.  All of the exercises will actually be performed using a dedicated web browser.
 
 == Installation and Configuration
 
