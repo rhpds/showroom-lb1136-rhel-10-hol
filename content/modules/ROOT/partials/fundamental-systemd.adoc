@@ -287,8 +287,7 @@ workshop-finish-exercise.sh
 
 You can find more information:
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_basic_system_settings/introduction-to-systemd_configuring-basic-system-settings[Introduction to systemd]
-    
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/using_systemd_unit_files_to_customize_and_optimize_your_system[Using systemd unit files to customize and optimize your system]
 
 [discrete]
 == End of Unit
