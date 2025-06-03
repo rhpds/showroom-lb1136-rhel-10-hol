@@ -171,7 +171,7 @@ workshop-finish-exercise.sh
 
 You can find more information:
 
-    * <<placeholder for CLA doc>>
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/interacting_with_the_command-line_assistant_powered_by_rhel_lightspeed[Interacting with the command-line assistant powered by RHEL Lightspeed]
 
 
 ifdef::env-github[]
