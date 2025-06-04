@@ -359,7 +359,7 @@ dnf repolist
 
 === Add Repo
 
-Repo configuration files are stored in '/etc/yum.repo.d'
+Repo configuration files are stored in `/etc/yum.repos.d/`
 
 Creating a repo config can be done:
 
