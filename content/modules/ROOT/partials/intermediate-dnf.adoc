@@ -269,7 +269,7 @@ dnf alias delete la
 
 === Groups
 
-Package groups are definded in the repository.  Red Hat creates a few package groups in the distribution ISOs
+Package groups are defined in the repository.  Red Hat creates a few package groups in the distribution ISOs
 inoder to make installations a little more covenient and consistent.
 
 To see a list of available group names
