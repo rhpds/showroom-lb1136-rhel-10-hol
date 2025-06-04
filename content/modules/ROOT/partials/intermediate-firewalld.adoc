@@ -36,8 +36,6 @@ You are now ready to proceed with these exercises.
 
 
 
-== Core Concepts
-
 
 == Managing Ad-hoc Ports
 
