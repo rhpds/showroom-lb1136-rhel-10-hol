@@ -125,7 +125,7 @@ summitpool   {disk4}              4 GiB   CACHE   50feb9fe-7f35-4d83-ba8a-0fc733
 
 This concludes the exercises related to stratis.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
