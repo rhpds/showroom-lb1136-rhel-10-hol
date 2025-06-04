@@ -369,7 +369,7 @@ Creating a repo config can be done:
 
 Installing a package with the repo config often has the added advantage of installing keys which validate sources and improve security of your host.
 
-A common repo to add to RHEL development systems is EPEL.  This repository (Extra Pacakges for Enterprise Linux) contains pacakges
+A common repo to add to RHEL development systems is EPEL.  This repository (Extra Packages for Enterprise Linux) contains packages
 from the Fedora development community which have been compiled and verified for installation on RHEL.  Software from EPEL offers a path
 to trying new things on RHEL which would not otherwise be possible.
 
