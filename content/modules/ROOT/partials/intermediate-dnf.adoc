@@ -481,7 +481,7 @@ Removing a repo is a pretty simple operation which can be done in a couple of wa
 
 This concludes the unit.
 
-Time to finish and return the shell to it's home position.
+Time to finish and return the shell to its home position.
 
 [{format_cmd}]
 ----
