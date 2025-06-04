@@ -47,12 +47,12 @@ Using an existing image from a public registry, we will then simply add the http
 
 [{format_cmd}]
 ----
-cat /usr/local/etc/sample-fedora-bootc.ocifile
+cat /usr/local/etc/sample-rhel-bootc.ocifile
 ----
 
 [{format_plain}]
 ----
-FROM quay.io/fedora/fedora-bootc
+FROM quay.io/redhat-gpte/rhel10/rhel-bootc
 
 RUN dnf install -y httpd
 RUN echo "*** SUCCESS: hello bootc ***" > /var/www/html/index.html
@@ -67,7 +67,7 @@ Now it's time to build the container.
 
 [{format_cmd}]
 ----
-podman build --file /usr/local/etc/sample-fedora-bootc.ocifile --tag localhost/custom-bootc
+podman build --file /usr/local/etc/sample-rhel-bootc.ocifile --tag localhost/custom-bootc
 ----
 
 [{format_plain}]
@@ -154,7 +154,7 @@ podman run --rm --privileged \
   --volume .:/output \
   --volume ./custom-bootc.toml:/config.toml \
   --volume /var/lib/containers/storage:/var/lib/containers/storage \
-  quay.io/centos-bootc/bootc-image-builder \
+  quay.io/redhat-gpte/rhel10/bootc-image-builder \
   --type qcow2 \
   --local \
   --rootfs ext4 \
