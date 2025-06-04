@@ -257,7 +257,7 @@ curl $VM_IP
 == Cleanup
 
 
-[{format_plain}]
+[{format_cmd}]
 ----
 virsh destroy bootc-vm
 
