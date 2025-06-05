@@ -554,13 +554,10 @@ The output is going to scroll by rather quickly, but just note that this is a co
 
 NOTE: If you are more curious and would like to inspect the details a little further you could pipe the output to `more` or `less` and page through the archive contents.  `tar ztvf $(ls --sort=size | head -1) | less`
 
-The other two numeric files provided in the image download are:
+Other files that may be present in the image include:
 
   * a copy of the metadata in text 
   * an additional tarball of any container secrets
-  
-Lastly, a couple of ASCII text files:
-
   * oci config info used to build the container
   * version info
   * manifest info
