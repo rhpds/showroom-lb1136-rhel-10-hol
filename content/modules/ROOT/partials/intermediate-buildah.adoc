@@ -589,7 +589,7 @@ buildah rmi --all
 
 This concludes the exercises related to buildah and skopeo.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
