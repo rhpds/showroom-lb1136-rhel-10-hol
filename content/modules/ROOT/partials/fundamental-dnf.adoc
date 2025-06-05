@@ -240,7 +240,9 @@ RHEL 10 is still very early in its life (we may still be using the BETA for this
 
 
 
-== Clean ALL
+== Clean All
+
+Performs cleanup of temporary files kept for repositories. This includes any such data left behind from disabled or removed repositories as well as for different distribution release versions.
 
 [{format_cmd}]
 ----
@@ -273,9 +275,7 @@ workshop-finish-exercise.sh
 
 == Further Reading
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/installing_managing_and_removing_user-space_components/index[RHEL 8 Documentation: Installing, Managing, and Removing User Space Components]
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/installing_managing_and_removing_user-space_components/using-appstream_using-appstream[RHEL 8 Documentation: Using Appstream]
-    
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_software_with_the_dnf_tool[Managing software with the DNF tool]
 [discrete]
 == End of Unit
 

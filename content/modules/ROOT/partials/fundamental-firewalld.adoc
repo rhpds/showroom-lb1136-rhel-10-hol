@@ -14,7 +14,7 @@ connections (ports and services) are able to communicate via the system's networ
 
 Features of firewalld include:
 
-  * support for IPv4 and IPv6 settings
+  * support for IPv4 and IPv6
   * support for ethernet bridges
   * support for network “zones” which assigns level of trust to a network / connections / interfaces
   * separation of runtime and permanent configuration options
@@ -77,9 +77,9 @@ files take precedence over the system default configs.
 
 === Services
 
-Similar to systemd, firewalld implements the concept of a service:  
+Firewalld implements the concept of a service. A service includes:
 
-  * a "service" includes a common name
+  * a common name
   * a port or range of ports
   * a protocol
   * a netfilter helper module
@@ -385,7 +385,7 @@ workshop-finish-exercise.sh
 You can find more information:
 
     * link:https://developers.redhat.com/blog/2018/08/10/firewalld-the-future-is-nftables/[Firewalld: The Future is nftables]
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_firewalls_and_packet_filters/using-and-configuring-firewalld_firewall-packet-filters[Using And Configuring Firewalls]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_firewalls_and_packet_filters[Configuring firewalls and packet filters]
     
 [discrete]
 == End of Unit
