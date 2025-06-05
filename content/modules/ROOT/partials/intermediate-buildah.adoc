@@ -567,8 +567,8 @@ Other files that may be present in the image include:
 Skopeo can also do the following things:
 
   * Copy an image (manifest, filesystem layers, signatures) from one location to another. It can convert between manifest types in doing this (oci, v2s1, v2s2)
-  * Delete images from registries that you have admin rights to.
-  * Push images to registries that you have push rights to.
+  * Delete images from registries to which you have admin rights.
+  * Push images to registries to which you have push rights.
 
 Examples of how to do these things are available in 'man skopeo'
 
