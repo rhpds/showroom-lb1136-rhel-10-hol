@@ -324,7 +324,7 @@ ImageStore(s) has grown.
 
 === Cleanup
 
-Run 'podman ps -a' to the IDs of the exited containers.
+Run 'podman ps -a' to see the IDs of the exited containers.
 
 [{format_cmd}]
 ----
