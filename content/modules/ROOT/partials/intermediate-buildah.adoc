@@ -499,7 +499,7 @@ total 32744
 -rw-r--r--. 1 root root       33 Jun  5 19:38 version
 ----
 
-Inspecting the images with the `file` command, we discover that these a couple of text file along with a couple of zipped (compressed) tar files.
+Inspecting the images with the `file` command, we discover text and data files, along with one or more zipped (compressed) tar files.
 
 [{format_cmd}]
 ----
