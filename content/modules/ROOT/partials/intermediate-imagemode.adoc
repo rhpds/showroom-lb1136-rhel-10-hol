@@ -43,7 +43,7 @@ You are now ready to proceed with these exercises.
 
 Here is the OCI config we will use to build our custom bootable (bootc) container image.  
 
-Using an existing image from a public registry, we will then simply add the httpd service along with a custom file to demonstrate it's functionality.
+Using an existing image from a public registry, we will then simply add the httpd service along with a custom file to demonstrate its functionality.
 
 [{format_cmd}]
 ----
