@@ -157,7 +157,7 @@ REPOSITORY                            TAG         IMAGE ID      CREATED     SIZE
 registry.access.redhat.com/ubi10/ubi  latest      da862ffa1787  2 days ago  216 MB
 ----
 
-NOTE: if you are a subscriber to Red Hat Enterprise Linux, you can pull authentic Red Hat certified images directly from Red Hat's repository.  For example: `podman pull rhel7.5 --creds 'username:password'`
+NOTE: If you are a subscriber to Red Hat Enterprise Linux, you can pull authentic Red Hat certified images directly from Red Hat's repository.  For example: `podman pull rhel7.5 --creds 'username:password'`
 
 Pull a few more container images.
 
