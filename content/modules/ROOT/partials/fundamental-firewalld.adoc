@@ -150,7 +150,7 @@ public
   interfaces: {nic0}
 ----
 
-You may have one or more zones depending on the host and it's configuration:
+You may have one or more zones depending on the host and its configuration:
 
   * `public` zone on interface `{nic0}`
   * `libvirt` zone on interface `virbr0`
@@ -234,7 +234,7 @@ public (active)
 
 == Managing Default Services
 
-Default Services are those that are pre-defined by configuration files in either */etc/firewalld* or */usr/lib/firewalld*.  This would include any configs delivered by Red Hat as part of the operating system or those added by a system administer.
+Default Services are those that are pre-defined by configuration files in either */etc/firewalld* or */usr/lib/firewalld*.  This would include any configs delivered by Red Hat as part of the operating system or those added by a system administrator.
 
 Here we will take a moment to enable the http and https service ports.
 
@@ -273,7 +273,7 @@ public (active)
 
 
 Remember how we mentioned above about the two configuration states: runtime and permanent?
-Notice below how the permanent state dose NOT include http or https.
+Notice below how the permanent state does NOT include http or https.
 
 [{format_cmd}]
 ----
@@ -304,7 +304,7 @@ A quick way to make them permanent is to save the current runtime state to perma
 firewall-cmd --runtime-to-permanent
 ----
 
-NOTE: you could have also run the same configuration command a second time and 
+NOTE: You could have also run the same configuration command a second time and
 passed the *--permanent* flag as follows `firewall-cmd --permanent --add-service={http,https}`.  
 It's annoying but necessary to run configuration commands twice to manage both states and
 maintain consistency.
@@ -373,7 +373,7 @@ cockpit http https ssh
 
 That concludes this unit on firewalld. 
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----

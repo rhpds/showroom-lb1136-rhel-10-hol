@@ -9,7 +9,7 @@
 
 == Overview
 
-Systemd is the "init" system for RHEL 10 (ever since RHEL 7 for that matter).  Long ago it replaced Upstart, the SysV "init" system used in releases of RHEL 6.x and older.  Systemd is more than just a facility to bring up user space, it is a system manager that offers:
+Systemd is the "init" system for RHEL 10 (ever since RHEL 7 for that matter).  Long ago it replaced Upstart, the SysV "init" system used in releases of RHEL 6.x and older.  Systemd is more than just a facility to bring up user space - it is a system manager that offers:
 
   * service parallelization
   * socket and D-Bus activation
@@ -183,7 +183,7 @@ This helps to learn the “cost” of some of the default services.  To speed up
 
 === Install Packages
 
-Now that we have a good idea of what’s installed on our system, let’s get a basic lamp stack up and running.
+Now that we have a good idea of what’s installed on our system, let’s get a basic LAMP stack up and running.
 
 NOTE: You may have already installed all (or a portion) of these packages in previous exercises, but we'll just do it again for completeness 
 
@@ -269,7 +269,7 @@ firewall-cmd --add-service=http
 success
 ----
 
-And that's it.  The needed serivces are running and network ports are accessible.
+And that's it.  The needed services are running and network ports are accessible.
 
 == Conclusion
 

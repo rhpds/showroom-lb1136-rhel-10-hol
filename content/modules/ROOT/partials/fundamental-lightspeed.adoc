@@ -40,7 +40,7 @@ You are now ready to proceed with these exercises.
 
 == Core Concepts
 
-One of the first things to note is that when a query is entered to the CLA (command line assistant) it is then sent to the RHEL Lightspeed generative AI assistant at Red Hat for processing, so *don't include private or sensetive information in any queries*.  This output message will appear at least once when sending queries to RHEL Lightspeed:
+One of the first things to note is that when a query is entered to the CLA (command line assistant) it is then sent to the RHEL Lightspeed generative AI assistant at Red Hat for processing, so *don't include private or sensitive information in any queries*.  This output message will appear at least once when sending queries to RHEL Lightspeed:
 
 WARNING: This feature uses AI technology. Do not include any personal information or other sensitive information in your
 input. Interactions may be used to improve Red Hat's products or services.
@@ -86,7 +86,7 @@ and documentation provided in the context. These resources cover topics such as:
 
 ----
 
-That's informative and accurate and even provides links to further documentation.  Also note the messages before and after about not sending sensetive information and reviewing output.  For brevity they won't be listed in lab output after this but will show up in your queries.
+That's informative and accurate and even provides links to further documentation.  Also note the messages before and after about not sending sensitive information and reviewing output.  For brevity they won't be listed in lab output after this but will show up in your queries.
 
 Suppose we wanted a shorter summary of what RHEL is.  Let's try this:
 
@@ -157,10 +157,10 @@ crane, I recommend consulting a reliable biology or ornithology resource.
 
 == Conclusion
 
-That concludes this unit on the Command Line Assistant for RHEL Lightspeed.  Once more, it is intended to assist, not to be a full cut-and-paste 100% accurate answer to any and every question posed to it.  Ask questions, review reponses, and learn along the way.
+That concludes this unit on the Command Line Assistant for RHEL Lightspeed.  Once more, it is intended to assist, not to be a full cut-and-paste 100% accurate answer to any and every question posed to it.  Ask questions, review responses, and learn along the way.
 
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----

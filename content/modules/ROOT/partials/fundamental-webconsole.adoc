@@ -30,7 +30,7 @@ The following exercises will cover some of the capabilities of the Web Console o
 
 == Getting Started
 
-The following instructions to install and configure the webconsole are only provided as informational.  All of the exercises will actually be performed using a dedicated web broswer.
+The following instructions to install and configure the webconsole are only provided as informational.  All of the exercises will actually be performed using a dedicated web browser.
 
 == Installation and Configuration
 
@@ -58,7 +58,7 @@ NOTE:  Please note that by default, the webconsole is configured to use port 909
 
 Your instructors (or workshop portal) may provide you with a unique link and special instructions to access the web-console on the *bastion*. It is PREFERRED that you use your local web browser.
 
-Accept the various notifications about insecure ceritificates, and then login in.
+Accept the various notifications about insecure certificates, and then login.
 
 Use the following URL:
 
@@ -85,7 +85,7 @@ image::rhel-10.0/wc-001.png[Cockpit Login]
 After you successfully sign-on, you will land on the overview page which presents various artifacts about your system including:
 
   * CPU utilization
-  * Memory Utilization
+  * Memory utilization
   * Disk I/O
   * Network traffic
 
@@ -223,7 +223,7 @@ image::rhel-10.0/wc-017.png[Cockpit Services]
 
 A new feature to the Web Console is the 'File Browser'.  This powerful tool gives you access to navigate the filesystems (with appropriate permissions of course), make changes and even edit simple files.
 
-So let's take a quick look at some of it's capabilities.
+So let's take a quick look at some of its capabilities.
 
 
 ====
@@ -273,7 +273,7 @@ image::rhel-10.0/wc-024.png[Cockpit Applications]
 This concludes a short exercise with Web Console. Feel free to click through and explore other sections:
 
 * Under *Accounts* section, you can manage user accounts
-* *Diagnostic Reports* allows you to create sosreport for Red Hat support
+* *Diagnostic Reports* allows you to create a sosreport for Red Hat support
 * Under *Kernel Dump*, you can enable/disable kdump
 
 You will get an opportunity to manager Virtual Machines and Build System Images in later exercises.
