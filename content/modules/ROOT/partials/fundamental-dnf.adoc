@@ -11,7 +11,7 @@
 
 Software packages in RHEL 10 are managed with a tool called *dnf*.
 
-Introduced in 2013, *dnf* was a significant improvement to it's predecessor *yum*.  Landing in RHEL 8, *dnf* replaced *yum* while still maintaining a great deal of compatibility.
+Introduced in 2013, *dnf* was a significant improvement to its predecessor *yum*.  Landing in RHEL 8, *dnf* replaced *yum* while still maintaining a great deal of compatibility.
 
 When compared to YUM, DNF offers:
 
@@ -67,7 +67,7 @@ Next, rpm packages get organized into structures called repositories (or repos f
 as sources to distribute content.   More on this topic in the Intermediate Package Management unit.
 
 Working with rpms directly can be challenging.  Luckily tooks like *dnf* exist to abstract that complexity
-and replace it with simple intuitive commands and processes.
+and replace it with simple, intuitive commands and processes.
 
 Let's get started!
 
@@ -103,7 +103,7 @@ dnf list --installed | wc -l
 dnf list --available | wc -l
 ----
 
-You should a result roughly '622' packages installed compared to '4760' available for installation.
+You should see roughly 623 packages installed compared to 4759 available for installation.
 
 Last, let us identify packages that are installed but do not belong to any known repository.  Meaning, someone downloaded and installed it manually.
 
@@ -166,10 +166,10 @@ Installing multiple packages from a single command is also easy.
 dnf install -y  httpd mariadb mariadb-server php
 ----
 
-Some of the pacakges listed above where likely already installed on the host, thus the ouput may have been very underwhelming.
-This set of packages is collectively known as the traditional LAMP stack:  Linux, Apache, MySQL and PHP.
+Some of the pacakges listed above were likely already installed on the host, thus the ouput may have been very underwhelming.
+This set of packages is collectively known as the traditional LAMP stack: Linux, Apache, MySQL and PHP.
 
-NOTE: the MySQL project got forked long ago and it's successor is MariaDB
+NOTE: the MySQL project got forked long ago and its successor is MariaDB
 
 
 
@@ -240,7 +240,9 @@ RHEL 10 is still very early in its life (we may still be using the BETA for this
 
 
 
-== Clean ALL
+== Clean All
+
+Performs cleanup of temporary files kept for repositories. This includes any such data left behind from disabled or removed repositories as well as for different distribution release versions.
 
 [{format_cmd}]
 ----
@@ -263,7 +265,7 @@ Even then, with kpatch one cannot SKIP a reboot, one can only DELAY the reboot. 
 
 This concludes the first exercises related to `dnf`.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -273,9 +275,7 @@ workshop-finish-exercise.sh
 
 == Further Reading
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/installing_managing_and_removing_user-space_components/index[RHEL 8 Documentation: Installing, Managing, and Removing User Space Components]
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/installing_managing_and_removing_user-space_components/using-appstream_using-appstream[RHEL 8 Documentation: Using Appstream]
-    
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_software_with_the_dnf_tool[Managing software with the DNF tool]
 [discrete]
 == End of Unit
 

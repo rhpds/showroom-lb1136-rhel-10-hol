@@ -14,7 +14,7 @@ connections (ports and services) are able to communicate via the system's networ
 
 Features of firewalld include:
 
-  * support for IPv4 and IPv6 settings
+  * support for IPv4 and IPv6
   * support for ethernet bridges
   * support for network “zones” which assigns level of trust to a network / connections / interfaces
   * separation of runtime and permanent configuration options
@@ -77,9 +77,9 @@ files take precedence over the system default configs.
 
 === Services
 
-Similar to systemd, firewalld implements the concept of a service:  
+Firewalld implements the concept of a service. A service includes:
 
-  * a "service" includes a common name
+  * a common name
   * a port or range of ports
   * a protocol
   * a netfilter helper module
@@ -150,7 +150,7 @@ public
   interfaces: {nic0}
 ----
 
-You may have one or more zones depending on the host and it's configuration:
+You may have one or more zones depending on the host and its configuration:
 
   * `public` zone on interface `{nic0}`
   * `libvirt` zone on interface `virbr0`
@@ -234,7 +234,7 @@ public (active)
 
 == Managing Default Services
 
-Default Services are those that are pre-defined by configuration files in either */etc/firewalld* or */usr/lib/firewalld*.  This would include any configs delivered by Red Hat as part of the operating system or those added by a system administer.
+Default Services are those that are pre-defined by configuration files in either */etc/firewalld* or */usr/lib/firewalld*.  This would include any configs delivered by Red Hat as part of the operating system or those added by a system administrator.
 
 Here we will take a moment to enable the http and https service ports.
 
@@ -273,7 +273,7 @@ public (active)
 
 
 Remember how we mentioned above about the two configuration states: runtime and permanent?
-Notice below how the permanent state dose NOT include http or https.
+Notice below how the permanent state does NOT include http or https.
 
 [{format_cmd}]
 ----
@@ -304,7 +304,7 @@ A quick way to make them permanent is to save the current runtime state to perma
 firewall-cmd --runtime-to-permanent
 ----
 
-NOTE: you could have also run the same configuration command a second time and 
+NOTE: You could have also run the same configuration command a second time and
 passed the *--permanent* flag as follows `firewall-cmd --permanent --add-service={http,https}`.  
 It's annoying but necessary to run configuration commands twice to manage both states and
 maintain consistency.
@@ -373,7 +373,7 @@ cockpit http https ssh
 
 That concludes this unit on firewalld. 
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -385,7 +385,7 @@ workshop-finish-exercise.sh
 You can find more information:
 
     * link:https://developers.redhat.com/blog/2018/08/10/firewalld-the-future-is-nftables/[Firewalld: The Future is nftables]
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_firewalls_and_packet_filters/using-and-configuring-firewalld_firewall-packet-filters[Using And Configuring Firewalls]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_firewalls_and_packet_filters[Configuring firewalls and packet filters]
     
 [discrete]
 == End of Unit
