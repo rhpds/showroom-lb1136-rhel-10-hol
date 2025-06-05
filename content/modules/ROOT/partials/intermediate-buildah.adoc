@@ -508,9 +508,8 @@ file *
 
 [{format_output}]
 ----
-3ae9a56dd415684c7b0131316b2900be82cab18b5a04964f74d3d204d63507cc: gzip compressed data, original size modulo 2^32 81126400
-c14a836c256beab3872799b2695fddc3322dd51bff0a025ecfb721c0850a6892: gzip compressed data, original size modulo 2^32 4096
-ead4841b0404dee891f30f94cf0c28351d13d1b7360cd87607437a973f47d347: JSON text data
+94287c165ee42f4ea0e48960096d6bf2f3231cff33c9605db92f8a3bce8eb29c: JSON text data
+a4dbf4dbfb30bc72d645362af81c7526b04553a22a2643a81f07020af9bc05e2: gzip compressed data, original size modulo 2^32 85243904
 manifest.json:                                                    JSON text data
 signature-1:                                                      data
 signature-2:                                                      data
