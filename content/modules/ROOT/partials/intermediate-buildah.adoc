@@ -484,17 +484,19 @@ ls -l
 
 [{format_output}]
 ----
-total 37024
--rw-r--r--. 1 root root     6242 Sep 25 22:32 088f0967f6b5742f78966cbaa7012fd7f5091a9b9d547a5c31ddde64a9581595
--rw-r--r--. 1 root root 37869610 Sep 25 22:32 35e8d0567610305e5133f45eac553d3f57e4f33e2f764a1f16bab4f3bf24ad86
--rw-r--r--. 1 root root      429 Sep 25 22:32 manifest.json
--rw-r--r--. 1 root root      869 Sep 25 22:32 signature-1
--rw-r--r--. 1 root root      872 Sep 25 22:32 signature-2
--rw-r--r--. 1 root root      871 Sep 25 22:32 signature-3
--rw-r--r--. 1 root root      860 Sep 25 22:32 signature-4
--rw-r--r--. 1 root root      864 Sep 25 22:32 signature-5
--rw-r--r--. 1 root root      864 Sep 25 22:32 signature-6
--rw-r--r--. 1 root root       33 Sep 25 22:32 version
+total 32744
+-rw-r--r--. 1 root root     5069 Jun  5 19:38 94287c165ee42f4ea0e48960096d6bf2f3231cff33c9605db92f8a3bce8eb29c
+-rw-r--r--. 1 root root 33456101 Jun  5 19:38 a4dbf4dbfb30bc72d645362af81c7526b04553a22a2643a81f07020af9bc05e2
+-rw-r--r--. 1 root root      505 Jun  5 19:38 manifest.json
+-rw-r--r--. 1 root root      715 Jun  5 19:38 signature-1
+-rw-r--r--. 1 root root      715 Jun  5 19:38 signature-2
+-rw-r--r--. 1 root root     4168 Jun  5 19:38 signature-3
+-rw-r--r--. 1 root root     4184 Jun  5 19:38 signature-4
+-rw-r--r--. 1 root root     4172 Jun  5 19:38 signature-5
+-rw-r--r--. 1 root root     4180 Jun  5 19:38 signature-6
+-rw-r--r--. 1 root root     4192 Jun  5 19:38 signature-7
+-rw-r--r--. 1 root root     4180 Jun  5 19:38 signature-8
+-rw-r--r--. 1 root root       33 Jun  5 19:38 version
 ----
 
 Inspecting the images with the `file` command, we discover that these a couple of text file along with a couple of zipped (compressed) tar files.
