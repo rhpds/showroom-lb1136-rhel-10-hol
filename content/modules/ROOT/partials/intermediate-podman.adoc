@@ -346,7 +346,7 @@ but we are lazy and will cleanup up the containers with a single command:
 podman rm --all
 ----
 
-Now you should be able to run 'podman ps -a' again, and the results should come back empty.
+Now run 'podman ps -a' again, and the results should come back empty.
 
 [{format_cmd}]
 ----
