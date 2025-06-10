@@ -15,7 +15,7 @@ In this unit, we will get familiar with the upgrade tool called LEAPP.  LEAPP is
 existing system and report on potential issues that could or would cause issues preventing an in-place 
 upgrade, and once issues are addressed then perform the upgrade itself.  
 
-Because the upgrade process is VERY time consuming lengthy process, this exercise uses the seconday terminal.  
+Because the upgrade process is time consuming lengthy process, this exercise uses the seconday terminal.  
 The intent is to dedicate secondary terminal to the leapp upgrade, there-by leaving the primary terminal available 
 for other exercises while the upgrade executes.
 
