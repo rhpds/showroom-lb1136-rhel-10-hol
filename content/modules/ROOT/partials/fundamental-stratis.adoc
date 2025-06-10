@@ -244,7 +244,7 @@ The actual space used by a filesystem can be shown using the `stratis fs list` c
 
 == Create Permanent Mount
 
-Now make sure the filesystem will mount at boot time by adjusting the systems fstab.  You've been provided a simple script to perform this edit, but the maunal steps are also outlined below in the 'Native command(s)' note.
+Now make sure the filesystem will mount at boot time by adjusting the systems fstab.  You've been provided a simple script to perform this edit, but the manual steps are also outlined below in the 'Native command(s)' note.
 
 [{format_cmd}]
 ----
@@ -293,7 +293,7 @@ tmpfs                                      379M     0  379M   0% /run/user/1000
 
 This concludes the first exercises related to stratis.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -308,7 +308,7 @@ Red Hat Documentation
 
 This lab does not get into more advanced topics like encryption or snapshots.  For more information on these and more details on Stratis in general, see the official Red Hat documentation here:
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_file_systems/setting-up-stratis-file-systems_managing-file-systems[Managing Filesystems: Chapter 39. Setting Up Stratis File Systems]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_file_systems/setting-up-stratis-file-systems[Setting up Stratis file systems]
 
 [discrete]
 == End of Unit

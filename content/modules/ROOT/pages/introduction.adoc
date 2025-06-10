@@ -53,7 +53,7 @@ becoming a Red Hat Enterprise Linux 10 expert.
 
 == Guiding Principles
 
-For the most part, each unit is independant of the others.
+For the most part, each unit is independent of the others.
 
 Units are designed to:
 

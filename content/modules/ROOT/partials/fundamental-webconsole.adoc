@@ -26,11 +26,11 @@ Features of the Web Console include:
   * Managing System Subscriptions
   * more...
 
-The following exercises will cover some of the capabilities of the Web Console on RHEL 9, as well as basic installation and set up.
+The following exercises will cover some of the capabilities of the Web Console on RHEL 10, as well as basic installation and set up.
 
 == Getting Started
 
-The following instructions to install and configure the webconsole are only provided as informational.  All of the exercises will actually be performed using a dedicated web broswer.
+The following instructions to install and configure the webconsole are only provided as informational.  All of the exercises will actually be performed using a dedicated web browser.
 
 == Installation and Configuration
 
@@ -58,7 +58,7 @@ NOTE:  Please note that by default, the webconsole is configured to use port 909
 
 Your instructors (or workshop portal) may provide you with a unique link and special instructions to access the web-console on the *bastion*. It is PREFERRED that you use your local web browser.
 
-Accept the various notifications about insecure ceritificates, and then login in.
+Accept the various notifications about insecure certificates, and then login.
 
 Use the following URL:
 
@@ -85,7 +85,7 @@ image::rhel-10.0/wc-001.png[Cockpit Login]
 After you successfully sign-on, you will land on the overview page which presents various artifacts about your system including:
 
   * CPU utilization
-  * Memory Utilization
+  * Memory utilization
   * Disk I/O
   * Network traffic
 
@@ -105,7 +105,7 @@ image::rhel-10.0/wc-003.png[Cockpit Overview]
 
 It's nice that certain statistics about your system are available for inspection, but by default the webconsole does NOT store statistics long term.  For this, you need to install “Performance Co-pilot (pcp)”, the cockpit-pcp plugin and lastly enable "persistent metrics collection" in the webconsole.
 
-Start by clicking on the link "View details and history" on the "Usage" tile.
+Start by clicking on the link "View metrics and history" on the "Usage" tile.
 
 ====
 image::rhel-10.0/wc-004.png[View details and history]
@@ -131,7 +131,7 @@ image::rhel-10.0/wc-007.png[Performance Charts]
 
 == Change Performance Profile
 
-RHEL 9 comes with several pre-canned performance tuning profiles from Tuned. Since this is a virtual machine, the default profile “virtual-guest” was selected. You can easily switch profile via the Web Console web UI. In this exercise, we will change the profile to “throughput-performance”
+RHEL 10 comes with several pre-canned performance tuning profiles from Tuned. Since this is a virtual machine, the default profile “virtual-guest” was selected. You can easily switch profile via the Web Console web UI. In this exercise, we will change the profile to “throughput-performance”
 
 ====
 image::rhel-10.0/wc-008.png[Cockpit Perf Profile]
@@ -156,8 +156,8 @@ image::rhel-10.0/wc-010.png[Cockpit Logs]
 Have a look at the search capabilities and notice that you can set criteria by:
 
   * Date
-  * Severity
-  * Service
+  * Priority
+  * Identifier
 
 ====
 image::rhel-10.0/wc-011.png[Cockpit Logs Criteria]
@@ -167,7 +167,7 @@ image::rhel-10.0/wc-011.png[Cockpit Logs Criteria]
 
 == Network Management
 
-Under the networking section, you can monitor and manage current networking activities and devices. You can create a network bond, team, bridge, and vlan all driven by the webconsle GUI.
+Under the networking section, you can monitor and manage current networking activities and devices. You can create a network VPN, bond, bridge, and VLAN all driven by the webconsle GUI.
 
 Due to the nature of workshops, we refrain from making and saving changes to the network at this time but feel free to explore.
 
@@ -181,7 +181,7 @@ image::rhel-10.0/wc-012.png[Cockpit Network]
 
 Also under the networking section, you can configure your firewall rules. 
 
-For the next exercise, let's enable a rule for NTP (Network Time Protocol).  Begin by selecting the Networking category and "Edit rules and zones".
+For the next exercise, let's enable a rule for NTP (Network Time Protocol). You would enable this rule if you wish to configure chronyd as an authoritative time server.  Begin by selecting the Networking category and "Edit rules and zones".
 
 ====
 image::rhel-10.0/wc-013.png[Cockpit Firewall]
@@ -203,7 +203,7 @@ image::rhel-10.0/wc-015.png[Cockpit Firewall Dialog]
 
 == Service Management
 
-Now that you enabled a NTP firewall rule, let’s make sure an NTP service provider is enabled and running under the Web Console Services section.
+Now that you enabled an NTP firewall rule, let’s make sure an NTP service is enabled and running under the Web Console Services section.
 
 Remember that RHEL 10 uses a provider called 'chrony' for ntp.  So you can search for either 'chrony' or 'ntp'.
 
@@ -211,7 +211,7 @@ Remember that RHEL 10 uses a provider called 'chrony' for ntp.  So you can searc
 image::rhel-10.0/wc-016.png[Cockpit Services]
 ====
 
-Turns out, chronyd is already enabled and active.  Nothing to do here...
+Turns out, chronyd is already enabled and active. This is because chronyd is already acting as the default NTP client. With some minor configuration changes to `/etc/chrony.conf`, chronyd can also serve as an authoritative time server.
 
 ====
 image::rhel-10.0/wc-017.png[Cockpit Services]
@@ -223,7 +223,7 @@ image::rhel-10.0/wc-017.png[Cockpit Services]
 
 A new feature to the Web Console is the 'File Browser'.  This powerful tool gives you access to navigate the filesystems (with appropriate permissions of course), make changes and even edit simple files.
 
-So let's take a quick look at some of it's capabilities.
+So let's take a quick look at some of its capabilities.
 
 
 ====
@@ -273,7 +273,7 @@ image::rhel-10.0/wc-024.png[Cockpit Applications]
 This concludes a short exercise with Web Console. Feel free to click through and explore other sections:
 
 * Under *Accounts* section, you can manage user accounts
-* *Diagnostic Reports* allows you to create sosreport for Red Hat support
+* *Diagnostic Reports* allows you to create a sosreport for Red Hat support
 * Under *Kernel Dump*, you can enable/disable kdump
 
 You will get an opportunity to manager Virtual Machines and Build System Images in later exercises.
@@ -282,7 +282,7 @@ You will get an opportunity to manager Virtual Machines and Build System Images 
 
 You can find more information:
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/index[Managing Systems Using the Web Console]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_systems_in_the_rhel_web_consolep[Managing systems in the RHEL web console]
 
 [discrete]
 == End of Unit
