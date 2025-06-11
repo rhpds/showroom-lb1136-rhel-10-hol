@@ -230,7 +230,7 @@ Much better.  Now re-run the preupgrade. This time there should be no inhibitors
 leapp preupgrade
 ----
 
-The output to come back clean without any inhibitors that would prevent a successful upgrade.
+The output should now come back clean without any inhibitors that would prevent a successful upgrade.
 
 [{format_output}]
 ----
@@ -389,7 +389,7 @@ rhel-10-for-x86_64-supplementary-rpms Red Hat Enterprise Linux 10 for x86_64 - S
 
 NOTE: The Leapp process has explicitly set the release version to "10.0".  This means that updates will only be available and applied for the RHEL 10.0 version.  This can be modified to a more general version "10" in order to receive ongoing updates as more point releases of RHEL 10 come out using either of the following:
 
-[{format_cmd}]
+[{format_output}]
 ----
 subscription-manager release --set 10
 subscription-manager release --unset
