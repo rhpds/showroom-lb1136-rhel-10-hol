@@ -100,16 +100,16 @@ rhel-9-for-x86_64-baseos-rpms                          Red Hat Enterprise Linux 
 rhel-9-for-x86_64-supplementary-rpms                   Red Hat Enterprise Linux 9 for x86_64 - Supplementary (RPMs)
 ----
 
-=======
 You are now ready to proceed with the exercises.
 
+=======
 NOTE: When performing an in-place upgrade in your own lab or production environments, you will need to disable any non-Red Hat repositories prior to starting the in-place upgrade process.  Application upgrade(s) will need to take place after the operating system upgrade has completed.  A command similar to the following could be used:
 
 [{format_output}]
 ----
 dnf config-manager --set-disabled <my-custom-application-repo-name>
 ----
-
+=======
 
 == Installation
 
@@ -145,7 +145,7 @@ dnf -y update
 [[ $(hostname -s) == "leapp" ]] && reboot
 ----
 
-Using the second terminal reconnect to the `leapp` node once it has rebooted (
+Using the second terminal reconnect to the `leapp` node once it has rebooted (should be 10 - 15 seconds)
 
 [{format_cmd}]
 ----
