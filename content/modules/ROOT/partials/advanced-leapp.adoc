@@ -134,6 +134,20 @@ dnf -y update
 [[ $(hostname -s) == "leapp" ]] && reboot
 ----
 
+Using the second terminal reconnect to the `leapp` node once it has rebooted (
+
+[{format_cmd}]
+----
+ssh leapp
+----
+
+Use `sudo` to elevate your privileges.
+
+[{format_cmd}]
+----
+[[ "$UID" == 0 ]] || sudo -i
+----
+
 
 == Pre-Upgrade
 
