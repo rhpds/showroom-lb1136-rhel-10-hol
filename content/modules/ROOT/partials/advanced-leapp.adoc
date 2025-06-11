@@ -18,7 +18,11 @@ In this unit we introduce LEAPP,  an in-place OS upgrade tool used to:
   * provide remediation assistance,
   * and finally execute the upgrade procedure.
 
-Because the upgrade process is time consuming lengthy process, this exercise uses the seconday terminal.  
+
+Because the upgrade process is time consuming lengthy process, this exercise uses the secondary terminal.  
+The intent is to dedicate secondary terminal to the leapp upgrade, there-by leaving the primary terminal available 
+for other exercises while the upgrade executes.
+
 
 The first several sections leading up to the actual upgrade are interactive and should take around 7 - 8 minutes to complete.  The sections which perform the actual upgrade and finalize it are almost completely non-interactive and each are expected to take 6 - 9 minutes to complete.  Once you start them, you will have time to look at other exercises in the PRIMARY terminal while waiting for them to complete.
 
@@ -96,8 +100,15 @@ rhel-9-for-x86_64-baseos-rpms                          Red Hat Enterprise Linux 
 rhel-9-for-x86_64-supplementary-rpms                   Red Hat Enterprise Linux 9 for x86_64 - Supplementary (RPMs)
 ----
 
+=======
+You are now ready to proceed with the exercises.
 
-NOTE: In most cases, you should disable any non-Red Hat repositories prior to starting the in-place upgrade process.  Application upgrade(s) will need to take place after the operating system upgrade has completed.  A sample command to disable a repo looks like this `dnf config-manager --set-disabled <my-custom-application-repo-name>`
+NOTE: When performing an in-place upgrade in your own lab or production environments, you will need to disable any non-Red Hat repositories prior to starting the in-place upgrade process.  Application upgrade(s) will need to take place after the operating system upgrade has completed.  A command similar to the following could be used:
+
+[{format_output}]
+----
+dnf config-manager --set-disabled <my-custom-application-repo-name>
+----
 
 
 == Installation
