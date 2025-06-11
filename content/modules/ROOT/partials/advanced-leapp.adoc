@@ -121,7 +121,7 @@ Delete any results from any possible previous attempts to run leapp
 
 [{format_cmd}]
 ----
-rm -rf /var/log/leapp /root/tmp_leapp_py3 /var/lib/leapp
+rm -rf /var/log/leapp /root/tmp_leapp_py3
 ----
 
 
