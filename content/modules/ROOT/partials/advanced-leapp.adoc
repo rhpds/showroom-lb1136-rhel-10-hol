@@ -15,7 +15,7 @@ In this unit, we will get familiar with the upgrade tool called LEAPP.  LEAPP is
 existing system and report on potential issues that could or would cause issues preventing an in-place 
 upgrade, and once issues are addressed then perform the upgrade itself.  
 
-Because the upgrade process is time consuming lengthy process, this exercise uses the seconday terminal.  
+Because the upgrade process is time consuming lengthy process, this exercise uses the secondary terminal.  
 The intent is to dedicate secondary terminal to the leapp upgrade, there-by leaving the primary terminal available 
 for other exercises while the upgrade executes.
 
@@ -97,9 +97,9 @@ rhel-9-for-x86_64-supplementary-rpms                   Red Hat Enterprise Linux 
 
 You are now ready to proceed with the exercises.
 
-NOTE: You will need to disable any non-Red Hat repositories prior to starting the in-place upgrade process.  Application upgrade(s) will need to take place after the operating system upgrade has completed.  A command similar to the following could be used:
+NOTE: When performing an in-place upgrade in your own lab or production environments, you will need to disable any non-Red Hat repositories prior to starting the in-place upgrade process.  Application upgrade(s) will need to take place after the operating system upgrade has completed.  A command similar to the following could be used:
 
-[{format_cmd}]
+[{format_output}]
 ----
 dnf config-manager --set-disabled <my-custom-application-repo-name>
 ----
