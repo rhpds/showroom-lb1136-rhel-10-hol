@@ -286,12 +286,12 @@ workshop-finish-exercise.sh
 
 Image Mode 
 
-    * link:https://tbd
-    * link:https://tbd
+    * link:https://https://www.redhat.com/en/blog/introducing-image-mode-red-hat-enterprise-linux[Introducing image mode for Red Hat Enterprise Linux]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html-single/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/index[Using image mode for RHEL to build, deploy, and manage operating systems]
 
 Bootc Image Builder
 
-    * link:https://tbd
+    * link:https://https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder[Chapter 4. Creating bootc compatible base disk images with bootc-image-builder]
 
 [discrete]
 == End of Unit
