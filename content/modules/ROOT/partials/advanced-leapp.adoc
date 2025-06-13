@@ -130,15 +130,19 @@ Delete any results from any possible previous attempts to run leapp
 rm -rf /var/log/leapp /root/tmp_leapp_py3
 ----
 
-=== Insure All RHEL 9 Packages are Up-to-Date
+===  Update Host
+
+Insure all RHEL 9 Packages are up to date.
 
 [{format_cmd}]
 ----
 dnf -y update
 ----
 
-=== Reboot to Insure Updates Take Effect
-    (making sure we're on the correct host)
+=== Reboot
+
+To insure that all updates have taken effect and that we are running on latest kernel,
+make sure we're on the correct host and reboot.
 
 [{format_cmd}]
 ----
