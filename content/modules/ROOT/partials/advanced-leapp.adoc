@@ -18,7 +18,11 @@ In this unit we introduce LEAPP,  an in-place OS upgrade tool used to:
   * provide remediation assistance,
   * and finally execute the upgrade procedure.
 
-Because the upgrade process is time consuming lengthy process, this exercise uses the seconday terminal.  
+
+Because the upgrade process is time consuming lengthy process, this exercise uses the secondary terminal.  
+The intent is to dedicate secondary terminal to the leapp upgrade, there-by leaving the primary terminal available 
+for other exercises while the upgrade executes.
+
 
 The first several sections leading up to the actual upgrade are interactive and should take around 7 - 8 minutes to complete.  The sections which perform the actual upgrade and finalize it are almost completely non-interactive and each are expected to take 6 - 9 minutes to complete.  Once you start them, you will have time to look at other exercises in the PRIMARY terminal while waiting for them to complete.
 
@@ -96,9 +100,16 @@ rhel-9-for-x86_64-baseos-rpms                          Red Hat Enterprise Linux 
 rhel-9-for-x86_64-supplementary-rpms                   Red Hat Enterprise Linux 9 for x86_64 - Supplementary (RPMs)
 ----
 
+You are now ready to proceed with the exercises.
 
-NOTE: In most cases, you should disable any non-Red Hat repositories prior to starting the in-place upgrade process.  Application upgrade(s) will need to take place after the operating system upgrade has completed.  A sample command to disable a repo looks like this `dnf config-manager --set-disabled <my-custom-application-repo-name>`
+=======
+NOTE: When performing an in-place upgrade in your own lab or production environments, you will need to disable any non-Red Hat repositories prior to starting the in-place upgrade process.  Application upgrade(s) will need to take place after the operating system upgrade has completed.  A command similar to the following could be used:
 
+[{format_output}]
+----
+dnf config-manager --set-disabled <my-custom-application-repo-name>
+----
+=======
 
 == Installation
 
@@ -117,6 +128,35 @@ Delete any results from any possible previous attempts to run leapp
 [{format_cmd}]
 ----
 rm -rf /var/log/leapp /root/tmp_leapp_py3
+----
+
+=== Insure All RHEL 9 Packages are Up-to-Date
+
+[{format_cmd}]
+----
+dnf -y update
+----
+
+=== Reboot to Insure Updates Take Effect
+    (making sure we're on the correct host)
+
+[{format_cmd}]
+----
+[[ $(hostname -s) == "leapp" ]] && reboot
+----
+
+Using the second terminal reconnect to the `leapp` node once it has rebooted (should be 10 - 15 seconds)
+
+[{format_cmd}]
+----
+ssh leapp
+----
+
+Use `sudo` to elevate your privileges.
+
+[{format_cmd}]
+----
+[[ "$UID" == 0 ]] || sudo -i
 ----
 
 
@@ -395,7 +435,7 @@ subscription-manager release --unset
 This exercise has illustrated a very simple example of upgrading a RHEL8 system in place to a RHEL9 system, with a single issue that was easy to remediate and no applications running on top of the OS.  In the real world, there are likely to be more issues that need to be addressed and in some cases there are known issues that will prevent an in place upgrade (see official Red Hat documentation link below).  There is a Web Console plugin that makes it easier to visualize and in many cases remediate upgrade inhibitors that arise.  The rpm is called "cockpit-leapp" and once installed will enable visualization like this
 
 ====
-image::leapp-weboconsole-sample.png[Sample Leapp PreUpgrade Web Console Report]
+image::rhel-10.0/leapp-02.png[Sample Leapp PreUpgrade Web Console Report]
 ====
 
 == Conclusion
