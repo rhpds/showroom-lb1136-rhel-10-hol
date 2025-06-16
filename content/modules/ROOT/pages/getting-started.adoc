@@ -23,7 +23,7 @@ Connect to node1 and run the setup playbooks:
 
 [{format_cmd}]
 ----
-ssh node1 'sudo -i ./RHEL10-Workshop/sample-configs/gpte/workshop-setup.sh'
+ssh node1 'sudo -i ./RHEL10-Workshop/sample-configs/gpte/workshop-setup.sh' ; cat /etc/motd
 ----
 
 While this is running, please proceed to the Introduction.
