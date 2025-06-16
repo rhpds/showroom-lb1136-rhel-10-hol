@@ -114,7 +114,7 @@ dnf config-manager --set-disabled <my-custom-application-repo-name>
 == Installation
 
 === Tools
-Install the LEAPP tools and any dependencies
+Install the LEAPP tools and any dependencies (this may already be done)
 
 [{format_cmd}]
 ----
