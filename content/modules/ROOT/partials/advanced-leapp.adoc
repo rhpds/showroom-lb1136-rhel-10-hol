@@ -81,8 +81,9 @@ uname -r
 
 [{format_output}]
 ----
-5.14.0-570.19.1.el9_6.x86_64
+5.14.0-570.13.1.el9_6.x86_64
 ----
+(note: your output may differ)
 
 [{format_cmd}]
 ----
@@ -181,29 +182,30 @@ The output from the previous command should have listed a few items that are inh
 
 [{format_output}]
 ----
-=================================================
-                     UPGRADE INHIBITED
-=================================================
+============================================================
+                      REPORT OVERVIEW                       
+============================================================
 
+Upgrade has been inhibited due to the following problems:
+    1. Not enough space on /boot
 
-Debug output written to /var/log/leapp/leapp-preupgrade.log
+HIGH and MEDIUM severity reports:
+    1. GRUB2 core will be automatically updated during the upgrade
 
-=================================================
-                           REPORT
-=================================================
+(... output omitted ...)
 
-A report has been generated at /var/log/leapp/leapp-report.json
-A report has been generated at /var/log/leapp/leapp-report.txt
+Before continuing, review the full report below for details about discovered problems and possible remediation instructions:
+    A report has been generated at /var/log/leapp/leapp-report.txt
+    A report has been generated at /var/log/leapp/leapp-report.json
 
-=================================================
-                       END OF REPORT
-=================================================
+============================================================
+                   END OF REPORT OVERVIEW                   
+============================================================
 
 Answerfile has been generated at /var/log/leapp/answerfile
-
 ----
 
-Notice that the output refers you to the pre-upgrade report for details and remediations.  If your system has the cockpit-leapp package installed, you can switch to using a web-broswer to step through each item and inspect the remediation options.
+Notice that the output refers you to the pre-upgrade report for details and remediations.  If your system has the cockpit-leapp package installed, you can switch to using a web-broswer to step through each item and inspect the remediation options.  A sample image is provided at the end of this exercise as a reference.
 
 Look at the first several lines of the report mentioned above, /var/log/leapp/leapp-report.txt
 
