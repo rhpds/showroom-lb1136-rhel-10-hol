@@ -81,8 +81,9 @@ uname -r
 
 [{format_output}]
 ----
-5.14.0-570.19.1.el9_6.x86_64
+5.14.0-570.13.1.el9_6.x86_64
 ----
+(note: your output may differ)
 
 [{format_cmd}]
 ----
