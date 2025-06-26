@@ -364,9 +364,9 @@ workshop-finish-exercise.sh
 [discrete]
 == Additional Reference Materials
 
-    * link:https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image[Introducing the Red Hat Universal Base Image - Scott McCarty]
-    * link:https://developers.redhat.com/blog/2019/04/25/podman-basics-workshop-sheet/[Podman Basics Cheat Sheet - Doug Tidwell]
-    * link:https://developers.redhat.com/blog/2018/11/20/buildah-podman-containers-without-daemons/[Containers without daemons: Podman and Buildah available in RHEL 7.6 and RHEL 8 Beta - Tom Sweeney]
+    * link:https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image[(Re)Introducing the Red Hat Universal Base Image - Scott McCarty]
+    * link:https://developers.redhat.com/cheat-sheets/podman-cheat-sheet[Podman Cheat Sheet - Bob Reselman]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/building_running_and_managing_containers/index[Building, running, and managing containers]
 
 [discrete]
 == End of Unit
