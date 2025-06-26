@@ -49,6 +49,20 @@ Again, please be sure to have completed the fundamental exercises first.
 
 == Grow Storage Pool
 
+From our earlier exercise there are 2 disks in the Stratis pool:
+
+[{format_cmd}]
+----
+stratis blockdev
+----
+
+[{format_output}]
+----
+Pool Name    Device Node    Physical Size   Tier
+summitpool   {disk1}                4 GiB   Data
+summitpool   {disk2}                4 GiB   Data
+----
+
 Stratis also makes it easy to add space to a pool.  Suppose the “summitfs” filesystem is growing close to the physical space in “summitpool”.  Adding an additional disk/block device is done using:
 
 [{format_cmd}]
@@ -64,9 +78,9 @@ stratis blockdev
 [{format_output}]
 ----
 Pool Name    Device Node    Physical Size   Tier
-summitpool   {disk1}                5 GiB   Data
-summitpool   {disk2}                5 GiB   Data
-summitpool   {disk3}                5 GiB   Data
+summitpool   {disk1}                4 GiB   Data
+summitpool   {disk2}                4 GiB   Data
+summitpool   {disk3}                4 GiB   Data
 ----
 
 Verify that the pool shows the additional space, and that the amount used is now in a safe range.
@@ -84,7 +98,7 @@ summitpool   12 GiB / 538 MiB / 11.47 GiB   ~Ca,~Cr, Op   e7006323-5c8a-4ab8-b5f
 
 == Add Cache Device
 
-Stratis also makes it easy to add cache devices.  For example, say the filesystem we just created runs into some I/O performance issues.  You bought an SSD (solid state disk) and need to configure it into the system to act as a high speed cache.  Use the following commands to add the drive {disk4} and check its status:
+Stratis also makes it easy to add cache devices.  For example, say the filesystem we just created runs into some I/O performance issues.  You bought an NVME or SSD (solid state disk) and need to configure it into the system to act as a high speed cache.  Use the following commands to add the drive {disk4} and check its status:
 
 [{format_cmd}]
 ----
@@ -126,13 +140,13 @@ Red Hat Documentation
 
 This lab does not get into more advanced topics like encryption or snapshots.  For more information on these and more details on Stratis in general, see the official Red Hat documentation here:
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_file_systems/setting-up-stratis-file-systems_managing-file-systems[Managing Filesystems: Chapter 39. Setting Up Stratis File Systems]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html-single/managing_file_systems/index#setting-up-stratis-file-systems[Managing Filesystems: Chapter 27. Setting Up Stratis File Systems]
 
 [discrete]
 == End of Unit
 
 ifdef::env-github[]
-link:../RHEL9-Workshop.adoc#toc[Return to TOC]
+link:../RHEL10-Workshop.adoc#toc[Return to TOC]
 endif::[]
 
 ////
