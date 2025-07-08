@@ -138,9 +138,9 @@ What just happened?
 
 For the most part, containers are not meant for interactive (user) sessions.  In this instance, the image that we are using (ie: ubi) does not have the traditional commandline utilities a user might expect.  Common tools to configure network interfaces like 'ip' or even 'ps' simply aren't there.
 
-So for this exercise, we leverage something called a 'Bind-Mount' to effectively mirror a portion of the host's filesystem into the container's namespace.  Bind-Mounts are declared using the '-v' option.  In the example below, /usr/bin and /usr/lib64 from the host will be exposed and accessible to the containers namespace mounted at '/usr/bin' (ie: /usr/bin:/usr/bin).
+So for this exercise, we leverage something called a 'Bind-Mount' to effectively mirror a portion of the host's filesystem into the container's namespace.  A Bind-Mount is declared using the '-v' option.  In the example below, /usr/bin and /usr/lib64 from the host will be exposed and accessible to the containers namespace mounted at '/usr/bin' (ie: /usr/bin:/usr/bin).
 
-NOTE: Using Bind-Mounts is generally suitable for debugging, but not a good practice as a design decision for enterprise container strategies.  After all, creating dependencies between applications and host operating systems is what we are trying to get away from.
+NOTE: The use of Bind-Mounts is generally suitable for debugging, but not a good practice as a design decision for enterprise container strategies.  After all, creating dependencies between applications and host operating systems is what we are trying to get away from.
 
 [{format_cmd}]
 ----
