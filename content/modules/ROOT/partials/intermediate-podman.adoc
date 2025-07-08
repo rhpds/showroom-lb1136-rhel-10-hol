@@ -50,10 +50,10 @@ Linux containers are technologies (plural) that allow you to package and isolate
   * improve performance over virtual machines
   * improve flexibilty over virtual machines
 
-Because container images include only the content needed to run an application, a container is more efficient 
-requires less to run.  Likewise, since the container is not running the entirty of a complete operating system,
+Because container images include only the content needed to run an application, a container is more efficient and 
+requires fewer resources to run.  Likewise, since the container is not running the entirety of a complete operating system,
 it will typically run faster than an application that carries with it the overhead of a whole new virtual 
-machine.  Lastly with an application’s run time requirements included in the image itself, a container is 
+machine.  Lastly, with an application’s run time requirements included in the image itself, a container is 
 far more capable of being run in multiple environments (without modification).
 
 That said, let's begin to explore the capabilities of podman.
@@ -62,17 +62,17 @@ That said, let's begin to explore the capabilities of podman.
 
 Here is a list of the fundamental podman commands and their purpose:
 
-  * *podman images* - list images
-  * *podman ps* - lists running containers
-  * *podman pull* - pulls (copies) container image from repository (ie: redhat and/or docker hub)
+  * *podman images* - list container images on the system
+  * *podman ps* - list running containers
+  * *podman pull* - pull (copy) container image from repository (ie: redhat and/or docker hub)
   * *podman run* - run a container
   * *podman inspect* - view facts about a container
   * *podman logs* - display logs of a container (can be used with --follow)
   * *podman rm* - remove one or more containers
   * *podman rmi* - remove one or more images
-  * *podman stop* - stops one or more containers
+  * *podman stop* - stop one or more containers
   * *podman kill $(podman ps -q)* - kill all running containers
-  * *podman rm $(podman ps -a -q)* - deletes all stopped containers
+  * *podman rm $(podman ps -a -q)* - delete all stopped containers
 
 == Exercise: Basic Information
 
@@ -125,7 +125,7 @@ Your results should have come back empty and that's because we have not imported
 
 === Pull New Images
 
-Time to pull a container from our local repository.
+Time to pull a container from our local repository.  We're going to start with a RHEL 10 UBI image (see UBI documentation link at the end of this exercise).
 
 [{format_cmd}]
 ----
@@ -184,7 +184,7 @@ registry.access.redhat.com/ubi10/ubi-minimal  latest      94287c165ee4  2 days a
 
 === Tag Images
 
-Container images can also be tagged with convenient (ie:custom names).  This could make it more intuitive to understand what they 
+Container images can also be tagged with convenient (ie: custom) names.  This could make it more intuitive to understand what they 
 contain, especially after an image has been customized.
 
 [{format_cmd}]
@@ -208,11 +208,13 @@ registry.access.redhat.com/ubi10/ubi-minimal  latest      94287c165ee4  2 days a
 
 Notice how the image-id for "ubi" and "myfavorite" are identical.
 
-NOTE: The link:https://access.redhat.com/containers[Red Hat Container Catalog] (RHCC) provides a convenient service to locate certified container images built and supported by Red Hat.  You can also view the "security evaluation" for each image.
+NOTE: The https://catalog.redhat.com/en/search?searchType=containers[Red Hat Container Catalog] (RHCC) provides a convenient service to locate certified container images built and supported by Red Hat.  You can also view the "security evaluation" for each image.
 
 
 
 === Delete Images
+
+Let's take another look at the images we have and remove one we don't need
 
 [{format_cmd}]
 ----
