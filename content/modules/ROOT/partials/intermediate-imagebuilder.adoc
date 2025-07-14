@@ -193,7 +193,7 @@ blueprint: sample-webserver v0.0.1
 ...<output truncated>...
 ----
 
-If you see errors or packages that can not be resolved, this is likely a problem with the osbuild repo configuration(s).  Let your instructor know and hopefully this can be fixed.
+If you see errors or packages that cannot be resolved, this is likely a problem with the osbuild repo configuration(s).  Let your instructor know and hopefully this can be fixed.
 
 == Compose a Blueprint
 
