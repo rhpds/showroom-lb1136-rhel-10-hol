@@ -11,7 +11,7 @@
 
 RHEL Lightspeed is a generative AI assistant designed to help new and experienced users when they interact with RHEL through the command line.  It can help with several tasks such as: answering RHEL related questions, assisting with troubleshooting, assisting with deciphering log entries, and many others.  The Command Line Assistant (CLA) powered by RHEL Lightspeed is what we will use for these exercises.  The CLA provides a natural language interface and, through RHEL Lightspeed, can incorporate information from sources such as the Red Hat documentation, knowledge base articles, reference architectures and other resources.  It is a very powerful tool that enables admins to more easily manage, troubleshoot, and work with RHEL systems.
 
-*REMINDER* The 2 informational messages below will continue to be omitted from the output here even though they show up in the live exercise.
+For brevity, the two informational messages below will be omitted from the sample output even though they show up in the live exercise.
 
 [{format_output}]
 ----
