@@ -111,7 +111,7 @@ key = "SSHKEY"
 
 === Validate SSH Key
 
-Ensure we have an ssh-key.
+Ensure we have an SSH key.
 
 [{format_cmd}]
 ----
