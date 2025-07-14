@@ -203,7 +203,7 @@ virt-install \
   --disk /var/lib/libvirt/images/bootc-vm.qcow2 
 ----
 
-Verify that the domain (vm) is running.
+Verify that the domain (virtual machine) is running.
 
 [{format_cmd}]
 ----
