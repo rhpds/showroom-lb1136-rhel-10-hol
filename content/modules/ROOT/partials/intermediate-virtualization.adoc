@@ -328,7 +328,7 @@ ssh root@$VM_IP -o "StrictHostKeyChecking no"
 The root password was set to 'redhat' in a previous step using the virt-customize command. However, since we injected an SSH public key at the same time, you should not be prompted for a password.
 
 The virtual machine is on a private network and not accessbile from the internet.  You will only 
-be able to access it from the bastion via ssh, or from the webconsole.
+be able to access it from the bastion via SSH, or from the web console.
 
 Verify that the httpd daemon is running.
 
