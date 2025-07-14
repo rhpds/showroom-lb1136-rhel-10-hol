@@ -22,7 +22,7 @@ We have been doing this for decades.
 In Red Hat Enterprise Linux 10, there is a method for creating RHEL images to add 
 to your toolbox called *Image Builder*.
 
-*Image Builder* is a collection of tools and services to create a SOE (Standard Operating Environment or Gold Image) for use in a multitube of hypervisors platforms (or clouds).
+*Image Builder* is a collection of tools and services to create a Standard Operating Environment (SOE) or Gold Image for use in a multitude of environments, including cloud, virtualization, and bare metal.
 
 *Image Builder* offers:
 
