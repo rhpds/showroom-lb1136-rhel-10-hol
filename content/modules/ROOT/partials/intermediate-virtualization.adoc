@@ -366,9 +366,9 @@ Some additional simple virtual machine management commands:
 
 == Explore VM Management with 'Web-Console'
 
-From the menu, select the Machines tab.  You will notice that the interface is still pretty rudimentary when compared with the Red Hat Virtualization Manager (RHVM), but one critical feature is available: the console!
+Go to the RHEL Web Console from your browser and log in. Select the Machines tab.  You will notice that the interface is pretty rudimentary compared with a modern virtualization manager like OpenShift Virtualization, but one critical feature is available: the console.
 
-Take some time to explore the capabilities of the Web-Console Machines webui.
+Take some time to explore the capabilities of the Web Console Machines webui.
 
 
 
