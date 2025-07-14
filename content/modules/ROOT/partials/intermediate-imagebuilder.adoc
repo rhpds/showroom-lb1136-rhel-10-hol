@@ -295,16 +295,10 @@ Time to finish this unit and return the shell to its home position.
 workshop-finish-exercise.sh
 ----
 
-== Additional Resources
+== Additional Reference Materials
 
-Image Builder
-
-    * link:https://github.com/rlucente-se-jboss/RFESummit2021[RHEL for Edge Demo]
-    * link:https://access.redhat.com/solutions/5773421[Configuring Image Builder with Satellite]
-
-Cockpit Project Page
-
-    * link:http://cockpit-project.org/blog/category/release.html[Cockpit Project]
+    * link:https://www.redhat.com/en/blog/whats-new-rhel-10-image-builder[What's new in image builder for Red Hat Enterprise Linux 10]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/composing_a_customized_rhel_system_image/index[Composing a customized RHEL system image]
 
 [discrete]
 == End of Unit
