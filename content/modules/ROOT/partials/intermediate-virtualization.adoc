@@ -160,7 +160,7 @@ Fortunately, that's precisely what you did in the previous unit with Image Build
 
 === Locate your QCOW Image
 
-In the previous exercise, you built a custom QCOW2 image using Image Builder.  The result of that work should be a vm image named vmguest.qcow2 
+In the previous exercise, you built a custom QCOW2 image using Image Builder.  The result of that work should be a VM image named vmguest.qcow2 
 
 [{format_cmd}]
 ----
