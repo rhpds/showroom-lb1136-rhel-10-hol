@@ -272,7 +272,7 @@ podman rmi --all
 == Conclusion
 
 This concludes the first exercise demonstrating the capabilities of
-deploying a containerized workload in the form of a bootable machine (which can be
+deploying a workload in the form of a bootable container (which can be
 a traditional VM or a baremetal host).
 
 For more on this topic, check out the advance exercises on the topic.
