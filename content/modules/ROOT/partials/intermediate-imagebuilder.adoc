@@ -170,7 +170,7 @@ A nice quick way to determine if the local `Image Builder` can resolve all depen
 composer-cli blueprints depsolve sample-webserver
 ----
 
-If everything is in order, you output should look something like this.
+If everything is in order, your output should look something like this.
 
 [{format_plain}]
 ----
