@@ -107,7 +107,7 @@ Install the required packages.
 dnf install -y qemu-kvm libvirt virt-install libvirt-client libguestfs-tools cockpit-machines
 ----
 
-Next we need to enable the various services.
+Next we need to enable the libvirtd service.
 
 [{format_cmd}]
 ----
