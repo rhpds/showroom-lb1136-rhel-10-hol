@@ -41,7 +41,7 @@ You are now ready to proceed with these exercises.
 
 === Examine Sample Config
 
-Here is the OCI config we will use to build our custom bootable (bootc) container image.  
+Here is the OCI config we will use to build our custom bootable container (bootc) image.  
 
 Using an existing image from a public registry, we will then simply add the httpd service along with a custom file to demonstrate its functionality.
 
