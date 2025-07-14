@@ -235,7 +235,7 @@ simple command to wait for the compose to finish.
 time until $(composer-cli compose list | tail -n +2 | grep -qi finished); do echo -n "." ; sleep 3; done
 ----
 
-WARNING:  It is critical to wait for the compose to finish before proceeding.
+WARNING:  It is critical to wait for the composer to finish before proceeding.
 
 
 
