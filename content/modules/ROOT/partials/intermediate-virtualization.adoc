@@ -344,7 +344,7 @@ Verify that `index.html` exists.
 ls /var/www/html/index.html
 ----
 
-Exit back to the host
+Exit back to the host.
 
 [{format_cmd}]
 ----
