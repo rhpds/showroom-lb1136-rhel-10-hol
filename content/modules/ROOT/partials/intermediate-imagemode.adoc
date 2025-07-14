@@ -144,7 +144,7 @@ key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD0bkwdazmReuDV4XjGGy1W0hy+Ww1H4m/eJ
 ----
 
 
-=== BUILD QCOW Image
+=== Build QCOW Image
 
 [{format_cmd}]
 ----
