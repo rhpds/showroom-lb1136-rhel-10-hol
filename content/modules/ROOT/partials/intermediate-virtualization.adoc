@@ -325,8 +325,7 @@ export VM_IP=$(virsh domifaddr vmguest | sed -e '1,2d' -e '$d' | awk '{ split($4
 ssh root@$VM_IP -o "StrictHostKeyChecking no"
 ----
 
-The password was set in the previous exercise with virt-customize command and is probably just 'redhat'.
-However, since we injected the ssh key during virt-customize, you should not be prompted for a password.
+The root password was set to 'redhat' in a previous step using the virt-customize command. However, since we injected an SSH public key at the same time, you should not be prompted for a password.
 
 The virtual machine is on a private network and not accessbile from the internet.  You will only 
 be able to access it from the bastion via ssh, or from the webconsole.
