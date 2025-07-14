@@ -234,7 +234,7 @@ virsh domifaddr bootc-vm
 
 
 WARNING: Before you proceed, empty data in the above commands is an indication that the virtual machine has
-not completed it's bootstrap.  Just give it a few more moments and try again.
+not completed its bootstrap.  Just give it a few more moments and try again.
 
 Once we can see the network information, now it is time to connect to the host so
 
