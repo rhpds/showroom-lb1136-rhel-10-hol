@@ -313,7 +313,7 @@ curl $VM_IP
 
 == Virtual Machine Inspection
 
-Now it is time to connect to the host and check out some it's characteristics.
+Now it is time to connect to the host and check out some its characteristics.
 
 [{format_cmd}]
 ----
