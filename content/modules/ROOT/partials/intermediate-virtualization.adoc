@@ -393,7 +393,7 @@ virsh undefine vmguest --remove-all-storage
 
 This concludes the exercises related to virtualization.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
