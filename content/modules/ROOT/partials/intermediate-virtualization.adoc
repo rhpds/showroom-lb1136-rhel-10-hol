@@ -179,7 +179,7 @@ Now you need to do a few more things to your image:
     * set a hostname
     * set a root password
     * copy a simple HTML file
-    * selinux relabel files in the guest
+    * SELinux file relabeling in the guest
     * remove the cloud-init package
 
 
