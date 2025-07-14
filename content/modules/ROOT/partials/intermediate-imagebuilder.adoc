@@ -288,7 +288,7 @@ mv $IMAGE_UUID-disk.qcow2 vmguest.qcow2
 In the next unit, we will tackle how to utilize the native virtualization 
 technology included with RHEL to launch your custom built image.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
