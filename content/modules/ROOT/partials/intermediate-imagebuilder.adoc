@@ -31,7 +31,7 @@ to your toolbox called *Image Builder*.
   * ability to design a security policy no matter where it's running
   * version control
 
-Meaning, with *Image Builder* you can design an OS blueprint and then specify the target platfrom to create the appropriate deployable image (ie: VMWare, AWS, Openstack, KVM, etc...).
+Meaning, with *Image Builder* you can design an OS blueprint and then specify the target platform to create the appropriate deployable image (e.g. VMWare, AWS, Openstack, KVM, etc.).
 
 NOTE: You CAN create images of multiple RHEL minor releases that are different from the host (ex: RHEL 10.1 when released) but to do so requires additional repo configurations which are not available in this workshop environment.
 
