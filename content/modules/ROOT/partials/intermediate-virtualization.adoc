@@ -364,7 +364,7 @@ Some additional simple virtual machine management commands:
   * *virsh shutdown <vm-name>* performs a soft shutdown of the virtual machine
   * *virsh destroy <vm-name>* performs destructive cold stop of the virtual machine
 
-== Explore VM Management with 'Web-Console'
+== Explore VM Management with Web Console
 
 Go to the RHEL Web Console from your browser and log in. Select the Machines tab.  You will notice that the interface is pretty rudimentary compared with a modern virtualization manager like OpenShift Virtualization, but one critical feature is available: the console.
 
