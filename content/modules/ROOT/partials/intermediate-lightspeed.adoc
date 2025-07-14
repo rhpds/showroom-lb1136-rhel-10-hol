@@ -284,13 +284,13 @@ Instructions to Use the Script
 
 1. Save the script to a file, for example, create_users.sh.
 2. Make the script executable by running:
-   ``bash
+   `bash
    chmod +x create_users.sh
    `
 3. Execute the script with:
    `bash
    ./create_users.sh
-   ``
+   `
 
 Notes
 ······
@@ -305,7 +305,7 @@ Notes
 That concludes this unit on the Command Line Assistant for RHEL Lightspeed.  You can find more info in the official Red Hat Command Line Assistant documentation or the man page (use "man c" ).  
 
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
