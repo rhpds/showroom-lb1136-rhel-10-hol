@@ -67,7 +67,7 @@ You are now ready to proceed with these exercises.
 
 == Installation and Configuration
 
-Install the required packages - this will pull in several Python related dependencies.
+Install the required packages - this will pull in several Python-related dependencies.
 
 [{format_cmd}]
 ----
