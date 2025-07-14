@@ -192,8 +192,7 @@ export PUBKEY=$(ls ~/.ssh/*.pub | head -1)
 
 Now you can proceed to customize the virt image.
 
-We will include a timer on this command in order to measure how long this
-will takes.  
+We will include a timer on this command in order to measure how long this process takes.  
 
 NOTE: For the resources used at the 2025 Red Hat Summit, this process runs for about 30 seconds.
 
