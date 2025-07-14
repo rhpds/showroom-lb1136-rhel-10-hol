@@ -274,7 +274,7 @@ Now use the UUID from your ouput to extract the QCOW image.
 composer-cli compose image $IMAGE_UUID
 ----
 
-Finally you can rename it to something a little more convinient
+Finally, you can rename it to something a little more convenient.
 
 [{format_cmd}]
 ----
