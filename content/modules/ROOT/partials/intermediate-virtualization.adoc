@@ -183,7 +183,7 @@ Now you need to do a few more things to your image:
     * remove the cloud-init package
 
 
-We need to capture the filename of our public ssh key.
+We need to capture the filename of our public SSH key.
 
 [{format_cmd}]
 ----
