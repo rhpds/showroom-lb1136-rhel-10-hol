@@ -356,7 +356,7 @@ exit
 
 == Additional CLI Commands
 
-Some additional simple virtual machine management commands
+Some additional simple virtual machine management commands:
 
   * *virsh list* lists running virtual machines
   * *virsh list --all* lists all virtual machines regardless of state
