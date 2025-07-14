@@ -258,7 +258,7 @@ selected administrative access.
 
 == Virtual Machine Connectivity
 
-To determine what IP address was assigned to the new host, we can using some options to the virsh utility
+To determine what IP address was assigned to the new host, we can use the virsh utility.
 
 [{format_cmd}]
 ----
