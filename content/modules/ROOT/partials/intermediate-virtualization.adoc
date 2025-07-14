@@ -274,7 +274,7 @@ The output will show us the clients MAC address and the IP address it was assign
  2021-11-13 11:19:33   52:54:00:63:85:76   ipv4       192.168.122.62/24   -          01:52:54:00:63:85:76
 ----
 
-Another mechanism determine the ip address of the client is to use the 'domifaddr' option.
+Another mechanism determine the IP address of the client is to use the 'domifaddr' option.
 
 [{format_cmd}]
 ----
