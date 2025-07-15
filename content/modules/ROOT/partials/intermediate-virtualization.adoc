@@ -384,7 +384,7 @@ And the following UserID and Password:
 
 Select *Virtual machines* from the menu on the left.  You will notice that the interface is pretty rudimentary compared to a modern virtualization manager like OpenShift Virtualization, but one critical feature is available: the console.
 
-Take some time to explore the capabilities of the Web Console Machines webui.
+Take some time to explore the capabilities of the Web Console Virtual machines interface.
 
 
 
