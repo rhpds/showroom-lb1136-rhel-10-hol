@@ -152,7 +152,7 @@ Description  : bash-completion is a collection of shell functions that take adva
 
 == Install Packages
 
-Installing a package is simple.
+Installing a package is simple.  (The "-y" tells dnf to answer "yes" to any "are you sure" questions.)
 
 [{format_cmd}]
 ----
