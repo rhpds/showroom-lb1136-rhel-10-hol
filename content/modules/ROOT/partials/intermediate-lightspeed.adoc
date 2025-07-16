@@ -11,7 +11,7 @@
 
 RHEL Lightspeed is a generative AI assistant designed to help new and experienced users when they interact with RHEL through the command line.  It can help with several tasks such as: answering RHEL related questions, assisting with troubleshooting, assisting with deciphering log entries, and many others.  The Command Line Assistant (CLA) powered by RHEL Lightspeed is what we will use for these exercises.  The CLA provides a natural language interface and, through RHEL Lightspeed, can incorporate information from sources such as the Red Hat documentation, knowledge base articles, reference architectures and other resources.  It is a very powerful tool that enables admins to more easily manage, troubleshoot, and work with RHEL systems.
 
-*REMINDER* The 2 informational messages below will continue to be omitted from the output here even though they show up in the live exercise.
+For brevity, the two informational messages below will be omitted from the sample output even though they show up in the live exercise.
 
 [{format_output}]
 ----
@@ -284,13 +284,13 @@ Instructions to Use the Script
 
 1. Save the script to a file, for example, create_users.sh.
 2. Make the script executable by running:
-   ``bash
+   `bash
    chmod +x create_users.sh
    `
 3. Execute the script with:
    `bash
    ./create_users.sh
-   ``
+   `
 
 Notes
 ······
@@ -305,7 +305,7 @@ Notes
 That concludes this unit on the Command Line Assistant for RHEL Lightspeed.  You can find more info in the official Red Hat Command Line Assistant documentation or the man page (use "man c" ).  
 
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -314,10 +314,7 @@ workshop-finish-exercise.sh
 
 == Additional Resources
 
-You can find more information:
-
-    * <<placeholder for CLA doc>>
-
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/interacting_with_the_command-line_assistant_powered_by_rhel_lightspeed/index[Interacting with the command-line assistant powered by RHEL Lightspeed]
 
 ifdef::env-github[]
 link:../RHEL10-Workshop.adoc#toc[Return to TOC]
