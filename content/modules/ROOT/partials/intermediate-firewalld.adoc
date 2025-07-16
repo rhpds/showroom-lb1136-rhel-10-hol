@@ -7,8 +7,6 @@
 
 
 
-== Overview
-
 == Getting Started
 
 For these exercises, you will be using the host `node1` as user `root`.
@@ -37,8 +35,6 @@ workshop-firewalld-checkhost.sh
 You are now ready to proceed with these exercises.
 
 
-
-== Core Concepts
 
 
 == Managing Ad-hoc Ports
@@ -305,7 +301,7 @@ firewall-cmd --panic-off
 
 That concludes this unit on firewalld. 
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----

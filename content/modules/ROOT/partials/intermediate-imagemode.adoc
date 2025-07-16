@@ -41,9 +41,9 @@ You are now ready to proceed with these exercises.
 
 === Examine Sample Config
 
-Here is the OCI config we will use to build our custom bootable (bootc) container image.  
+Here is the OCI config we will use to build our custom bootable container (bootc) image.  
 
-Using an existing image from a public registry, we will then simply add the httpd service along with a custom file to demonstrate it's functionality.
+Using an existing image from a public registry, we will then simply add the httpd service along with a custom HTML file to demonstrate its functionality.
 
 [{format_cmd}]
 ----
@@ -111,7 +111,7 @@ key = "SSHKEY"
 
 === Validate SSH Key
 
-Ensure we have an ssh-key.
+Ensure we have an SSH key.
 
 [{format_cmd}]
 ----
@@ -144,7 +144,7 @@ key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD0bkwdazmReuDV4XjGGy1W0hy+Ww1H4m/eJ
 ----
 
 
-=== BUILD QCOW Image
+=== Build QCOW Image
 
 [{format_cmd}]
 ----
@@ -203,7 +203,7 @@ virt-install \
   --disk /var/lib/libvirt/images/bootc-vm.qcow2 
 ----
 
-Verify that the domain (vm) is running.
+Verify that the domain (virtual machine) is running.
 
 [{format_cmd}]
 ----
@@ -234,7 +234,7 @@ virsh domifaddr bootc-vm
 
 
 WARNING: Before you proceed, empty data in the above commands is an indication that the virtual machine has
-not completed it's bootstrap.  Just give it a few more moments and try again.
+not completed its bootstrap.  Just give it a few more moments and try again.
 
 Once we can see the network information, now it is time to connect to the host so
 
@@ -272,7 +272,7 @@ podman rmi --all
 == Conclusion
 
 This concludes the first exercise demonstrating the capabilities of
-deploying a containerized workload in the form of a bootable machine (which can be
+deploying a workload in the form of a bootable container (which can be
 a traditional VM or a baremetal host).
 
 For more on this topic, check out the advance exercises on the topic.

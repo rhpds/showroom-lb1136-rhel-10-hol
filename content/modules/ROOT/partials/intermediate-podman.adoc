@@ -157,7 +157,7 @@ REPOSITORY                            TAG         IMAGE ID      CREATED     SIZE
 registry.access.redhat.com/ubi10/ubi  latest      da862ffa1787  2 days ago  216 MB
 ----
 
-NOTE: if you are a subscriber to Red Hat Enterprise Linux, you can pull authentic Red Hat certified images directly from Red Hat's repository.  For example: `podman pull rhel7.5 --creds 'username:password'`
+NOTE: If you are a subscriber to Red Hat Enterprise Linux, you can pull authentic Red Hat certified images directly from Red Hat's repository.  For example: `podman pull rhel7.5 --creds 'username:password'`
 
 Pull a few more container images.
 
@@ -324,7 +324,7 @@ ImageStore(s) has grown.
 
 === Cleanup
 
-Run 'podman ps -a' to the IDs of the exited containers.
+Run 'podman ps -a' to see the IDs of the exited containers.
 
 [{format_cmd}]
 ----
@@ -346,7 +346,7 @@ but we are lazy and will cleanup up the containers with a single command:
 podman rm --all
 ----
 
-Now you should be able to run 'podman ps -a' again, and the results should come back empty.
+Now run 'podman ps -a' again, and the results should come back empty.
 
 [{format_cmd}]
 ----

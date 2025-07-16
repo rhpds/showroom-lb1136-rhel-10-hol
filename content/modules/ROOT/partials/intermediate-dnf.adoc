@@ -45,7 +45,7 @@ You are now ready to proceed with these exercises.
 
 === Search
 
-Not every tool is delvered in it's own unique rpm package.  Tools are often bundled into collective packages under a common name (category).  
+Not every tool is delvered in its own unique rpm package.  Tools are often bundled into collective packages under a common name (category).  
 For example, let's try to running the utility command called *netstat*.
 
 [{format_cmd}]
@@ -269,8 +269,8 @@ dnf alias delete la
 
 === Groups
 
-Package groups are definded in the repository.  Red Hat creates a few package groups in the distribution ISOs
-inoder to make installations a little more covenient and consistent.
+Package groups are defined in the repository.  Red Hat creates a few package groups in the distribution ISOs
+in order to make installations a little more covenient and consistent.
 
 To see a list of available group names
 
@@ -323,14 +323,14 @@ You can remove cached packages by executing 'dnf clean packages'.
 ----
 
 
-You could just as easily use the groupremove to uninstall the package collection.
+You could just as easily use the groupremove command to uninstall the package collection.
 
 
 
 
 === Clean
 
-After a session of installing and/or upgrading pacakges, there can be quite a bit of left over data
+After a session of installing and/or upgrading packages, there can be quite a bit of leftover data
 using up your precious storage.  To clean up the space, use the sub command 'clean'.
 
 [{format_cmd}]
@@ -359,7 +359,7 @@ dnf repolist
 
 === Add Repo
 
-Repo configuration files are stored in '/etc/yum.repo.d'
+Repo configuration files are stored in `/etc/yum.repos.d/`
 
 Creating a repo config can be done:
 
@@ -369,7 +369,7 @@ Creating a repo config can be done:
 
 Installing a package with the repo config often has the added advantage of installing keys which validate sources and improve security of your host.
 
-A common repo to add to RHEL development systems is EPEL.  This repository (Extra Pacakges for Enterprise Linux) contains pacakges
+A common repo to add to RHEL development systems is EPEL.  This repository (Extra Packages for Enterprise Linux) contains packages
 from the Fedora development community which have been compiled and verified for installation on RHEL.  Software from EPEL offers a path
 to trying new things on RHEL which would not otherwise be possible.
 
@@ -481,7 +481,7 @@ Removing a repo is a pretty simple operation which can be done in a couple of wa
 
 This concludes the unit.
 
-Time to finish and return the shell to it's home position.
+Time to finish and return the shell to its home position.
 
 [{format_cmd}]
 ----
