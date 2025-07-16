@@ -45,7 +45,7 @@ You are now ready to proceed with these exercises.
 
 === Search
 
-Not every tool is delvered in it's own unique rpm package.  Tools are often bundled into collective packages under a common name (category).  
+Not every tool is delivered in it's own unique rpm package.  Tools are often bundled into collective packages under a common name (category).  
 For example, let's try to running the utility command called *netstat*.
 
 [{format_cmd}]
