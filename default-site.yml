@@ -1,6 +1,6 @@
 ---
 site:
-  title: LB1136 - The Definitive Red Hat Enterprise Linux 10 Hands-On Lab
+  title: The Definitive Red Hat Enterprise Linux 10 Hands-On Lab
   url: https://github.com/rhpds/showroom-lb1136-rhel-10-hol
   start_page: modules::index.adoc
 
