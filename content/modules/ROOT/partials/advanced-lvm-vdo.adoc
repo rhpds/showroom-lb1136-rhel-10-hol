@@ -237,7 +237,7 @@ lvs vg_lab/lab1
   lab1 vg_lab -wi-ao---- 3.79g
 ----
 
-Now let's change some of the output informaion.
+Now let's change some of the output information.
 
 [{format_cmd}]
 ----
