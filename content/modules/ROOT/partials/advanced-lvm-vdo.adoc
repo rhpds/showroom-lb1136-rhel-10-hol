@@ -263,6 +263,8 @@ lvs --units k -o +devices -o -copy_percent,move_pv,mirror_log vg_lab/lab1
   lab1 vg_lab -wi-ao---- 3977216.00k                                   {disk1}(0)
 ----
 
+Report file system space usage.
+
 [{format_cmd}]
 ----
 df /mnt/lab1
