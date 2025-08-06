@@ -416,14 +416,12 @@ Volume group "vg_lab" successfully created
 
 === Logical Volume Creation
 
-This time, we are going to use all four disks to create a mirrored set of striped disks.  Otherwise known as RAID10
+This time, we are going to use four disks to create a mirrored set of striped disks, otherwise known as RAID 10.
 
 [{format_cmd}]
 ----
 lvcreate -y --type raid10 -m1 -i 2 -n lv_raid10 -l 95%FREE vg_lab
 ----
-
-
 
 === Add VDO Deduplication
 
