@@ -478,7 +478,7 @@ NOTE: This could take a few minutes.
 for i in /mnt/lab2/* ; do echo "${i}" ; cp -rf /usr/share/locale $i ; done
 ----
 
-The prevoius command should have copied approximately 170MB in 20 folders yielding about 3.5G of traditional fielsystem consumption.
+The previous command should have copied approximately 170MB in 20 folders yielding about 3.5GB of traditional filesystem consumption.
 
 === Examine Your Work
 
