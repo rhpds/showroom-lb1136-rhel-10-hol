@@ -250,7 +250,7 @@ lvs -o lv_name,lv_size,lv_attr,segtype,devices vg_lab/lab1
   lab1 3.79g -wi-ao---- linear {disk1}(0)
 ----
 
-Change the unit of measure to kilobytes.  Also drop a few default output data fields and amend 'devices' (notice the plus and minus specified with the -o output parameters).
+Change the unit of measure to kilobytes.  Also drop a few default output data fields and add 'devices' (notice the plus and minus specified with the -o output parameters).
 
 [{format_cmd}]
 ----
