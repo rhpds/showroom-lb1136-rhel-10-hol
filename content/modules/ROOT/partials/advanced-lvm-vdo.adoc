@@ -509,7 +509,7 @@ vg_lab-lv_raid10-vpool      7.6G      3.8G      3.8G  49%           95%
 
 
 
-So in summary, we built a 30GB filesystem that only has ~ 8GB of actual physical disk capacity.  We then copied roughly 3.5GB of data into the filesystem, but after deduplication `vdostats --human-readable` should reflect something near 3.8GB of available plysical space and a savings around 95%.
+So in summary, we built a 30GB filesystem that only has ~ 8GB of actual physical disk capacity.  We then copied roughly 3.5GB of data into the filesystem, but after deduplication `vdostats --human-readable` should reflect something near 3.8GB of available physical space and a savings around 95%.
 
 A few additional high-level things to know about VDO.  
 
