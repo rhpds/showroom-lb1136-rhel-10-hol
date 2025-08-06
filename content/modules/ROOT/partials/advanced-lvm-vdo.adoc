@@ -299,6 +299,8 @@ Increase the size of the logical volume to make use of the extra space in the vo
 lvresize -l 95%VG /dev/vg_lab/lab1
 ----
 
+It is not always optimal to allocate 100% of a volume group to the logical volumes.  For example, the unused space in the volume group could be used for a temporary snapshot.
+
 Expand the file system to the size of the logical volume.
 
 [{format_cmd}]
@@ -308,13 +310,7 @@ resize2fs /dev/vg_lab/lab1
 
 === Examine Your Work
 
-Let us take a look at the logical volume.  Notice a few things:
-
-  * we added `seg_size` to the options to report segment size
-  * the logical volume is comprised of 2 devices (vdb, vdc)
-  * the first segment is completely used at 5g
-  * the second segment is almost used, but has some space remaining
-  * Over all, the volume group has approximately 500mb remaining
+Let us take a look at the logical volume.
 
 [{format_cmd}]
 ----
@@ -328,6 +324,15 @@ lvs -o vg_name,vg_free,lv_name,lv_size,seg_size,segtype,devices vg_lab/lab1
   vg_lab 408.00m lab1 7.59g <3.60g linear {disk2}(0)
 ----
 
+Notice a few things:
+
+  * we added `seg_size` to the options to report segment size
+  * the logical volume is comprised of 2 devices (vdb, vdc)
+  * the first segment is roughly 4GB and the second segment is roughly 3.6GB in size
+  * Overall, the volume group has 408MB of free space
+
+Report file system space usage again.
+
 [{format_cmd}]
 ----
 df /mnt/lab1
@@ -339,9 +344,7 @@ Filesystem              1K-blocks  Used Available Use% Mounted on
 /dev/mapper/vg_lab-lab1   7756580    24   7385344   1% /mnt/lab1
 ----
 
-It is not always optimal to allocate 100% of volume group to the logical volumes.  For example, the unused space in the volume group could be used for a temporary snapshot.
-
-
+Note that the number of available blocks has increased.
 
 
 
