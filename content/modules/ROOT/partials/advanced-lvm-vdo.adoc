@@ -441,6 +441,8 @@ lvconvert --type vdo-pool --name=lab2 -V 30G vg_lab/lv_raid10 -y
   Converted vg_lab/lv_raid10 to VDO pool volume and created virtual vg_lab/lab2 VDO volume.
 ----
 
+Create an XFS filesystem on the logical volume.
+
 [{format_cmd}]
 ----
 mkfs.xfs -K /dev/mapper/vg_lab-lab2
