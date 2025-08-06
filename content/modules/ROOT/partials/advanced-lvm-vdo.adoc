@@ -278,20 +278,28 @@ Filesystem              1K-blocks  Used Available Use% Mounted on
 
 == Extend and Resize a Linear Volume
 
+Create a physical volume on a physical device.
+
 [{format_cmd}]
 ----
 pvcreate {disk2}
 ----
+
+Add the physical volume to the volume group.
 
 [{format_cmd}]
 ----
 vgextend vg_lab {disk2}
 ----
 
+Increase the size of the logical volume to make use of the extra space in the volume group.
+
 [{format_cmd}]
 ----
 lvresize -l 95%VG /dev/vg_lab/lab1
 ----
+
+Expand the file system to the size of the logical volume.
 
 [{format_cmd}]
 ----
