@@ -211,12 +211,12 @@ NOTE: If this were going to be a persistent filesystem, you would also need to a
 
 === Examine Your Work
 
+List general information about all logical volumes.
+
 [{format_cmd}]
 ----
 lvs
 ----
-
-List general information about all logical volumes.
 
 [{format_output}]
 ----
@@ -224,12 +224,12 @@ List general information about all logical volumes.
   lab1 vg_lab -wi-ao---- 3.79g
 ----
 
+List general information about our specific logical volumes.
+
 [{format_cmd}]
 ----
 lvs vg_lab/lab1
 ----
-
-List general information about our specific logical volumes.
 
 [{format_output}]
 ----
