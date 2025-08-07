@@ -261,7 +261,7 @@ Not too exciting, but now you know how to add a rule.
 
 === Delete Single Rule
 
-Deleting rules takes a little care in that you have to identify a *handle*.  Again, listing the rules make note of the *handle* provided next to each rule.
+Deleting rules takes a little care in that you have to identify a *handle*.  Listing the rules shows the *handle* number next to each rule.
 
 [{format_cmd}]
 ----
