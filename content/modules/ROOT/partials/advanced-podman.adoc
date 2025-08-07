@@ -124,7 +124,7 @@ CONTAINER ID  IMAGE                                        COMMAND              
 
 === PID Namespace / Process ID
 
-Let us have a look at the process table from with-in the container's namespace.
+Let us have a look at the process table from within the container's namespace.
 
 
 [{format_cmd}]
