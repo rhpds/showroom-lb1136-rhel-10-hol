@@ -73,7 +73,7 @@ It is not unusual for this subsystem of the linux kernel to get replaced from ti
   * ip-tables (linux kernel v2.4, managed with iptables)
   * nf-tables (linux kernel v3.13, managed with nft)
 
-There are others, but these are the most famliar ones that appeared in the major distributions.
+There are others, but these are the most familiar ones that appeared in the major distributions.
 
 In RHEL 9, you have a choice on how to implement and manage the firewall.  In which scenario should you use one of the following?
 
