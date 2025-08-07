@@ -78,7 +78,7 @@ There are others, but these are the most familiar ones that appeared in the majo
 In RHEL 10, you have a choice on how to implement and manage the firewall.  In which scenario should you use one of the following?
 
   * *firewalld*: easy to use and covers traditional firewall use cases
-  * *nftables*: for complex and performance critical firewalls
+  * *nftables*: for complex and performance-critical firewalls
   * *iptables*: the nf_tables API provides backward compatibility so that scripts that use iptables commands still work
 
 For 99% of all use cases the firewalld tools are the best choice.  For this lab however we are trying to introduce `nft` and demonstrate some differences to the former `iptables`.
