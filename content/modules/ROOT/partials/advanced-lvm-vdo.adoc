@@ -529,11 +529,7 @@ Red Hat generally recommends using a "sparse" UDS index for all production use c
 
 The default configuration of the index is to use a "dense" index. This index is considerably less efficient (by a factor of 10) in DRAM, but it has much lower (also by a factor of 10) minimum required disk space, making it more convenient for evaluation in constrained environments.
 
-Please refer to the Red Hat Storage Administration Guide further information on provisioning and managing your data with VDO:
-
-Red Hat Enterprise Linux Storage Administration Guide (VDO)
-
-
+Please refer to the link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/deduplicating_and_compressing_logical_volumes_on_rhel/index[Red Hat Documentation] further information on provisioning and managing your data with VDO.
 
 == Conclusion
 
