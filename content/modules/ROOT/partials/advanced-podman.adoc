@@ -412,7 +412,7 @@ tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      
 ----
 
 
-Now let's introduce a commandline utility 'lsns' to check out the namespaces.
+Now let's introduce a command-line utility 'lsns' to check out the namespaces.
 
 [{format_cmd}]
 ----
