@@ -69,14 +69,15 @@ podman rmi --all
 
 === Pull Required Images
 
-Time to pull a container from our local repository.  For these exercises we will want to use a rhel10 ubi image.
+Time to pull a container from the Red Hat registry.  For these exercises we will use a RHEL 10 Universal Base Image (UBI).
 
 [{format_cmd}]
 ----
 podman search ubi10
 ----
 
-From this we see the current available ubi10 image is ubi10-beta.  So let's grab that.
+From the command above, we see there are many versions of the UBI image available. Let's grab the standard image.
+
 [{format_cmd}]
 ----
 podman pull registry.access.redhat.com/ubi10/ubi:latest
