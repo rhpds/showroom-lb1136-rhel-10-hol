@@ -154,11 +154,11 @@ Chain types are:
 Hooks you can use:
 
   * *ingress* - sees packets immediately after passing up from NIC driver, before prerouting (only in netdev family since Linux kernel 4.2, and inet family since Linux kernel 5.10)
-  * *prerouting* : sees all incoming packets, before any routing decision has been made
-  * *input* : sees incoming packets that are addressed to and have now been routed to the local system
-  * *forward* : sees incoming packets that are not addressed to the local system
-  * *output* : sees packets that originated from processes in the local machine
-  * *postrouting* : sees all packets after routing, just before they leave the local system
+  * *prerouting* - sees all incoming packets, before any routing decision has been made
+  * *input* - sees incoming packets that are addressed to and have now been routed to the local system
+  * *forward* - sees incoming packets that are not addressed to the local system
+  * *output* - sees packets that originated from processes in the local machine
+  * *postrouting* - sees all packets after routing, just before they leave the local system
 
 Using nft, show the current state of the network chains.
 
