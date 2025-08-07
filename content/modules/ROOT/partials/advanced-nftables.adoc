@@ -169,7 +169,7 @@ nft list chains
 
 Again there is nothing there, so let's create a new chain in our table called 'INPUT'.
 
-NOTE: nft leverages special characters (ie: curly braces and semicolons) so we must use single quotes to protect our rules on the commandline
+NOTE: nft leverages special characters (i.e. curly braces and semicolons) so we must use single quotes to protect our rules on the command-line.
 
 [{format_cmd}]
 ----
