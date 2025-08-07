@@ -506,7 +506,6 @@ workshop-finish-exercise.sh
 == Additional Reference Materials
 
     * link:https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image[Introducing the Red Hat Universal Base Image - Scott McCarty]
-    * link:https://developers.redhat.com/blog/2019/04/25/podman-basics-workshop-sheet/[Podman Basics Cheat Sheet - Doug Tidwell]
     * link:https://developers.redhat.com/blog/2018/11/20/buildah-podman-containers-without-daemons/[Containers without daemons: Podman and Buildah available in RHEL 7.6 and RHEL 8 Beta - Tom Sweeney]
     * link:https://www.redhat.com/en/blog/7-linux-namespaces[The 7 Most Used Linux Namespaces - Steve Ovens]
 
