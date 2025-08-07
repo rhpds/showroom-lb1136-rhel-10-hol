@@ -311,9 +311,9 @@ ENTRYPOINT ["/usr/sbin/httpd"]
 Notice a few things about the configuration:
 
   * that our image is based on `ubi10/ubi:latest`
-  * the build process will install an additional package `httpd` along with it's dependencies
+  * the build process will install an additional package `httpd` along with its dependencies
   * httpd is configured by default to run on port 80, so that is the port we will expose
-  * the build will create a file `/var/www/html/index.html` with the contents "The Web Server is Running".
+  * the build will create a file `/var/www/html/index.html` with the contents "The Web Server is Running"
 
 === Build
 
