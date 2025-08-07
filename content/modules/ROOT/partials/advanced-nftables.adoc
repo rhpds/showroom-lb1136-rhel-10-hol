@@ -194,7 +194,7 @@ table inet workshop {
 
 === Rules
 
-*Rules* take actions (ie: accept, drop, forward) on network packets based on specified criteria.
+*Rules* take actions (e.g. accept, drop, forward) on network packets based on specified criteria.
 
   * a rule consists of zero or more *expressions* followed by one or more *statements*
   * each *expression* tests whether a packet matches a specific payload field or packet/flow metadata
