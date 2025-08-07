@@ -167,7 +167,7 @@ Using nft, show the current state of the network chains.
 nft list chains
 ----
 
-Again there is nothing there, so let use create a new chain in our table called 'INPUT'.
+Again there is nothing there, so let's create a new chain in our table called 'INPUT'.
 
 NOTE: nft leverages special characters (ie: curly braces and semicolons) so we must use single quotes to protect our rules on the commandline
 
