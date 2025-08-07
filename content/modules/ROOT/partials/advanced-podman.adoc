@@ -97,6 +97,8 @@ da862ffa17875f5980832d6d8cd545f75e7cf3175a710b6529d7f7fc5fd650d1
 
 === UTS Namespace / Hostname
 
+Run the following command inside a UBI container instance.
+
 [{format_cmd}]
 ----
 podman run ubi cat /proc/sys/kernel/hostname
@@ -107,7 +109,7 @@ podman run ubi cat /proc/sys/kernel/hostname
 6cea3acc210d
 ----
 
-So what we have learned here is that the hostname in the container's namespace is NOT the same as the host platform (node3.example.com).  It is unique and is by default identical to the container's ID.  You can verify this with 'podman ps -a'.
+As you can see, the hostname in the container's namespace is NOT the same as the host platform (node3.example.com).  It is unique and is by default identical to the container's ID.  You can verify this with 'podman ps -a'.
 
 [{format_cmd}]
 ----
