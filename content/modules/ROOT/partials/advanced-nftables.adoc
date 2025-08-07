@@ -153,7 +153,7 @@ Chain types are:
 
 Hooks you can use:
 
-  * *ingress* - sees packets immediately after passed up from NIC driver, before prerouting (only in netdev family since Linux kernel 4.2, and inet family since Linux kernel 5.10)
+  * *ingress* - sees packets immediately after passing up from NIC driver, before prerouting (only in netdev family since Linux kernel 4.2, and inet family since Linux kernel 5.10)
   * *prerouting* : sees all incoming packets, before any routing decision has been made
   * *input* : sees incoming packets that are addressed to and have now been routed to the local system
   * *forward* : sees incoming packets that are not addressed to the local system
