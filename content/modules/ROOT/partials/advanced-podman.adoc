@@ -58,7 +58,7 @@ Namespaces are used to isolate data that is specific to each container like host
 
 === Clean Up
 
-Let's start by insuring we have a clean environment
+Let's start by ensuring we have a clean environment.
 
 [{format_cmd}]
 ----
