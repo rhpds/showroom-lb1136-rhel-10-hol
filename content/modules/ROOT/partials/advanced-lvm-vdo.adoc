@@ -548,11 +548,10 @@ workshop-finish-exercise.sh
 
     * link:https://www.redhat.com/en/blog/look-vdo-new-linux-compression-layer[A Look At VDO (BLOG)]
 
-Red Hat Documentation
+Red Hat Documentation:
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_storage_devices/index[Managing Storage Devices]
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_logical_volumes/index[Managing Logical Volumes]
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/deduplicating_and_compressing_logical_volumes_on_rhel/index[Deduplication and Compressing LVs]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_storage_devices/index[Managing Storage Devices]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_and_managing_logical_volumes/index[Configuring and managing logical volumes]
 
 [discrete]
 == End of Unit
