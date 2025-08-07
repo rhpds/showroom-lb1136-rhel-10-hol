@@ -312,7 +312,7 @@ Notice a few things about the configuration:
 
   * that our image is based on `ubi10/ubi:latest`
   * the build process will install an additional package `httpd` along with its dependencies
-  * httpd is configured by default to run on port 80, so that is the port we will expose
+  * httpd is configured by default to run on port 80 so that is the port that is exposed (note that the EXPOSE keyword is purely informational; the port must still be published by the container runtime in order to be used)
   * the build will create a file `/var/www/html/index.html` with the contents "The Web Server is Running"
 
 === Build
