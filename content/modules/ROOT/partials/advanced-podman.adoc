@@ -229,7 +229,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 === Mount Namespace / Filesystem
 
-Finally, look at the filesystem(S) in the container's namespace.  The 'df' is in the command set of the container, so the Bind-Mount isn't strictly required.
+Finally, look at the filesystems in the container's namespace.  'df' is included in the container image so no Bind-Mount is required.
 
 [{format_cmd}]
 ----
