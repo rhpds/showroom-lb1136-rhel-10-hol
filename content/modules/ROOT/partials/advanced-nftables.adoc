@@ -453,7 +453,7 @@ Which is why we encourage you to use firewalld and firewall-cmd for 99% of your 
 
 That concludes this unit on nftables.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
