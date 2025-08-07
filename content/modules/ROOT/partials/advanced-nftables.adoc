@@ -232,11 +232,11 @@ table inet workshop { # handle 6
 
 NOTE: Now is a good time to point out that the exercises in this unit are deliberately meant to be nondestructive.  Meaning, we don't want this machine to be unusable due to an error in rule insertion or deletion.
 
-So what does the previous rule do?  It merely counts packets that arrive at port 80 on our machine.  Let's send some packets.
+So what does the previous rule do?  It merely counts packets that arrive at port 80 on our machine.  Let's send some packets to our localhost address.
 
 [{format_cmd}]
 ----
-curl localhost
+curl 127.0.0.1
 ----
 
 There is no web server running on this system so you will get a failed connection message.  However, now we reexamine the counters.
@@ -251,9 +251,10 @@ nft -n -a list table inet workshop
 table inet workshop { # handle 6
         chain INPUT { # handle 1
                 type filter hook input priority 0; policy accept;
-                tcp dport 80 counter packets 2 bytes 140 # handle 2
+                tcp dport 80 counter packets 1 bytes 60 # handle 2
         }
 }
+
 ----
 
 Not too exciting, but now you know how to add a rule.
