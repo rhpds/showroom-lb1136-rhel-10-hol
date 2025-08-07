@@ -342,9 +342,9 @@ registry.access.redhat.com/ubi10/ubi  latest      da862ffa1787  2 days ago     2
 
 Time to deploy the image.  A few things to note here:
 
-  * we are going to name the deployment "webserver"
-  * we are connecting localhost port 8080 to port 80 of the deployed container
-  * the deployment is using 'detached' mode
+  * we are going to name the container instance "webserver"
+  * we are publishing port 80 of the container instance to port 8080 on the host
+  * the container instance will run in 'detached' mode
 
 [{format_cmd}]
 ----
