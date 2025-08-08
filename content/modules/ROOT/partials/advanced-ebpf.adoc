@@ -61,7 +61,7 @@ There are just over 100 tools shipped in the bcc-tools package. A few things of 
 
      * All of these tools live in `/usr/share/bcc/tools`.
      * These tools must run as the root user as any eBPF program can read kernel data. As such, injecting eBPF bytecode as a regular user is not allowed in RHEL 10.
-     * Each tool has a man page to view the man page, run `man <tool name>`. These man pages include descriptions of the tools, provide the options that can be called and have information on the expected overhead of the specific tool.
+     * Each tool has a man page. To view the man page, run `man <tool name>`. These man pages include descriptions of the tools, provide the options that can be called and have information on the expected overhead of the specific tool.
 
 
 === Installation
