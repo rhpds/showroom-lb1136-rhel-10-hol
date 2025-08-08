@@ -490,7 +490,7 @@ The objective is to set a probe and identify any process that opens our targeted
     ** conditional if() to evaluate args->filename for a match
     ** print() the desired output
     *** typical *pid*, *uid*, *gid* fields
-    *** *comm* is process's name
+    *** *comm* is the process name
     *** *args->filename* is the filename being accessed
     * -c [COMMAND] to run command after probes are set and exit
 
