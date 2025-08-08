@@ -189,7 +189,7 @@ WARNING: It is important to wait until the tool is setup.  Do not proceed until 
 [discrete]
 ==== Secondary Terminal (bastion)
 
-In your second terminal having established yourself as root, let's try to unmount a something we know can NOT be unmounted. For this, we'll pick the root filesystem '/'.
+In your second terminal, having established yourself as root, let's try to unmount something we know can NOT be unmounted. For this, we'll pick the root filesystem '/'.
 
 .terminal-2
 [{format_cmd}]
