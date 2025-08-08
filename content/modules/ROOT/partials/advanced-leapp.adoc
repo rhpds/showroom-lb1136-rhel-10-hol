@@ -363,7 +363,7 @@ Connection to leapp closed by remote host.
 Connection to leapp closed.
 ----
 
-After another 6 - 9 minutes, you should be able to ssh back in from the bastion host
+After another 6 - 9 minutes, you should be able to SSH back in from the bastion host.
 
 Here is a command you can run on the bastion to loop until the leapp host is
 back online
