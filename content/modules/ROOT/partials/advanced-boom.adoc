@@ -410,8 +410,8 @@ Before reboot, there are 2 options to invoke the right loader at restart:
   . enter the GRUB menu at startup and select at boot time
   . use `grubby --set-default=#` to pre-select which one to load by default
   
-We are going to opt for pre-select since it's easier to script.  Use the following workshop to inspect 
-the currently configured GRUB menu options.
+We are going to opt for pre-select since it's easier to script.  Use the following script to inspect
+the currently-configured GRUB menu options.
 
 [{format_cmd}]
 ----
