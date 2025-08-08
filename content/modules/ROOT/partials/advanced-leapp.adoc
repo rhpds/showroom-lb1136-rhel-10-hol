@@ -131,7 +131,7 @@ rm -rf /var/log/leapp /root/tmp_leapp_py3
 
 ===  Update Host
 
-Insure all RHEL 9 Packages are up to date.
+Ensure all RHEL 9 Packages are up to date.
 
 [{format_cmd}]
 ----
