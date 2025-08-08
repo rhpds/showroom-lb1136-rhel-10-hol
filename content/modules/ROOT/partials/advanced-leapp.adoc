@@ -350,8 +350,7 @@ sys     2m32.107s
 
 == Finalize the Upgrade
 
-To finish the upgrade process, a reboot is now required.  Without console access you won't be able to see the final 
-and unfortunately this is the step that takes the longest. 
+To finish the upgrade process, a reboot is now required.  Without console access you won't be able to see the final output and unfortunately this is the step that takes the longest. 
 
 [{format_cmd}]
 ----
