@@ -448,7 +448,7 @@ WARNING: *DO NOT PROCEED* unless both `kernel=` and `initrd=` include the path `
 if /boot is not on a dedicated partition/mount.  In the majority of our workshop deployments, /boot
 is part of the root '/' filesystem.  If you have questions, ask your instructor.
 
-We want to reboot to our "RHEL 10 Workshop", so we need to isolate and use the brub boot "index" from above output.
+We want to reboot to our "RHEL 10 Workshop", so we need to isolate and use the grub boot "index" from above output.
 
 [{format_cmd}]
 ----
