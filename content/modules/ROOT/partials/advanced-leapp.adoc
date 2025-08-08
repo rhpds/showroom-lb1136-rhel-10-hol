@@ -253,6 +253,10 @@ With that in mind, let's fix the blocker/inhibitor and make sure there's enough 
 [{format_cmd}]
 ----
 rm -f /boot/bigfile
+----
+
+[{format_cmd}]
+----
 df -h /boot
 ----
 
