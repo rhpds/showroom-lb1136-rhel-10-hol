@@ -343,7 +343,7 @@ In the `cachestat` window, you should output similar to:
        0        0        0    0.00%            0        322
 ----
 
-This shows that we had 1216 page cache misses during a five second period while running the above loop but during that same period, there were 16016 hits, indicating great performance from the page cache.
+This shows that we had 1216 page cache misses during a five second period while running the above loop but, during that same period, there were 16016 hits, indicating great performance from the page cache.
 
 
 
