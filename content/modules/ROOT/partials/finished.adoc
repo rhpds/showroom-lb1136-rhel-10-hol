@@ -10,7 +10,7 @@ If you synchronously followed a learning path from the beginning, then you have 
 
 We appreciate your attendance and hope you enjoyed this experience.
 
-If you are participating an event (like Red Hat Summit), please rate this workshop.  
+If you are participating in an event (like Red Hat Summit), please rate this workshop.
 
 Your feedback is what keeps activities like this on the agenda.
 
