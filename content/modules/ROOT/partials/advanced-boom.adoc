@@ -539,7 +539,6 @@ workshop-finish-exercise.sh
   * link:https://github.com/bmr-cymru/snapshot-boot-docs[Boot to snapshot documentation] 
   * link:https://uapi-group.org/specifications/specs/boot_loader_specification[BootLoader Specification]
   * link:https://www.sourceware.org/lvm2/[LVM2 resource page] 
-  * link:http://sources.redhat.com/dm/[Device-mapper resource page] 
 
 [discrete]
 == End of Unit
