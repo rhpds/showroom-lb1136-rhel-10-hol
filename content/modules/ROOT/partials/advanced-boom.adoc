@@ -21,7 +21,7 @@ In short, boom:
 The objectives of this exercise are quite simple:
 
   * familiarize yourself with the basics of creating and mangaging boot entries
-  * create an customized alternative boot entry to load a detectable kernel parameter
+  * create a customized alternative boot entry to load a detectable kernel parameter
 
 == Getting Started
 
