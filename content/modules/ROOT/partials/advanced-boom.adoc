@@ -84,7 +84,7 @@ So now we begin with the management of boom (BLS) profiles.
 
 ==== List / Show
 
-Just for reference, let's take a look at this systems existing profiles.  There could be many, or in some cases none.
+Just for reference, let's take a look at this system's existing profiles.  There could be many, or in some cases none.
 
 [{format_cmd}]
 ----
