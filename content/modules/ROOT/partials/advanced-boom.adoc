@@ -457,10 +457,9 @@ grubby --set-default=$index
 ----
 
 
-
 === Inspect
 
-Verify that the parameters stuck.  Notice that "saved_entry=1", that's what we want.
+Verify that the parameters stuck.
 
 [{format_cmd}]
 ----
@@ -469,7 +468,7 @@ grub2-editenv list
 
 [{format_plain}]
 ----
-saved_entry=2
+saved_entry=<id-from-above-output>
 boot_success=1
 boot_indeterminate=0
 ----
