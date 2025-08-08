@@ -64,7 +64,7 @@ You are now ready to proceed with these exercises.
 
 The Boom system uses a concept of "profiles" and "entries" to allow templated configurations to be cloned and modified.  This minimizes the need for the user to input complex boot parameters manually for each iteration of the configuration.  These configurations are known as Boot Loader Specification (BLS) files.
 
-You can confirm that grub is configure with BLS enabled, run the following.
+To confirm that grub is configured with BLS enabled, run the following.
 
 [{format_cmd}]
 ----
