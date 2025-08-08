@@ -35,7 +35,7 @@ all updates applied and system reboot.  Thus we being by rebooting `node3`.
 ssh node3 sudo reboot
 ----
 
-Now,give the host a few seconds to reboot and then let's ssh to `node3` from host `bastion`.
+Now, give the host a few seconds to reboot and then let's ssh to `node3` from host `bastion`.
 
 [{format_cmd}]
 ----
