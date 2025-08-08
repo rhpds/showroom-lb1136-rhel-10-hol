@@ -560,7 +560,7 @@ This displays the process-id along with the user and group ids of programs that 
 
 This concludes the exercises related to EBPF.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 .terminal-1
 [{format_cmd}]
