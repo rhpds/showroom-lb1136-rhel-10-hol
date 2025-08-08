@@ -107,7 +107,7 @@ boom profile show
 
 ==== Create
 
-Creating a profile is handled by a simple command.  However determining all of the various parameters
+Creating a profile is handled by a simple command.  However, determining all of the various parameters
 can be challeging and is outside the scope of this lab.  Thus we have prepared a simple script to do the hard work.
 
 [{format_cmd}]
