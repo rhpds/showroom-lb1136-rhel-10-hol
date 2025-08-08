@@ -524,7 +524,7 @@ Confirm that the custom key-value is now part of the kernel boot options.
 
 Wahoo! You are done.  If you have any questions, please ask.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -537,7 +537,7 @@ workshop-finish-exercise.sh
 
   * link:https://github.com/bmr-cymru/boom[Boom project page] 
   * link:https://github.com/bmr-cymru/snapshot-boot-docs[Boot to snapshot documentation] 
-  * link:https://systemd.io/BOOT_LOADER_SPECIFICATION[BootLoader Specification] 
+  * link:https://uapi-group.org/specifications/specs/boot_loader_specification[BootLoader Specification]
   * link:https://www.sourceware.org/lvm2/[LVM2 resource page] 
   * link:http://sources.redhat.com/dm/[Device-mapper resource page] 
 
