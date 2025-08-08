@@ -153,7 +153,7 @@ yggdrasil-worker:!:20158::::::
 ...<output truncated>...
 ----
 
-We are done with our limited nafarious activities, so proceed to `exit`
+We are done with our limited nefarious activities, so proceed to `exit`
 
 [{format_cmd}]
 ----
