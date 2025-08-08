@@ -351,10 +351,8 @@ This shows that we had 1216 page cache misses during a five second period while 
 
 This tool is a swiss army knife allowing you to specify functions to trace and messages to be printed when certain conditions are met.
 
-bpftrace makes use of:
+bpftrace makes use of BCC for interacting with the Linux BPF system as well as existing Linux tracing capabilities:
 
-  * BCC for interacting with the Linux BPF system
-  * as well as existing Linux tracing capabilities: 
     * kernel dynamic tracing (kprobes)
     * user-level dynamic tracing (uprobes)
     * tracepoints
