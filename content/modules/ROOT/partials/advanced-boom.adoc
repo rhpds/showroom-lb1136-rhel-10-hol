@@ -397,7 +397,7 @@ Created entry with boot_id 742eafd:
   grub_class kernel
 ----
 
-Notice in the that we appended a key-value parameter `custom_value=true` to the `options` line.
+Notice in the script output that we appended a key-value parameter `custom_value=true` to the `options` line.
 
 
 
