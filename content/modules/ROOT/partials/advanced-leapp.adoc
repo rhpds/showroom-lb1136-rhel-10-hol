@@ -140,8 +140,8 @@ dnf -y update
 
 === Reboot
 
-To insure that all updates have taken effect and that we are running on latest kernel,
-make sure we're on the correct host and reboot.
+To ensure that all updates have taken effect and that we are running on the latest kernel,
+check the hostname is correct and reboot.
 
 [{format_cmd}]
 ----
