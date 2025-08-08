@@ -448,7 +448,7 @@ image::rhel-10.0/leapp-02.png[Sample Leapp PreUpgrade Web Console Report]
 
 == Conclusion
 
-Whether upgrading in place is right is a decision that needs to be made from one environment to the next, one group to the next, even from one system to the next.  What makes sense for one application might not make sense for another.  As with any OS upgrade, test in the lab and do backups!
+To upgrade in-place or rebuild is a decision that needs to be made from one environment to the next, one group to the next, even from one system to the next.  What makes sense for one application might not make sense for another.  As with any OS upgrade, test in the lab and do backups!
 
 Time to finish this unit and return the shell to it's home position.
 
