@@ -255,7 +255,7 @@ workshop-finish-exercise.sh
 
 Red Hat Documentation
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/recording_sessions/getting-started-with-session-recording_getting-started-with-session-recording[Getting Started With Session Recording]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/automating_system_administration_by_using_rhel_system_roles/configuring-a-system-for-session-recording-by-using-rhel-system-roles[Configuring a system for session recording by using RHEL system roles]
 
 [discrete]
 == End of Unit
