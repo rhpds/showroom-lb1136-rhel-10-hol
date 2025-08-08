@@ -391,7 +391,7 @@ Use `sudo` to elevate your privileges.
 
 == Final RHEL Version Verification
 
-Finally, re-run the commands from earlier to verify that the leapp node has actually been upgraded to RHEL9
+Finally, re-run the commands from earlier to verify that the leapp node has actually been upgraded to RHEL 10.
 
 [{format_cmd}]
 ----
