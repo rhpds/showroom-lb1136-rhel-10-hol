@@ -284,9 +284,6 @@ This shows us that the mount succeeded and all the options that were passed into
 
 As you can see, the `mountsnoop` tool is very useful for seeing what processes are calling the mount and umount system calls and what the results of those calls are.
 
-In the `mountsnoop` terminal, issue a Ctrl-C and this will return you to a prompt.
-
-
 
 == Exercise: cachestat
 
