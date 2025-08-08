@@ -57,7 +57,7 @@ You are now ready to proceed with these exercises.
 
 == Core Concepts
 
-There are just over 100 tools shipped in this package. A few things of note:
+There are just over 100 tools shipped in the bcc-tools package. A few things of note:
 
      * All of these tools live in `/usr/share/bcc/tools`.
      * These tools must run as the root user as any eBPF program can read kernel data. As such, injecting eBPF bytecode as a regular user is not allowed in RHEL 9.
