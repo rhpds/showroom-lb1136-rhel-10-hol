@@ -30,8 +30,6 @@ Do you have ideas on what additional content you would like to see?
 
 Topics that are already on the horizon include:
 
-    * LEAPP - In-place upgrades
-    * BootC - Bootable containers
     * NBDE - Network Bound Disk Encryption
     * SELinux - Security Enhanced Linux
 
