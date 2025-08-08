@@ -513,7 +513,7 @@ cat /proc/cmdline
 
 [{format_plain}]
 ----
-
+BOOT_IMAGE=(hd0,gpt3)/boot/vmlinuz-6.12.0-55.25.1.el10_0.x86_64 root=/dev/vda3 ro console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M custom_value=true
 ----
 
 Confirm that the custom key-value is now part of the kernel boot options.
