@@ -406,6 +406,7 @@ Notice in the script output that we appended a key-value parameter `custom_value
 WARNING: If possible, bring up the virtual machine console for node3 before proceeding.  
 
 Before reboot, there are 2 options to invoke the right loader at restart:
+
   . enter the GRUB menu at startup and select at boot time
   . use `grubby --set-default=#` to pre-select which one to load by default
   
