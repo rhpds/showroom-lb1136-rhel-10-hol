@@ -555,7 +555,6 @@ Attaching 1 probe...
 
 This displays the process-id along with the user and group ids of programs that tried to access our file.
 
-Go ahead and hit CTL-C in the primary terminal to exit bpftrace.
 
 == Conclusion
 
