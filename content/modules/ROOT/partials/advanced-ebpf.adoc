@@ -51,7 +51,7 @@ workshop-ebpf-checkhost.sh
 [discrete]
 ==== Secondary Terminal (bastion)
 
-You'll need your second terminal for these exercises.  So just keep your eyes on the instructions for what to run a where.
+You'll need your second terminal for these exercises.  So just keep your eyes on the instructions for what to run where.
 
 You are now ready to proceed with these exercises.
 
