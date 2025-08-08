@@ -261,7 +261,7 @@ Proceed to restore the /dev/shm mount as follows:
 ssh node2 "sudo workshop-ebpf-mountshm.sh"
 ----
 
-This is the last step related to mountsnoop.  Before porceeding to the results you can
+This is the last step related to mountsnoop.  Before proceeding to the results you can
 either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to terminate mountsnoop.
 
 .terminal-2
