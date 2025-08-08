@@ -243,7 +243,7 @@ drwx------. 4 root root        65 Jun 10 13:32 grub2
   (output truncated...)
 ----
 
-Sure enough, there is a very big file, coincidentally called "bigfile" that is over 600MB.  It was placed there to show what an "Inhibitor" would look like as part of the preupgrade process, so we know that it is safe to remove.  The Leapp documentation (link at the end of the exercise) goes into more examples of things that could be inhibitors like device drivers that may not be supported.  It also outlines environments that are not supported for an in-place upgrade such as Network based multipath and network storage that use Ethernet or Infiniband. This includes booting from SAN using FC. Note that SAN using FC are supported, just not booting from SAN.
+Sure enough, there is a very big file, coincidentally called "bigfile" that is over 600MB.  It was placed there to show what an "Inhibitor" would look like as part of the preupgrade process, so we know that it is safe to remove.  The Leapp documentation (link at the end of the exercise) goes into more examples of things that could be inhibitors like device drivers that may not be supported.  It also outlines environments that are not supported for an in-place upgrade such as Network based multipath and network storage that use Ethernet or Infiniband. This includes booting from SAN using FC. Note that SAN using FC is supported, just not booting from SAN.
 
 
 == Remediate
