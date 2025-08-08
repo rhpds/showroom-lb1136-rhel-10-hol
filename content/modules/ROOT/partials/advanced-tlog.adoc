@@ -242,7 +242,7 @@ WARNING: It is important to wait until the playback is complete.  Do not proceed
 
 This concludes the exercises related to tlog.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
