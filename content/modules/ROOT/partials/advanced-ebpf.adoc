@@ -287,7 +287,7 @@ As you can see, the `mountsnoop` tool is very useful for seeing what processes a
 
 == Exercise: cachestat
 
-The `cachestat` tool traces kernel page cache functions and prints every five second summaries to aid you in workload characterization.
+The `cachestat` tool traces kernel page cache functions and prints a summary every five seconds to aid you in workload characterization.
 
 [discrete]
 ==== Primary Terminal (node2)
