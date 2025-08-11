@@ -58,7 +58,7 @@ Namespaces are used to isolate data that is specific to each container like host
 
 === Clean Up
 
-Let's start by insuring we have a clean environment
+Let's start by ensuring we have a clean environment.
 
 [{format_cmd}]
 ----
@@ -69,14 +69,15 @@ podman rmi --all
 
 === Pull Required Images
 
-Time to pull a container from our local repository.  For these exercises we will want to use a rhel10 ubi image.
+Time to pull a container from the Red Hat registry.  For these exercises we will use a RHEL 10 Universal Base Image (UBI).
 
 [{format_cmd}]
 ----
 podman search ubi10
 ----
 
-From this we see the current available ubi10 image is ubi10-beta.  So let's grab that.
+From the command above, we see there are many versions of the UBI image available. Let's grab the standard image.
+
 [{format_cmd}]
 ----
 podman pull registry.access.redhat.com/ubi10/ubi:latest
@@ -96,6 +97,8 @@ da862ffa17875f5980832d6d8cd545f75e7cf3175a710b6529d7f7fc5fd650d1
 
 === UTS Namespace / Hostname
 
+Run the following command inside a UBI container instance.
+
 [{format_cmd}]
 ----
 podman run ubi cat /proc/sys/kernel/hostname
@@ -106,7 +109,7 @@ podman run ubi cat /proc/sys/kernel/hostname
 6cea3acc210d
 ----
 
-So what we have learned here is that the hostname in the container's namespace is NOT the same as the host platform (node3.example.com).  It is unique and is by default identical to the container's ID.  You can verify this with 'podman ps -a'.
+As you can see, the hostname in the container's namespace is NOT the same as the host platform (node3.example.com).  It is unique and is by default identical to the container's ID.  You can verify this with 'podman ps -a'.
 
 [{format_cmd}]
 ----
@@ -121,7 +124,7 @@ CONTAINER ID  IMAGE                                        COMMAND              
 
 === PID Namespace / Process ID
 
-Let us have a look at the process table from with-in the container's namespace.
+Let us have a look at the process table from within the container's namespace.
 
 
 [{format_cmd}]
@@ -226,7 +229,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 === Mount Namespace / Filesystem
 
-Finally, look at the filesystem(S) in the container's namespace.  The 'df' is in the command set of the container, so the Bind-Mount isn't strictly required.
+Finally, look at the filesystems in the container's namespace.  'df' is included in the container image so no Bind-Mount is required.
 
 [{format_cmd}]
 ----
@@ -308,9 +311,9 @@ ENTRYPOINT ["/usr/sbin/httpd"]
 Notice a few things about the configuration:
 
   * that our image is based on `ubi10/ubi:latest`
-  * the build process will install an additional package `httpd` along with it's dependencies
-  * httpd is configured by default to run on port 80, so that is the port we will expose
-  * the build will create a file `/var/www/html/index.html` with the contents "The Web Server is Running".
+  * the build process will install an additional package `httpd` along with its dependencies
+  * httpd is configured by default to run on port 80 so that is the port that is exposed (note that the EXPOSE keyword is purely informational; the port must still be published by the container runtime in order to be used)
+  * the build will create a file `/var/www/html/index.html` with the contents "The Web Server is Running"
 
 === Build
 
@@ -339,9 +342,9 @@ registry.access.redhat.com/ubi10/ubi  latest      da862ffa1787  2 days ago     2
 
 Time to deploy the image.  A few things to note here:
 
-  * we are going to name the deployment "webserver"
-  * we are connecting localhost port 8080 to port 80 of the deployed container
-  * the deployment is using 'detached' mode
+  * we are going to name the container instance "webserver"
+  * we are publishing port 80 of the container instance to port 8080 on the host
+  * the container instance will run in 'detached' mode
 
 [{format_cmd}]
 ----
@@ -409,7 +412,7 @@ tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      
 ----
 
 
-Now let's introduce a commandline utility 'lsns' to check out the namespaces.
+Now let's introduce a command-line utility 'lsns' to check out the namespaces.
 
 [{format_cmd}]
 ----
@@ -491,7 +494,7 @@ podman rmi --all --force
 
 This concludes the exercises related to podman.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -503,7 +506,6 @@ workshop-finish-exercise.sh
 == Additional Reference Materials
 
     * link:https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image[Introducing the Red Hat Universal Base Image - Scott McCarty]
-    * link:https://developers.redhat.com/blog/2019/04/25/podman-basics-workshop-sheet/[Podman Basics Cheat Sheet - Doug Tidwell]
     * link:https://developers.redhat.com/blog/2018/11/20/buildah-podman-containers-without-daemons/[Containers without daemons: Podman and Buildah available in RHEL 7.6 and RHEL 8 Beta - Tom Sweeney]
     * link:https://www.redhat.com/en/blog/7-linux-namespaces[The 7 Most Used Linux Namespaces - Steve Ovens]
 

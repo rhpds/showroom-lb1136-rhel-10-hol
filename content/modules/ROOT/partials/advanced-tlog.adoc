@@ -153,7 +153,7 @@ yggdrasil-worker:!:20158::::::
 ...<output truncated>...
 ----
 
-We are done with our limited nafarious activities, so proceed to `exit`
+We are done with our limited nefarious activities, so proceed to `exit`
 
 [{format_cmd}]
 ----
@@ -190,7 +190,7 @@ Sat 2019-04-27 21:21:58.770887 EDT [s=bcde42e4c96048c3908657177414e202;i=70c;b=b
 
 Each one of those entries makes up a chunk of a session recording.  It is by way of searching the system journal and identifying the correct TLOG_REC for a specific session, that you can then play back the session using `tlog-play`.
 
-We have taken the liberty of scripting this "search" to playback the last session log from the user cloud-user.
+We have taken the liberty of scripting this "search" to playback the last session log from the user other-user.
 Once you hit enter on the command below, you will see a note that "Playback Started..." and again when "Playback Finished...".  
 Be patient until it completes and your root prompt returns.
 
@@ -242,7 +242,7 @@ WARNING: It is important to wait until the playback is complete.  Do not proceed
 
 This concludes the exercises related to tlog.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -255,7 +255,7 @@ workshop-finish-exercise.sh
 
 Red Hat Documentation
 
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/recording_sessions/getting-started-with-session-recording_getting-started-with-session-recording[Getting Started With Session Recording]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/automating_system_administration_by_using_rhel_system_roles/configuring-a-system-for-session-recording-by-using-rhel-system-roles[Configuring a system for session recording by using RHEL system roles]
 
 [discrete]
 == End of Unit

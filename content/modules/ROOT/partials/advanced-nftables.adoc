@@ -73,17 +73,17 @@ It is not unusual for this subsystem of the linux kernel to get replaced from ti
   * ip-tables (linux kernel v2.4, managed with iptables)
   * nf-tables (linux kernel v3.13, managed with nft)
 
-There are others, but these are the most famliar ones that appeared in the major distributions.
+There are others, but these are the most familiar ones that appeared in the major distributions.
 
-In RHEL 9, you have a choice on how to implement and manage the firewall.  In which scenario should you use one of the following?
+In RHEL 10, you have a choice on how to implement and manage the firewall.  In which scenario should you use one of the following?
 
   * *firewalld*: easy to use and covers traditional firewall use cases
-  * *nftables*: for complex and performance critical firewalls
+  * *nftables*: for complex and performance-critical firewalls
   * *iptables*: the nf_tables API provides backward compatibility so that scripts that use iptables commands still work
 
 For 99% of all use cases the firewalld tools are the best choice.  For this lab however we are trying to introduce `nft` and demonstrate some differences to the former `iptables`.
 
-Let us now being to understand the constructs that build the firewall rules: Tables, Chains & Rules.
+Let us now begin to understand the constructs that build the firewall rules: Tables, Chains & Rules.
 
 
 
@@ -153,12 +153,12 @@ Chain types are:
 
 Hooks you can use:
 
-  * *ingress* - sees packets immediately after passed up from NIC driver, before prerouting (only in netdev family since Linux kernel 4.2, and inet family since Linux kernel 5.10)
-  * *prerouting* : sees all incoming packets, before any routing decision has been made
-  * *input* : sees incoming packets that are addressed to and have now been routed to the local system
-  * *forward* : sees incoming packets that are not addressed to the local system
-  * *output* : sees packets that originated from processes in the local machine
-  * *postrouting* : sees all packets after routing, just before they leave the local system
+  * *ingress* - sees packets immediately after passing up from NIC driver, before prerouting (only in netdev family since Linux kernel 4.2, and inet family since Linux kernel 5.10)
+  * *prerouting* - sees all incoming packets, before any routing decision has been made
+  * *input* - sees incoming packets that are addressed to and have now been routed to the local system
+  * *forward* - sees incoming packets that are not addressed to the local system
+  * *output* - sees packets that originated from processes in the local machine
+  * *postrouting* - sees all packets after routing, just before they leave the local system
 
 Using nft, show the current state of the network chains.
 
@@ -167,9 +167,9 @@ Using nft, show the current state of the network chains.
 nft list chains
 ----
 
-Again there is nothing there, so let use create a new chain in our table called 'INPUT'.
+Again there is nothing there, so let's create a new chain in our table called 'INPUT'.
 
-NOTE: nft leverages special characters (ie: curly braces and semicolons) so we must use single quotes to protect our rules on the commandline
+NOTE: nft leverages special characters (i.e. curly braces and semicolons) so we must use single quotes to protect our rules on the command-line.
 
 [{format_cmd}]
 ----
@@ -194,11 +194,11 @@ table inet workshop {
 
 === Rules
 
-*Rules* take actions (ie: accept, drop, forward) on network packets based on specified criteria.
+*Rules* take actions (e.g. accept, drop, forward) on network packets based on specified criteria.
 
   * a rule consists of zero or more *expressions* followed by one or more *statements*
   * each *expression* tests whether a packet matches a specific payload field or packet/flow metadata
-  * if a packet matches all of the expressions in the rule, then rule's *statements* are executed
+  * if a packet matches all of the expressions in the rule then the rule *statements* are executed
 
 Using the Table and Chain created above, let's proceed to implement and manage some basic rules.
 
@@ -232,11 +232,11 @@ table inet workshop { # handle 6
 
 NOTE: Now is a good time to point out that the exercises in this unit are deliberately meant to be nondestructive.  Meaning, we don't want this machine to be unusable due to an error in rule insertion or deletion.
 
-So what does the previos rule do?  It merely counts packaets that arrived at port 80 on our machine.  Let's send some packets.
+So what does the previous rule do?  It merely counts packets that arrive at port 80 on our machine.  Let's send some packets to our localhost address.
 
 [{format_cmd}]
 ----
-curl localhost
+curl 127.0.0.1
 ----
 
 There is no web server running on this system so you will get a failed connection message.  However, now we reexamine the counters.
@@ -251,16 +251,17 @@ nft -n -a list table inet workshop
 table inet workshop { # handle 6
         chain INPUT { # handle 1
                 type filter hook input priority 0; policy accept;
-                tcp dport 80 counter packets 2 bytes 140 # handle 2
+                tcp dport 80 counter packets 1 bytes 60 # handle 2
         }
 }
+
 ----
 
 Not too exciting, but now you know how to add a rule.
 
 === Delete Single Rule
 
-Deleting rules takes a little care in that you have to identify a *handle*.  Again, listing the rules make note of the *handle* provided next to each rule.
+Deleting rules takes a little care in that you have to identify a *handle*.  Listing the rules shows the *handle* number next to each rule.
 
 [{format_cmd}]
 ----
@@ -452,7 +453,7 @@ Which is why we encourage you to use firewalld and firewall-cmd for 99% of your 
 
 That concludes this unit on nftables.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -468,7 +469,7 @@ You can find more information:
   * link:https://en.wikipedia.org/wiki/Nftables[Wikipedia NFTables]
   * link:https://wiki.nftables.org/wiki-nftables/index.php/Main_Page[NFTables How-To]
   * link:https://wiki.nftables.org/wiki-nftables/index.php/Quick_reference-nftables_in_10_minutes[Quick Reference]
-  * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_firewalls_and_packet_filters/getting-started-with-nftables_firewall-packet-filters[Getting started with nftables]
+  * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_firewalls_and_packet_filters/getting-started-with-nftables[Getting started with nftables]
 
 [discrete]
 == End of Unit

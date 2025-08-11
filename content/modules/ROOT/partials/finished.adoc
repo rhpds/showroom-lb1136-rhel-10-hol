@@ -8,9 +8,9 @@
 
 If you synchronously followed a learning path from the beginning, then you have reached the end.  
 
-We appreciate your attendance and hope you enjoyed this experiance.
+We appreciate your attendance and hope you enjoyed this experience.
 
-If you are participating an event (like Red Hat Summit), please rate this workshop.  
+If you are participating in an event (like Red Hat Summit), please rate this workshop.
 
 Your feedback is what keeps activities like this on the agenda.
 
@@ -30,8 +30,6 @@ Do you have ideas on what additional content you would like to see?
 
 Topics that are already on the horizon include:
 
-    * LEAPP - In-place upgrades
-    * BootC - Bootable containers
     * NBDE - Network Bound Disk Encryption
     * SELinux - Security Enhanced Linux
 

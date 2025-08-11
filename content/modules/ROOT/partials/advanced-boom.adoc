@@ -21,13 +21,13 @@ In short, boom:
 The objectives of this exercise are quite simple:
 
   * familiarize yourself with the basics of creating and mangaging boot entries
-  * create an customized alternative boot entry to load a detectable kernel parameter
+  * create a customized alternative boot entry to load a detectable kernel parameter
 
 == Getting Started
 
 
 For these exercises, you will be using the host `node3` as user `root`.  However, due to the unique
-circumstances of this exercise, we need to ensure the host is running on it's latest kernel with
+circumstances of this exercise, we need to ensure the host is running on its latest kernel with
 all updates applied and system reboot.  Thus we being by rebooting `node3`.
 
 [{format_cmd}]
@@ -35,7 +35,7 @@ all updates applied and system reboot.  Thus we being by rebooting `node3`.
 ssh node3 sudo reboot
 ----
 
-Now,give the host a few seconds to reboot and then let's ssh to `node3` from host `bastion`.
+Now, give the host a few seconds to reboot and then let's ssh to `node3` from host `bastion`.
 
 [{format_cmd}]
 ----
@@ -64,7 +64,7 @@ You are now ready to proceed with these exercises.
 
 The Boom system uses a concept of "profiles" and "entries" to allow templated configurations to be cloned and modified.  This minimizes the need for the user to input complex boot parameters manually for each iteration of the configuration.  These configurations are known as Boot Loader Specification (BLS) files.
 
-You can confirm that grub is configure with BLS enabled, run the following.
+To confirm that grub is configured with BLS enabled, run the following.
 
 [{format_cmd}]
 ----
@@ -84,7 +84,7 @@ So now we begin with the management of boom (BLS) profiles.
 
 ==== List / Show
 
-Just for reference, let's take a look at this systems existing profiles.  There could be many, or in some cases none.
+Just for reference, let's take a look at this system's existing profiles.  There could be many, or in some cases none.
 
 [{format_cmd}]
 ----
@@ -107,7 +107,7 @@ boom profile show
 
 ==== Create
 
-Creating a profile is handled by a simple command.  However determining all of the various parameters
+Creating a profile is handled by a simple command.  However, determining all of the various parameters
 can be challeging and is outside the scope of this lab.  Thus we have prepared a simple script to do the hard work.
 
 [{format_cmd}]
@@ -397,7 +397,7 @@ Created entry with boot_id 742eafd:
   grub_class kernel
 ----
 
-Notice in the that we appended a key-value parameter `custom_value=true` to the `options` line.
+Notice in the script output that we appended a key-value parameter `custom_value=true` to the `options` line.
 
 
 
@@ -406,11 +406,12 @@ Notice in the that we appended a key-value parameter `custom_value=true` to the 
 WARNING: If possible, bring up the virtual machine console for node3 before proceeding.  
 
 Before reboot, there are 2 options to invoke the right loader at restart:
+
   . enter the GRUB menu at startup and select at boot time
   . use `grubby --set-default=#` to pre-select which one to load by default
   
-We are going to opt for pre-select since it's easier to script.  Use the following workshop to inspect 
-the currently configured GRUB menu options.
+We are going to opt for pre-select since it's easier to script.  Use the following script to inspect
+the currently-configured GRUB menu options.
 
 [{format_cmd}]
 ----
@@ -447,7 +448,7 @@ WARNING: *DO NOT PROCEED* unless both `kernel=` and `initrd=` include the path `
 if /boot is not on a dedicated partition/mount.  In the majority of our workshop deployments, /boot
 is part of the root '/' filesystem.  If you have questions, ask your instructor.
 
-We want to reboot to our "RHEL 10 Workshop", so we need to isolate and use the brub boot "index" from above output.
+We want to reboot to our "RHEL 10 Workshop", so we need to isolate and use the grub boot "index" from above output.
 
 [{format_cmd}]
 ----
@@ -456,10 +457,9 @@ grubby --set-default=$index
 ----
 
 
-
 === Inspect
 
-Verify that the parameters stuck.  Notice that "saved_entry=1", that's what we want.
+Verify that the parameters stuck.
 
 [{format_cmd}]
 ----
@@ -468,7 +468,7 @@ grub2-editenv list
 
 [{format_plain}]
 ----
-saved_entry=2
+saved_entry=<id-from-above-output>
 boot_success=1
 boot_indeterminate=0
 ----
@@ -513,7 +513,7 @@ cat /proc/cmdline
 
 [{format_plain}]
 ----
-
+BOOT_IMAGE=(hd0,gpt3)/boot/vmlinuz-6.12.0-55.25.1.el10_0.x86_64 root=/dev/vda3 ro console=tty0 console=ttyS0,115200n8 no_timer_check crashkernel=2G-64G:256M,64G-:512M custom_value=true
 ----
 
 Confirm that the custom key-value is now part of the kernel boot options.
@@ -524,7 +524,7 @@ Confirm that the custom key-value is now part of the kernel boot options.
 
 Wahoo! You are done.  If you have any questions, please ask.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
@@ -537,9 +537,8 @@ workshop-finish-exercise.sh
 
   * link:https://github.com/bmr-cymru/boom[Boom project page] 
   * link:https://github.com/bmr-cymru/snapshot-boot-docs[Boot to snapshot documentation] 
-  * link:https://systemd.io/BOOT_LOADER_SPECIFICATION[BootLoader Specification] 
+  * link:https://uapi-group.org/specifications/specs/boot_loader_specification[BootLoader Specification]
   * link:https://www.sourceware.org/lvm2/[LVM2 resource page] 
-  * link:http://sources.redhat.com/dm/[Device-mapper resource page] 
 
 [discrete]
 == End of Unit
