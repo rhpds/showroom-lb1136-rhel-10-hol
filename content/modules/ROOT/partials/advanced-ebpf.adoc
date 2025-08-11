@@ -13,7 +13,7 @@ uses the secondary terminal.  Do not proceed if the secondary terminal is alread
 
 This unit deals with system performance observability.
 
-eBPF (The Extended Berkeley Packet Filter) is an in-kernel virtual machine that allows code execution in the kernel space, in a restricted sandbox environment with access to a limited set of functions. There are numerous components shipped by Red Hat that utilize the eBPF virtual machine. Each component is in a different development phase, and thus not all components are currently fully supported. Those that are not supported are available as a *Technology Preview* and are not intended for production use.For information on Red Hat scope of support for Technology Preview features, see: link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope]
+eBPF (The Extended Berkeley Packet Filter) is an in-kernel virtual machine that allows code execution in the kernel space, in a restricted sandbox environment with access to a limited set of functions. There are numerous components shipped by Red Hat that utilize the eBPF virtual machine. Each component is in a different development phase, and thus not all components are currently fully supported. Those that are not supported are available as a *Technology Preview* and are not intended for production use. For information on Red Hat scope of support for Technology Preview features, see: link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
 
 In this unit, we will be focusing on the kernel tracing offering shipped as bcc-tools (BPF Compiler Collection Tools).   We will also touch on bpftrace which is a tool  to compile scripts to BPF-bytecode.  
 
@@ -51,17 +51,17 @@ workshop-ebpf-checkhost.sh
 [discrete]
 ==== Secondary Terminal (bastion)
 
-You'll need your second terminal for these exercises.  So just keep your eyes on the instructions for what to run a where.
+You'll need your second terminal for these exercises.  So just keep your eyes on the instructions for what to run where.
 
 You are now ready to proceed with these exercises.
 
 == Core Concepts
 
-There are just over 100 tools shipped in this package. A few things of note:
+There are just over 100 tools shipped in the bcc-tools package. A few things of note:
 
      * All of these tools live in `/usr/share/bcc/tools`.
-     * These tools must run as the root user as any eBPF program can read kernel data. As such, injecting eBPF bytecode as a regular user is not allowed in RHEL 9.
-     * Each tool has a man page to view the man page, run `man <tool name>`. These man pages include descriptions of the tools, provide the options that can be called and have information on the expected overhead of the specific tool.
+     * These tools must run as the root user as any eBPF program can read kernel data. As such, injecting eBPF bytecode as a regular user is not allowed in RHEL 10.
+     * Each tool has a man page. To view the man page, run `man <tool name>`. These man pages include descriptions of the tools, provide the options that can be called and have information on the expected overhead of the specific tool.
 
 
 === Installation
@@ -189,7 +189,7 @@ WARNING: It is important to wait until the tool is setup.  Do not proceed until 
 [discrete]
 ==== Secondary Terminal (bastion)
 
-In your second terminal having established yourself as root, let's try to unmount a something we know can NOT be unmounted. For this, we'll pick the root filesystem '/'.
+In your second terminal, having established yourself as root, let's try to unmount something we know can NOT be unmounted. For this, we'll pick the root filesystem '/'.
 
 .terminal-2
 [{format_cmd}]
@@ -261,7 +261,7 @@ Proceed to restore the /dev/shm mount as follows:
 ssh node2 "sudo workshop-ebpf-mountshm.sh"
 ----
 
-This is the last step related to mountsnoop.  Before porceeding to the results you can
+This is the last step related to mountsnoop.  Before proceeding to the results you can
 either hit `Ctrl-C` in the primary terminal OR send a sigkill to the process to terminate mountsnoop.
 
 .terminal-2
@@ -282,15 +282,12 @@ mount            48024   48024   1832832     mount("tmpfs", "/dev/shm", "tmpfs",
 
 This shows us that the mount succeeded and all the options that were passed into the system call.
 
-As you can see, the `mountsnoop` tool is very useful for seeing what processes that are calling the mount and umount system calls and what the results of those calls are.
-
-In the `mountsnoop` terminal, issue a Ctrl-C and this will return you to a prompt.
-
+As you can see, the `mountsnoop` tool is very useful for seeing what processes are calling the mount and umount system calls and what the results of those calls are.
 
 
 == Exercise: cachestat
 
-The `cachestat` tool traces kernel page cache functions and prints every five second summaries to aid you in workload characterization.
+The `cachestat` tool traces kernel page cache functions and prints a summary every five seconds to aid you in workload characterization.
 
 [discrete]
 ==== Primary Terminal (node2)
@@ -346,7 +343,7 @@ In the `cachestat` window, you should output similar to:
        0        0        0    0.00%            0        322
 ----
 
-This shows that we had 1216 page cache misses during a five second period while running the above loop but during that same period, there were 16016 hits, indicating great performance from the page cache.
+This shows that we had 1216 page cache misses during a five second period while running the above loop but, during that same period, there were 16016 hits, indicating great performance from the page cache.
 
 
 
@@ -354,10 +351,8 @@ This shows that we had 1216 page cache misses during a five second period while 
 
 This tool is a swiss army knife allowing you to specify functions to trace and messages to be printed when certain conditions are met.
 
-bpftrace makes use of:
+bpftrace makes use of BCC for interacting with the Linux BPF system as well as existing Linux tracing capabilities:
 
-  * BCC for interacting with the Linux BPF system
-  * as well as existing Linux tracing capabilities: 
     * kernel dynamic tracing (kprobes)
     * user-level dynamic tracing (uprobes)
     * tracepoints
@@ -495,7 +490,7 @@ The objective is to set a probe and identify any process that opens our targeted
     ** conditional if() to evaluate args->filename for a match
     ** print() the desired output
     *** typical *pid*, *uid*, *gid* fields
-    *** *comm* is process's name
+    *** *comm* is the process name
     *** *args->filename* is the filename being accessed
     * -c [COMMAND] to run command after probes are set and exit
 
@@ -560,13 +555,12 @@ Attaching 1 probe...
 
 This displays the process-id along with the user and group ids of programs that tried to access our file.
 
-Go ahead and hit CTL-C in the primary terminal to exit bpftrace.
 
 == Conclusion
 
 This concludes the exercises related to EBPF.
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 .terminal-1
 [{format_cmd}]
@@ -579,10 +573,9 @@ workshop-finish-exercise.sh
 You can find more information:
 
     * link:https://github.com/iovisor/bpftrace/blob/master/docs/tutorial_one_liners.md[The bpftrace One-Liner Tutorial]
-    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/assembly_understanding-the-ebpf-features-in-rhel_configuring-and-managing-networking[Understanding eBPF Features]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_firewalls_and_packet_filters/understanding-the-ebpf-networking-features-in-rhel-10[Understanding the eBPF networking features in RHEL 10]
     * link:https://lab.redhat.com/ebpf-tracing[Performance observability in practice with bcc-tools: A lab on lab.redhat.com]
     * link:http://www.brendangregg.com/ebpf.html[Linux Extended BPF (eBPF Tracing Tools) - Brendan Gregg]
-    * link:https://developers.redhat.com/search?t=bpf[eBPF blogs on Red Hat Developer]
 
 [discrete]
 == End of Unit

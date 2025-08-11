@@ -19,9 +19,7 @@ In this unit we introduce LEAPP,  an in-place OS upgrade tool used to:
   * and finally execute the upgrade procedure.
 
 
-Because the upgrade process is time consuming lengthy process, this exercise uses the secondary terminal.  
-The intent is to dedicate secondary terminal to the leapp upgrade, there-by leaving the primary terminal available 
-for other exercises while the upgrade executes.
+Because the upgrade is a lengthy process, this exercise uses the secondary terminal. The intent is to dedicate the secondary terminal to the leapp upgrade, thereby leaving the primary terminal available for other exercises while the upgrade executes.
 
 
 The first several sections leading up to the actual upgrade are interactive and should take around 7 - 8 minutes to complete.  The sections which perform the actual upgrade and finalize it are almost completely non-interactive and each are expected to take 6 - 9 minutes to complete.  Once you start them, you will have time to look at other exercises in the PRIMARY terminal while waiting for them to complete.
@@ -133,7 +131,7 @@ rm -rf /var/log/leapp /root/tmp_leapp_py3
 
 ===  Update Host
 
-Insure all RHEL 9 Packages are up to date.
+Ensure all RHEL 9 Packages are up to date.
 
 [{format_cmd}]
 ----
@@ -142,15 +140,15 @@ dnf -y update
 
 === Reboot
 
-To insure that all updates have taken effect and that we are running on latest kernel,
-make sure we're on the correct host and reboot.
+To ensure that all updates have taken effect and that we are running on the latest kernel,
+check the hostname is correct and reboot.
 
 [{format_cmd}]
 ----
 [[ $(hostname -s) == "leapp" ]] && reboot
 ----
 
-Using the second terminal reconnect to the `leapp` node once it has rebooted (should be 15 - 20 seconds)
+Using the second terminal reconnect to the `leapp` node once it has rebooted (should be 15 - 20 seconds).
 
 [{format_cmd}]
 ----
@@ -245,7 +243,7 @@ drwx------. 4 root root        65 Jun 10 13:32 grub2
   (output truncated...)
 ----
 
-Sure enough, there is a very big file, coincidentally called "bigfile" that is over 600MB.  It was placed there to show what an "Inhibitor" would look like as part of the preupgrade process, so we know that it is safe to remove.  The Leapp documentation (link at the end of the exercise) goes into more examples of things that could be inhibitors like device drivers that may not be supported.  It also outlines environments that are not supported for an in-place upgrade such as Network based multipath and network storage that use Ethernet or Infiniband. This includes booting from SAN using FC. Note that SAN using FC are supported, just not booting from SAN.
+Sure enough, there is a very big file, coincidentally called "bigfile" that is over 600MB.  It was placed there to show what an "Inhibitor" would look like as part of the preupgrade process, so we know that it is safe to remove.  The Leapp documentation (link at the end of the exercise) goes into more examples of things that could be inhibitors like device drivers that may not be supported.  It also outlines environments that are not supported for an in-place upgrade such as Network based multipath and network storage that use Ethernet or Infiniband. This includes booting from SAN using FC. Note that SAN using FC is supported, just not booting from SAN.
 
 
 == Remediate
@@ -255,6 +253,10 @@ With that in mind, let's fix the blocker/inhibitor and make sure there's enough 
 [{format_cmd}]
 ----
 rm -f /boot/bigfile
+----
+
+[{format_cmd}]
+----
 df -h /boot
 ----
 
@@ -303,10 +305,11 @@ Before continuing, review the full report below for details about discovered pro
 Answerfile has been generated at /var/log/leapp/answerfile
 ----
 
+Feel free to inspect the /var/log/leapp/leapp-report.txt file.  Everything should be ready to run the upgrade.
 
 == Upgrade
 
-Feel free to inspect the /var/log/leapp/leapp-report.txt file.  Everything should be ready to run the upgrade.  This will install several rpms, make some repo and other configuration changes, and will take several minutes (6 to 10 in our vm testing).  
+Now execute the upgrade. This will install several rpms, make some repo and other configuration changes, and will take several minutes (6 to 10 in our vm testing).  
 
 [{format_cmd}]
 ----
@@ -347,8 +350,7 @@ sys     2m32.107s
 
 == Finalize the Upgrade
 
-To finish the upgrade process, a reboot is now required.  Without console access you won't be able to see the final 
-and unfortunately this is the step that takes the longest. 
+To finish the upgrade process, a reboot is now required.  Without console access you won't be able to see the final output and unfortunately this is the step that takes the longest. 
 
 [{format_cmd}]
 ----
@@ -361,7 +363,7 @@ Connection to leapp closed by remote host.
 Connection to leapp closed.
 ----
 
-After another 6 - 9 minutes, you should be able to ssh back in from the bastion host
+After another 6 - 9 minutes, you should be able to SSH back in from the bastion host.
 
 Here is a command you can run on the bastion to loop until the leapp host is
 back online
@@ -389,7 +391,7 @@ Use `sudo` to elevate your privileges.
 
 == Final RHEL Version Verification
 
-Finally, re-run the commands from earlier to verify that the leapp node has actually been upgraded to RHEL9
+Finally, re-run the commands from earlier to verify that the leapp node has actually been upgraded to RHEL 10.
 
 [{format_cmd}]
 ----
@@ -438,7 +440,7 @@ subscription-manager release --unset
 
 == A Word About Web Console Integration
 
-This exercise has illustrated a very simple example of upgrading a RHEL8 system in place to a RHEL9 system, with a single issue that was easy to remediate and no applications running on top of the OS.  In the real world, there are likely to be more issues that need to be addressed and in some cases there are known issues that will prevent an in place upgrade (see official Red Hat documentation link below).  There is a Web Console plugin that makes it easier to visualize and in many cases remediate upgrade inhibitors that arise.  The rpm is called "cockpit-leapp" and once installed will enable visualization like this
+This exercise has illustrated a very simple example of upgrading a RHEL 9 system in place to a RHEL 10 system, with a single issue that was easy to remediate and no applications running on top of the OS.  In the real world, there are likely to be more issues that need to be addressed and in some cases there are known issues that will prevent an in-place upgrade (see official Red Hat documentation link below).  There is a Web Console plugin that makes it easier to visualize and, in many cases, remediate upgrade inhibitors that arise.  The rpm is called "cockpit-leapp" and, once installed, will enable visualization like this
 
 ====
 image::rhel-10.0/leapp-02.png[Sample Leapp PreUpgrade Web Console Report]
@@ -446,9 +448,9 @@ image::rhel-10.0/leapp-02.png[Sample Leapp PreUpgrade Web Console Report]
 
 == Conclusion
 
-Whether upgrading in place is right is a decision that needs to be made from one environment to the next, one group to the next, even from one system to the next.  What makes sense for one application might not make sense for another.  As with any OS upgrade, test in the lab and do backups!
+To upgrade in-place or rebuild is a decision that needs to be made from one environment to the next, one group to the next, even from one system to the next.  What makes sense for one application might not make sense for another.  As with any OS upgrade, test in the lab and do backups!
 
-Time to finish this unit and return the shell to it's home position.
+Time to finish this unit and return the shell to its home position.
 
 [{format_cmd}]
 ----
