@@ -41,7 +41,7 @@ You are now ready to proceed with these exercises.
 
 === Examine Sample Config
 
-Here is the OCI config we will use to build our custom bootable container (bootc) image.  
+Here is the OCI (Open Container Initiative) config file we will use to build our custom bootable container (bootc) image.  
 
 Using an existing image from a public registry, we will then simply add the httpd service along with a custom HTML file to demonstrate its functionality.
 
@@ -88,6 +88,19 @@ Successfully tagged localhost/custom-bootc:latest
 15e3cafbfe9e01b35ddf69c65667ce1be72f3ffebb26c50693bf59ebeb9c4566
 ----
 
+And verify our newly built container image
+
+[{format_cmd}]
+----
+podman images
+----
+
+[{format_plain}]
+----
+REPOSITORY                             TAG         IMAGE ID      CREATED         SIZE
+localhost/custom-bootc                 latest      e57d76e82188  35 seconds ago  1.5 GB
+quay.io/redhat-gpte/rhel10/rhel-bootc  latest      a93f5ef0baa4  3 months ago    1.43 GB
+----
 
 == Create VM Image
 
@@ -146,6 +159,10 @@ key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD0bkwdazmReuDV4XjGGy1W0hy+Ww1H4m/eJ
 
 === Build QCOW Image
 
+Now let's build the QCOW vm image into which we well install our custom
+Image Mode/bootc container.  Note that an Image Mode container can also
+be built to be installed onto a physical server as well.
+
 [{format_cmd}]
 ----
 cd ~
@@ -188,6 +205,8 @@ Copy the QCOW image to standard directory.
 ----
 cp qcow2/disk.qcow2 /var/lib/libvirt/images/bootc-vm.qcow2
 ----
+
+Finally, instantiate the running vm booting from the custom bootc container.
 
 [{format_cmd}]
 ----
@@ -256,6 +275,7 @@ curl $VM_IP
 
 == Cleanup
 
+Last but not least, let's kill the running vm, remove its configuration, and remove all the podman container images.
 
 [{format_cmd}]
 ----
