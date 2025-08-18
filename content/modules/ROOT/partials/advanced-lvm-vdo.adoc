@@ -496,7 +496,7 @@ du -sh /mnt/lab2
 
 [{format_cmd}]
 ----
-df /mnt/lab2
+df -h /mnt/lab2
 ----
 
 [{format_output}]

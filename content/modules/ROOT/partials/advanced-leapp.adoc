@@ -135,7 +135,7 @@ Ensure all RHEL 9 Packages are up to date.
 
 [{format_cmd}]
 ----
-dnf -y update
+dnf -y upgrade
 ----
 
 === Reboot

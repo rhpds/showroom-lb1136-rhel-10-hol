@@ -159,7 +159,7 @@ varnish-0:7.6.1-2.el10.x86_64
 ----
 
 (NOTE: this output may differ from your result depending on what packages are available)
-From this ouptut you can determine what other tools are impacted if you were to attempt a *dnf remove* or *dnf update* of ncurses.
+From this ouptut you can determine what other tools are impacted if you were to attempt a *dnf remove* or *dnf upgrade* of ncurses.
 
 
 
