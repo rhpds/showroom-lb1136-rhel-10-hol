@@ -159,9 +159,7 @@ key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD0bkwdazmReuDV4XjGGy1W0hy+Ww1H4m/eJ
 
 === Build QCOW Image
 
-Now let's build the QCOW vm image into which we well install our custom
-Image Mode/bootc container.  Note that an Image Mode container can also
-be built to be installed onto a physical server as well.
+Now let's build the QCOW vm image into which we will install our custom Image Mode/bootc container.  Note that an Image Mode container can also be built to be installed onto a physical server as well.
 
 [{format_cmd}]
 ----
