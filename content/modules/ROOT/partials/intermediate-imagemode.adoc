@@ -9,7 +9,7 @@
 
 == Overview
 
-Image mode for Red Hat Enterprise Linux is a simple, consistent approach to build, deploy and manage the operating system.  Using a technology called bootc (bootable container) enables a container image to install a system so that the same infrastructure and processes for applications applies to OS images, whether deploying across a data center, on bare metal, at the edge, or in the cloud.
+Image mode for Red Hat Enterprise Linux is a simple, consistent approach to build, deploy and manage the operating system.  Using a technology called bootc (bootable container) a container image is install onto a system such that the same infrastructure and processes for applications applies to OS images, whether deploying across a data center, on bare metal, at the edge, or in the cloud.
 
 == Getting Started
 
