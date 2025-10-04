@@ -9,6 +9,8 @@
 
 == Overview
 
+Image mode for Red Hat Enterprise Linux is a simple, consistent approach to build, deploy and manage the operating system.  Using a technology called bootc (bootable container) a container image is installed onto a system such that the same infrastructure and processes for applications applies to OS images, whether deploying across a data center, on bare metal, at the edge, or in the cloud.
+
 == Getting Started
 
 For these exercises, you will be using the host `node3` as user `root`.
@@ -159,9 +161,7 @@ key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD0bkwdazmReuDV4XjGGy1W0hy+Ww1H4m/eJ
 
 === Build QCOW Image
 
-Now let's build the QCOW vm image into which we well install our custom
-Image Mode/bootc container.  Note that an Image Mode container can also
-be built to be installed onto a physical server as well.
+Now let's build the QCOW vm image into which we will install our custom Image Mode/bootc container.  Note that an Image Mode container can also be built to be installed onto a physical server as well.
 
 [{format_cmd}]
 ----

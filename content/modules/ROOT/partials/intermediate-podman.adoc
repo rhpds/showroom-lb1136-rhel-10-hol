@@ -157,7 +157,7 @@ REPOSITORY                            TAG         IMAGE ID      CREATED     SIZE
 registry.access.redhat.com/ubi10/ubi  latest      da862ffa1787  2 days ago  216 MB
 ----
 
-NOTE: If you are a subscriber to Red Hat Enterprise Linux, you can pull authentic Red Hat certified images directly from Red Hat's repository.  For example: `podman pull rhel7.5 --creds 'username:password'`
+NOTE: If you are a subscriber to Red Hat Enterprise Linux, you can pull authentic Red Hat certified images directly from Red Hat's repository.  For example: `podman pull rhel7.9 --creds 'username:password'`
 
 Pull a few more container images.
 
@@ -311,16 +311,30 @@ host:
   - pids
   - rdma
   - misc
-  cgroupManager: systemd
-  cgroupVersion: v2
-  conmon:
 
 ...<output truncated>...
 ----
 
 Again, there is a lot of information here.  But if you dig into it, you should notice that 
 the number of containers (ContainerStore) has incremented to 2, and that the number of 
-ImageStore(s) has grown.  
+stopped containers has also has grown.
+
+[{format_cmd}]
+----
+podman info |grep -A7 store:
+----
+
+[{format_output}]
+----
+store:
+  configFile: /usr/share/containers/storage.conf
+  containerStore:
+    number: 2
+    paused: 0
+    running: 0
+    stopped: 2
+  graphDriverName: overlay
+----
 
 === Cleanup
 
