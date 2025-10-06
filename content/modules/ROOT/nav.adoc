@@ -8,7 +8,7 @@
 ***  xref:100-stratis.adoc[Storage Mgmt pt.1 (stratis)]
 ***  xref:100-firewalld.adoc[Firewall Mgmt pt.1 (firewalld)]
 //// ***  xref:100-trouble-shooting.adoc[Trouble Shooting pt.1 (man,info)] ////
-***  xref:101-podman.adoc[Containers pt.1 (podman)]
+***  xref:100-podman.adoc[Containers pt.1 (podman)]
 ***  xref:100-webconsole.adoc[Web Console (cockpit)]
 ***  xref:100-lightspeed.adoc[RHEL Lightspeed pt.1 (lightspeed)]
 
@@ -29,7 +29,7 @@
 ***  xref:200-lvm-vdo.adoc[Storage DeDup (lvm,vdo)] 
 //// ***  xref:200-nbde.adoc[Storage Encryption (nbde)] ////
 ***  xref:200-nftables.adoc[Net Filter (nftables)]
-***  xref:200-podman.adoc[Containers pt.3 (namespaces)]
+***  xref:200-podman.adoc[Containers pt.3 (namespaces,containerfile)]
 ***  xref:200-tlog.adoc[Session Logging (tlog)]
 ***  xref:200-ebpf.adoc[BPF Tracing (ebpf)]
 //// ***  xref:200-trouble-shooting.adoc[(df,du,top,iotop,iperf3)] ////

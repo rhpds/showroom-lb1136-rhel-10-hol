@@ -2,7 +2,7 @@
 = *Container Management* (podman)
 
 [discrete]
-== *Skill Level: Intermediate* icon:check[]
+== *Skill Level: Fundamental* icon:check[]
 
 
 
