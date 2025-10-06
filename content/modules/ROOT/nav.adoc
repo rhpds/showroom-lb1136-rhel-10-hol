@@ -8,6 +8,7 @@
 ***  xref:100-stratis.adoc[Storage Mgmt pt.1 (stratis)]
 ***  xref:100-firewalld.adoc[Firewall Mgmt pt.1 (firewalld)]
 //// ***  xref:100-trouble-shooting.adoc[Trouble Shooting pt.1 (man,info)] ////
+***  xref:100-podman.adoc[Containers pt.1 (podman)]
 ***  xref:100-webconsole.adoc[Web Console (cockpit)]
 ***  xref:100-lightspeed.adoc[RHEL Lightspeed pt.1 (lightspeed)]
 
@@ -18,8 +19,7 @@
 ***  xref:101-firewalld.adoc[Firewall Mgmt pt.2 (firewalld)]
 //// ***  xref:101-trouble-shooting.adoc[(journald,syslog)] ////
 //// ***  xref:101-selinux.adoc ////
-***  xref:101-podman.adoc[Container Mgmt pt.1 (podman)]
-***  xref:101-buildah.adoc[Container Dev (buildah,skopeo)]
+***  xref:101-buildah.adoc[Containers pt.2 (buildah,skopeo)]
 ***  xref:101-imagemode.adoc[Bootable Containers (image mode, bootc)]
 ***  xref:101-imagebuilder.adoc[Image Builder (composer)]
 ***  xref:101-virtualization.adoc[Virt Mgmt (libvirt)]
@@ -29,7 +29,7 @@
 ***  xref:200-lvm-vdo.adoc[Storage DeDup (lvm,vdo)] 
 //// ***  xref:200-nbde.adoc[Storage Encryption (nbde)] ////
 ***  xref:200-nftables.adoc[Net Filter (nftables)]
-***  xref:200-podman.adoc[Container Mgmt pt.2 (podman)]
+***  xref:200-podman.adoc[Containers pt.3 (namespaces,containerfile)]
 ***  xref:200-tlog.adoc[Session Logging (tlog)]
 ***  xref:200-ebpf.adoc[BPF Tracing (ebpf)]
 //// ***  xref:200-trouble-shooting.adoc[(df,du,top,iotop,iperf3)] ////
@@ -73,10 +73,10 @@
 ***  xref:firewalld-101.adoc[Firewall pt.2 (firewalld)]
 ***  xref:nftables-200.adoc[Net Filter (nftables)]
 
-** Container Mgmt
-***  xref:podman-101.adoc[Container Mgmt pt.1 (podman)]
-***  xref:buildah-101.adoc[Build and Inspect (buildah,skopeo)]
-***  xref:podman-200.adoc[Container Mgmt pt.2 (podman)]
+** Containers
+***  xref:podman-100.adoc[Containers pt.1 (podman)]
+***  xref:buildah-101.adoc[Containers pt.2 (buildah,skopeo)]
+***  xref:podman-200.adoc[Containers pt.3 (namespaces)]
 ***  xref:imagemode-101.adoc[Bootable Containers (image mode, bootc)]
 
 ** Virtualization Mgmt

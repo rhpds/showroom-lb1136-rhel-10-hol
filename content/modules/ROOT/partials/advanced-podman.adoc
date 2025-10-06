@@ -1,5 +1,5 @@
 
-= *Container Management* (podman)
+= *Container Management* (namespaces,containerfile)
 
 [discrete]
 == *Skill Level: Advanced* icon:check[]
@@ -275,7 +275,7 @@ podman rm --all
 ----
 
 
-== Exercise: Containerized Application from Scratch
+== Exercise: Container from a Containerfile
 
 === Setup 
 
