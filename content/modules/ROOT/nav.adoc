@@ -74,7 +74,7 @@
 ***  xref:nftables-200.adoc[Net Filter (nftables)]
 
 ** Containers
-***  xref:podman-101.adoc[Containers pt.1 (podman)]
+***  xref:podman-100.adoc[Containers pt.1 (podman)]
 ***  xref:buildah-101.adoc[Containers pt.2 (buildah,skopeo)]
 ***  xref:podman-200.adoc[Containers pt.3 (namespaces)]
 ***  xref:imagemode-101.adoc[Bootable Containers (image mode, bootc)]
