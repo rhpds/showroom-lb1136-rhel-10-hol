@@ -230,7 +230,7 @@ So let's take a quick look at some of its capabilities.
 image::rhel-10.0/wc-018.png[Cockpit File Browser]
 ====
 
-Change you directory either by navigating or entering a path.
+Change your directory to /var/tmp/ either by navigating or editing the shown path.
 
 ====
 image::rhel-10.0/wc-019.png[Cockpit File Browser]
@@ -254,11 +254,13 @@ Explore the actions you can take by right-clicking on a file.
 image::rhel-10.0/wc-022.png[Cockpit File Browser]
 ====
 
-Try editing a file.
+Using a right click, select 'Open Text File' and try editing the provided sample file 'webconsole-sample.txt'.
 
 ====
 image::rhel-10.0/wc-023.png[Cockpit File Browser]
 ====
+
+You can 'Save' or just 'Cancel' your changes.  Either way, proceed to close the editor dialog.
 
 == Applications
 
