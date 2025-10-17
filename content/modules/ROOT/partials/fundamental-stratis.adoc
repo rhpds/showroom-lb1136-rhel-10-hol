@@ -109,12 +109,12 @@ umount /summitdir
 
 [{format_cmd}]
 ----
-stratis fs destroy summitpool summitfs
+stratis fs destroy summitfs
 ----
 
 [{format_cmd}]
 ----
-stratis pool destroy summitpool summitfs
+stratis pool destroy summitpool
 ----
 
 [{format_cmd}]
