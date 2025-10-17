@@ -34,7 +34,7 @@ The following instructions to install and configure the webconsole are only prov
 
 == Installation and Configuration
 
-For your convenience, the webconsole has already been installed and configured on *bastion* host.  The steps for installation and setup are pretty simple and outlined below.  Remember that this is provided as reference only.
+For your convenience, the webconsole has already been installed and configured on *node3*.  The steps for installation and setup are pretty simple and outlined below.  Remember that this is provided as reference only.
 
 [NOTE]
 ====
@@ -56,7 +56,7 @@ That completes the installation and configuration of the Web Console.
 
 NOTE:  Please note that by default, the webconsole is configured to use port 9090.  Thus you would normally add :9090 to the end of the URL.  However for the purposes of this lab and to provide the greatest degree of internet compatability the webconsole has been additionally enabled on port 443.
 
-Your instructors (or workshop portal) may provide you with a unique link and special instructions to access the web-console on the *bastion*. It is PREFERRED that you use your local web browser.
+Your instructors (or workshop portal) may provide you with a unique link and special instructions to access the web-console on *node3*. It is PREFERRED that you use your local web browser.
 
 Accept the various notifications about insecure certificates, and then login.
 
