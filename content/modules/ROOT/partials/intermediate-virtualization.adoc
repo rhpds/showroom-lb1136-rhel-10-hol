@@ -247,7 +247,7 @@ virt-install \
    --disk /var/lib/libvirt/images/vmguest.qcow2 \
    --graphics vnc \
    --noautoconsole\
-   --os-variant rhel9.0
+   --os-variant rhel10.0
 ----
 
 Give the VM a few moments to boot.
