@@ -284,7 +284,7 @@ You will get an opportunity to manager Virtual Machines and Build System Images 
 
 You can find more information:
 
-    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_systems_in_the_rhel_web_consolep[Managing systems in the RHEL web console]
+    * link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_systems_in_the_rhel_web_console[Managing systems in the RHEL web console]
 
 [discrete]
 == End of Unit
