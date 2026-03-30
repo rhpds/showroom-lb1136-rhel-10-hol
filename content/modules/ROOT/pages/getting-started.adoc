@@ -19,7 +19,8 @@ Launch a 'tmux' (terminal multiplexer):
 workshop-tmux.sh TERM1
 ----
 
-Connect to node1 and run the setup playbooks:
+Connect to node1 and run the setup playbooks: 
+(can probably drop for 2026)
 
 [{format_cmd}]
 ----
